@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CoworkingApp</string>
+    <string name="workpoint">WorkPoint</string>
+    <string name="welcome"><b>Добро пожаловать на</b> WorkPoint</string>
+    <string name="some_id">Введите Ваш номер телефона</string>
+    <string name="password">Введите Ваш пароль</string>
+    <string name="sign_in">Войти в аккаунт</string>
+    <string name="welcome_reg"><b>Добро пожаловать на</b> WorkPoint!
+        <b>Давай сделаем тебе аккаунт</b> </string>
+    <string name="send_text">Заполните информацию о себе</string>
+
+</resources>

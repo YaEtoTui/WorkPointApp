@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBFBF5"
+    tools:context=".RegistrationActivity">
+
+    <TextView
+        android:id="@+id/workpoint"
+        android:layout_width="115.97dp"
+        android:layout_height="29dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="42.99dp"
+        android:layout_marginTop="61dp"
+        android:gravity="top"
+        android:text="@string/workpoint"
+        android:textAppearance="@style/workpoint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.132"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/line_2"
+        android:layout_width="354dp"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="94.5dp"
+        android:background="@drawable/line_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/welcome_reg"
+        android:layout_width="241dp"
+        android:layout_height="36dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="119dp"
+        android:gravity="top"
+        android:lineSpacingExtra="-2sp"
+        android:text="@string/welcome_reg"
+        android:textAppearance="@style/welcome_reg"
+        app:layout_constraintEnd_toEndOf="@+id/rectangle_7"
+        app:layout_constraintHorizontal_bias="0.005"
+        app:layout_constraintStart_toStartOf="@+id/rectangle_7"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/rectangle_7"
+        android:layout_width="353dp"
+        android:layout_height="421dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginRight="29dp"
+        android:background="@drawable/rectangle_7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.619"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_reg" />
+
+    <TextView
+        android:id="@+id/send_text"
+        android:layout_width="151dp"
+        android:layout_height="32dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="189dp"
+        android:gravity="top"
+        android:text="@string/send_text"
+        android:textAppearance="@style/send_text"
+        app:layout_constraintEnd_toEndOf="@+id/rectangle_7"
+        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintStart_toStartOf="@+id/rectangle_7"
+        app:layout_constraintTop_toTopOf="@+id/rectangle_7" />
+
+    <EditText
+        android:id="@+id/edFirstName"
+        android:layout_width="145dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="6dp"
+        android:background="@drawable/rectangle_4"
+        android:gravity="center"
+        android:hint="Введите имя"
+        android:inputType="text"
+        android:textAppearance="@style/some_id"
+        android:textColor="#991F3B99"
+        app:layout_constraintEnd_toEndOf="@+id/send_text"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/send_text"
+        app:layout_constraintTop_toBottomOf="@+id/send_text" />
+
+    <EditText
+        android:id="@+id/edLastName"
+        android:layout_width="145dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/rectangle_4"
+        android:gravity="center"
+        android:hint="Введите фамилию"
+        android:inputType="text"
+        android:textAppearance="@style/some_id"
+        android:textColor="#991F3B99"
+        app:layout_constraintEnd_toEndOf="@+id/send_text"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/send_text"
+        app:layout_constraintTop_toBottomOf="@+id/edFirstName" />
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="145dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/rectangle_4"
+        android:gravity="center"
+        android:hint="Введите номер телефона"
+        android:inputType="phone"
+        android:textAppearance="@style/some_id"
+        android:textColor="#991F3B99"
+        app:layout_constraintEnd_toEndOf="@+id/send_text"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edLastName"
+        app:layout_constraintTop_toBottomOf="@+id/edLastName" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="145dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/rectangle_4"
+        android:gravity="center"
+        android:hint="Придумайте пароль"
+        android:inputType="textPassword"
+        android:textAppearance="@style/some_id"
+        android:textColor="#991F3B99"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPhone"
+        app:layout_constraintStart_toStartOf="@+id/editTextPhone"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+
+    <TextView
+        android:id="@+id/choiceType"
+        android:layout_width="128dp"
+        android:layout_height="16dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="203dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="22dp"
+        android:gravity="top"
+        android:text="Выбери тип аккаунта"
+        android:textAppearance="@style/send_text"
+        app:layout_constraintEnd_toEndOf="@+id/rectangle_7"
+        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintStart_toStartOf="@+id/rectangle_7"
+        app:layout_constraintTop_toTopOf="@+id/rectangle_7" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:checkedButton="@id/btRadio1"
+        app:layout_constraintEnd_toEndOf="@+id/choiceType"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="@+id/choiceType"
+        app:layout_constraintTop_toBottomOf="@+id/choiceType">
+
+        <RadioButton
+            android:id="@+id/btRadio1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:backgroundTintMode="add"
+            android:text="Обычный пользователь"
+            android:textAppearance="@style/text_radio"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="@+id/choiceType"
+            app:layout_constraintHorizontal_bias="0.428"
+            app:layout_constraintStart_toStartOf="@+id/choiceType"
+            app:layout_constraintTop_toBottomOf="@+id/choiceType" />
+
+        <RadioButton
+            android:id="@+id/btRadio2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Бизнес-аккаунт"
+            android:textAppearance="@style/text_radio"
+            tools:layout_editor_absoluteX="250dp"
+            tools:layout_editor_absoluteY="324dp" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/buisnes"
+        android:layout_width="84dp"
+        android:layout_height="22dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:gravity="top"
+        android:lineSpacingExtra="-1sp"
+        android:text="Для продвижения вашего бизнеса"
+        android:textAppearance="@style/buisnes"
+        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <Button
+        android:id="@+id/btSignOut"
+        android:layout_width="145dp"
+        android:layout_height="32dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="91dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginRight="104dp"
+        android:backgroundTint="#E0E0D6"
+        android:elevation="5dp"
+        android:text="Зарегистрироваться"
+        android:textAppearance="@style/sign_in"
+        android:textColor="#991B1F3B"
+        app:layout_constraintEnd_toEndOf="@+id/rectangle_7"
+        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
