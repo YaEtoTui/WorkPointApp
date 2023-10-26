@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CoworkingApp</string>
+    <string name="app_name">WorkPoint</string>
     <string name="workpoint">WorkPoint</string>
     <string name="welcome"><b>Добро пожаловать на</b> WorkPoint</string>
     <string name="some_id">Введите Ваш номер телефона</string>
@@ -8,5 +8,8 @@
     <string name="welcome_reg"><b>Добро пожаловать на</b> WorkPoint!
         <b>Давай сделаем тебе аккаунт</b> </string>
     <string name="send_text">Заполните информацию о себе</string>
+    <string name="sign_out"><u>Зарегистрироваться</u></string>
+    <string name="errors_empty">Обязательное поле</string>
+    <string name="errors_exception">Введены некорректные данные</string>
 
 </resources>
