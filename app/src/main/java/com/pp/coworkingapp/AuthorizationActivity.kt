@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.opengl.Visibility
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -36,19 +37,21 @@ class AuthorizationActivity : AppCompatActivity() {
         val textWatcher = CustomTextWatcher(edList, bindingClass.button)
         for (editText in edList) editText.addTextChangedListener(textWatcher)
 
-//        bindingClass.button.setOnClickListener() {
-//            var inputPhoneText: String = bindingClass.editTvPhone.text.toString()
-//            var inputPassText: String = bindingClass.editTvPass.text.toString()
-//            if (inputPassText.isNotEmpty()) {
-//                bindingClass.editTvPass.setBackgroundResource(R.drawable.stroke_red)
-//                bindingClass.tvError2.isVisible = true
-//            } else {
-//                bindingClass.editTvPass.setBackgroundResource(R.drawable.rectangle_3)
-//                bindingClass.editTvPhone.setBackgroundResource(R.drawable.rectangle_3)
-//                bindingClass.tvError2.isVisible = false
-//                bindingClass.tvError1.isVisible = false
-//            }
-//        }
+        bindingClass.button.setOnClickListener() {
+            var inputPhoneText: String = bindingClass.editTvPhone.text.toString()
+            Log.i("input", inputPhoneText)
+            var inputPassText: String = bindingClass.editTvPass.text.toString()
+            if (inputPhoneText.length < 18) {
+                bindingClass.editTvPhone.setBackgroundResource(R.drawable.stroke_red)
+                bindingClass.tvError1.setText(R.string.errors_exception)
+                bindingClass.tvError1.isVisible = true
+            } else {
+                bindingClass.editTvPass.setBackgroundResource(R.drawable.rectangle_3)
+                bindingClass.editTvPhone.setBackgroundResource(R.drawable.rectangle_3)
+                bindingClass.tvError2.isVisible = false
+                bindingClass.tvError1.isVisible = false
+            }
+        }
     }
     fun setOnClickReg(view: View) {
         val intent = Intent(this, RegistrationActivity::class.java)
