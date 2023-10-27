@@ -60,6 +60,7 @@
         android:layout_marginLeft="29dp"
         android:layout_marginTop="41dp"
         android:layout_marginRight="29dp"
+        android:textColor="#000000"
         android:background="@drawable/rectangle_7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.619"
@@ -83,6 +84,17 @@
         app:layout_constraintStart_toStartOf="@+id/rectangle_7"
         app:layout_constraintTop_toTopOf="@+id/rectangle_7" />
 
+    <TextView
+        android:id="@+id/tvError1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="6dp"
+        android:text="@string/errors_empty"
+        android:textAppearance="@style/errors_empty"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/edFirstName"
+        app:layout_constraintStart_toStartOf="@+id/edFirstName" />
+
     <EditText
         android:id="@+id/edFirstName"
         android:layout_width="145dp"
@@ -97,11 +109,22 @@
         android:inputType="text|textPersonName"
         android:paddingLeft="11.05dp"
         android:textAppearance="@style/some_id"
-        android:textColor="#991F3B99"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/send_text"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/send_text"
         app:layout_constraintTop_toBottomOf="@+id/send_text" />
+
+    <TextView
+        android:id="@+id/tvError2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="6dp"
+        android:text="@string/errors_empty"
+        android:textAppearance="@style/errors_empty"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/edLastName"
+        app:layout_constraintStart_toStartOf="@+id/edLastName" />
 
     <EditText
         android:id="@+id/edLastName"
@@ -117,11 +140,22 @@
         android:fontFamily="@font/open_sans_light"
         android:inputType="text"
         android:textAppearance="@style/some_id"
-        android:textColor="#991F3B99"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/send_text"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/send_text"
         app:layout_constraintTop_toBottomOf="@+id/edFirstName" />
+
+    <TextView
+        android:id="@+id/tvError3"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="6dp"
+        android:text="@string/errors_empty"
+        android:textAppearance="@style/errors_empty"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
+        app:layout_constraintStart_toStartOf="@+id/editTextPhone" />
 
     <EditText
         android:id="@+id/editTextPhone"
@@ -137,11 +171,22 @@
         android:inputType="phone"
         android:fontFamily="@font/open_sans_light"
         android:textAppearance="@style/some_id"
-        android:textColor="#991F3B99"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/send_text"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edLastName"
         app:layout_constraintTop_toBottomOf="@+id/edLastName" />
+
+    <TextView
+        android:id="@+id/tvError4"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="6dp"
+        android:text="@string/errors_empty"
+        android:textAppearance="@style/errors_empty"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextPassword" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -253,7 +298,6 @@
         android:layout_marginEnd="104dp"
         android:backgroundTint="@drawable/button_bg_color"
         android:textColor="@drawable/button_text_color"
-        android:enabled="false"
         android:elevation="5dp"
         android:text="@string/sign_out"
         android:textAppearance="@style/sign_in"

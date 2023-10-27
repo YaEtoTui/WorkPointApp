@@ -33,23 +33,35 @@ class AuthorizationActivity : AppCompatActivity() {
         val formatWatcher: FormatWatcher = MaskFormatWatcher(mask)
         formatWatcher.installOn(bindingClass.editTvPhone)
 
-        val edList = arrayOf<EditText>(bindingClass.editTvPhone, bindingClass.editTvPass)
-        val textWatcher = CustomTextWatcher(edList, bindingClass.button)
-        for (editText in edList) editText.addTextChangedListener(textWatcher)
+        //блок кнопки при не заполнении edit'ов
+//        val edList = arrayOf<EditText>(bindingClass.editTvPhone, bindingClass.editTvPass)
+//        val textWatcher = CustomTextWatcher(edList, bindingClass.button)
+//        for (editText in edList) editText.addTextChangedListener(textWatcher)
 
         bindingClass.button.setOnClickListener() {
-            var inputPhoneText: String = bindingClass.editTvPhone.text.toString()
-            Log.i("input", inputPhoneText)
-            var inputPassText: String = bindingClass.editTvPass.text.toString()
-            if (inputPhoneText.length < 18) {
+            val inputPhoneText: String = bindingClass.editTvPhone.text.toString()
+            val inputPassText: String = bindingClass.editTvPass.text.toString()
+
+            if (inputPhoneText.isEmpty()) {
+                bindingClass.editTvPhone.setBackgroundResource(R.drawable.stroke_red)
+                bindingClass.tvError1.setText(R.string.errors_empty)
+                bindingClass.tvError1.isVisible = true
+            } else if (inputPhoneText.length < 18) {
                 bindingClass.editTvPhone.setBackgroundResource(R.drawable.stroke_red)
                 bindingClass.tvError1.setText(R.string.errors_exception)
                 bindingClass.tvError1.isVisible = true
             } else {
-                bindingClass.editTvPass.setBackgroundResource(R.drawable.rectangle_3)
                 bindingClass.editTvPhone.setBackgroundResource(R.drawable.rectangle_3)
-                bindingClass.tvError2.isVisible = false
                 bindingClass.tvError1.isVisible = false
+            }
+
+            if (inputPassText.isEmpty()) {
+                bindingClass.editTvPass.setBackgroundResource(R.drawable.stroke_red)
+                bindingClass.tvError2.setText(R.string.errors_empty)
+                bindingClass.tvError2.isVisible = true
+            } else {
+                bindingClass.editTvPass.setBackgroundResource(R.drawable.rectangle_3)
+                bindingClass.tvError2.isVisible = false
             }
         }
     }

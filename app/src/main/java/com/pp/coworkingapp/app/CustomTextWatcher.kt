@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 
-
+//проверка, что заполнены данные для разблокировки кнопки
 class CustomTextWatcher(edList: Array<EditText>, v: Button) :
     TextWatcher {
     var v: View

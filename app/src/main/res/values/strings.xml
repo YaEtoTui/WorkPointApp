@@ -9,6 +9,7 @@
         <b>Давай сделаем тебе аккаунт</b> </string>
     <string name="send_text">Заполните информацию о себе</string>
     <string name="sign_out">Зарегистрироваться</string>
+    <string name="sign_out_text_hyper"><u>Зарегистрироваться</u></string>
     <string name="errors_empty">Обязательное поле</string>
     <string name="errors_exception">Введены некорректные данные</string>
 
