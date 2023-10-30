@@ -12,5 +12,9 @@
     <string name="sign_out_text_hyper"><u>Зарегистрироваться</u></string>
     <string name="errors_empty">Обязательное поле</string>
     <string name="errors_exception">Введены некорректные данные</string>
+    <string name="text_cities"><b>Все коворкинги вашего города</b></string>
+    <string name="ed_hint_search"><b>Введите название или тип заведения</b></string>
+    <string name="text_filters">Фильтры</string>
+    <string name="text_search_cow">Найти коворкинг</string>
 
 </resources>

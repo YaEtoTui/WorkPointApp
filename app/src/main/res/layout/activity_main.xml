@@ -4,15 +4,171 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainPageActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/workpoint"
+        android:layout_width="115.97dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="61dp"
+        android:gravity="top"
+        android:text="@string/workpoint"
+        android:textAppearance="@style/workpoint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.132"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/line_2"
+        android:layout_width="354dp"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="94.5dp"
+        android:background="@drawable/line_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/workpoint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_geo" />
+
+    <TextView
+        android:id="@+id/text_geo"
+        android:layout_width="108dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="3dp"
+        android:gravity="center|left"
+        android:lineSpacingExtra="14sp"
+        android:text="Екатеринбург"
+        android:textAppearance="@style/text_geo"
+        android:translationY="-7.19sp"
+        app:layout_constraintBottom_toTopOf="@+id/workpoint"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.833" />
+
+    <Button
+        android:id="@+id/btSignInMain"
+        android:layout_width="135dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="6dp"
+        android:backgroundTint="@drawable/button_bg_color"
+        android:elevation="10dp"
+        android:text="@string/sign_in"
+        android:textAppearance="@style/sign_in"
+        android:textColor="@drawable/button_text_color"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/workpoint"
+        app:layout_constraintStart_toEndOf="@+id/workpoint"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/rectangle_1"
+        android:layout_width="353dp"
+        android:layout_height="101dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/rectangle_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/workpoint" />
+
+    <TextView
+        android:id="@+id/text_cities"
+        android:layout_width="190dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="83dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="67dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="top"
+        android:text="@string/text_cities"
+        android:textAppearance="@style/text_cities"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangle_1"
+        app:layout_constraintEnd_toEndOf="@+id/rectangle_1"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/rectangle_1" />
+
+    <EditText
+        android:id="@+id/edSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/search"
+        android:paddingLeft="14.01dp"
+        android:gravity="center|left"
+        android:hint="@string/ed_hint_search"
+        android:drawableLeft="@drawable/icon_search"
+        android:drawablePadding="14.37dp"
+        android:textAppearance="@string/ed_hint_search"
+        app:layout_constraintEnd_toEndOf="@+id/rectangle_1"
+        app:layout_constraintStart_toStartOf="@+id/rectangle_1"
+        app:layout_constraintTop_toBottomOf="@+id/rectangle_1" />
+
+    <Button
+        android:id="@+id/btFilters"
+        android:layout_width="135dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="203dp"
+        android:elevation="10dp"
+        app:cornerRadius="10dp"
+        android:text="@string/text_filters"
+        android:textAppearance="@style/text_filters"
+        android:textColor="@drawable/button_text_color"
+        android:backgroundTint="@drawable/button_bg_color_filters"
+        app:layout_constraintEnd_toEndOf="@+id/edSearch"
+        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintStart_toStartOf="@+id/edSearch"
+        app:layout_constraintTop_toBottomOf="@+id/edSearch" />
+
+    <Button
+        android:id="@+id/btSearchCow"
+        android:layout_width="135dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="1dp"
+        android:layout_marginLeft="201.18dp"
+        android:layout_marginRight="16.82dp"
+        android:backgroundTint="@drawable/button_bg_color"
+        android:elevation="10dp"
+        android:text="@string/text_search_cow"
+        android:textAppearance="@style/text_search_cow"
+        android:textColor="@drawable/button_text_color"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/edSearch"
+        app:layout_constraintHorizontal_bias="0.885"
+        app:layout_constraintStart_toStartOf="@+id/edSearch"
+        app:layout_constraintTop_toBottomOf="@+id/edSearch" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+

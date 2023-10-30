@@ -67,4 +67,34 @@
         <item name="colorControlNormal">@android:color/holo_green_light</item>
         <item name="colorControlActivated">@android:color/holo_orange_dark</item>
     </style>
+
+    <style name="text_geo">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#CC1B1F3B</item>
+        <item name="fontFamily">@font/opensans_regular</item>
+    </style>
+
+    <style name="text_cities">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="fontFamily">@font/opensans_regular</item>
+    </style>
+
+    <style name="ed_hint_search">
+        <item name="android:textSize">8sp</item>
+        <item name="fontFamily">@font/open_sans_light</item>
+        <item name="android:textColor">#661B1F3B</item>
+    </style>
+
+    <style name="text_filters">
+        <item name="android:textSize">10sp</item>
+        <item name="fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textColor">#991B1F3B</item>
+    </style>
+
+    <style name="text_search_cow">
+        <item name="android:textSize">8sp</item>
+        <item name="fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textColor">#991B1F3B</item>
+    </style>
 </resources>
