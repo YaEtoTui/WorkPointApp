@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FBFBF5"
-    tools:context=".RegistrationActivity">
+    tools:context=".app.old_activties.RegistrationActivity">
 
     <TextView
         android:id="@+id/workpoint"

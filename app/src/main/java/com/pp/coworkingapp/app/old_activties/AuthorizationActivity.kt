@@ -1,15 +1,11 @@
-package com.pp.coworkingapp
+package com.pp.coworkingapp.app.old_activties
 
 import android.content.Intent
-import android.graphics.Color
-import android.opengl.Visibility
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.pp.coworkingapp.app.CustomTextWatcher
+import com.pp.coworkingapp.R
 import com.pp.coworkingapp.databinding.ActivityAuthorizationBinding
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.slots.PredefinedSlots
