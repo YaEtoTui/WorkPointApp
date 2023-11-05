@@ -17,7 +17,11 @@ class PlaceAdapter : ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
 
         fun bind(place: Place) = with(binding) {
             //
-            tvHello.text = place.city
+            tvHello.text = place.name
+            tvTextDesc.text = place.description
+            tvRating.text = place.rating
+            tvGeo.text = place.address
+            tvTime.text = place.openingHours
         }
     }
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FBFBF5"
     tools:context=".app.old_activties.MainPageActivity">
 
     <TextView
@@ -124,6 +125,7 @@
         android:hint="@string/ed_hint_search"
         android:drawableLeft="@drawable/icon_search"
         android:drawablePadding="14.37dp"
+        android:elevation="10dp"
         android:textAppearance="@style/ed_hint_search"
         app:layout_constraintEnd_toEndOf="@+id/rectangle_1"
         app:layout_constraintStart_toStartOf="@+id/rectangle_1"
@@ -170,10 +172,15 @@
         app:layout_constraintTop_toBottomOf="@+id/edSearch" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Найдено: x"
+        android:fontFamily="@font/opensans_bold"
+        android:textSize="10dp"
+        android:textColor="#CC1B1F3B"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="80dp"
         app:layout_constraintEnd_toEndOf="@+id/btFilters"
         app:layout_constraintStart_toStartOf="@+id/btFilters"
         app:layout_constraintTop_toBottomOf="@+id/btFilters" />
@@ -182,10 +189,11 @@
         android:id="@+id/rcView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="22.68dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

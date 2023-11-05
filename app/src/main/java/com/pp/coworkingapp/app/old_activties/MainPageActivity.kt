@@ -44,6 +44,7 @@ class MainPageActivity : AppCompatActivity() {
             runOnUiThread {
                 binding.apply {
 //                    adapter.submitList(placesList.places)
+                    tvCount.text = "Найдено " + placesList.count()
                     adapter.submitList(placesList)
                 }
             }

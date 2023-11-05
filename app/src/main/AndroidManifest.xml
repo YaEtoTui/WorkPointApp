@@ -27,6 +27,7 @@
             android:exported="true"></activity>
         <activity
             android:name=".app.old_activties.MainPageActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

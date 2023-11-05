@@ -97,4 +97,9 @@
         <item name="fontFamily">@font/open_sans_semi_bold</item>
         <item name="android:textColor">#991B1F3B</item>
     </style>
+
+    <style name="text_show_carte">
+        <item name="android:textSize">8sp</item>
+        <item name="fontFamily">@font/open_sans_semi_bold</item>
+    </style>
 </resources>
