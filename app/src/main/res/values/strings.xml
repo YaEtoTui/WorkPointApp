@@ -27,5 +27,7 @@
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer felis ante, sollicitudin a mauris sed, euismod cursus tortor. Integer a diam quis nisl facilisis hendrerit in id sapien...
     </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

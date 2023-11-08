@@ -1,4 +1,4 @@
-package com.pp.coworkingapp.app.old_activties
+package com.pp.coworkingapp.app.old_activities
 
 import android.content.Intent
 import android.os.Bundle

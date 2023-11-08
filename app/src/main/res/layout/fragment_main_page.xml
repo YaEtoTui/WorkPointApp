@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FBFBF5"
-    tools:context=".app.old_activities.MainPageActivity">
+    android:background="#FBFBF5">
 
     <TextView
         android:id="@+id/workpoint"
@@ -70,9 +69,10 @@
         android:id="@+id/btSignInMain"
         android:layout_width="135dp"
         android:layout_height="40dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="85.78dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="11.5dp"
         android:backgroundTint="@drawable/button_bg_color"
         android:elevation="10dp"
         android:text="@string/sign_in"
@@ -80,8 +80,11 @@
         android:textColor="@drawable/button_text_color"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/workpoint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toEndOf="@+id/workpoint"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
 
     <View
         android:id="@+id/rectangle_1"
@@ -195,5 +198,60 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCount" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_marginLeft="49dp"
+        android:src="@drawable/icon_clock"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/workpoint"
+        app:layout_constraintStart_toEndOf="@+id/workpoint"
+        app:layout_constraintTop_toTopOf="@+id/workpoint"
+        app:layout_constraintVertical_bias="0.571" />
 
+    <ImageView
+        android:id="@+id/imAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="12dp"
+        android:visibility="invisible"
+        android:src="@drawable/avatar"
+        android:background="@drawable/ellipse_1"
+        app:layout_constraintBottom_toBottomOf="@+id/imClock"
+        app:layout_constraintStart_toEndOf="@+id/imClock"
+        app:layout_constraintTop_toTopOf="@+id/imClock"
+        app:layout_constraintVertical_bias="0.687" />
+
+    <TextView
+        android:id="@+id/tvNameAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="6dp"
+        android:text="Мария Иванова"
+        android:textSize="10dp"
+        android:visibility="invisible"
+        android:textColor="#CC1B1F3B"
+        android:fontFamily="@font/opensans_regular"
+        app:layout_constraintBottom_toBottomOf="@+id/imAvatar"
+        app:layout_constraintStart_toEndOf="@+id/imAvatar"
+        app:layout_constraintTop_toTopOf="@+id/imAvatar"
+        app:layout_constraintVertical_bias="0.363" />
+
+    <ImageView
+        android:id="@+id/imList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:visibility="invisible"
+        android:src="@drawable/icon_list_account"
+        app:layout_constraintBottom_toBottomOf="@+id/tvNameAccount"
+        app:layout_constraintStart_toEndOf="@+id/tvNameAccount"
+        app:layout_constraintTop_toTopOf="@+id/tvNameAccount"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

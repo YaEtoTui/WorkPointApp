@@ -15,18 +15,13 @@
         android:theme="@style/Theme.CoworkingApp"
         tools:targetApi="31">
         <activity
-            android:name=".app.BaseActivity"
-            android:exported="false"
-            android:label="@string/title_activity_base"
-            android:theme="@style/Theme.CoworkingApp" />
-        <activity
-            android:name=".app.old_activties.RegistrationActivity"
+            android:name=".app.old_activities.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".app.old_activties.AuthorizationActivity"
-            android:exported="true"></activity>
+            android:name=".app.old_activities.AuthorizationActivity"
+            android:exported="true" />
         <activity
-            android:name=".app.old_activties.MainPageActivity"
+            android:name=".app.new_activities.BaseActivity"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
