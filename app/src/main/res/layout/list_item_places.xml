@@ -6,8 +6,6 @@
     android:layout_width="353dp"
     android:layout_height="249dp"
     android:layout_marginBottom="37dp"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="28dp"
     android:background="#FBFBF5"
     app:cardCornerRadius="20dp">
 

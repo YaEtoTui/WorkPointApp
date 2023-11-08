@@ -26,12 +26,13 @@
             app:destination="@id/mainPageFragment" />
         <action
             android:id="@+id/action_authFragment_to_regPageFragment"
-            app:destination="@id/regPageFragment" />
+            app:destination="@id/regFragment" />
     </fragment>
     <fragment
-        android:id="@+id/regPageFragment"
+        android:id="@+id/regFragment"
         android:name="com.pp.coworkingapp.app.new_activities.RegFragment"
-        android:animateLayoutChanges="true">
+        android:animateLayoutChanges="true"
+        tools:layout="@layout/fragment_reg">
 
         <action
             android:id="@+id/action_regPageFragment_to_mainPageFragment"
