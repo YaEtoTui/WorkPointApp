@@ -52,6 +52,7 @@ class MainPageFragment : Fragment() {
             }
         }
 
+        //Загрузка текущего списка
         CoroutineScope(Dispatchers.IO).launch {
             val placesList = mainApi.getListPlaces()
             requireActivity().runOnUiThread {
@@ -62,6 +63,7 @@ class MainPageFragment : Fragment() {
             }
         }
 
+        //создание текущего user
         viewModel.token.observe(viewLifecycleOwner) {token ->
             CoroutineScope(Dispatchers.IO).launch {
                 Log.i("Token", token.toString())
@@ -79,16 +81,6 @@ class MainPageFragment : Fragment() {
                     }
                 }
             }
-
-//            CoroutineScope(Dispatchers.IO).launch {
-//                val placesList = mainApi.getListPlaces()
-//                requireActivity().runOnUiThread {
-//                    binding.apply {
-//                        tvCount.text = "Найдено " + placesList.count()
-//                        adapter.submitList(placesList)
-//                    }
-//                }
-//            }
         }
     }
 

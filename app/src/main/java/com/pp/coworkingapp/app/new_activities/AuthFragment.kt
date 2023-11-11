@@ -23,6 +23,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.json.JSONObject
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import ru.tinkoff.decoro.MaskImpl
+import ru.tinkoff.decoro.slots.PredefinedSlots
+import ru.tinkoff.decoro.watchers.FormatWatcher
+import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 
 class AuthFragment : Fragment() {
 
@@ -46,11 +50,11 @@ class AuthFragment : Fragment() {
         initRetrofit()
 
         //маска для ввода телефона
-//        val mask = MaskImpl.createTerminated(PredefinedSlots.RUS_PHONE_NUMBER)
-//        mask.isForbidInputWhenFilled = false // default value
-//
-//        val formatWatcher: FormatWatcher = MaskFormatWatcher(mask)
-//        formatWatcher.installOn(binding.editTvPhone)
+        val mask = MaskImpl.createTerminated(PredefinedSlots.RUS_PHONE_NUMBER)
+        mask.isForbidInputWhenFilled = false // default value
+
+        val formatWatcher: FormatWatcher = MaskFormatWatcher(mask)
+        formatWatcher.installOn(binding.editTvPhone)
 
         binding.signOut.setOnClickListener {
             findNavController().navigate(R.id.action_authFragment_to_regPageFragment)
@@ -64,10 +68,6 @@ class AuthFragment : Fragment() {
                 binding.editTvPhone.setBackgroundResource(R.drawable.stroke_red)
                 binding.tvError1.setText(R.string.errors_empty)
                 binding.tvError1.isVisible = true
-//            } else if (inputPhoneText.length < 18) {
-//                binding.editTvPhone.setBackgroundResource(R.drawable.stroke_red)
-//                binding.tvError1.setText(R.string.errors_exception)
-//                binding.tvError1.isVisible = true
             } else {
                 binding.editTvPhone.setBackgroundResource(R.drawable.rectangle_3)
                 binding.tvError1.isVisible = false

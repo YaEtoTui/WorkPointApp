@@ -7,14 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.request.RegisterRequest
 import com.pp.coworkingapp.databinding.FragmentRegBinding
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.json.JSONObject
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.slots.PredefinedSlots
 import ru.tinkoff.decoro.watchers.FormatWatcher
@@ -35,6 +41,8 @@ class RegFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        initRetrofit()
 
         //маска для ввода телефона
         val mask = MaskImpl.createTerminated(PredefinedSlots.RUS_PHONE_NUMBER)
@@ -99,11 +107,12 @@ class RegFragment : Fragment() {
 
             registration(
                 RegisterRequest(
+                    inputPhoneText,
                     inputFirstNameText,
                     inputLastNameText,
-                    inputPhoneText,
-                    inputPassText,
-                    roleId
+                    roleId,
+                    "",
+                    inputPassText
                 )
             )
         }
@@ -116,9 +125,29 @@ class RegFragment : Fragment() {
             val message = user.errorBody()?.string()?.let {
                 JSONObject(it).getString("detail")
             }
-            binding.tvError1.visibility = View.VISIBLE
-            binding.tvError1.text = message
-            Log.i("User", user.body().toString())
+            requireActivity().runOnUiThread {
+                if (!message.equals(null)) {
+                    binding.tvError1.visibility = View.VISIBLE
+                    binding.tvError1.text = message
+                } else {
+                    Log.i("User", user.body().toString())
+                    findNavController().navigate(R.id.action_regFragment_to_authFragment)
+                }
+            }
         }
+    }
+
+    private fun initRetrofit() {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+
+        val client = OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .build()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://www.1506815-cq40245.tw1.ru").client(client)
+            .addConverterFactory(GsonConverterFactory.create()).build()
+        mainApi = retrofit.create(MainApi::class.java)
     }
 }
