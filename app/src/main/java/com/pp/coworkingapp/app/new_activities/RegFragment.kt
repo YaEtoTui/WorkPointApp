@@ -87,26 +87,25 @@ class RegFragment : Fragment() {
             } else {
                 binding.editTextPassword.setBackgroundResource(R.drawable.rectangle_3)
                 binding.tvError4.isVisible = false
-
-                var roleId: String = "1"
-
-                if (binding.btRadio1.isChecked) {
-                    roleId = "1"
-                } else {
-                    roleId = "2"
-                }
-
-                registration(
-                    RegisterRequest(
-                        inputFirstNameText,
-                        inputLastNameText,
-                        inputPhoneText,
-                        inputPassText,
-                        roleId
-                    )
-                )
-
             }
+
+            var roleId: String = "1"
+
+            if (binding.btRadio1.isChecked) {
+                roleId = "1"
+            } else {
+                roleId = "2"
+            }
+
+            registration(
+                RegisterRequest(
+                    inputFirstNameText,
+                    inputLastNameText,
+                    inputPhoneText,
+                    inputPassText,
+                    roleId
+                )
+            )
         }
 
     }
@@ -115,8 +114,9 @@ class RegFragment : Fragment() {
         CoroutineScope(Dispatchers.IO).launch {
             val user = mainApi.register(registerRequest)
             val message = user.errorBody()?.string()?.let {
-                JSONObject(it).getString("message")
+                JSONObject(it).getString("detail")
             }
+            binding.tvError1.visibility = View.VISIBLE
             binding.tvError1.text = message
             Log.i("User", user.body().toString())
         }

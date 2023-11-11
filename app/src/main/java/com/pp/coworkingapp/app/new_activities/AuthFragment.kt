@@ -9,27 +9,20 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.request.AuthRequest
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.databinding.FragmentAuthBinding
-import com.pp.coworkingapp.databinding.FragmentMainPageBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
-import okhttp3.ResponseBody.Companion.toResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import org.json.JSONObject
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.tinkoff.decoro.MaskImpl
-import ru.tinkoff.decoro.slots.PredefinedSlots
-import ru.tinkoff.decoro.watchers.FormatWatcher
-import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 
 class AuthFragment : Fragment() {
 
@@ -87,7 +80,6 @@ class AuthFragment : Fragment() {
             } else {
                 binding.editTvPass.setBackgroundResource(R.drawable.rectangle_3)
                 binding.tvError2.isVisible = false
-//                viewModel.token.value = "gjfjdl"
             }
             //запускаем auth()
             auth(
@@ -110,20 +102,13 @@ class AuthFragment : Fragment() {
                     binding.editTvPass.setBackgroundResource(R.drawable.stroke_red)
                     binding.tvError1.text = message.toString()
                 } else {
-                    viewModel.token.value = response.body()?.token.toString()
-                    Log.i("Token", viewModel.token.value.toString())
+                    viewModel.token.value = response.body()?.token
+                    Log.i("Token", response.body()?.token.toString())
                     binding.tvError1.visibility = View.INVISIBLE
                     binding.editTvPass.setBackgroundResource(R.drawable.rectangle_3)
                     findNavController().navigate(R.id.action_authFragment_to_mainPageFragment)
                 }
             }
-//                val user = response.body()
-//                if(user != null) {
-//                    Picasso.get().load(user.image).into(binding.imView)
-//                    binding.name.text = user.firstName
-//                    binding.bNext.visibility = View.VISIBLE
-//                    viewModel.token.value = user.token
-//                }
         }
     }
 

@@ -1,6 +1,7 @@
 package com.pp.coworkingapp.app.new_activities
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.databinding.FragmentMainPageBinding
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -54,15 +56,16 @@ class MainPageFragment : Fragment() {
             val placesList = mainApi.getListPlaces()
             requireActivity().runOnUiThread {
                 binding.apply {
-                    tvCount.text = "Найдено " + placesList.count()
+                    tvCount.text = String.format("Найдено %s", placesList.count())
                     adapter.submitList(placesList)
                 }
             }
         }
 
         viewModel.token.observe(viewLifecycleOwner) {token ->
-
             CoroutineScope(Dispatchers.IO).launch {
+                Log.i("Token", token.toString())
+                val currentUser = mainApi.checkUser("Bearer $token")
                 requireActivity().runOnUiThread {
                     binding.apply {
                         btSignInMain.visibility = View.INVISIBLE
@@ -70,6 +73,9 @@ class MainPageFragment : Fragment() {
                         imAvatar.visibility = View.VISIBLE
                         tvNameAccount.visibility = View.VISIBLE
                         imList.visibility = View.VISIBLE
+                        Picasso.get().load(currentUser.photoUser).into(binding.imAvatar)
+                        binding.tvNameAccount.text = String.format("%s %s", currentUser.name, currentUser.surname)
+                        binding.textGeo.text = currentUser.city
                     }
                 }
             }
