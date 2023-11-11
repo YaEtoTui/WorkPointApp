@@ -1,13 +1,20 @@
 package com.pp.coworkingapp.app.new_activities
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.pp.coworkingapp.R
+import com.pp.coworkingapp.app.retrofit.api.MainApi
+import com.pp.coworkingapp.app.retrofit.domain.request.RegisterRequest
 import com.pp.coworkingapp.databinding.FragmentRegBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.json.JSONObject
 import ru.tinkoff.decoro.MaskImpl
 import ru.tinkoff.decoro.slots.PredefinedSlots
 import ru.tinkoff.decoro.watchers.FormatWatcher
@@ -16,7 +23,7 @@ import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 class RegFragment : Fragment() {
 
     private lateinit var binding: FragmentRegBinding
-
+    private lateinit var mainApi: MainApi
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -81,8 +88,37 @@ class RegFragment : Fragment() {
                 binding.editTextPassword.setBackgroundResource(R.drawable.rectangle_3)
                 binding.tvError4.isVisible = false
 
+                var roleId: String = "1"
+
+                if (binding.btRadio1.isChecked) {
+                    roleId = "1"
+                } else {
+                    roleId = "2"
+                }
+
+                registration(
+                    RegisterRequest(
+                        inputFirstNameText,
+                        inputLastNameText,
+                        inputPhoneText,
+                        inputPassText,
+                        roleId
+                    )
+                )
+
             }
         }
 
+    }
+
+    private fun registration(registerRequest: RegisterRequest) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val user = mainApi.register(registerRequest)
+            val message = user.errorBody()?.string()?.let {
+                JSONObject(it).getString("message")
+            }
+            binding.tvError1.text = message
+            Log.i("User", user.body().toString())
+        }
     }
 }

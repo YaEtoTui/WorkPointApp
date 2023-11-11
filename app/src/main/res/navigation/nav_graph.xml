@@ -33,9 +33,8 @@
         android:name="com.pp.coworkingapp.app.new_activities.RegFragment"
         android:animateLayoutChanges="true"
         tools:layout="@layout/fragment_reg">
-
         <action
-            android:id="@+id/action_regPageFragment_to_mainPageFragment"
-            app:destination="@id/mainPageFragment" />
+            android:id="@+id/action_regFragment_to_authFragment"
+            app:destination="@id/authFragment" />
     </fragment>
 </navigation>
