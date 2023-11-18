@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="#FBFBF5">
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/idHeader"
         android:layout_width="match_parent"
@@ -160,8 +162,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="28dp"
-        android:layout_marginRight="29dp"
         android:layout_marginTop="13.5dp"
+        android:layout_marginRight="29dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btBackToMainPage">
@@ -323,9 +325,8 @@
                 android:id="@+id/tvNameTags"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_semi_bold"
                 android:text="Удобства"
-                android:textSize="13sp"
+                android:textAppearance="@style/text_h2_place_card"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -347,26 +348,91 @@
             android:id="@+id/idContacts"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
             app:layout_constraintEnd_toEndOf="@+id/idTags"
             app:layout_constraintStart_toStartOf="@+id/idTags"
             app:layout_constraintTop_toBottomOf="@+id/idTags">
 
 
             <TextView
-                android:id="@+id/tv"
+                android:id="@+id/tvTextContacts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Контакты"
+                android:textAppearance="@style/text_h2_place_card"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12.54dp"
+                android:src="@drawable/icon_phone_14_16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTextContacts" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="+7 (999) 999-99-00"
+                android:textColor="#000000"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imPhone"
+                app:layout_constraintStart_toEndOf="@+id/imPhone"
+                app:layout_constraintTop_toTopOf="@+id/imPhone" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            app:layout_constraintEnd_toEndOf="@+id/idContacts"
+            app:layout_constraintStart_toStartOf="@+id/idContacts"
+            app:layout_constraintTop_toBottomOf="@+id/idContacts">
+
+            <TextView
+                android:id="@+id/tvCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Отбражение на карте"
+                android:textAppearance="@style/text_h2_place_card"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imCarteGeo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="93dp"
+                android:layout_marginEnd="131dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCart"
+                tools:src="@tools:sample/avatars" />
+
+            <ImageView
+                android:id="@+id/imCarteGeo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="93dp"
+                android:layout_marginEnd="131dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/imCarteGeo"
+                app:layout_constraintTop_toBottomOf="parent"
+                tools:src="@tools:sample/avatars" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
