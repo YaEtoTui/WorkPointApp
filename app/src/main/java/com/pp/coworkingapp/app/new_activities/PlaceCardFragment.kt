@@ -31,6 +31,8 @@ class PlaceCardFragment : Fragment() {
 
         initRetrofit()
 
+//        binding.btRatingBar.onRatingBarChangeListener
+
 //        initCurrentAccount()
     }
 
