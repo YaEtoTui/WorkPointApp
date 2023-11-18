@@ -158,12 +158,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="13.5dp"
         android:layout_marginRight="29dp"
+        android:layout_marginTop="13.5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/idHeader"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btBackToMainPage">
 
         <TextView
@@ -174,7 +174,7 @@
             android:text="Simple coffee"
             android:textColor="#000000"
             android:textSize="13dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imPhotoCorousel"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -211,12 +211,14 @@
 
         <View
             android:id="@+id/imPhotoCorousel"
-            android:layout_width="354dp"
+            android:layout_width="match_parent"
             android:layout_height="214dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="18dp"
             android:background="@drawable/photo_corousel"
+            app:layout_constraintBottom_toTopOf="@+id/tvDescPoint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvNamePoint" />
@@ -243,18 +245,128 @@
 
         <TextView
             android:id="@+id/tvDescPoint"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/lorem_ipsum"
+            android:layout_marginHorizontal="1dp"
             android:layout_marginTop="18dp"
-            android:textSize="10sp"
             android:fontFamily="@font/open_sans_light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/lorem_ipsum"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/imPhotoCorousel"
+            app:layout_constraintStart_toStartOf="@+id/imPhotoCorousel"
             app:layout_constraintTop_toBottomOf="@+id/imPhotoCorousel" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/idGeoAndHours"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="@+id/tvDescPoint"
+            app:layout_constraintStart_toStartOf="@+id/tvDescPoint"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescPoint">
+
+            <ImageView
+                android:id="@+id/imGeoPlaceCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_location_place_card"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvGeo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Проспект Ленина, 46"
+                android:textColor="#000000"
+                android:textSize="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imGeoPlaceCard"
+                app:layout_constraintStart_toEndOf="@+id/imGeoPlaceCard"
+                app:layout_constraintTop_toTopOf="@+id/imGeoPlaceCard" />
+
+            <ImageView
+                android:id="@+id/imTimePlaceCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17.66dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imGeoPlaceCard"
+                app:srcCompat="@drawable/icon_clock_place_card" />
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Ежедневно с 08:00 до 23:00"
+                android:textColor="#000000"
+                android:textSize="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imTimePlaceCard"
+                app:layout_constraintStart_toEndOf="@+id/imTimePlaceCard"
+                app:layout_constraintTop_toTopOf="@+id/imTimePlaceCard" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/idTags"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/idGeoAndHours"
+            app:layout_constraintStart_toStartOf="@+id/idGeoAndHours"
+            app:layout_constraintTop_toBottomOf="@+id/idGeoAndHours">
+
+            <TextView
+                android:id="@+id/tvNameTags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semi_bold"
+                android:text="Удобства"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="9dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvNameTags"
+                tools:listitem="@layout/item_tags_place_card" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/idContacts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/idTags"
+            app:layout_constraintStart_toStartOf="@+id/idTags"
+            app:layout_constraintTop_toBottomOf="@+id/idTags">
+
+
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Контакты"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -84,7 +84,9 @@ class MainPageFragment : Fragment() {
             }
         }
 
-        binding.rcView
+        binding.btSearchCow.setOnClickListener() {
+            findNavController().navigate(R.id.action_mainPageFragment_to_placeCardFragment)
+        }
     }
 
     private fun initRetrofit() {
