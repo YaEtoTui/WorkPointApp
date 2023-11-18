@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
+import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.databinding.FragmentMainPageBinding
 import com.squareup.picasso.Picasso
@@ -82,6 +83,8 @@ class MainPageFragment : Fragment() {
                 }
             }
         }
+
+        binding.rcView
     }
 
     private fun initRetrofit() {

@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_mainPageFragment_to_authFragment"
             app:destination="@id/authFragment" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_placeCardFragment"
+            app:destination="@id/placeCardFragment" />
     </fragment>
     <fragment
         android:id="@+id/authFragment"
@@ -36,5 +39,15 @@
         <action
             android:id="@+id/action_regFragment_to_authFragment"
             app:destination="@id/authFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/placeCardFragment"
+        android:name="com.pp.coworkingapp.app.new_activities.PlaceCardFragment"
+        android:animateLayoutChanges="true"
+        tools:layout="@layout/fragment_place_card">
+        <action
+            android:id="@+id/action_placeCardFragment_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
     </fragment>
 </navigation>

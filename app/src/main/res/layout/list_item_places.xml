@@ -24,7 +24,7 @@
             android:textSize="13dp"
             android:textColor="#000000"
             android:fontFamily="@font/opensans_bold"
-            android:text="Simple coffe"
+            android:text="Simple coffee"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,7 +46,7 @@
             android:layout_marginTop="18dp"
             app:layout_constraintStart_toEndOf="@+id/tvHello"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icon_tick_circle" />
+            app:srcCompat="@drawable/icon_tick_circle_2" />
 
         <TextView
             android:id="@+id/tvRating"
@@ -69,7 +69,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/tvRating"
             app:layout_constraintStart_toEndOf="@+id/tvRating"
             app:layout_constraintTop_toTopOf="@+id/tvRating"
-            app:srcCompat="@drawable/icon_star" />
+            app:srcCompat="@drawable/icon_star_2" />
 
         <TextView
             android:id="@+id/tvTextDesc"
@@ -112,7 +112,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/btShowInCarte"
             app:layout_constraintStart_toEndOf="@+id/btShowInCarte"
             app:layout_constraintTop_toTopOf="@+id/btShowInCarte"
-            app:srcCompat="@drawable/icon_coeur" />
+            app:srcCompat="@drawable/icon_heart" />
 
         <ImageView
             android:id="@+id/imageView4"
@@ -121,7 +121,7 @@
             android:layout_marginTop="2dp"
             app:layout_constraintStart_toStartOf="@+id/tvTextDesc"
             app:layout_constraintTop_toBottomOf="@+id/rectangle_photo"
-            app:srcCompat="@drawable/icon_item_mest" />
+            app:srcCompat="@drawable/icon_location_list" />
 
         <TextView
             android:id="@+id/tvGeo"
@@ -144,13 +144,14 @@
             app:layout_constraintEnd_toEndOf="@+id/imageView4"
             app:layout_constraintStart_toStartOf="@+id/imageView4"
             app:layout_constraintTop_toBottomOf="@+id/imageView4"
-            app:srcCompat="@drawable/icon_clock" />
+            app:srcCompat="@drawable/icon_clock_list"
+            android:importantForAccessibility="no" />
 
         <TextView
             android:id="@+id/tvTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="6.71dp"
+            android:layout_marginStart="6.71dp"
             android:fontFamily="@font/opensans_regular"
             android:text="Ежедневно с 08:00 до 23:00"
             android:textColor="#000000"

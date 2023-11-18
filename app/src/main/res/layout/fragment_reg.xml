@@ -202,7 +202,7 @@
         android:fontFamily="@font/open_sans_light"
         android:inputType="text"
         android:textAppearance="@style/some_id"
-        android:textColor="#991F3B99"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/editTextPhone"
         app:layout_constraintStart_toStartOf="@+id/editTextPhone"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />

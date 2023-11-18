@@ -44,7 +44,7 @@
         app:layout_constraintBottom_toTopOf="@+id/workpoint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon_geo" />
+        app:srcCompat="@drawable/icon_geo_2" />
 
     <TextView
         android:id="@+id/text_geo"
@@ -86,6 +86,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.333" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/idFiltersTable"
+        android:layout_width="175dp"
+        android:layout_height="200dp"
+        android:visibility="gone"
+        android:background="@drawable/filters_table"
+        app:layout_constraintEnd_toEndOf="@+id/btFilters"
+        app:layout_constraintStart_toStartOf="@+id/btFilters"
+        app:layout_constraintTop_toBottomOf="@+id/btFilters">
+
+        <TextView
+            android:id="@+id/idName1"
+            android:layout_width="63dp"
+            android:layout_height="12dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/open_sans_semi_bold"
+            android:text="Район"
+            android:textSize="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <View
         android:id="@+id/rectangle_1"
         android:layout_width="353dp"
@@ -126,7 +150,7 @@
         android:paddingLeft="14.01dp"
         android:gravity="center|left"
         android:hint="@string/ed_hint_search"
-        android:drawableLeft="@drawable/icon_search"
+        android:drawableLeft="@drawable/icon_search_2"
         android:drawablePadding="14.37dp"
         android:elevation="10dp"
         android:textAppearance="@style/ed_hint_search"
@@ -208,7 +232,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:layout_marginLeft="49dp"
-        android:src="@drawable/icon_clock"
+        android:src="@drawable/icon_bell_large"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/workpoint"
         app:layout_constraintStart_toEndOf="@+id/workpoint"
@@ -251,7 +275,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="6dp"
         android:visibility="invisible"
-        android:src="@drawable/icon_list_account"
+        android:src="@drawable/icon_chevr_on_down"
         app:layout_constraintBottom_toBottomOf="@+id/tvNameAccount"
         app:layout_constraintStart_toEndOf="@+id/tvNameAccount"
         app:layout_constraintTop_toTopOf="@+id/tvNameAccount"

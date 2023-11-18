@@ -12,7 +12,6 @@ import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.request.RegisterRequest
 import com.pp.coworkingapp.databinding.FragmentRegBinding
-import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

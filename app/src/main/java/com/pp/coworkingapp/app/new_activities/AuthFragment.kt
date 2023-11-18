@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pp.coworkingapp.R
-import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.request.AuthRequest
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
@@ -30,7 +29,6 @@ import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 
 class AuthFragment : Fragment() {
 
-    private lateinit var adapter : PlaceAdapter
     private lateinit var binding: FragmentAuthBinding
     private lateinit var mainApi: MainApi
     private val viewModel: AuthViewModel by activityViewModels()
