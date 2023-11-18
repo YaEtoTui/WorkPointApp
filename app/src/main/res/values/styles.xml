@@ -114,4 +114,10 @@
         <item name="android:minHeight">15dip</item>
         <item name="android:maxHeight">30dip</item>
     </style>
+
+    <style name="rating_bar_review_other" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/custom_ratingbar_review_other</item>
+        <item name="android:minHeight">10dip</item>
+        <item name="android:maxHeight">15dip</item>
+    </style>
 </resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBFBF5">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FBFBF5">
+
+
+        <ImageView
+            android:id="@+id/imAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/avatar_40_40"/>
+
+        <TextView
+            android:id="@+id/TvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="19dp"
+            android:text="Мария"
+            android:textSize="10sp"
+            android:fontFamily="@font/open_sans_semi_bold"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@+id/imAvatar"
+            app:layout_constraintStart_toEndOf="@+id/imAvatar"
+            app:layout_constraintTop_toTopOf="@+id/imAvatar" />
+
+        <TextView
+            android:id="@+id/tvDateReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="03.01.2023"
+            android:textSize="10sp"
+            android:fontFamily="@font/opensans_regular"
+            android:textColor="#535353"
+            android:layout_marginLeft="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/TvName"
+            app:layout_constraintStart_toEndOf="@+id/TvName"
+            app:layout_constraintTop_toTopOf="@+id/TvName" />
+
+        <RatingBar
+            android:id="@+id/btRatingBar"
+            style="@style/rating_bar_review_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:numStars="5"
+            android:rating="4"
+            android:stepSize="1"
+            app:layout_constraintEnd_toEndOf="@+id/tvDateReview"
+            app:layout_constraintStart_toStartOf="@+id/TvName"
+            app:layout_constraintTop_toBottomOf="@+id/TvName" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
