@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     android:background="#FBFBF5">
 
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/idHeader"
         android:layout_width="match_parent"
@@ -157,19 +155,21 @@
         app:layout_constraintStart_toStartOf="@+id/idHeader"
         app:layout_constraintTop_toBottomOf="@+id/idHeader" />
 
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <ScrollView
+        android:id="@+id/ScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btBackToMainPage">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="28dp"
             android:layout_marginTop="13.5dp"
             android:layout_marginRight="29dp"
@@ -355,7 +355,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/idContacts"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="19dp"
                 app:layout_constraintEnd_toEndOf="@+id/idTags"
@@ -399,7 +399,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="300dp"
                 android:layout_marginTop="19dp"
                 app:layout_constraintEnd_toEndOf="@+id/idContacts"
                 app:layout_constraintStart_toStartOf="@+id/idContacts"
@@ -432,10 +432,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="93dp"
                     android:layout_marginEnd="131dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.795"
                     app:layout_constraintStart_toStartOf="@+id/imCarteGeo"
-                    app:layout_constraintTop_toBottomOf="parent"
+                    tools:layout_editor_absoluteY="123dp"
                     tools:src="@tools:sample/avatars" />
 
 
@@ -444,7 +444,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
