@@ -321,82 +321,82 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/idTags"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintEnd_toEndOf="@+id/idGeoAndHours"
-                    app:layout_constraintStart_toStartOf="@+id/idGeoAndHours"
-                    app:layout_constraintTop_toBottomOf="@+id/idGeoAndHours">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/idTags"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/idGeoAndHours"
+                app:layout_constraintStart_toStartOf="@+id/idGeoAndHours"
+                app:layout_constraintTop_toBottomOf="@+id/idGeoAndHours">
 
-                    <TextView
-                        android:id="@+id/tvNameTags"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Удобства"
-                        android:textAppearance="@style/text_h2_place_card"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="9dp"
-                        android:orientation="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvNameTags"
-                        tools:listitem="@layout/item_tags_place_card" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/idContacts"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tvNameTags"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="19dp"
-                    app:layout_constraintEnd_toEndOf="@+id/idTags"
-                    app:layout_constraintStart_toStartOf="@+id/idTags"
-                    app:layout_constraintTop_toBottomOf="@+id/idTags">
+                    android:text="Удобства"
+                    android:textAppearance="@style/text_h2_place_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="9dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNameTags"
+                    tools:listitem="@layout/item_tags_place_card" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/idContacts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                app:layout_constraintEnd_toEndOf="@+id/idTags"
+                app:layout_constraintStart_toStartOf="@+id/idTags"
+                app:layout_constraintTop_toBottomOf="@+id/idTags">
 
 
-                    <TextView
-                        android:id="@+id/tvTextContacts"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Контакты"
-                        android:textAppearance="@style/text_h2_place_card"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/tvTextContacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Контакты"
+                    android:textAppearance="@style/text_h2_place_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@+id/imPhone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12.54dp"
-                        android:src="@drawable/icon_phone_14_16"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTextContacts" />
+                <ImageView
+                    android:id="@+id/imPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12.54dp"
+                    android:src="@drawable/icon_phone_14_16"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTextContacts" />
 
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:fontFamily="@font/opensans_regular"
-                        android:text="+7 (999) 999-99-00"
-                        android:textColor="#000000"
-                        android:textSize="10sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/imPhone"
-                        app:layout_constraintStart_toEndOf="@+id/imPhone"
-                        app:layout_constraintTop_toTopOf="@+id/imPhone" />
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:text="+7 (999) 999-99-00"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imPhone"
+                    app:layout_constraintStart_toEndOf="@+id/imPhone"
+                    app:layout_constraintTop_toTopOf="@+id/imPhone" />
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/idCarte"
@@ -436,7 +436,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/idReviews"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="@+id/idCarte"
                 app:layout_constraintStart_toStartOf="@+id/idCarte"
@@ -464,12 +464,69 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvReviews" />
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="242dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/btRatingBar">
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/idTextReview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/some_id"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/open_sans_light"
+                    android:textSize="10sp"
+                    android:hint="Напишите отзыв"
+                    android:layout_marginTop="22dp"
+                    android:gravity="left"
+                    android:paddingLeft="17dp"
+                    android:paddingRight="12dp"
+                    android:paddingTop="19dp"
+                    android:paddingBottom="31dp"
+                    android:elevation="1dp"
+                    android:minHeight="160dp"
+                    android:background="@drawable/rectangle_review"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btRatingBar" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btCreateReview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="218dp"
+                    android:layout_marginTop="19dp"
+                    android:layout_marginRight="15dp"
+                    android:elevation="5dp"
+                    android:fontFamily="@font/open_sans_semi_bold"
+                    android:text="Оставить отзыв"
+                    android:textColor="@drawable/button_text_color"
+                    android:backgroundTint="@drawable/button_bg_color"
+                    android:textSize="10sp"
+                    app:backgroundTint="#E0E0D6"
+                    app:cornerRadius="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/idTextReview"
+                    app:layout_constraintStart_toStartOf="@+id/idTextReview"
+                    app:layout_constraintTop_toBottomOf="@+id/idTextReview" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/idReviews"
+                app:layout_constraintStart_toStartOf="@+id/idReviews"
+                app:layout_constraintTop_toBottomOf="@+id/idReviews">
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
