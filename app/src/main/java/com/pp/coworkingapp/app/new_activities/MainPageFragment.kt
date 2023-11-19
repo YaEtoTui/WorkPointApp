@@ -14,6 +14,7 @@ import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
+import com.pp.coworkingapp.app.retrofit.domain.viewModel.UserViewModel
 import com.pp.coworkingapp.databinding.FragmentMainPageBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
@@ -31,6 +32,7 @@ class MainPageFragment : Fragment() {
     private lateinit var mainApi: MainApi
     private val viewModel: AuthViewModel by activityViewModels()
     private val placeIdViewModel: PlaceIdViewModel by activityViewModels()
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -80,6 +82,8 @@ class MainPageFragment : Fragment() {
                             .into(binding.imAvatar)
                         binding.tvNameAccount.text = String.format("%s %s", currentUser.name, currentUser.surname)
                         binding.textGeo.text = currentUser.city
+
+                        userViewModel.user.value = currentUser
                     }
                 }
             }

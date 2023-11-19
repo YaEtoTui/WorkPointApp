@@ -1,5 +1,6 @@
 package com.pp.coworkingapp.app.retrofit.api
 
+import com.pp.coworkingapp.app.retrofit.domain.request.CreateReviewRequest
 import com.pp.coworkingapp.app.retrofit.domain.request.RegisterRequest
 import com.pp.coworkingapp.app.retrofit.domain.response.CurrentUser
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
@@ -34,12 +35,12 @@ interface MainApi {
     @GET("user/current")
     suspend fun checkUser(@Header("Authorization") token: String): CurrentUser
 
-//    @GET("products/search")
-//    suspend fun getProductsByName(@Query("q") name: String): Products
-
     @POST("places/get_place")
-    suspend fun findPlaceCard(@Query("id_place") placeId: Int) : PlaceWithTags
+    suspend fun findPlaceCard(@Query("id_place") placeId: Int): PlaceWithTags
 
     @POST("places/get_reviews")
-    suspend fun findReviews(@Query("id_place") placeId: Int) : List<Review>
+    suspend fun findReviews(@Query("id_place") placeId: Int): List<Review>
+
+    @POST("review/add_review")
+    suspend fun addReview(@Header("Authorization") token: String, @Body createReviewRequest: CreateReviewRequest): Review
 }
