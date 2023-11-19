@@ -3,6 +3,7 @@ package com.pp.coworkingapp.app.retrofit.api
 import com.pp.coworkingapp.app.retrofit.domain.request.RegisterRequest
 import com.pp.coworkingapp.app.retrofit.domain.response.CurrentUser
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
+import com.pp.coworkingapp.app.retrofit.domain.response.PlaceWithTags
 import com.pp.coworkingapp.app.retrofit.domain.response.Token_Access
 import com.pp.coworkingapp.app.retrofit.domain.response.User
 import retrofit2.Response
@@ -13,6 +14,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface MainApi {
 
@@ -33,4 +35,7 @@ interface MainApi {
 
 //    @GET("products/search")
 //    suspend fun getProductsByName(@Query("q") name: String): Products
+
+    @POST("places/get_place")
+    suspend fun findPlaceCard(@Query("id_place") placeId: Int) : PlaceWithTags
 }

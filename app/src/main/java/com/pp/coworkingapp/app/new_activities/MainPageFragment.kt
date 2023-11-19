@@ -2,18 +2,18 @@ package com.pp.coworkingapp.app.new_activities
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
-import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
+import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
 import com.pp.coworkingapp.databinding.FragmentMainPageBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
@@ -30,6 +30,7 @@ class MainPageFragment : Fragment() {
     private lateinit var binding: FragmentMainPageBinding
     private lateinit var mainApi: MainApi
     private val viewModel: AuthViewModel by activityViewModels()
+    private val placeIdViewModel: PlaceIdViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,12 +47,6 @@ class MainPageFragment : Fragment() {
 
         initRetrofit()
         initRcView()
-
-        binding.apply {
-            btSignInMain.setOnClickListener {
-                findNavController().navigate(R.id.action_mainPageFragment_to_authFragment)
-            }
-        }
 
         //Загрузка текущего списка
         CoroutineScope(Dispatchers.IO).launch {
@@ -83,10 +78,6 @@ class MainPageFragment : Fragment() {
                 }
             }
         }
-
-        binding.btSearchCow.setOnClickListener() {
-            findNavController().navigate(R.id.action_mainPageFragment_to_placeCardFragment)
-        }
     }
 
     private fun initRetrofit() {
@@ -105,6 +96,12 @@ class MainPageFragment : Fragment() {
 
     private fun initRcView() {
         adapter = PlaceAdapter()
+        adapter.setOnButtonClickListener(object: PlaceAdapter.OnButtonClickListener {
+            override fun onClick(placeId: Int) {
+                placeIdViewModel.placeId.value = placeId
+                findNavController().navigate(R.id.action_mainPageFragment_to_placeCardFragment)
+            }
+        })
         binding.rcView.layoutManager = LinearLayoutManager(context)
         binding.rcView.adapter = adapter
     }

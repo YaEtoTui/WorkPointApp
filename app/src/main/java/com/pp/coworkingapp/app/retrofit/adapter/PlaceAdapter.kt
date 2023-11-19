@@ -10,18 +10,29 @@ import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.databinding.ListItemPlacesBinding
 
-class PlaceAdapter : ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
+class PlaceAdapter: ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
+
+    private lateinit var onButtonClickListener: OnButtonClickListener
 
     class Holder(view: View) : RecyclerView.ViewHolder(view) {
+
         private val binding = ListItemPlacesBinding.bind(view)
 
-        fun bind(place: Place) = with(binding) {
+        fun bind(place: Place, onButtonClickListener: OnButtonClickListener) = with(binding) {
             //
             tvHello.text = place.name
-            tvTextDesc.text = place.description
+            if (place.description.length > 100) {
+                tvTextDesc.text = String.format("%s...", place.description.substring(0, 100))
+            } else {
+                tvTextDesc.text = place.description
+            }
+
             tvRating.text = place.rating
             tvGeo.text = place.address
             tvTime.text = place.openingHours
+            btShowInCarte.setOnClickListener {
+                onButtonClickListener.onClick(place.id)
+            }
         }
     }
 
@@ -43,6 +54,14 @@ class PlaceAdapter : ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), onButtonClickListener)
+    }
+
+    interface OnButtonClickListener {
+        fun onClick(placeId: Int)
+    }
+
+    fun setOnButtonClickListener(listener: OnButtonClickListener) {
+        onButtonClickListener = listener
     }
 }

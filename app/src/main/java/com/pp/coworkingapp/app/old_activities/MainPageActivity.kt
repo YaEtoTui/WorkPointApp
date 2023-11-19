@@ -14,7 +14,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainPageActivity : AppCompatActivity() {
+class MainPageActivity : AppCompatActivity(){
     private lateinit var adapter : PlaceAdapter
     lateinit var binding: ActivityMainBinding
 

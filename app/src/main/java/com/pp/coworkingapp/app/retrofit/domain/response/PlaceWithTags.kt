@@ -2,7 +2,7 @@ package com.pp.coworkingapp.app.retrofit.domain.response
 
 import com.google.gson.annotations.SerializedName
 
-data class Place (
+data class PlaceWithTags(
     val id: Int,
     val description: String,
     val rating: String,
@@ -27,5 +27,6 @@ data class Place (
     val district: String,
     val site: String,
     val address: String,
-    val photo: String
+    val photo: String,
+    val tags : List<Tag>
 )
