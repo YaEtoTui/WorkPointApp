@@ -48,6 +48,10 @@ class MainPageFragment : Fragment() {
         initRetrofit()
         initRcView()
 
+        binding.btSignInMain.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPageFragment_to_authFragment)
+        }
+
         //Загрузка текущего списка
         CoroutineScope(Dispatchers.IO).launch {
             val placesList = mainApi.getListPlaces()
@@ -71,7 +75,9 @@ class MainPageFragment : Fragment() {
                         imAvatar.visibility = View.VISIBLE
                         tvNameAccount.visibility = View.VISIBLE
                         imList.visibility = View.VISIBLE
-                        Picasso.get().load(currentUser.photoUser).into(binding.imAvatar)
+                        Picasso.get()
+                            .load(currentUser.photoUser)
+                            .into(binding.imAvatar)
                         binding.tvNameAccount.text = String.format("%s %s", currentUser.name, currentUser.surname)
                         binding.textGeo.text = currentUser.city
                     }

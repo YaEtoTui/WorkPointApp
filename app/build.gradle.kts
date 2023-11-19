@@ -38,6 +38,9 @@ android {
 
 dependencies {
 
+    //CircleView
+    implementation ("de.hdodenhof:circleimageview:2.1.0")
+
     //Picasso
     implementation ("com.squareup.picasso:picasso:2.71828")
 

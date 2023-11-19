@@ -7,46 +7,49 @@
     android:layout_marginBottom="54dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#FBFBF5">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FBFBF5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imAvatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/btRatingBar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/avatar_40_40"/>
+            app:layout_constraintTop_toTopOf="@+id/idTvName"
+            app:srcCompat="@drawable/avatar_40_40" />
 
         <TextView
-            android:id="@+id/TvName"
+            android:id="@+id/idTvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
             android:layout_marginTop="9dp"
-            android:layout_marginBottom="19dp"
-            android:text="Мария"
-            android:textSize="10sp"
             android:fontFamily="@font/open_sans_semi_bold"
+            android:text="Мария"
             android:textColor="#000000"
-            app:layout_constraintBottom_toBottomOf="@+id/imAvatar"
+            android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/imAvatar"
-            app:layout_constraintTop_toTopOf="@+id/imAvatar" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvDateReview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="03.01.2023"
-            android:textSize="10sp"
-            android:fontFamily="@font/opensans_regular"
-            android:textColor="#535353"
             android:layout_marginLeft="4dp"
-            app:layout_constraintBottom_toBottomOf="@+id/TvName"
-            app:layout_constraintStart_toEndOf="@+id/TvName"
-            app:layout_constraintTop_toTopOf="@+id/TvName" />
+            android:fontFamily="@font/opensans_regular"
+            android:text="03.01.2023"
+            android:textColor="#535353"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/idTvName"
+            app:layout_constraintStart_toEndOf="@+id/idTvName"
+            app:layout_constraintTop_toTopOf="@+id/idTvName" />
 
         <RatingBar
             android:id="@+id/btRatingBar"
@@ -56,24 +59,26 @@
             android:layout_marginTop="2dp"
             android:clickable="false"
             android:numStars="5"
-            android:rating="4"
-            android:stepSize="1"
+            android:isIndicator="true"
             app:layout_constraintEnd_toEndOf="@+id/tvDateReview"
-            app:layout_constraintStart_toStartOf="@+id/TvName"
-            app:layout_constraintTop_toBottomOf="@+id/TvName" />
+            app:layout_constraintStart_toStartOf="@+id/idTvName"
+            app:layout_constraintTop_toBottomOf="@+id/idTvName" />
 
         <TextView
             android:id="@+id/tvDescReview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="27dp"
             android:fontFamily="@font/open_sans_light"
             android:text="@string/lorem_ipsum"
+            android:textAlignment="textStart"
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/imAvatar"
-            app:layout_constraintTop_toBottomOf="@+id/imAvatar" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imAvatar"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

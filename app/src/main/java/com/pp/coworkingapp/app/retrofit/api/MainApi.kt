@@ -4,6 +4,7 @@ import com.pp.coworkingapp.app.retrofit.domain.request.RegisterRequest
 import com.pp.coworkingapp.app.retrofit.domain.response.CurrentUser
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.app.retrofit.domain.response.PlaceWithTags
+import com.pp.coworkingapp.app.retrofit.domain.response.Review
 import com.pp.coworkingapp.app.retrofit.domain.response.Token_Access
 import com.pp.coworkingapp.app.retrofit.domain.response.User
 import retrofit2.Response
@@ -38,4 +39,7 @@ interface MainApi {
 
     @POST("places/get_place")
     suspend fun findPlaceCard(@Query("id_place") placeId: Int) : PlaceWithTags
+
+    @POST("places/get_reviews")
+    suspend fun findReviews(@Query("id_place") placeId: Int) : List<Review>
 }
