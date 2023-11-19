@@ -1,14 +1,21 @@
 package com.pp.coworkingapp.app.retrofit.adapter
 
 import android.view.LayoutInflater
+import android.view.RoundedCorner
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.signature.ObjectKey
+import com.google.android.material.shape.RoundedCornerTreatment
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.databinding.ListItemPlacesBinding
+import com.squareup.picasso.Picasso
+import com.squareup.picasso.Transformation
 
 class PlaceAdapter: ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
 
@@ -26,6 +33,24 @@ class PlaceAdapter: ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
             } else {
                 tvTextDesc.text = place.description
             }
+
+            Glide.with(itemView.context)
+                .load(place.photo)
+                .signature(ObjectKey(place.photo.hashCode().toString()))
+                .transform(RoundedCorners(40))
+                .optionalCenterCrop()
+                .error(R.drawable.ic_launcher_foreground)
+                .placeholder(R.drawable.ic_launcher_foreground)
+                .into(idRectanglePhoto)
+
+//            if (!place.photo.isEmpty()) {
+//                Picasso.get()
+//                    .load(place.photo)
+//                    .centerCrop().fit()
+//                    .transform(RoundedCornerTreatment(15f))
+//                    .error(R.drawable.ic_launcher_foreground)
+//                    .into(idRectanglePhoto)
+//            }
 
             tvRating.text = place.rating
             tvGeo.text = place.address
