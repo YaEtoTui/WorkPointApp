@@ -239,7 +239,7 @@
         app:layout_constraintTop_toTopOf="@+id/workpoint"
         app:layout_constraintVertical_bias="0.571" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imAvatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

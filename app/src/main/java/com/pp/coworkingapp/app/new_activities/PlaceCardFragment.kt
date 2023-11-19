@@ -1,5 +1,6 @@
 package com.pp.coworkingapp.app.new_activities
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,6 +20,7 @@ import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.UserViewModel
 import com.pp.coworkingapp.databinding.FragmentPlaceCardBinding
 import com.squareup.picasso.Picasso
+import com.squareup.picasso.Transformation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,6 +29,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.properties.Delegates
+
 
 class PlaceCardFragment : Fragment() {
 
@@ -94,8 +97,10 @@ class PlaceCardFragment : Fragment() {
                         tvNamePoint.text = currentPlace.name
                         tvRating.text = currentPlace.rating
                         if (currentPlace.photo.isNotEmpty() || currentPlace.photo.startsWith("http")) {
+
                             Picasso.get()
                                 .load(currentPlace.photo)
+                                .centerCrop().fit()
                                 .error(R.drawable.ic_launcher_foreground)
                                 .into(binding.imPhotoCorousel)
 
