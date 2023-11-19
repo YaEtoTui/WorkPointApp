@@ -98,8 +98,12 @@ class MainPageFragment : Fragment() {
         adapter = PlaceAdapter()
         adapter.setOnButtonClickListener(object: PlaceAdapter.OnButtonClickListener {
             override fun onClick(placeId: Int) {
-                placeIdViewModel.placeId.value = placeId
-                findNavController().navigate(R.id.action_mainPageFragment_to_placeCardFragment)
+                if (viewModel.token.value != null) {
+                    placeIdViewModel.placeId.value = placeId
+                    findNavController().navigate(R.id.action_mainPageFragment_to_placeCardFragment)
+                } else {
+                    findNavController().navigate(R.id.action_mainPageFragment_to_authFragment)
+                }
             }
         })
         binding.rcView.layoutManager = LinearLayoutManager(context)

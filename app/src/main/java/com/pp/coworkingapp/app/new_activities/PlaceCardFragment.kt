@@ -1,14 +1,17 @@
 package com.pp.coworkingapp.app.new_activities
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.navigation.fragment.findNavController
+import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.adapter.TagAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
+import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
 import com.pp.coworkingapp.databinding.FragmentPlaceCardBinding
 import com.squareup.picasso.Picasso
@@ -26,6 +29,7 @@ class PlaceCardFragment : Fragment() {
     private lateinit var binding: FragmentPlaceCardBinding
     private lateinit var mainApi: MainApi
     private val placeIdViewModel: PlaceIdViewModel by activityViewModels()
+    private val viewModel: AuthViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -40,7 +44,12 @@ class PlaceCardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initRetrofit()
+        initCurrentPerson()
         initPlaceCard()
+
+        binding.btBackToMainPage.setOnClickListener {
+            findNavController().navigate(R.id.action_placeCardFragment_to_mainPageFragment)
+        }
     }
 
     private fun initRetrofit() {
@@ -83,6 +92,23 @@ class PlaceCardFragment : Fragment() {
                         val number: String = currentPlace.rating
                         btRatingBar.numStars
                         btRatingBar.rating = currentPlace.rating.toFloat()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun initCurrentPerson() {
+        //создание текущего user
+        viewModel.token.observe(viewLifecycleOwner) {token ->
+            CoroutineScope(Dispatchers.IO).launch {
+                Log.i("Token", token.toString())
+                val currentUser = mainApi.checkUser("Bearer $token")
+                requireActivity().runOnUiThread {
+                    binding.apply {
+                        Picasso.get().load(currentUser.photoUser).into(binding.imAvatar)
+                        binding.tvNameAccount.text = String.format("%s %s", currentUser.name, currentUser.surname)
+                        binding.idTextCity.text = currentUser.city
                     }
                 }
             }
