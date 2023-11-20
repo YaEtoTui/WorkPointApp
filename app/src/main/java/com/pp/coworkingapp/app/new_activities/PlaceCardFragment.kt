@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -67,8 +68,14 @@ class PlaceCardFragment : Fragment() {
         binding.btCreateReview.setOnClickListener {
             if (binding.idTextReview.text?.isNotEmpty() == true) {
                 addReview()
-                initPlaceCard()
-                initReview()
+                CoroutineScope(Dispatchers.IO).launch {
+                    val reviewsList = mainApi.findReviews(idPlace)
+                    requireActivity().runOnUiThread {
+                        binding.apply {
+                            adapterReview.submitList(reviewsList)
+                        }
+                    }
+                }
             }
         }
     }
@@ -148,6 +155,20 @@ class PlaceCardFragment : Fragment() {
                 Log.i("Token", token.toString())
                 val currentUser = mainApi.checkUser("Bearer $token")
                 requireActivity().runOnUiThread {
+                    //Настраиваем кнопку настройки пользователя
+                    binding.idAccount.setOnClickListener {
+                        if (currentUser.roleId == 1) {
+                            if (binding.idListAccountCommon.isVisible)
+                                binding.idListAccountCommon.visibility = View.GONE
+                            else
+                                binding.idListAccountCommon.visibility = View.VISIBLE
+                        } else {
+                            if (binding.idListAccountBusiness.isVisible)
+                                binding.idListAccountBusiness.visibility = View.GONE
+                            else
+                                binding.idListAccountBusiness.visibility = View.VISIBLE
+                        }
+                    }
                     tokenUser = token
                     binding.apply {
                         Picasso.get().load(currentUser.photoUser).into(binding.imAvatar)

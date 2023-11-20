@@ -73,8 +73,12 @@ class MainPageFragment : Fragment() {
                                 binding.idListAccountCommon.visibility = View.GONE
                             else
                                 binding.idListAccountCommon.visibility = View.VISIBLE
+                        } else {
+                            if (binding.idListAccountBusiness.isVisible)
+                                binding.idListAccountBusiness.visibility = View.GONE
+                            else
+                                binding.idListAccountBusiness.visibility = View.VISIBLE
                         }
-                        //дописать для бизнеса
                     }
                     binding.apply {
                         btSignInMain.visibility = View.GONE
