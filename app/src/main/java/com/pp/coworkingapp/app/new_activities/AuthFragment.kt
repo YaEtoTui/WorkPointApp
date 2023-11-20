@@ -58,36 +58,8 @@ class AuthFragment : Fragment() {
             findNavController().navigate(R.id.action_authFragment_to_regPageFragment)
         }
 
-        binding.btSignIn.setOnClickListener() {
-            val inputPhoneText: String = binding.editTvPhone.text.toString()
-            val inputPassText: String = binding.editTvPass.text.toString()
-
-            if (inputPhoneText.isEmpty()) {
-                binding.editTvPhone.setBackgroundResource(R.drawable.stroke_red)
-                binding.tvError1.setText(R.string.errors_empty)
-                binding.tvError1.isVisible = true
-            } else {
-                binding.editTvPhone.setBackgroundResource(R.drawable.rectangle_3)
-                binding.tvError1.isVisible = false
-            }
-
-            if (inputPassText.isEmpty()) {
-                binding.editTvPass.setBackgroundResource(R.drawable.stroke_red)
-                binding.tvError2.setText(R.string.errors_empty)
-                binding.tvError2.isVisible = true
-            } else {
-                binding.editTvPass.setBackgroundResource(R.drawable.rectangle_3)
-                binding.tvError2.isVisible = false
-            }
-            //запускаем auth()
-            auth(
-                AuthRequest(
-                    binding.editTvPhone.text.toString(),
-                    binding.editTvPass.text.toString()
-
-                )
-            )
-        }
+        //проверяем при нажатии введенные значения
+        checkEditsText()
     }
 
     private fun auth(authRequest: AuthRequest) {
@@ -97,8 +69,11 @@ class AuthFragment : Fragment() {
             requireActivity().runOnUiThread {
                 if (!message.equals(null)) {
                     binding.tvError1.visibility = View.VISIBLE
+                    binding.tvError2.visibility = View.VISIBLE
                     binding.editTvPass.setBackgroundResource(R.drawable.stroke_red)
-                    binding.tvError1.text = message.toString()
+                    binding.editTvPhone.setBackgroundResource(R.drawable.stroke_red)
+                    binding.tvError1.text = "Неправильно набран телефон"
+                    binding.tvError2.text = "Неправильно набран пароль"
                 } else {
                     viewModel.token.value = response.body()?.token
                     Log.i("Token", response.body()?.token.toString())
@@ -122,5 +97,50 @@ class AuthFragment : Fragment() {
             .baseUrl("https://www.1506815-cq40245.tw1.ru").client(client)
             .addConverterFactory(GsonConverterFactory.create()).build()
         mainApi = retrofit.create(MainApi::class.java)
+    }
+
+    private fun checkEditsText() {
+        binding.btSignIn.setOnClickListener() {
+            val inputPhoneText: String = binding.editTvPhone.text.toString()
+            val inputPassText: String = binding.editTvPass.text.toString()
+            Log.i("Length", inputPhoneText.length.toString())
+
+            if (inputPhoneText.isEmpty() || inputPassText.isEmpty()) {
+                if (inputPhoneText.isEmpty()) {
+                    binding.editTvPhone.setBackgroundResource(R.drawable.stroke_red)
+                    binding.tvError1.setText(R.string.errors_empty)
+                    binding.tvError1.isVisible = true
+                }
+                if (inputPassText.isEmpty()) {
+                    binding.editTvPass.setBackgroundResource(R.drawable.stroke_red)
+                    binding.tvError2.setText(R.string.errors_empty)
+                    binding.tvError2.isVisible = true
+                }
+            } else if (inputPhoneText.length < 18 || inputPassText.length < 6) {
+                if (inputPhoneText.length < 18) {
+                    binding.editTvPhone.setBackgroundResource(R.drawable.stroke_red)
+                    binding.tvError1.setText("Введите полностью телефон")
+                    binding.tvError1.isVisible = true
+                }
+                if (inputPassText.length < 6) {
+                    binding.editTvPass.setBackgroundResource(R.drawable.stroke_red)
+                    binding.tvError2.setText("Пароль меньше 6 символов")
+                    binding.tvError2.isVisible = true
+                }
+            } else {
+                binding.editTvPhone.setBackgroundResource(R.drawable.rectangle_3)
+                binding.tvError1.isVisible = false
+                binding.editTvPass.setBackgroundResource(R.drawable.rectangle_3)
+                binding.tvError2.isVisible = false
+                //запускаем auth()
+                auth(
+                    AuthRequest(
+                        binding.editTvPhone.text.toString(),
+                        binding.editTvPass.text.toString()
+
+                    )
+                )
+            }
+        }
     }
 }

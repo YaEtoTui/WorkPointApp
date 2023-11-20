@@ -66,30 +66,31 @@ class MainPageFragment : Fragment() {
             }
         }
 
-        binding.imList.setOnClickListener {
-            if (binding.idListAccountCommon.isVisible)
-                binding.idListAccountCommon.visibility = View.GONE
-            else
-                binding.idListAccountCommon.visibility = View.VISIBLE
-        }
-
         //создание текущего user
         viewModel.token.observe(viewLifecycleOwner) {token ->
             CoroutineScope(Dispatchers.IO).launch {
                 Log.i("Token", token.toString())
                 val currentUser = mainApi.checkUser("Bearer $token")
                 requireActivity().runOnUiThread {
+                    //Настраиваем кнопку настройки пользователя
+                    binding.idAccount.setOnClickListener {
+                        if (currentUser.roleId == 1) {
+                            if (binding.idListAccountCommon.isVisible)
+                                binding.idListAccountCommon.visibility = View.GONE
+                            else
+                                binding.idListAccountCommon.visibility = View.VISIBLE
+                        }
+                        //дописать для бизнеса
+                    }
                     binding.apply {
-                        btSignInMain.visibility = View.INVISIBLE
+                        btSignInMain.visibility = View.GONE
+                        idAccount.visibility = View.VISIBLE
                         imClock.visibility = View.VISIBLE
-                        imAvatar.visibility = View.VISIBLE
-                        tvNameAccount.visibility = View.VISIBLE
-                        imList.visibility = View.VISIBLE
                         Picasso.get()
                             .load(currentUser.photoUser)
                             .into(binding.imAvatar)
                         binding.tvNameAccount.text = String.format("%s %s", currentUser.name, currentUser.surname)
-                        binding.textGeo.text = currentUser.city
+//                        binding.textGeo.text = currentUser.city
 
                         userViewModel.user.value = currentUser
                     }

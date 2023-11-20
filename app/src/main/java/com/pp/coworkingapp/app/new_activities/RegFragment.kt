@@ -50,72 +50,7 @@ class RegFragment : Fragment() {
         val formatWatcher: FormatWatcher = MaskFormatWatcher(mask)
         formatWatcher.installOn(binding.editTextPhone)
 
-        binding.btSignOut.setOnClickListener() {
-            val inputFirstNameText: String = binding.edFirstName.text.toString()
-            val inputLastNameText: String = binding.edLastName.text.toString()
-            val inputPhoneText: String = binding.editTextPhone.text.toString()
-            val inputPassText: String = binding.editTextPassword.text.toString()
-
-            if (inputFirstNameText.isEmpty()) {
-                binding.edFirstName.setBackgroundResource(R.drawable.stroke_red)
-                binding.tvError1.setText(R.string.errors_empty)
-                binding.tvError1.isVisible = true
-            } else {
-                binding.edFirstName.setBackgroundResource(R.drawable.rectangle_3)
-                binding.tvError1.isVisible = false
-            }
-
-            if (inputLastNameText.isEmpty()) {
-                binding.edLastName.setBackgroundResource(R.drawable.stroke_red)
-                binding.tvError2.setText(R.string.errors_empty)
-                binding.tvError2.isVisible = true
-            } else {
-                binding.edLastName.setBackgroundResource(R.drawable.rectangle_3)
-                binding.tvError2.isVisible = false
-            }
-
-            if (inputPhoneText.isEmpty()) {
-                binding.editTextPhone.setBackgroundResource(R.drawable.stroke_red)
-                binding.tvError3.setText(R.string.errors_empty)
-                binding.tvError3.isVisible = true
-            } else if (inputPhoneText.length < 18) {
-                binding.editTextPhone.setBackgroundResource(R.drawable.stroke_red)
-                binding.tvError3.setText(R.string.errors_exception)
-                binding.tvError3.isVisible = true
-            } else {
-                binding.editTextPhone.setBackgroundResource(R.drawable.rectangle_3)
-                binding.tvError3.isVisible = false
-            }
-
-            if (inputPassText.isEmpty()) {
-                binding.editTextPassword.setBackgroundResource(R.drawable.stroke_red)
-                binding.tvError4.setText(R.string.errors_empty)
-                binding.tvError4.isVisible = true
-            } else {
-                binding.editTextPassword.setBackgroundResource(R.drawable.rectangle_3)
-                binding.tvError4.isVisible = false
-            }
-
-            var roleId: String = "1"
-
-            if (binding.btRadio1.isChecked) {
-                roleId = "1"
-            } else {
-                roleId = "2"
-            }
-
-            registration(
-                RegisterRequest(
-                    inputPhoneText,
-                    inputFirstNameText,
-                    inputLastNameText,
-                    roleId,
-                    "",
-                    inputPassText
-                )
-            )
-        }
-
+        checkEditsText()
     }
 
     private fun registration(registerRequest: RegisterRequest) {
@@ -148,5 +83,72 @@ class RegFragment : Fragment() {
             .baseUrl("https://www.1506815-cq40245.tw1.ru").client(client)
             .addConverterFactory(GsonConverterFactory.create()).build()
         mainApi = retrofit.create(MainApi::class.java)
+    }
+
+    private fun checkEditsText() {
+        binding.btSignOut.setOnClickListener() {
+            val inputFirstNameText: String = binding.edFirstName.text.toString()
+            val inputLastNameText: String = binding.edLastName.text.toString()
+            val inputPhoneText: String = binding.editTextPhone.text.toString()
+            val inputPassText: String = binding.editTextPassword.text.toString()
+
+            var roleId: String = "1"
+            if (!binding.btRadio1.isChecked)
+                roleId = "2"
+
+            if (inputFirstNameText.isEmpty() || inputLastNameText.isEmpty() || inputPhoneText.isEmpty() || inputPassText.isEmpty()) {
+                if (inputFirstNameText.isEmpty()) {
+                    binding.edFirstName.setBackgroundResource(R.drawable.stroke_red)
+                    binding.tvError1.setText(R.string.errors_empty)
+                    binding.tvError1.isVisible = true
+                }
+                if (inputLastNameText.isEmpty()) {
+                    binding.edLastName.setBackgroundResource(R.drawable.stroke_red)
+                    binding.tvError2.setText(R.string.errors_empty)
+                    binding.tvError2.isVisible = true
+                }
+                if (inputPhoneText.isEmpty()) {
+                    binding.editTextPhone.setBackgroundResource(R.drawable.stroke_red)
+                    binding.tvError3.setText(R.string.errors_empty)
+                    binding.tvError3.isVisible = true
+                }
+                if (inputPassText.isEmpty()) {
+                    binding.editTextPassword.setBackgroundResource(R.drawable.stroke_red)
+                    binding.tvError4.setText(R.string.errors_empty)
+                    binding.tvError4.isVisible = true
+                }
+            } else if (inputPhoneText.length < 18 || inputPassText.length < 6) {
+                if (inputPhoneText.length < 18) {
+                    binding.editTextPhone.setBackgroundResource(R.drawable.stroke_red)
+                    binding.tvError3.setText("Введите полностью телефон")
+                    binding.tvError3.isVisible = true
+                }
+                if (inputPassText.length < 6) {
+                    binding.editTextPassword.setBackgroundResource(R.drawable.stroke_red)
+                    binding.tvError4.setText("Пароль меньше 6 символов")
+                    binding.tvError4.isVisible = true
+                }
+            } else {
+                binding.edFirstName.setBackgroundResource(R.drawable.rectangle_3)
+                binding.tvError1.isVisible = false
+                binding.edLastName.setBackgroundResource(R.drawable.rectangle_3)
+                binding.tvError2.isVisible = false
+                binding.editTextPhone.setBackgroundResource(R.drawable.rectangle_3)
+                binding.tvError3.isVisible = false
+                binding.editTextPassword.setBackgroundResource(R.drawable.rectangle_3)
+                binding.tvError4.isVisible = false
+
+                registration(
+                    RegisterRequest(
+                        inputPhoneText,
+                        inputFirstNameText,
+                        inputLastNameText,
+                        roleId,
+                        "https://s3.timeweb.com/38cfe289-workpoint/грустный котик.jpeg",
+                        inputPassText
+                    )
+                )
+            }
+        }
     }
 }

@@ -6,7 +6,67 @@
     android:layout_height="match_parent"
     android:background="#FBFBF5">
 
+    <ImageView
+        android:id="@+id/imClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="50dp"
+        android:visibility="gone"
+        android:src="@drawable/icon_bell_large"
+        app:layout_constraintBottom_toBottomOf="@+id/workpoint"
+        app:layout_constraintStart_toEndOf="@+id/workpoint"
+        app:layout_constraintTop_toTopOf="@+id/workpoint" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/idAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="12dp"
+        android:visibility="gone"
+
+        app:layout_constraintBottom_toBottomOf="@+id/imClock"
+        app:layout_constraintStart_toEndOf="@+id/imClock"
+        app:layout_constraintTop_toTopOf="@+id/imClock">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ellipse_1"
+            android:src="@drawable/avatar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNameAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/opensans_regular"
+            android:text="Мария Иванова"
+            android:textColor="#CC1B1F3B"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imAvatar"
+            app:layout_constraintStart_toEndOf="@+id/imAvatar"
+            app:layout_constraintTop_toTopOf="@+id/imAvatar"
+            app:layout_constraintVertical_bias="0.363" />
+
+        <ImageView
+            android:id="@+id/imList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:src="@drawable/icon_chevr_on_down"
+            app:layout_constraintBottom_toBottomOf="@+id/tvNameAccount"
+            app:layout_constraintStart_toEndOf="@+id/tvNameAccount"
+            app:layout_constraintTop_toTopOf="@+id/tvNameAccount"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/workpoint"
@@ -228,72 +288,16 @@
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/list_item_places" />
 
-    <ImageView
-        android:id="@+id/imClock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:layout_marginLeft="49dp"
-        android:src="@drawable/icon_bell_large"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/workpoint"
-        app:layout_constraintStart_toEndOf="@+id/workpoint"
-        app:layout_constraintTop_toTopOf="@+id/workpoint"
-        app:layout_constraintVertical_bias="0.571" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imAvatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="12dp"
-        android:visibility="invisible"
-        android:src="@drawable/avatar"
-        android:background="@drawable/ellipse_1"
-        app:layout_constraintBottom_toBottomOf="@+id/imClock"
-        app:layout_constraintStart_toEndOf="@+id/imClock"
-        app:layout_constraintTop_toTopOf="@+id/imClock"
-        app:layout_constraintVertical_bias="0.687" />
-
-    <TextView
-        android:id="@+id/tvNameAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:layout_marginLeft="6dp"
-        android:text="Мария Иванова"
-        android:textSize="10dp"
-        android:visibility="invisible"
-        android:textColor="#CC1B1F3B"
-        android:fontFamily="@font/opensans_regular"
-        app:layout_constraintBottom_toBottomOf="@+id/imAvatar"
-        app:layout_constraintStart_toEndOf="@+id/imAvatar"
-        app:layout_constraintTop_toTopOf="@+id/imAvatar"
-        app:layout_constraintVertical_bias="0.363" />
-
-    <ImageView
-        android:id="@+id/imList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="6dp"
-        android:visibility="invisible"
-        android:src="@drawable/icon_chevr_on_down"
-        app:layout_constraintBottom_toBottomOf="@+id/tvNameAccount"
-        app:layout_constraintStart_toEndOf="@+id/tvNameAccount"
-        app:layout_constraintTop_toTopOf="@+id/tvNameAccount"
-        app:layout_constraintVertical_bias="1.0" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/idListAccountCommon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
         android:visibility="gone"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/rectangle_account_common"
-        app:layout_constraintEnd_toEndOf="@+id/imList"
-        app:layout_constraintHorizontal_bias="0.142"
-        app:layout_constraintStart_toStartOf="@+id/tvNameAccount"
-        app:layout_constraintTop_toBottomOf="@+id/btSignInMain">
+        app:layout_constraintStart_toStartOf="@+id/idAccount"
+        app:layout_constraintTop_toBottomOf="@+id/idAccount">
 
 
         <TextView
