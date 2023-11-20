@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rectangle_account_common">
+
+
+    <TextView
+        android:id="@+id/tvAddPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="28dp"
+        android:text="Добавить место"
+        android:textSize="10sp"
+        android:fontFamily="@font/opensans_regular"
+        android:textColor="#494C62"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvFavorites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Избранное"
+        android:textSize="10sp"
+        android:fontFamily="@font/opensans_regular"
+        android:textColor="#494C62"
+        app:layout_constraintEnd_toEndOf="@+id/tvAddPlace"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvAddPlace"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddPlace" />
+
+    <TextView
+        android:id="@+id/tvSettingsProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Настройки профиля"
+        android:textSize="10sp"
+        android:fontFamily="@font/opensans_regular"
+        android:textColor="#494C62"
+        app:layout_constraintEnd_toEndOf="@+id/tvFavorites"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvFavorites"
+        app:layout_constraintTop_toBottomOf="@+id/tvFavorites" />
+
+    <TextView
+        android:id="@+id/tvSettingsPlaces"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Настройки мест"
+        android:textSize="10sp"
+        android:fontFamily="@font/opensans_regular"
+        android:textColor="#494C62"
+        app:layout_constraintEnd_toEndOf="@+id/tvSettingsProfile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvSettingsProfile"
+        app:layout_constraintTop_toBottomOf="@+id/tvSettingsProfile" />
+
+    <TextView
+        android:id="@+id/tvlogOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="23dp"
+        android:fontFamily="@font/opensans_regular"
+        android:text="Выход"
+        android:textColor="#494C62"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvSettingsPlaces"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvSettingsPlaces"
+        app:layout_constraintTop_toBottomOf="@+id/tvSettingsPlaces"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
