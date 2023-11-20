@@ -153,7 +153,7 @@ class PlaceCardFragment : Fragment() {
                         Picasso.get().load(currentUser.photoUser).into(binding.imAvatar)
                         binding.tvNameAccount.text =
                             String.format("%s %s", currentUser.name, currentUser.surname)
-                        binding.idTextCity.text = currentUser.city
+//                        binding.idTextCity.text = currentUser.city
                     }
                 }
             }

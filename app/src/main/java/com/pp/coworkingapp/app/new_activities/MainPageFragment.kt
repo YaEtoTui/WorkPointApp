@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
+import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.UserViewModel
@@ -34,6 +35,7 @@ class MainPageFragment : Fragment() {
     private val viewModel: AuthViewModel by activityViewModels()
     private val placeIdViewModel: PlaceIdViewModel by activityViewModels()
     private val userViewModel: UserViewModel by activityViewModels()
+    private lateinit var listPlaces: List<Place>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,21 +52,13 @@ class MainPageFragment : Fragment() {
 
         initRetrofit()
         initRcView()
+        searchText()
 
         binding.btSignInMain.setOnClickListener {
             findNavController().navigate(R.id.action_mainPageFragment_to_authFragment)
         }
 
-        //Загрузка текущего списка
-        CoroutineScope(Dispatchers.IO).launch {
-            val placesList = mainApi.getListPlaces()
-            requireActivity().runOnUiThread {
-                binding.apply {
-                    tvCount.text = String.format("Найдено %s", placesList.count())
-                    adapter.submitList(placesList)
-                }
-            }
-        }
+        loadListPlaces()
 
         //создание текущего user
         viewModel.token.observe(viewLifecycleOwner) {token ->
@@ -96,6 +90,29 @@ class MainPageFragment : Fragment() {
                     }
                 }
             }
+        }
+    }
+
+    private fun loadListPlaces() {
+        //Загрузка текущего списка
+        CoroutineScope(Dispatchers.IO).launch {
+            listPlaces = mainApi.getListPlaces()
+            requireActivity().runOnUiThread {
+                binding.apply {
+                    tvCount.text = String.format("Найдено %s", listPlaces.count())
+                    adapter.submitList(listPlaces)
+                }
+            }
+        }
+    }
+
+    private fun searchText() {
+        binding.btSearchCow.setOnClickListener {
+            val queryText: String = binding.edSearch.text.toString()
+            val listCurrent: List<Place> = listPlaces.filter { place -> place.name.lowercase().contains(queryText.lowercase())}
+            binding.tvCount.text = String.format("Найдено %s", listCurrent.count())
+            adapter.submitList(listCurrent)
+            binding.edSearch.text = null
         }
     }
 

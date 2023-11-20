@@ -23,8 +23,8 @@ class PlaceAdapter: ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
         fun bind(place: Place, onButtonClickListener: OnButtonClickListener) = with(binding) {
             //
             tvHello.text = place.name
-            if (place.description.length > 100) {
-                tvTextDesc.text = String.format("%s...", place.description.substring(0, 100))
+            if (place.description.length > 200) {
+                tvTextDesc.text = String.format("%s...", place.description.substring(0, 200))
             } else {
                 tvTextDesc.text = place.description
             }
