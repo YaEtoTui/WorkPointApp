@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBFBF5">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/idHeader"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/workpoint"
+            android:layout_width="115.97dp"
+            android:layout_height="28dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="61dp"
+            android:gravity="top"
+            android:text="@string/workpoint"
+            android:textAppearance="@style/workpoint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.132"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/line_2"
+            android:layout_width="354dp"
+            android:layout_height="1dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="94.5dp"
+            android:background="@drawable/line_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="18dp"
+            app:layout_constraintBottom_toTopOf="@+id/workpoint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_geo_2" />
+
+        <TextView
+            android:id="@+id/idTextCity"
+            android:layout_width="108dp"
+            android:layout_height="28dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginBottom="3dp"
+            android:gravity="center|left"
+            android:lineSpacingExtra="14sp"
+            android:text="Екатеринбург"
+            android:textAppearance="@style/text_geo"
+            android:translationY="-7.19sp"
+            app:layout_constraintBottom_toTopOf="@+id/workpoint"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.833" />
+
+        <ImageView
+            android:id="@+id/imClock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/icon_bell_large"
+            app:layout_constraintBottom_toBottomOf="@+id/workpoint"
+            app:layout_constraintStart_toEndOf="@+id/workpoint"
+            app:layout_constraintTop_toTopOf="@+id/workpoint" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/idAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imClock"
+            app:layout_constraintStart_toEndOf="@+id/imClock"
+            app:layout_constraintTop_toTopOf="@+id/imClock">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imAvatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ellipse_1"
+                android:src="@drawable/avatar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvNameAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Мария Иванова"
+                android:textColor="#CC1B1F3B"
+                android:textSize="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imAvatar"
+                app:layout_constraintStart_toEndOf="@+id/imAvatar"
+                app:layout_constraintTop_toTopOf="@+id/imAvatar"
+                app:layout_constraintVertical_bias="0.363" />
+
+            <ImageView
+                android:id="@+id/imList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:src="@drawable/icon_chevr_on_down"
+                app:layout_constraintBottom_toBottomOf="@+id/tvNameAccount"
+                app:layout_constraintStart_toEndOf="@+id/tvNameAccount"
+                app:layout_constraintTop_toTopOf="@+id/tvNameAccount"
+                app:layout_constraintVertical_bias="1.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/idListAccountCommon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_account_common"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/idAccount"
+            app:layout_constraintTop_toBottomOf="@+id/idAccount">
+
+
+            <TextView
+                android:id="@+id/tvAddPlace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="28dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Добавить место"
+                android:textColor="#494C62"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvFavorites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Избранное"
+                android:textColor="#494C62"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvAddPlace"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvAddPlace"
+                app:layout_constraintTop_toBottomOf="@+id/tvAddPlace" />
+
+            <TextView
+                android:id="@+id/tvSettingsProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Настройки профиля"
+                android:textColor="#494C62"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvFavorites"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvFavorites"
+                app:layout_constraintTop_toBottomOf="@+id/tvFavorites" />
+
+            <TextView
+                android:id="@+id/tvSettingsPlaces"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Настройки мест"
+                android:textColor="#494C62"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvSettingsProfile"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvSettingsProfile"
+                app:layout_constraintTop_toBottomOf="@+id/tvSettingsProfile" />
+
+            <TextView
+                android:id="@+id/tvlogOut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="23dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Выход"
+                android:textColor="#494C62"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tvSettingsPlaces"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvSettingsPlaces"
+                app:layout_constraintTop_toBottomOf="@+id/tvSettingsPlaces"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/idListAccountBusiness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_account_common"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/idAccount"
+            app:layout_constraintTop_toBottomOf="@+id/idAccount">
+
+
+            <TextView
+                android:id="@+id/tvAddPlaceBusiness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="28dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Добавить место"
+                android:textColor="#494C62"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvFavoritesBusiness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Избранное"
+                android:textColor="#494C62"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvAddPlaceBusiness"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvAddPlaceBusiness"
+                app:layout_constraintTop_toBottomOf="@+id/tvAddPlaceBusiness" />
+
+            <TextView
+                android:id="@+id/tvSettingsProfileBusiness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Настройки профиля"
+                android:textColor="#494C62"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvFavoritesBusiness"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvFavoritesBusiness"
+                app:layout_constraintTop_toBottomOf="@+id/tvFavoritesBusiness" />
+
+            <TextView
+                android:id="@+id/tvSettingsPlacesBusiness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Настройки мест"
+                android:textColor="#494C62"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvSettingsProfileBusiness"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvSettingsProfileBusiness"
+                app:layout_constraintTop_toBottomOf="@+id/tvSettingsProfileBusiness" />
+
+            <TextView
+                android:id="@+id/tvPromotionBusiness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Продвижение"
+                android:textColor="#494C62"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvSettingsPlacesBusiness"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvSettingsPlacesBusiness"
+                app:layout_constraintTop_toBottomOf="@+id/tvSettingsPlacesBusiness" />
+
+            <TextView
+                android:id="@+id/tvlogOutBusiness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="23dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Выход"
+                android:textColor="#494C62"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tvPromotionBusiness"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvPromotionBusiness"
+                app:layout_constraintTop_toBottomOf="@+id/tvPromotionBusiness"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

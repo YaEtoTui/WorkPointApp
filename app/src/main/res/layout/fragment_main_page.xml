@@ -203,8 +203,8 @@
 
     <EditText
         android:id="@+id/edSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="353dp"
+        android:layout_height="30dp"
         android:ems="10"
         android:inputType="text"
         android:layout_marginTop="30dp"
@@ -226,7 +226,7 @@
         android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="11dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="203dp"
         android:elevation="10dp"
@@ -246,7 +246,7 @@
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="11dp"
         android:layout_marginLeft="201.18dp"
         android:layout_marginRight="16.82dp"
         android:backgroundTint="@drawable/button_bg_color"
