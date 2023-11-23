@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.adapter.ReviewAdapter
 import com.pp.coworkingapp.app.retrofit.adapter.TagAdapter
@@ -29,6 +31,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.Exception
 import kotlin.properties.Delegates
 
 
@@ -44,6 +47,7 @@ class PlaceCardFragment : Fragment() {
 
     private lateinit var tokenUser: String
     private var idPlace by Delegates.notNull<Int>()
+    private var indexPicturePlaceCard by Delegates.notNull<Int>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -104,13 +108,16 @@ class PlaceCardFragment : Fragment() {
                         tvNamePoint.text = currentPlace.name
                         tvRating.text = currentPlace.rating
                         if (currentPlace.photo.isNotEmpty() || currentPlace.photo.startsWith("http")) {
-
-                            Picasso.get()
-                                .load(currentPlace.photo)
-                                .centerCrop().fit()
+                            val listPictures: List<String> = currentPlace.photo.split('#')
+                            val listPicturesSub: List<String> = listPictures.subList(0, listPictures.size - 1)
+                            indexPicturePlaceCard = 0
+                            Glide.with(requireView().context)
+                                .load(listPictures[indexPicturePlaceCard])
+                                .centerCrop()
                                 .error(R.drawable.ic_launcher_foreground)
                                 .into(binding.imPhotoCorousel)
 
+                            createButtonsCheckPhotos(listPicturesSub)
                         }
                         tvDescPoint.text = currentPlace.description
                         tvGeo.text = currentPlace.address
@@ -210,6 +217,54 @@ class PlaceCardFragment : Fragment() {
                         btRatingBar.rating = review.rank.toFloat()
                     }
                 }
+            }
+        }
+    }
+
+    private fun createButtonsCheckPhotos(listPictures: List<String>) {
+        binding.imArrowRight.setOnClickListener {
+            if (indexPicturePlaceCard == listPictures.size - 1) {
+                indexPicturePlaceCard = 0
+                Glide.with(requireView().context)
+                    .load(listPictures[indexPicturePlaceCard])
+                    .centerCrop()
+                    .error(R.drawable.ic_launcher_foreground)
+                    .into(binding.imPhotoCorousel)
+            } else {
+                indexPicturePlaceCard += 1
+                Glide.with(requireView().context)
+                    .load(listPictures[indexPicturePlaceCard])
+                    .centerCrop()
+                    .error(R.drawable.ic_launcher_foreground)
+                    .into(binding.imPhotoCorousel)
+            }
+        }
+
+        binding.imArrowLeft.setOnClickListener() {
+            if (indexPicturePlaceCard == 0) {
+                indexPicturePlaceCard = listPictures.size - 1
+                try {
+                    Glide.with(requireView().context)
+                        .load(listPictures[indexPicturePlaceCard])
+                        .centerCrop()
+                        .error(R.drawable.ic_launcher_foreground)
+                        .into(binding.imPhotoCorousel)
+                } catch (exc: Exception) {
+                    exc.message
+                }
+
+            } else {
+                try {
+                    indexPicturePlaceCard -= 1
+                    Glide.with(requireView().context)
+                        .load(listPictures[indexPicturePlaceCard])
+                        .centerCrop()
+                        .error(R.drawable.ic_launcher_foreground)
+                        .into(binding.imPhotoCorousel)
+                } catch (exc: Exception) {
+                    exc.message
+                }
+
             }
         }
     }
