@@ -99,6 +99,7 @@
             android:textSize="8sp"
             app:strokeColor="#FFFFFF"
             app:strokeWidth="0.9dp"
+            android:stateListAnimator="@drawable/button_elevation"
             app:layout_constraintEnd_toEndOf="@+id/idRectanglePhoto"
             app:layout_constraintStart_toStartOf="@+id/idRectanglePhoto"
             app:layout_constraintTop_toBottomOf="@+id/idRectanglePhoto" />

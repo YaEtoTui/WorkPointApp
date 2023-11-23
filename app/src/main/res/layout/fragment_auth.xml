@@ -113,6 +113,7 @@
         android:backgroundTint="@drawable/button_bg_color"
         android:elevation="10dp"
         android:text="@string/sign_in"
+        android:stateListAnimator="@drawable/button_elevation"
         android:textAppearance="@style/sign_in"
         android:textColor="@drawable/button_text_color"
         app:cornerRadius="10dp"

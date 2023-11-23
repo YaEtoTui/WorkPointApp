@@ -50,4 +50,5 @@
             android:id="@+id/action_placeCardFragment_to_mainPageFragment"
             app:destination="@id/mainPageFragment" />
     </fragment>
+
 </navigation>

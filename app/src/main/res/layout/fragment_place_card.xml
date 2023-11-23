@@ -607,16 +607,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <View
-                    android:id="@+id/imCarteGeo"
-                    android:layout_width="353dp"
-                    android:layout_height="209dp"
-                    android:layout_marginTop="17dp"
-                    android:background="@drawable/rectangle_carte_place_card"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvCart" />
+                    <com.yandex.mapkit.mapview.MapView
+                        android:id="@+id/imCarteGeo"
+                        android:layout_width="353dp"
+                        android:layout_height="209dp"
+                        android:layout_marginTop="17dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCart" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -694,6 +693,7 @@
                     android:text="Оставить отзыв"
                     android:textColor="@drawable/button_text_color"
                     android:textSize="10sp"
+                    android:stateListAnimator="@drawable/button_elevation"
                     app:backgroundTint="#E0E0D6"
                     app:cornerRadius="15dp"
                     app:layout_constraintBottom_toBottomOf="parent"

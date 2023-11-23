@@ -1,6 +1,5 @@
 package com.pp.coworkingapp.app.new_activities
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,7 +11,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.adapter.ReviewAdapter
 import com.pp.coworkingapp.app.retrofit.adapter.TagAdapter
@@ -23,7 +21,12 @@ import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.UserViewModel
 import com.pp.coworkingapp.databinding.FragmentPlaceCardBinding
 import com.squareup.picasso.Picasso
-import com.squareup.picasso.Transformation
+import com.yandex.mapkit.Animation
+import com.yandex.mapkit.MapKitFactory
+import com.yandex.mapkit.geometry.Point
+import com.yandex.mapkit.map.CameraPosition
+import com.yandex.mapkit.mapview.MapView
+import com.yandex.runtime.image.ImageProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,11 +34,13 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.lang.Exception
 import kotlin.properties.Delegates
 
 
 class PlaceCardFragment : Fragment() {
+
+    lateinit var mapView: MapView
+    lateinit var imageProvider: ImageProvider
 
     private lateinit var adapterTags: TagAdapter
     private lateinit var adapterReview: ReviewAdapter
@@ -53,12 +58,15 @@ class PlaceCardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        MapKitFactory.initialize(this.context)
         binding = FragmentPlaceCardBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mapView = binding.imCarteGeo
+        imageProvider = ImageProvider.fromResource(this.context, R.drawable.icon_location_2)
 
         initRetrofit()
         initCurrentPerson()
@@ -82,6 +90,18 @@ class PlaceCardFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onStop() {
+        mapView.onStop()
+        MapKitFactory.getInstance().onStop()
+        super.onStop()
+    }
+
+    override fun onStart() {
+        mapView.onStart()
+        MapKitFactory.getInstance().onStart()
+        super.onStart()
     }
 
     private fun initRetrofit() {
@@ -119,6 +139,15 @@ class PlaceCardFragment : Fragment() {
 
                             createButtonsCheckPhotos(listPicturesSub)
                         }
+
+                        mapView.map.move(CameraPosition(Point(56.840823, 60.650763), 16.0f, 0.0f, 0.0f),
+                            Animation(Animation.Type.SMOOTH, 1f), null
+                        )
+
+
+                        val placemark = mapView.map.mapObjects.addPlacemark(Point(56.840823, 60.650763), imageProvider)
+
+
                         tvDescPoint.text = currentPlace.description
                         tvGeo.text = currentPlace.address
                         tvTime.text = currentPlace.openingHours
