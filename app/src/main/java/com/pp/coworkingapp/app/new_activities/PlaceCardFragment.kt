@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.pp.coworkingapp.R
@@ -219,6 +220,7 @@ class PlaceCardFragment : Fragment() {
 
     private fun initTagsAdapter() {
         adapterTags = TagAdapter()
+        binding.idRcTags.layoutManager = GridLayoutManager(this.context, 3)
         binding.idRcTags.adapter = adapterTags
     }
 
