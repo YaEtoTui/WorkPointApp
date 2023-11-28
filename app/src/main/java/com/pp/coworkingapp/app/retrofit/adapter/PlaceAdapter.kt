@@ -32,19 +32,11 @@ class PlaceAdapter: ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
 
             Glide.with(itemView.context)
                 .load(place.photo)
-                .transform(RoundedCorners(100))
+                .transform(RoundedCorners(20))
+                .centerCrop()
                 .error(R.drawable.ic_launcher_foreground)
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(idRectanglePhoto)
-
-//            if (!place.photo.isEmpty()) {
-//                Picasso.get()
-//                    .load(place.photo)
-//                    .centerCrop().fit()
-//                    .transform(RoundedCornerTreatment(15f))
-//                    .error(R.drawable.ic_launcher_foreground)
-//                    .into(idRectanglePhoto)
-//            }
 
             tvRating.text = place.rating
             tvGeo.text = place.address

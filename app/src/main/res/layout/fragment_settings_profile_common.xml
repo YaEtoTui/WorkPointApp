@@ -325,5 +325,294 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <Button
+        android:id="@+id/btBackToMainPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#00FFFFFF"
+        android:drawableLeft="@drawable/icon_left_large_2"
+        android:drawablePadding="3dp"
+        android:fontFamily="@font/opensans_regular"
+        android:text="@string/back_main_page"
+        android:textColor="#A61B1F3B"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/idHeader"
+        app:layout_constraintTop_toBottomOf="@+id/idHeader" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/idSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btBackToMainPage">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/idMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/idTvFavorites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="18dp"
+                android:text="Избранное"
+                android:fontFamily="@font/opensans_regular"
+                android:textSize="10sp"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/idTvSettingsProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Настройки профиля"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/opensans_regular"
+                android:textSize="10sp"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idTvFavorites" />
+
+            <TextView
+                android:id="@+id/idSettingsPlaces"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Настройки мест"
+                android:fontFamily="@font/opensans_regular"
+                android:textSize="10sp"
+                android:textColor="#000000"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idTvSettingsProfile"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <View
+                android:id="@+id/idLineMenuFull"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="4dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/line_settings"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/idTvSettingsProfile"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/idLineFix"
+                android:layout_width="1dp"
+                android:layout_height="27dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/line_fix_settings"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/idInfoUser"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="23dp"
+            app:layout_constraintBottom_toBottomOf="@+id/idMenu"
+            app:layout_constraintStart_toEndOf="@+id/idMenu"
+            app:layout_constraintTop_toTopOf="@+id/idMenu">
+
+            <TextView
+                android:id="@+id/tvFio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="21dp"
+                android:text="Мария Иванова"
+                android:fontFamily="@font/open_sans_semi_bold"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.407"
+                app:layout_constraintStart_toEndOf="@+id/imChangeAvatar"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="+7 (999) 999-99-00"
+                android:fontFamily="@font/opensans_regular"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvFio"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvFio"
+                app:layout_constraintTop_toBottomOf="@+id/tvFio" />
+
+            <ImageView
+                android:id="@+id/imChangeAvatar"
+                android:layout_width="84dp"
+                android:layout_height="82.4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/avatar_40_40" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="84dp"
+                android:layout_height="82.4dp"
+                android:background="@drawable/ellipse_avatar_change"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/imChangeAvatar"
+                app:layout_constraintStart_toStartOf="@+id/imChangeAvatar"
+                app:layout_constraintTop_toTopOf="@+id/imChangeAvatar" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/imChangeAvatar"
+                app:layout_constraintStart_toStartOf="@+id/imChangeAvatar"
+                app:layout_constraintTop_toTopOf="@+id/imChangeAvatar"
+                app:srcCompat="@drawable/icon_camera" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/idPresent"
+        android:layout_width="0dp"
+        android:layout_height="128dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginRight="29dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idSettings">
+
+        <View
+            android:id="@+id/idRectangle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_present"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/imProgressBar"
+            android:layout_width="80.23dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
+
+        <TextView
+            android:id="@+id/tvTextPresent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="31.7dp"
+            android:layout_marginRight="36dp"
+            android:fontFamily="@font/opensans_bold"
+            android:textSize="12sp"
+            android:textColor="#CC1B1F3B"
+            android:gravity="center"
+            android:text="Добавь ещё одно место и получи подарок"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toEndOf="@+id/imProgressBar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btSearchCow"
+            android:layout_width="135dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@drawable/button_bg_color"
+            android:elevation="10dp"
+            android:stateListAnimator="@drawable/button_elevation"
+            android:text="Добавить место"
+            android:fontFamily="@font/open_sans_semi_bold"
+            android:textSize="10sp"
+            android:textColor="@drawable/button_text_color"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/tvTextPresent"
+            app:layout_constraintStart_toStartOf="@+id/tvTextPresent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTextPresent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/idInfoMy"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="@+id/idPresent"
+        app:layout_constraintStart_toStartOf="@+id/idPresent"
+        app:layout_constraintTop_toBottomOf="@+id/idPresent">
+
+        <TextView
+            android:id="@+id/tvInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="О себе"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/idLayoutEdName"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:hint="Имя"
+            app:hintAnimationEnabled="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvInfo">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edTextFirstName"
+
+                android:layout_width="145dp"
+                android:layout_height="30dp"
+                android:background="@drawable/rectangle_edit_settings"
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="center|left"
+                android:inputType="text"
+                android:paddingLeft="12dp"
+                android:textColor="#000000"
+                android:textSize="9sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvInfo" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

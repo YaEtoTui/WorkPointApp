@@ -39,7 +39,7 @@ android {
 dependencies {
 
     //MapKit / Yandex Map
-    implementation ("com.yandex.android:maps.mobile:4.2.2-lite")
+    implementation ("com.yandex.android:maps.mobile:4.2.2-full")
 
     //Glide
     implementation ("com.github.bumptech.glide:glide:4.10.0")

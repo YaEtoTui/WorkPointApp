@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -105,6 +104,11 @@ class MainPageFragment : Fragment() {
                 binding.apply {
                     tvCount.text = String.format("Найдено %s", listPlaces.count())
                     adapter.submitList(listPlaces)
+
+                    if (listPlaces.isNotEmpty()) {
+                        idProgressBar.visibility = View.GONE
+                        rcView.visibility = View.VISIBLE
+                    }
                 }
             }
         }

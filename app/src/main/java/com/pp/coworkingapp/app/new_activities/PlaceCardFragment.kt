@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.adapter.ReviewAdapter
 import com.pp.coworkingapp.app.retrofit.adapter.TagAdapter
@@ -132,8 +133,10 @@ class PlaceCardFragment : Fragment() {
                             val listPictures: List<String> = currentPlace.photo.split('#')
                             val listPicturesSub: List<String> = listPictures.subList(0, listPictures.size - 1)
                             indexPicturePlaceCard = 0
+
                             Glide.with(requireView().context)
                                 .load(listPictures[indexPicturePlaceCard])
+                                .transform(RoundedCorners(20))
                                 .centerCrop()
                                 .error(R.drawable.ic_launcher_foreground)
                                 .into(binding.imPhotoCorousel)
