@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_mainPageFragment_to_placeCardFragment"
             app:destination="@id/placeCardFragment" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_settingsProfileCommonFrag"
+            app:destination="@id/settingsProfileCommonFrag" />
     </fragment>
     <fragment
         android:id="@+id/authFragment"
@@ -49,6 +52,13 @@
         <action
             android:id="@+id/action_placeCardFragment_to_mainPageFragment"
             app:destination="@id/mainPageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsProfileCommonFrag"
+        android:name="com.pp.coworkingapp.app.new_activities.SettingsProfileCommonFragment"
+        android:animateLayoutChanges="true"
+        tools:layout="@layout/fragment_settings_profile_common">
     </fragment>
 
 </navigation>

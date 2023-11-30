@@ -57,6 +57,10 @@ class MainPageFragment : Fragment() {
             findNavController().navigate(R.id.action_mainPageFragment_to_authFragment)
         }
 
+        binding.tvSettingsProfile.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPageFragment_to_settingsProfileCommonFrag)
+        }
+
         loadListPlaces()
 
         //создание текущего user

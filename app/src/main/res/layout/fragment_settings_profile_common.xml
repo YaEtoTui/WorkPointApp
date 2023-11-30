@@ -533,8 +533,8 @@
 
         <TextView
             android:id="@+id/tvTextPresent"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="166dp"
+            android:layout_height="36dp"
             android:layout_marginTop="24dp"
             android:layout_marginLeft="31.7dp"
             android:layout_marginRight="36dp"
@@ -572,8 +572,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/idInfoMy"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/idPresent"
         app:layout_constraintStart_toStartOf="@+id/idPresent"
         app:layout_constraintTop_toBottomOf="@+id/idPresent">
@@ -582,36 +584,177 @@
             android:id="@+id/tvInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="17dp"
             android:text="О себе"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/idLayoutEdName"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="163dp"
+            android:layout_height="49dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/rectangle_edit_settings"
             android:hint="Имя"
-            app:hintAnimationEnabled="true"
+            android:textColorHint="#661B1F3B"
+
+            app:hintTextColor="#661B1F3B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvInfo">
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <EditText
                 android:id="@+id/edTextFirstName"
-
-                android:layout_width="145dp"
-                android:layout_height="30dp"
-                android:background="@drawable/rectangle_edit_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/opensans_regular"
-                android:gravity="center|left"
+                android:gravity="top"
                 android:inputType="text"
-                android:paddingLeft="12dp"
                 android:textColor="#000000"
-                android:textSize="9sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvInfo" />
+                android:textSize="9sp" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/idLayoutEdSurName"
+            android:layout_width="163dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="19.87dp"
+            android:background="@drawable/rectangle_edit_settings"
+            android:hint="Фамилия"
+            android:textColorHint="#661B1F3B"
+            app:hintTextColor="#661B1F3B"
+            app:layout_constraintEnd_toEndOf="@+id/idLayoutEdName"
+            app:layout_constraintStart_toStartOf="@+id/idLayoutEdName"
+            app:layout_constraintTop_toBottomOf="@+id/idLayoutEdName">
 
+            <EditText
+                android:id="@+id/edTextSurName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="top"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="9sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/idLayoutEdCity"
+            android:layout_width="163dp"
+            android:layout_height="49dp"
+            android:layout_marginRight="29dp"
+            android:background="@drawable/rectangle_edit_settings"
+            android:hint="Город"
+            android:textColorHint="#661B1F3B"
+            app:hintTextColor="#661B1F3B"
+            app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/idLayoutEdName"
+            app:layout_constraintTop_toTopOf="@+id/idLayoutEdName">
+
+            <EditText
+                android:id="@+id/edTextCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="top"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="9sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/idLayoutEdPhone"
+            android:layout_width="163dp"
+            android:layout_height="49dp"
+            android:background="@drawable/rectangle_edit_settings"
+            android:hint="Номер телефона"
+            android:textColorHint="#661B1F3B"
+            app:hintTextColor="#661B1F3B"
+            app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdSurName"
+            app:layout_constraintEnd_toEndOf="@+id/idLayoutEdCity"
+            app:layout_constraintStart_toStartOf="@+id/idLayoutEdCity"
+            app:layout_constraintTop_toTopOf="@+id/idLayoutEdSurName">
+
+            <EditText
+                android:id="@+id/edTextPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="top"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textSize="9sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btSave"
+            android:layout_width="135dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="18.06dp"
+            android:backgroundTint="@drawable/button_bg_color_filters"
+            android:elevation="20dp"
+            android:stateListAnimator="@drawable/button_elevation"
+            android:text="Сохранить"
+            android:textAppearance="@style/text_filters"
+            android:textColor="@drawable/button_text_color"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/idLayoutEdSurName"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/idLayoutEdSurName"
+            app:layout_constraintTop_toBottomOf="@+id/idLayoutEdSurName" />
+
+
+        <TextView
+            android:id="@+id/tvBusiness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/opensans_bold"
+            android:text="Бизнес-аккаунт"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@+id/btSave"
+            app:layout_constraintTop_toBottomOf="@+id/btSave" />
+
+        <TextView
+            android:id="@+id/tvBusinessDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="29dp"
+            android:fontFamily="@font/open_sans_light"
+            android:gravity="left"
+            android:text="Если ты являешься владельцем заведения и хочешь продвигать его, то переходи на бизнес-аккаунт"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvBusiness"
+            app:layout_constraintTop_toBottomOf="@+id/tvBusiness" />
+
+        <Button
+            android:id="@+id/btChangeOnBusiness"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@drawable/button_bg_color_filters"
+            android:elevation="20dp"
+            android:stateListAnimator="@drawable/button_elevation"
+            android:text="Перейти на бизнес-аккаунт"
+            android:textAppearance="@style/text_filters"
+            android:textColor="@drawable/button_text_color"
+            app:cornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="@+id/tvBusinessDesc"
+            app:layout_constraintTop_toBottomOf="@+id/tvBusinessDesc" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
