@@ -7,17 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.pp.coworkingapp.R
-import com.pp.coworkingapp.databinding.FragmentSettingsProfileCommonBinding
+import com.pp.coworkingapp.databinding.FragmentSettingsPlacesCommonBinding
 
+class SettingsPlacesCommonFragment : Fragment() {
 
-class SettingsProfileCommonFragment : Fragment() {
-    private lateinit var binding: FragmentSettingsProfileCommonBinding
+    private lateinit var binding: FragmentSettingsPlacesCommonBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSettingsProfileCommonBinding.inflate(inflater, container, false)
+        binding = FragmentSettingsPlacesCommonBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -25,7 +25,7 @@ class SettingsProfileCommonFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btBackToMainPage.setOnClickListener {
-            findNavController().navigate(R.id.action_settingsProfileCommonFrag_to_mainPageFragment)
+            findNavController().navigate(R.id.action_settingsPlacesCommonFrag_to_mainPageFragment)
         }
     }
 }

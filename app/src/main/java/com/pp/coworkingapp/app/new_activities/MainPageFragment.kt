@@ -61,6 +61,10 @@ class MainPageFragment : Fragment() {
             findNavController().navigate(R.id.action_mainPageFragment_to_settingsProfileCommonFrag)
         }
 
+        binding.tvSettingsPlaces.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPageFragment_to_settingsPlacesCommonFrag)
+        }
+
         loadListPlaces()
 
         //создание текущего user
@@ -111,7 +115,7 @@ class MainPageFragment : Fragment() {
 
                     if (listPlaces.isNotEmpty()) {
                         idProgressBar.visibility = View.GONE
-                        rcView.visibility = View.VISIBLE
+                        idMainPage.visibility = View.VISIBLE
                     }
                 }
             }

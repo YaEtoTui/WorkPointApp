@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_mainPageFragment_to_settingsProfileCommonFrag"
             app:destination="@id/settingsProfileCommonFrag" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_settingsPlacesCommonFrag"
+            app:destination="@id/settingsPlacesCommonFrag" />
     </fragment>
     <fragment
         android:id="@+id/authFragment"
@@ -59,6 +62,25 @@
         android:name="com.pp.coworkingapp.app.new_activities.SettingsProfileCommonFragment"
         android:animateLayoutChanges="true"
         tools:layout="@layout/fragment_settings_profile_common">
+        <action
+            android:id="@+id/action_settingsProfileCommonFrag_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
+        <action
+            android:id="@+id/action_settingsProfileCommonFrag_to_settingsPlacesCommonFrag"
+            app:destination="@id/settingsPlacesCommonFrag" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsPlacesCommonFrag"
+        android:name="com.pp.coworkingapp.app.new_activities.SettingsPlacesCommonFragment"
+        android:animateLayoutChanges="true"
+        tools:layout="@layout/fragment_settings_places_common">
+        <action
+            android:id="@+id/action_settingsPlacesCommonFrag_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
+        <action
+            android:id="@+id/action_settingsPlacesCommonFrag_to_settingsProfileCommonFrag"
+            app:destination="@id/settingsProfileCommonFrag" />
     </fragment>
 
 </navigation>

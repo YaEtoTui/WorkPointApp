@@ -7,71 +7,12 @@
     android:background="#FBFBF5">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/idMainPage"
+        android:id="@+id/idHeader"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <ImageView
-            android:id="@+id/imClock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/icon_bell_large"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/workpoint"
-            app:layout_constraintStart_toEndOf="@+id/workpoint"
-            app:layout_constraintTop_toTopOf="@+id/workpoint" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/idAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginBottom="8dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/imClock"
-            app:layout_constraintStart_toEndOf="@+id/imClock"
-            app:layout_constraintTop_toTopOf="@+id/imClock">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imAvatar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ellipse_1"
-                android:src="@drawable/avatar"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvNameAccount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="6dp"
-                android:fontFamily="@font/opensans_regular"
-                android:text="Мария Иванова"
-                android:textColor="#CC1B1F3B"
-                android:textSize="10dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imAvatar"
-                app:layout_constraintStart_toEndOf="@+id/imAvatar"
-                app:layout_constraintTop_toTopOf="@+id/imAvatar"
-                app:layout_constraintVertical_bias="0.363" />
-
-            <ImageView
-                android:id="@+id/imList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="6dp"
-                android:src="@drawable/icon_chevr_on_down"
-                app:layout_constraintBottom_toBottomOf="@+id/tvNameAccount"
-                app:layout_constraintStart_toEndOf="@+id/tvNameAccount"
-                app:layout_constraintTop_toTopOf="@+id/tvNameAccount"
-                app:layout_constraintVertical_bias="1.0" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/workpoint"
@@ -114,7 +55,7 @@
             app:srcCompat="@drawable/icon_geo_2" />
 
         <TextView
-            android:id="@+id/text_geo"
+            android:id="@+id/idTextCity"
             android:layout_width="108dp"
             android:layout_height="28dp"
             android:layout_alignParentLeft="true"
@@ -132,169 +73,64 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.833" />
 
-        <Button
-            android:id="@+id/btSignInMain"
-            android:layout_width="135dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="85.78dp"
-            android:layout_marginTop="55dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="11.5dp"
-            android:backgroundTint="@drawable/button_bg_color"
-            android:elevation="10dp"
-            android:stateListAnimator="@drawable/button_elevation"
-            android:text="@string/sign_in"
-            android:textAppearance="@style/sign_in"
-            android:textColor="@drawable/button_text_color"
-            app:cornerRadius="10dp"
+        <ImageView
+            android:id="@+id/imClock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/icon_bell_large"
             app:layout_constraintBottom_toBottomOf="@+id/workpoint"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.428"
             app:layout_constraintStart_toEndOf="@+id/workpoint"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.333" />
+            app:layout_constraintTop_toTopOf="@+id/workpoint" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/idFiltersTable"
-            android:layout_width="175dp"
-            android:layout_height="200dp"
-            android:background="@drawable/filters_table"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@+id/btFilters"
-            app:layout_constraintStart_toStartOf="@+id/btFilters"
-            app:layout_constraintTop_toBottomOf="@+id/btFilters">
+            android:id="@+id/idAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imClock"
+            app:layout_constraintStart_toEndOf="@+id/imClock"
+            app:layout_constraintTop_toTopOf="@+id/imClock">
 
-            <TextView
-                android:id="@+id/idName1"
-                android:layout_width="63dp"
-                android:layout_height="12dp"
-                android:layout_marginLeft="26dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/open_sans_semi_bold"
-                android:text="Район"
-                android:textSize="10dp"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imAvatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ellipse_1"
+                android:src="@drawable/avatar"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/tvNameAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Мария Иванова"
+                android:textColor="#CC1B1F3B"
+                android:textSize="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imAvatar"
+                app:layout_constraintStart_toEndOf="@+id/imAvatar"
+                app:layout_constraintTop_toTopOf="@+id/imAvatar"
+                app:layout_constraintVertical_bias="0.363" />
+
+            <ImageView
+                android:id="@+id/imList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:src="@drawable/icon_chevr_on_down"
+                app:layout_constraintBottom_toBottomOf="@+id/tvNameAccount"
+                app:layout_constraintStart_toEndOf="@+id/tvNameAccount"
+                app:layout_constraintTop_toTopOf="@+id/tvNameAccount"
+                app:layout_constraintVertical_bias="1.0" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <View
-            android:id="@+id/rectangle_1"
-            android:layout_width="353dp"
-            android:layout_height="101dp"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="23dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/rectangle_1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/workpoint" />
-
-        <TextView
-            android:id="@+id/text_cities"
-            android:layout_width="190dp"
-            android:layout_height="18dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="83dp"
-            android:layout_marginRight="80dp"
-            android:layout_marginBottom="67dp"
-            android:gravity="top"
-            android:text="@string/text_cities"
-            android:textAppearance="@style/text_cities"
-            app:layout_constraintBottom_toBottomOf="@+id/rectangle_1"
-            app:layout_constraintEnd_toEndOf="@+id/rectangle_1"
-            app:layout_constraintHorizontal_bias="0.503"
-            app:layout_constraintStart_toStartOf="@+id/rectangle_1" />
-
-        <EditText
-            android:id="@+id/edSearch"
-            android:layout_width="353dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/search"
-            android:drawableLeft="@drawable/icon_search_2"
-            android:drawablePadding="14.37dp"
-            android:elevation="10dp"
-            android:ems="10"
-            android:gravity="center|left"
-            android:hint="@string/ed_hint_search"
-            android:inputType="text"
-            android:paddingLeft="14.01dp"
-            android:textAppearance="@style/ed_hint_search"
-            app:layout_constraintEnd_toEndOf="@+id/rectangle_1"
-            app:layout_constraintStart_toStartOf="@+id/rectangle_1"
-            app:layout_constraintTop_toBottomOf="@+id/rectangle_1" />
-
-        <Button
-            android:id="@+id/btFilters"
-            android:layout_width="135dp"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginRight="203dp"
-            android:backgroundTint="@drawable/button_bg_color_filters"
-            android:elevation="20dp"
-            android:stateListAnimator="@drawable/button_elevation"
-            android:text="@string/text_filters"
-            android:textAppearance="@style/text_filters"
-            android:textColor="@drawable/button_text_color"
-            app:cornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/edSearch"
-            app:layout_constraintHorizontal_bias="0.105"
-            app:layout_constraintStart_toStartOf="@+id/edSearch"
-            app:layout_constraintTop_toBottomOf="@+id/edSearch" />
-
-        <Button
-            android:id="@+id/btSearchCow"
-            android:layout_width="135dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="201.18dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginRight="16.82dp"
-            android:backgroundTint="@drawable/button_bg_color"
-            android:elevation="10dp"
-            android:stateListAnimator="@drawable/button_elevation"
-            android:text="@string/text_search_cow"
-            android:textAppearance="@style/text_search_cow"
-            android:textColor="@drawable/button_text_color"
-            app:cornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/edSearch"
-            app:layout_constraintHorizontal_bias="0.885"
-            app:layout_constraintStart_toStartOf="@+id/edSearch"
-            app:layout_constraintTop_toBottomOf="@+id/edSearch" />
-
-        <TextView
-            android:id="@+id/tvCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="80dp"
-            android:fontFamily="@font/opensans_bold"
-            android:text="Найдено: x"
-            android:textColor="#CC1B1F3B"
-            android:textSize="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/btFilters"
-            app:layout_constraintStart_toStartOf="@+id/btFilters"
-            app:layout_constraintTop_toBottomOf="@+id/btFilters" />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcView"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="22.68dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/rectangle_1"
-            app:layout_constraintStart_toStartOf="@+id/rectangle_1"
-            app:layout_constraintTop_toBottomOf="@+id/tvCount"
-            app:layout_constraintVertical_bias="0.0"
-            tools:listitem="@layout/list_item_places" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/idListAccountCommon"
@@ -486,18 +322,173 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ProgressBar
-        android:id="@+id/idProgressBar"
+    <Button
+        android:id="@+id/btBackToMainPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#00FFFFFF"
+        android:drawableLeft="@drawable/icon_left_large_2"
+        android:drawablePadding="3dp"
+        android:fontFamily="@font/opensans_regular"
+        android:text="@string/back_main_page"
+        android:textColor="#A61B1F3B"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/idHeader"
+        app:layout_constraintTop_toBottomOf="@+id/idHeader" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/idSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btBackToMainPage">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/idMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/idTvFavorites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="18dp"
+                android:text="Избранное"
+                android:fontFamily="@font/opensans_regular"
+                android:textSize="10sp"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/idTvSettingsProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Настройки профиля"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/opensans_regular"
+                android:textSize="10sp"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idTvFavorites" />
+
+            <TextView
+                android:id="@+id/idSettingsPlaces"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Настройки мест"
+                android:fontFamily="@font/opensans_regular"
+                android:textSize="10sp"
+                android:textColor="#000000"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idTvSettingsProfile"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <View
+                android:id="@+id/idLineMenuFull"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="4dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/line_settings"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/idTvSettingsProfile"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/idLineFix"
+                android:layout_width="1dp"
+                android:layout_height="27dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/line_fix_settings"
+                app:layout_constraintBottom_toBottomOf="@+id/idSettingsPlaces"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/idSettingsPlaces" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvPlacesText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="15dp"
+            android:text="Ваши места"
+            android:fontFamily="@font/opensans_bold"
+            android:textSize="10sp"
+            android:textColor="#000000"
+            app:layout_constraintStart_toEndOf="@+id/idMenu"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPlacesDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="29dp"
+            android:layout_marginBottom="35dp"
+            android:fontFamily="@font/opensans_regular"
+            android:gravity="left"
+            android:text="В данном разделе вы также можете отследить статистику вашего заведения"
+            android:textSize="10sp"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvPlacesText"
+            app:layout_constraintTop_toBottomOf="@+id/tvPlacesText" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvNamePlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginLeft="45dp"
+        android:text="Название"
+        android:fontFamily="@font/opensans_regular"
+        android:textSize="10sp"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="@+id/idSettings"
+        app:layout_constraintTop_toBottomOf="@+id/idSettings" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="3dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </ProgressBar>
+        app:layout_constraintTop_toBottomOf="@+id/tvNamePlace"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/item_places_settings"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

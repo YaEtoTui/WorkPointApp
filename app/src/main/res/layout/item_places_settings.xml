@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/idListPlacesSettings"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="29dp"
+    android:layout_marginLeft="28dp"
+    android:layout_marginBottom="19dp"
+    app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="354dp"
+            android:layout_height="65dp"
+            android:background="@drawable/rectangle_list_item_settings_places"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvNamePlaceCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="13dp"
+            android:text="Simple coffee"
+            android:fontFamily="@font/opensans_bold"
+            android:textSize="10sp"
+            android:textColor="#000000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvGeo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="108dp"
+            android:fontFamily="@font/opensans_regular"
+            android:text="Проспект Ленина, 46"
+            android:textColor="#000000"
+            android:textSize="9sp"
+            app:layout_constraintEnd_toStartOf="@+id/btEditPlace"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvNamePlaceCard"
+            app:layout_constraintTop_toBottomOf="@+id/tvNamePlaceCard" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btEditPlace"
+            android:layout_width="126dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="21dp"
+            android:visibility="gone"
+            android:backgroundTint="@drawable/button_bg_color"
+            android:elevation="5dp"
+            android:fontFamily="@font/open_sans_semi_bold"
+            android:stateListAnimator="@drawable/button_elevation"
+            android:text="Редактировать"
+            android:textColor="@drawable/button_text_color"
+            android:textSize="10sp"
+            app:backgroundTint="#E0E0D6"
+            app:cornerRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="13dp"
+            android:fontFamily="@font/opensans_regular"
+            android:text="Ваша заявка на добавление места в обработке"
+            android:textColor="#000000"
+            android:textSize="7sp"
+            app:layout_constraintStart_toEndOf="@+id/tvNamePlaceCard"
+            app:layout_constraintTop_toTopOf="@+id/tvNamePlaceCard" />
+
+        <ImageView
+            android:id="@+id/imIcon"
+            android:layout_width="11dp"
+            android:layout_height="11dp"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/textView"
+            app:srcCompat="@drawable/icon_clock_list" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
