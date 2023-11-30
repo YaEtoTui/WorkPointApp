@@ -19,6 +19,7 @@
     <string name="title_activity_base">BaseActivity</string>
     <string name="show_cart">Посмотреть на карте</string>
     <string name="back_main_page">Вернуться к поиску</string>
+
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer felis ante, sollicitudin a mauris sed, euismod cursus tortor. Integer a diam quis nisl facilisis hendrerit in id sapien...
     </string>

@@ -63,6 +63,14 @@ class MainPageFragment : Fragment() {
 
         //создание текущего user
         createUser()
+
+        logout()
+    }
+
+    private fun logout() {
+        binding.tvlogOut.setOnClickListener {
+            viewModel.token.value = ""
+        }
     }
 
     private fun createUser() {

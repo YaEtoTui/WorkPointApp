@@ -9,13 +9,9 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
-import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
-import com.pp.coworkingapp.app.retrofit.domain.viewModel.UserViewModel
 import com.pp.coworkingapp.databinding.FragmentSettingsProfileCommonBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
@@ -91,11 +87,6 @@ class SettingsProfileCommonFragment : Fragment() {
                                 binding.idListAccountCommon.visibility = View.GONE
                             else
                                 binding.idListAccountCommon.visibility = View.VISIBLE
-                        } else {
-                            if (binding.idListAccountBusiness.isVisible)
-                                binding.idListAccountBusiness.visibility = View.GONE
-                            else
-                                binding.idListAccountBusiness.visibility = View.VISIBLE
                         }
                     }
                     tokenUser = token

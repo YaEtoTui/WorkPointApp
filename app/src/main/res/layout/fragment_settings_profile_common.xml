@@ -466,108 +466,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/idListAccountBusiness"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/rectangle_account_common"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="@+id/idAccount"
-            app:layout_constraintTop_toBottomOf="@+id/idAccount">
-
-
-            <TextView
-                android:id="@+id/tvAddPlaceBusiness"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="28dp"
-                android:fontFamily="@font/opensans_regular"
-                android:text="Добавить место"
-                android:textColor="#494C62"
-                android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvFavoritesBusiness"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/opensans_regular"
-                android:text="Избранное"
-                android:textColor="#494C62"
-                android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="@+id/tvAddPlaceBusiness"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvAddPlaceBusiness"
-                app:layout_constraintTop_toBottomOf="@+id/tvAddPlaceBusiness" />
-
-            <TextView
-                android:id="@+id/tvSettingsProfileBusiness"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/opensans_regular"
-                android:text="Настройки профиля"
-                android:textColor="#494C62"
-                android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="@+id/tvFavoritesBusiness"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvFavoritesBusiness"
-                app:layout_constraintTop_toBottomOf="@+id/tvFavoritesBusiness" />
-
-            <TextView
-                android:id="@+id/tvSettingsPlacesBusiness"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/opensans_regular"
-                android:text="Настройки мест"
-                android:textColor="#494C62"
-                android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="@+id/tvSettingsProfileBusiness"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvSettingsProfileBusiness"
-                app:layout_constraintTop_toBottomOf="@+id/tvSettingsProfileBusiness" />
-
-            <TextView
-                android:id="@+id/tvPromotionBusiness"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/opensans_regular"
-                android:text="Продвижение"
-                android:textColor="#494C62"
-                android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="@+id/tvSettingsPlacesBusiness"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvSettingsPlacesBusiness"
-                app:layout_constraintTop_toBottomOf="@+id/tvSettingsPlacesBusiness" />
-
-            <TextView
-                android:id="@+id/tvlogOutBusiness"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="23dp"
-                android:fontFamily="@font/opensans_regular"
-                android:text="Выход"
-                android:textColor="#494C62"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/tvPromotionBusiness"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvPromotionBusiness"
-                app:layout_constraintTop_toBottomOf="@+id/tvPromotionBusiness"
-                app:layout_constraintVertical_bias="0.0" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/idInfoMy"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -589,25 +487,25 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/idLayoutEdName"
-                android:layout_width="163dp"
-                android:layout_height="49dp"
+                android:layout_width="162dp"
+                android:layout_height="45dp"
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/rectangle_edit_settings"
                 android:hint="Имя"
+                app:hintTextAppearance="@style/settings_profile"
                 android:textColorHint="#661B1F3B"
-
                 app:hintTextColor="#661B1F3B"
+                android:background="@drawable/rectangle_edit_settings"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvInfo">
 
                 <EditText
                     android:id="@+id/edTextFirstName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="162dp"
+                    android:layout_height="45dp"
                     android:fontFamily="@font/opensans_regular"
-                    android:gravity="top"
                     android:inputType="text"
+                    android:background="@drawable/rectangle_edit_settings_2"
                     android:textColor="#000000"
                     android:textSize="9sp" />
 
@@ -615,24 +513,25 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/idLayoutEdSurName"
-                android:layout_width="163dp"
-                android:layout_height="49dp"
+                android:layout_width="162dp"
+                android:layout_height="45dp"
                 android:layout_marginTop="19.87dp"
                 android:background="@drawable/rectangle_edit_settings"
                 android:hint="Фамилия"
                 android:textColorHint="#661B1F3B"
                 app:hintTextColor="#661B1F3B"
+                app:hintTextAppearance="@style/settings_profile"
                 app:layout_constraintEnd_toEndOf="@+id/idLayoutEdName"
                 app:layout_constraintStart_toStartOf="@+id/idLayoutEdName"
                 app:layout_constraintTop_toBottomOf="@+id/idLayoutEdName">
 
                 <EditText
                     android:id="@+id/edTextSurName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="162dp"
+                    android:layout_height="45dp"
                     android:fontFamily="@font/opensans_regular"
-                    android:gravity="top"
                     android:inputType="text"
+                    android:background="@drawable/rectangle_edit_settings_2"
                     android:textColor="#000000"
                     android:textSize="9sp" />
 
@@ -640,13 +539,14 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/idLayoutEdCity"
-                android:layout_width="163dp"
-                android:layout_height="49dp"
+                android:layout_width="162dp"
+                android:layout_height="45dp"
                 android:layout_marginRight="29dp"
                 android:background="@drawable/rectangle_edit_settings"
                 android:hint="Город"
                 android:textColorHint="#661B1F3B"
                 app:hintTextColor="#661B1F3B"
+                app:hintTextAppearance="@style/settings_profile"
                 app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/idLayoutEdName"
@@ -654,24 +554,25 @@
 
                 <EditText
                     android:id="@+id/edTextCity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="162dp"
+                    android:layout_height="45dp"
                     android:fontFamily="@font/opensans_regular"
-                    android:gravity="top"
                     android:inputType="text"
                     android:textColor="#000000"
+                    android:background="@drawable/rectangle_edit_settings_2"
                     android:textSize="9sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/idLayoutEdPhone"
-                android:layout_width="163dp"
-                android:layout_height="49dp"
+                android:layout_width="162dp"
+                android:layout_height="45dp"
                 android:background="@drawable/rectangle_edit_settings"
                 android:hint="Номер телефона"
                 android:textColorHint="#661B1F3B"
                 app:hintTextColor="#661B1F3B"
+                app:hintTextAppearance="@style/settings_profile"
                 app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdSurName"
                 app:layout_constraintEnd_toEndOf="@+id/idLayoutEdCity"
                 app:layout_constraintStart_toStartOf="@+id/idLayoutEdCity"
@@ -679,10 +580,10 @@
 
                 <EditText
                     android:id="@+id/edTextPhone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="162dp"
+                    android:layout_height="45dp"
                     android:fontFamily="@font/opensans_regular"
-                    android:gravity="top"
+                    android:background="@drawable/rectangle_edit_settings_2"
                     android:inputType="text"
                     android:textColor="#000000"
                     android:textSize="9sp" />

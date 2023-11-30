@@ -124,4 +124,10 @@
     <style name="RoundScuare">
         <item name="cornerSize">10%</item>
     </style>
+
+    <style name="settings_profile">
+        <item name="android:textSize">7sp</item>
+        <item name="android:textColor">#661B1F3B</item>
+        <item name="fontFamily">@font/opensans_regular</item>
+    </style>
 </resources>
