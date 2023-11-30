@@ -207,7 +207,7 @@
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="@+id/rectangle_1" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edSearch"
             android:layout_width="353dp"
             android:layout_height="30dp"
@@ -221,6 +221,7 @@
             android:hint="@string/ed_hint_search"
             android:inputType="text"
             android:paddingLeft="14.01dp"
+            app:layout_wrapBehaviorInParent="horizontal_only"
             android:textAppearance="@style/ed_hint_search"
             app:layout_constraintEnd_toEndOf="@+id/rectangle_1"
             app:layout_constraintStart_toStartOf="@+id/rectangle_1"
@@ -395,7 +396,6 @@
             app:layout_constraintStart_toStartOf="@+id/idAccount"
             app:layout_constraintTop_toBottomOf="@+id/idAccount">
 
-
             <TextView
                 android:id="@+id/tvAddPlaceBusiness"
                 android:layout_width="wrap_content"
@@ -498,6 +498,5 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </ProgressBar>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

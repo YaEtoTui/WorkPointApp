@@ -57,17 +57,15 @@ class MainPageFragment : Fragment() {
             findNavController().navigate(R.id.action_mainPageFragment_to_authFragment)
         }
 
-        binding.tvSettingsProfile.setOnClickListener {
-            findNavController().navigate(R.id.action_mainPageFragment_to_settingsProfileCommonFrag)
-        }
-
-        binding.tvSettingsPlaces.setOnClickListener {
-            findNavController().navigate(R.id.action_mainPageFragment_to_settingsPlacesCommonFrag)
-        }
+        onClickCommonText()
 
         loadListPlaces()
 
         //создание текущего user
+        createUser()
+    }
+
+    private fun createUser() {
         viewModel.token.observe(viewLifecycleOwner) {token ->
             CoroutineScope(Dispatchers.IO).launch {
                 Log.i("Token", token.toString())
@@ -101,6 +99,20 @@ class MainPageFragment : Fragment() {
                     }
                 }
             }
+        }
+    }
+
+    private fun onClickCommonText() {
+        binding.tvFavorites.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPageFragment_to_favouritesCommonFrag)
+        }
+
+        binding.tvSettingsProfile.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPageFragment_to_settingsProfileCommonFrag)
+        }
+
+        binding.tvSettingsPlaces.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPageFragment_to_settingsPlacesCommonFrag)
         }
     }
 

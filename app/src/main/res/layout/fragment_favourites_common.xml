@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -129,6 +129,142 @@
                 app:layout_constraintStart_toEndOf="@+id/tvNameAccount"
                 app:layout_constraintTop_toTopOf="@+id/tvNameAccount"
                 app:layout_constraintVertical_bias="1.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btBackToMainPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="#00FFFFFF"
+            android:drawableLeft="@drawable/icon_left_large_2"
+            android:drawablePadding="3dp"
+            android:fontFamily="@font/opensans_regular"
+            android:text="@string/back_main_page"
+            android:textColor="#A61B1F3B"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@+id/idHeader"
+            app:layout_constraintTop_toBottomOf="@+id/line_2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/idSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btBackToMainPage">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/idMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/idTvFavorites"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="18dp"
+                    android:text="Избранное"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="10sp"
+                    android:textColor="#000000"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/idTvSettingsProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Настройки профиля"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="10sp"
+                    android:textColor="#000000"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/idTvFavorites" />
+
+                <TextView
+                    android:id="@+id/idSettingsPlaces"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Настройки мест"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="10sp"
+                    android:textColor="#000000"
+                    android:layout_marginBottom="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/idTvSettingsProfile"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <View
+                    android:id="@+id/idLineMenuFull"
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/line_settings"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/idTvSettingsProfile"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/idLineFix"
+                    android:layout_width="1dp"
+                    android:layout_height="27dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/line_fix_settings"
+                    app:layout_constraintBottom_toBottomOf="@+id/idTvFavorites"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/idTvFavorites" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tvPlacesText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="15dp"
+                android:text="Избранное"
+                android:fontFamily="@font/opensans_bold"
+                android:textSize="10sp"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@+id/idMenu"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvPlacesDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="29dp"
+                android:layout_marginBottom="35dp"
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="left"
+                android:text="В данном разделе вы можете посмотреть избранные места"
+                android:textSize="10sp"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvPlacesText"
+                app:layout_constraintTop_toBottomOf="@+id/tvPlacesText" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -322,171 +458,18 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
-            android:id="@+id/btBackToMainPage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="#00FFFFFF"
-            android:drawableLeft="@drawable/icon_left_large_2"
-            android:drawablePadding="3dp"
-            android:fontFamily="@font/opensans_regular"
-            android:text="@string/back_main_page"
-            android:textColor="#A61B1F3B"
-            android:textSize="10sp"
-            app:layout_constraintStart_toStartOf="@+id/idHeader"
-            app:layout_constraintTop_toBottomOf="@+id/line_2" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/idSettings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btBackToMainPage">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/idMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="28dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/idTvFavorites"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="18dp"
-                    android:text="Избранное"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="10sp"
-                    android:textColor="#000000"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/idTvSettingsProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Настройки профиля"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="10sp"
-                    android:textColor="#000000"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/idTvFavorites" />
-
-                <TextView
-                    android:id="@+id/idSettingsPlaces"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Настройки мест"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="10sp"
-                    android:textColor="#000000"
-                    android:layout_marginBottom="20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/idTvSettingsProfile"
-                    app:layout_constraintVertical_bias="1.0" />
-
-                <View
-                    android:id="@+id/idLineMenuFull"
-                    android:layout_width="1dp"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="4dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/line_settings"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/idTvSettingsProfile"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                    android:id="@+id/idLineFix"
-                    android:layout_width="1dp"
-                    android:layout_height="27dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/line_fix_settings"
-                    app:layout_constraintBottom_toBottomOf="@+id/idSettingsPlaces"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/idSettingsPlaces" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                android:id="@+id/tvPlacesText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="23dp"
-                android:layout_marginTop="15dp"
-                android:text="Ваши места"
-                android:fontFamily="@font/opensans_bold"
-                android:textSize="10sp"
-                android:textColor="#000000"
-                app:layout_constraintStart_toEndOf="@+id/idMenu"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvPlacesDesc"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="29dp"
-                android:layout_marginBottom="35dp"
-                android:fontFamily="@font/opensans_regular"
-                android:gravity="left"
-                android:text="В данном разделе вы также можете отследить статистику вашего заведения"
-                android:textSize="10sp"
-                android:textColor="#000000"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvPlacesText"
-                app:layout_constraintTop_toBottomOf="@+id/tvPlacesText" />
-
-
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/tvNamePlace"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginLeft="45dp"
-            android:text="Название"
-            android:fontFamily="@font/opensans_regular"
-            android:textSize="10sp"
-            android:textColor="#000000"
-            app:layout_constraintStart_toStartOf="@+id/idSettings"
-            app:layout_constraintTop_toBottomOf="@+id/idSettings" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcView"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="28dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNamePlace"
-            app:layout_constraintVertical_bias="0.0"
-            tools:listitem="@layout/item_places_settings"/>
+            app:layout_constraintTop_toBottomOf="@+id/idSettings"
+            tools:listitem="@layout/list_item_favourites" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
