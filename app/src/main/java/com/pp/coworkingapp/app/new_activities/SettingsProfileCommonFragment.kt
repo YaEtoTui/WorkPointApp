@@ -15,6 +15,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.api.MainApi
+import com.pp.coworkingapp.app.retrofit.domain.request.CreateSettingsUserRequest
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.UserViewModel
 import com.pp.coworkingapp.databinding.FragmentSettingsProfileCommonBinding
@@ -63,7 +64,29 @@ class SettingsProfileCommonFragment : Fragment() {
         binding.idCircleChangeAvatar.setOnClickListener {
             getPhoto()
         }
+
+        binding.btSave.setOnClickListener {
+            changeSettings()
+        }
     }
+
+    private fun changeSettings() {
+        viewModel.token.observe(viewLifecycleOwner) { token ->
+            CoroutineScope(Dispatchers.IO).launch {
+                val responseServer = mainApi.changeSettingsUser("Bearer $token", CreateSettingsUserRequest(
+                    binding.edTextPhone.text.toString(),
+                    binding.edTextFirstName.text.toString(),
+                    binding.edTextSurName.text.toString(),
+                    binding.edTextCity.text.toString(),
+                    userViewModel.user.value!!.id
+                ))
+                requireActivity().runOnUiThread {
+                    Log.i("ResultHttpChangeSettingsUser", responseServer.toString())
+                }
+            }
+        }
+    }
+
 
     private val PICK_IMAGE = 1
 
@@ -90,7 +113,7 @@ class SettingsProfileCommonFragment : Fragment() {
                     val file: File = getRealPathFromUri(requireContext(), imageUri!!)
                     val requestFile = file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
                     val body = MultipartBody.Part.createFormData("file", userViewModel.user.value?.surname.toString(), requestFile)
-                    val photoString= mainApi.loadNewPhotoUser("Bearer $token", body)
+                    val photoString = mainApi.loadNewPhotoUser("Bearer $token", body)
                     requireActivity().runOnUiThread {
 //                        Picasso
 //                            .get()

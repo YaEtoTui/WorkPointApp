@@ -307,91 +307,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/idPresent"
-            android:layout_width="0dp"
-            android:layout_height="128dp"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginRight="29dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idSettings">
-
-            <View
-                android:id="@+id/idRectangle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rectangle_present"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imProgressBar"
-                android:layout_width="80.23dp"
-                android:layout_height="80dp"
-                android:layout_marginLeft="40dp"
-                android:src="@drawable/progress_static"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_launcher_foreground" />
-
-            <TextView
-                android:id="@+id/tvTextPresent"
-                android:layout_width="166dp"
-                android:layout_height="36dp"
-                android:layout_marginLeft="31.7dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginRight="36dp"
-                android:fontFamily="@font/opensans_bold"
-                android:gravity="center"
-                android:text="Добавь ещё одно место и получи подарок"
-                android:textColor="#CC1B1F3B"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.505"
-                app:layout_constraintStart_toEndOf="@+id/imProgressBar"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/btSearchCow"
-                android:layout_width="135dp"
-                android:layout_height="40dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@drawable/button_bg_color"
-                android:elevation="10dp"
-                android:fontFamily="@font/open_sans_semi_bold"
-                android:stateListAnimator="@drawable/button_elevation"
-                android:text="Добавить место"
-                android:textColor="@drawable/button_text_color"
-                android:textSize="10sp"
-                app:cornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/tvTextPresent"
-                app:layout_constraintStart_toStartOf="@+id/tvTextPresent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTextPresent" />
-
-            <TextView
-                android:id="@+id/tvCoffeeNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4/5"
-                android:textColor="#9C5D56"
-                android:fontFamily="@font/open_sans_semi_bold"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imProgressBar"
-                app:layout_constraintEnd_toEndOf="@+id/imProgressBar"
-                app:layout_constraintStart_toStartOf="@+id/imProgressBar"
-                app:layout_constraintTop_toTopOf="@+id/imProgressBar" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/idListAccountCommon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -485,16 +400,16 @@
             android:layout_height="0dp"
             android:layout_marginBottom="11dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/idPresent"
-            app:layout_constraintStart_toStartOf="@+id/idPresent"
-            app:layout_constraintTop_toBottomOf="@+id/idPresent">
+            app:layout_constraintEnd_toEndOf="@+id/idSettings"
+            app:layout_constraintStart_toStartOf="@+id/idSettings"
+            app:layout_constraintTop_toBottomOf="@+id/idSettings">
 
             <TextView
                 android:id="@+id/tvInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="28dp"
-                android:layout_marginTop="17dp"
+                android:layout_marginTop="53.5dp"
                 android:text="О себе"
                 android:fontFamily="@font/opensans_bold"
                 android:textSize="10sp"
@@ -625,51 +540,6 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/idLayoutEdSurName"
                 app:layout_constraintTop_toBottomOf="@+id/idLayoutEdSurName" />
-
-
-            <TextView
-                android:id="@+id/tvBusiness"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="17dp"
-                android:fontFamily="@font/opensans_bold"
-                android:text="Бизнес-аккаунт"
-                android:textColor="#000000"
-                android:textSize="10sp"
-                app:layout_constraintStart_toStartOf="@+id/btSave"
-                app:layout_constraintTop_toBottomOf="@+id/btSave" />
-
-            <TextView
-                android:id="@+id/tvBusinessDesc"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="29dp"
-                android:fontFamily="@font/open_sans_light"
-                android:gravity="left"
-                android:text="Если ты являешься владельцем заведения и хочешь продвигать его, то переходи на бизнес-аккаунт"
-                android:textColor="#000000"
-                android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvBusiness"
-                app:layout_constraintTop_toBottomOf="@+id/tvBusiness" />
-
-            <Button
-                android:id="@+id/btChangeOnBusiness"
-                android:layout_width="190dp"
-                android:layout_height="40dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@drawable/button_bg_color_filters"
-                android:elevation="20dp"
-                android:stateListAnimator="@drawable/button_elevation"
-                android:text="Перейти на бизнес-аккаунт"
-                android:textAppearance="@style/text_filters"
-                android:textColor="@drawable/button_text_color"
-                app:cornerRadius="10dp"
-                app:layout_constraintStart_toStartOf="@+id/tvBusinessDesc"
-                app:layout_constraintTop_toBottomOf="@+id/tvBusinessDesc" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

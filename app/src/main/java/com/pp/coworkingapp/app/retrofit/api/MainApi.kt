@@ -50,10 +50,10 @@ interface MainApi {
     @POST("review/add_review")
     suspend fun addReview(@Header("Authorization") token: String, @Body createReviewRequest: CreateReviewRequest): Review
 
-    @POST("user/settings")
-    suspend fun changeSettingsUser(@Header("Authorization") token: String, @Body createSettingsUserRequest: CreateSettingsUserRequest): String
-
     @POST("user/photo")
     @Multipart
     suspend fun loadNewPhotoUser(@Header("Authorization") token: String, @Part file: MultipartBody.Part): String
+
+    @POST("user/settings")
+    suspend fun changeSettingsUser(@Header("Authorization") token: String, @Body createSettingsUserRequest: CreateSettingsUserRequest): Array<String>
 }
