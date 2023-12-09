@@ -98,8 +98,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imAvatar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="@drawable/ellipse_1"
                 android:src="@drawable/avatar"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -273,19 +273,19 @@
                     app:layout_constraintStart_toStartOf="@+id/tvFio"
                     app:layout_constraintTop_toBottomOf="@+id/tvFio" />
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imChangeAvatar"
                     android:layout_width="84dp"
-                    android:layout_height="82.4dp"
+                    android:layout_height="84dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/avatar_40_40" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:id="@+id/idCircleChangeAvatar"
                     android:layout_width="84dp"
-                    android:layout_height="82.4dp"
+                    android:layout_height="84dp"
                     android:background="@drawable/ellipse_avatar_change"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/imChangeAvatar"
@@ -329,11 +329,12 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imProgressBar"
                 android:layout_width="80.23dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="40dp"
+                android:src="@drawable/progress_static"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

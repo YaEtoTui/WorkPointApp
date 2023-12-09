@@ -1,6 +1,7 @@
 package com.pp.coworkingapp.app.retrofit.api
 
 import com.pp.coworkingapp.app.retrofit.domain.request.CreateReviewRequest
+import com.pp.coworkingapp.app.retrofit.domain.request.CreateSettingsUserRequest
 import com.pp.coworkingapp.app.retrofit.domain.request.RegisterRequest
 import com.pp.coworkingapp.app.retrofit.domain.response.CurrentUser
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
@@ -17,6 +18,7 @@ import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Query
+import java.io.File
 
 interface MainApi {
 
@@ -43,4 +45,10 @@ interface MainApi {
 
     @POST("review/add_review")
     suspend fun addReview(@Header("Authorization") token: String, @Body createReviewRequest: CreateReviewRequest): Review
+
+    @POST("user/settings")
+    suspend fun changeSettingsUser(@Header("Authorization") token: String, @Body createSettingsUserRequest: CreateSettingsUserRequest): String
+
+    @POST("user/photo")
+    suspend fun loadNewPhotoUser(@Header("Authorization") token: String, @Body file: File): File
 }

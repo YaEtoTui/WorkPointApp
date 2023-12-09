@@ -97,15 +97,18 @@ class SettingsProfileCommonFragment : Fragment() {
 //                        binding.idTextCity.text = currentUser.city
 
                         Picasso
-                            .get().
-                            load(currentUser.photoUser).
-                            into(imChangeAvatar)
+                            .get()
+                            .load(currentUser.photoUser)
+                            .into(imChangeAvatar)
                         tvFio.text = "${currentUser.name} ${currentUser.surname}"
                         tvPhone.text = currentUser.phone
                         edTextFirstName.setText(currentUser.name)
                         edTextSurName.setText(currentUser.surname)
                         edTextCity.setText(currentUser.city)
                         edTextPhone.setText(currentUser.phone)
+
+//                        imProgressBar.isIndeterminate = false
+//                        imProgressBar.setProgress(4)
                     }
                 }
             }
