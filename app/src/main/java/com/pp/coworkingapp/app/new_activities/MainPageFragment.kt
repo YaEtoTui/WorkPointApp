@@ -58,6 +58,7 @@ class MainPageFragment : Fragment() {
         }
 
         onClickCommonText()
+        onClickBusinessText()
 
         loadListPlaces()
 
@@ -100,7 +101,11 @@ class MainPageFragment : Fragment() {
                         Picasso.get()
                             .load(currentUser.photoUser)
                             .into(binding.imAvatar)
-                        binding.tvNameAccount.text = String.format("%s %s", currentUser.name, currentUser.surname)
+                        if (currentUser.name.length + currentUser.surname.length >= 16) {
+                            binding.tvNameAccount.text = String.format("%s %s.", currentUser.name, currentUser.surname.substring(0,1))
+                        } else {
+                            binding.tvNameAccount.text = String.format("%s %s", currentUser.name, currentUser.surname)
+                        }
 //                        binding.textGeo.text = currentUser.city
 
                         userViewModel.user.value = currentUser
@@ -121,6 +126,12 @@ class MainPageFragment : Fragment() {
 
         binding.tvSettingsPlaces.setOnClickListener {
             findNavController().navigate(R.id.action_mainPageFragment_to_settingsPlacesCommonFrag)
+        }
+    }
+
+    private fun onClickBusinessText() {
+        binding.tvSettingsProfileBusiness.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPageFragment_to_settingsProfileBusinessFrag)
         }
     }
 

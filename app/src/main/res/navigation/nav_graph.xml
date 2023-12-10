@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_mainPageFragment_to_favouritesCommonFrag"
             app:destination="@id/favouritesCommonFrag" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_settingsProfileBusinessFrag"
+            app:destination="@id/settingsProfileBusinessFrag" />
     </fragment>
     <fragment
         android:id="@+id/authFragment"
@@ -74,6 +77,9 @@
         <action
             android:id="@+id/action_settingsProfileCommonFrag_to_favouritesCommonFrag"
             app:destination="@id/favouritesCommonFrag" />
+        <action
+            android:id="@+id/action_settingsProfileCommonFrag_to_settingsProfileBusinessFrag"
+            app:destination="@id/settingsProfileBusinessFrag" />
     </fragment>
 
     <fragment
@@ -106,6 +112,16 @@
         <action
             android:id="@+id/action_favouritesCommonFrag_to_settingsPlacesCommonFrag"
             app:destination="@id/settingsPlacesCommonFrag" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsProfileBusinessFrag"
+        android:name="com.pp.coworkingapp.app.new_activities.SettingsProfileBusinessFragment"
+        android:animateLayoutChanges="true"
+        tools:layout="@layout/fragment_settings_profile_business">
+        <action
+            android:id="@+id/action_settingsProfileBusinessFrag_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
     </fragment>
 
 </navigation>

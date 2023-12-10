@@ -56,4 +56,11 @@ interface MainApi {
 
     @POST("user/settings")
     suspend fun changeSettingsUser(@Header("Authorization") token: String, @Body createSettingsUserRequest: CreateSettingsUserRequest): Array<String>
+
+    @Headers("Content-Type: application/json")
+    @GET("user/place")
+    suspend fun getPlaceCoffee(@Header("Authorization") token: String, @Query("user_id") userId: Int): Array<String>
+
+    @POST("user/role")
+    suspend fun changeRole(@Header("Authorization") token: String, @Query("role_id") role_id: Int)
 }
