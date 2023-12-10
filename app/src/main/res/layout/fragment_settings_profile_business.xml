@@ -170,7 +170,7 @@
                     android:id="@+id/idTvFavorites"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="18dp"
                     android:fontFamily="@font/opensans_regular"
                     android:text="Избранное"
@@ -200,17 +200,31 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
                     android:fontFamily="@font/opensans_regular"
                     android:text="Настройки мест"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/idTvSettingsProfile" />
+
+                <TextView
+                    android:id="@+id/idPromotion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:text="Продвижение"
                     android:textColor="#000000"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/idTvSettingsProfile"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintTop_toBottomOf="@+id/idSettingsPlaces"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <View
                     android:id="@+id/idLineMenuFull"
@@ -232,9 +246,9 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:background="@drawable/line_fix_settings"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/idTvSettingsProfile"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@+id/idTvSettingsProfile" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
