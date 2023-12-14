@@ -151,12 +151,10 @@ class SettingsProfileBusinessFragment : Fragment() {
                 requireActivity().runOnUiThread {
                     //Настраиваем кнопку настройки пользователя
                     binding.idAccount.setOnClickListener {
-                        if (currentUser.roleId == 1) {
-                            if (binding.idListAccountCommon.isVisible)
-                                binding.idListAccountCommon.visibility = View.GONE
-                            else
-                                binding.idListAccountCommon.visibility = View.VISIBLE
-                        }
+                        if (binding.idListAccountBusiness.isVisible)
+                            binding.idListAccountBusiness.visibility = View.GONE
+                        else
+                            binding.idListAccountBusiness.visibility = View.VISIBLE
                     }
 
                     tokenUser = token

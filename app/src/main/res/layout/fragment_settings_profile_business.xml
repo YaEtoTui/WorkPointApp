@@ -321,7 +321,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/idListAccountCommon"
+            android:id="@+id/idListAccountBusiness"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="28dp"
@@ -331,9 +331,8 @@
             app:layout_constraintStart_toStartOf="@+id/idAccount"
             app:layout_constraintTop_toBottomOf="@+id/idAccount">
 
-
             <TextView
-                android:id="@+id/tvAddPlace"
+                android:id="@+id/tvAddPlaceBusiness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -348,7 +347,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvFavorites"
+                android:id="@+id/tvFavoritesBusiness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -356,13 +355,13 @@
                 android:text="Избранное"
                 android:textColor="#494C62"
                 android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="@+id/tvAddPlace"
+                app:layout_constraintEnd_toEndOf="@+id/tvAddPlaceBusiness"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvAddPlace"
-                app:layout_constraintTop_toBottomOf="@+id/tvAddPlace" />
+                app:layout_constraintStart_toStartOf="@+id/tvAddPlaceBusiness"
+                app:layout_constraintTop_toBottomOf="@+id/tvAddPlaceBusiness" />
 
             <TextView
-                android:id="@+id/tvSettingsProfile"
+                android:id="@+id/tvSettingsProfileBusiness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -370,13 +369,13 @@
                 android:text="Настройки профиля"
                 android:textColor="#494C62"
                 android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="@+id/tvFavorites"
+                app:layout_constraintEnd_toEndOf="@+id/tvFavoritesBusiness"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvFavorites"
-                app:layout_constraintTop_toBottomOf="@+id/tvFavorites" />
+                app:layout_constraintStart_toStartOf="@+id/tvFavoritesBusiness"
+                app:layout_constraintTop_toBottomOf="@+id/tvFavoritesBusiness" />
 
             <TextView
-                android:id="@+id/tvSettingsPlaces"
+                android:id="@+id/tvSettingsPlacesBusiness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -384,13 +383,27 @@
                 android:text="Настройки мест"
                 android:textColor="#494C62"
                 android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="@+id/tvSettingsProfile"
+                app:layout_constraintEnd_toEndOf="@+id/tvSettingsProfileBusiness"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvSettingsProfile"
-                app:layout_constraintTop_toBottomOf="@+id/tvSettingsProfile" />
+                app:layout_constraintStart_toStartOf="@+id/tvSettingsProfileBusiness"
+                app:layout_constraintTop_toBottomOf="@+id/tvSettingsProfileBusiness" />
 
             <TextView
-                android:id="@+id/tvlogOut"
+                android:id="@+id/tvPromotionBusiness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Продвижение"
+                android:textColor="#494C62"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvSettingsPlacesBusiness"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvSettingsPlacesBusiness"
+                app:layout_constraintTop_toBottomOf="@+id/tvSettingsPlacesBusiness" />
+
+            <TextView
+                android:id="@+id/tvlogOutBusiness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -400,10 +413,10 @@
                 android:textColor="#494C62"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/tvSettingsPlaces"
+                app:layout_constraintEnd_toEndOf="@+id/tvPromotionBusiness"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvSettingsPlaces"
-                app:layout_constraintTop_toBottomOf="@+id/tvSettingsPlaces"
+                app:layout_constraintStart_toStartOf="@+id/tvPromotionBusiness"
+                app:layout_constraintTop_toBottomOf="@+id/tvPromotionBusiness"
                 app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
