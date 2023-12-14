@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_mainPageFragment_to_settingsProfileBusinessFrag"
             app:destination="@id/settingsProfileBusinessFrag" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_addNewPlaceCommonFrag"
+            app:destination="@id/addNewPlaceCommonFrag" />
     </fragment>
     <fragment
         android:id="@+id/authFragment"
@@ -80,6 +83,9 @@
         <action
             android:id="@+id/action_settingsProfileCommonFrag_to_settingsProfileBusinessFrag"
             app:destination="@id/settingsProfileBusinessFrag" />
+        <action
+            android:id="@+id/action_settingsProfileCommonFrag_to_addNewPlaceCommonFrag"
+            app:destination="@id/addNewPlaceCommonFrag" />
     </fragment>
 
     <fragment
@@ -96,6 +102,9 @@
         <action
             android:id="@+id/action_settingsPlacesCommonFrag_to_favouritesCommonFrag"
             app:destination="@id/favouritesCommonFrag" />
+        <action
+            android:id="@+id/action_settingsPlacesCommonFrag_to_addNewPlaceCommonFrag"
+            app:destination="@id/addNewPlaceCommonFrag" />
     </fragment>
 
     <fragment
@@ -122,6 +131,16 @@
         <action
             android:id="@+id/action_settingsProfileBusinessFrag_to_mainPageFragment"
             app:destination="@id/mainPageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addNewPlaceCommonFrag"
+        android:name="com.pp.coworkingapp.app.new_activities.AddNewPlaceCommonFragment"
+        android:animateLayoutChanges="true"
+        tools:layout="@layout/fragment_add_new_place_common">
+        <action
+            android:id="@+id/action_addNewPlaceCommonFrag_to_settingsProfileCommonFrag"
+            app:destination="@id/settingsProfileCommonFrag" />
     </fragment>
 
 </navigation>

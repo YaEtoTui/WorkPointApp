@@ -67,6 +67,10 @@ class SettingsProfileCommonFragment : Fragment() {
             getPhoto()
         }
 
+        binding.btSearchCow.setOnClickListener {
+            findNavController().navigate(R.id.action_settingsProfileCommonFrag_to_addNewPlaceCommonFrag)
+        }
+
         binding.btSave.setOnClickListener {
             changeSettings()
         }

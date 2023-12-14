@@ -70,7 +70,7 @@ class MainPageFragment : Fragment() {
 
     private fun logout() {
         binding.tvlogOut.setOnClickListener {
-            viewModel.token.value = ""
+            viewModel.token.value = null
         }
     }
 
@@ -116,6 +116,9 @@ class MainPageFragment : Fragment() {
     }
 
     private fun onClickCommonText() {
+        binding.tvAddPlace.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPageFragment_to_addNewPlaceCommonFrag)
+        }
         binding.tvFavorites.setOnClickListener {
             findNavController().navigate(R.id.action_mainPageFragment_to_favouritesCommonFrag)
         }
