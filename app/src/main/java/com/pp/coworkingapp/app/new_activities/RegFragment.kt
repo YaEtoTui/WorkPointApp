@@ -138,16 +138,23 @@ class RegFragment : Fragment() {
                 binding.editTextPassword.setBackgroundResource(R.drawable.rectangle_3)
                 binding.tvError4.isVisible = false
 
-                registration(
-                    RegisterRequest(
-                        inputPhoneText,
-                        inputFirstNameText,
-                        inputLastNameText,
-                        roleId,
-                        "https://s3.timeweb.com/38cfe289-workpoint/грустный котик.jpeg",
-                        inputPassText
+                val redactPhone = "8${inputPhoneText.replace(Regex("[+ ()-]"), "").substring(1)}"
+                Log.i("Phone", redactPhone)
+
+                try {
+                    registration(
+                        RegisterRequest(
+                            redactPhone,
+                            inputFirstNameText,
+                            inputLastNameText,
+                            roleId,
+                            "https://s3.timeweb.com/38cfe289-workpoint/грустный котик.jpeg",
+                            inputPassText
+                        )
                     )
-                )
+                } catch (exc: Exception) {
+                    exc.message
+                }
             }
         }
     }

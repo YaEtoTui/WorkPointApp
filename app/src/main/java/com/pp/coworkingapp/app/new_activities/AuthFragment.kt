@@ -133,9 +133,13 @@ class AuthFragment : Fragment() {
                 binding.editTvPass.setBackgroundResource(R.drawable.rectangle_3)
                 binding.tvError2.isVisible = false
                 //запускаем auth()
+
+                val redactPhone: String = "8${binding.editTvPhone.text.toString().replace(Regex("[+ ()-]"), "").substring(1)}"
+                Log.i("Phone", redactPhone)
+
                 auth(
                     AuthRequest(
-                        binding.editTvPhone.text.toString(),
+                        redactPhone,
                         binding.editTvPass.text.toString()
 
                     )
