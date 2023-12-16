@@ -18,6 +18,7 @@
             android:id="@+id/idHeader"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="200dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -489,7 +490,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/idFilters"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="@+id/idSettings"
                 app:layout_constraintStart_toStartOf="@+id/idSettings"
                 app:layout_constraintTop_toBottomOf="@+id/idSettings">
@@ -532,11 +533,52 @@
                         android:focusableInTouchMode="false"
                         android:fontFamily="@font/opensans_regular"
                         android:inputType="text"
-                        android:text="По будням"
                         android:textColor="#000000"
                         android:textSize="10sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idLayoutEdFilterCoffeeType"
+                    android:layout_width="162dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rectangle_edit_settings"
+                    android:hint="Тип заведения"
+                    android:textColorHint="#661B1F3B"
+                    app:hintTextAppearance="@style/settings_profile"
+                    app:hintTextColor="#661B1F3B"
+                    app:layout_constraintEnd_toEndOf="@+id/idLayoutEdFilterTime"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdFilterTime"
+                    app:layout_constraintTop_toBottomOf="@+id/idLayoutEdFilterTime">
+
+                    <EditText
+                        android:id="@+id/edTextFilterCoffeeType"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/rectangle_edit_settings_2"
+                        android:contextClickable="false"
+                        android:cursorVisible="false"
+                        android:drawableRight="@drawable/icon_chevr_on_down"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/opensans_regular"
+                        android:inputType="text"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/idListCoffeeType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner_fon"
+                    android:layout_marginTop="44dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="@+id/idLayoutEdFilterCoffeeType"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdFilterCoffeeType"
+                    app:layout_constraintTop_toTopOf="@+id/idLayoutEdFilterCoffeeType" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/idListHours"
@@ -548,6 +590,47 @@
                     app:layout_constraintEnd_toEndOf="@+id/idLayoutEdFilterTime"
                     app:layout_constraintStart_toStartOf="@+id/idLayoutEdFilterTime"
                     app:layout_constraintTop_toTopOf="@+id/idLayoutEdFilterTime" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idLayoutEdFilterCost"
+                    android:layout_width="162dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_edit_settings"
+                    android:hint="Тип заведения"
+                    android:textColorHint="#661B1F3B"
+                    app:hintTextAppearance="@style/settings_profile"
+                    app:hintTextColor="#661B1F3B"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/idLayoutEdFilterTime"
+                    app:layout_constraintTop_toTopOf="@+id/idLayoutEdFilterTime">
+
+                    <EditText
+                        android:id="@+id/edTextFilterCost"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/rectangle_edit_settings_2"
+                        android:contextClickable="false"
+                        android:cursorVisible="false"
+                        android:drawableRight="@drawable/icon_chevr_on_down"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/opensans_regular"
+                        android:inputType="text"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/idListCost"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner_fon"
+                    android:layout_marginTop="44dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="@+id/idLayoutEdFilterCost"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdFilterCost"
+                    app:layout_constraintTop_toTopOf="@+id/idLayoutEdFilterCost" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

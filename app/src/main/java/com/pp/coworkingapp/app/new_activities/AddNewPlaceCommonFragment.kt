@@ -11,6 +11,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pp.coworkingapp.R
+import com.pp.coworkingapp.app.enum.Cafe
+import com.pp.coworkingapp.app.enum.Cost
 import com.pp.coworkingapp.app.enum.Hours
 import com.pp.coworkingapp.app.retrofit.adapter.FilterAdapter
 import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
@@ -45,23 +47,81 @@ class AddNewPlaceCommonFragment : Fragment() {
 
         mainApi = Common.retrofitService
         initCurrentPerson()
-        initRcView()
+
+        initListHours()
+        initListTypeCoffee()
+        initListCost()
+
+        binding.btBackToMainPage.setOnClickListener {
+            findNavController().navigate(com.pp.coworkingapp.R.id.action_addNewPlaceCommonFrag_to_settingsProfileCommonFrag)
+        }
+
+    }
+
+    private fun initListCost() {
+        adapter = FilterAdapter()
+        adapter.setOnButtonClickListener(object: FilterAdapter.OnButtonClickListener {
+            override fun onClick(strChoice: String) {
+                binding.edTextFilterCost.setText(strChoice)
+                binding.idListCost.visibility = View.GONE
+            }
+        })
+        binding.idListCost.layoutManager = LinearLayoutManager(context)
+        binding.idListCost.adapter = adapter
+
+        val listString: List<String> = listOf(Cost.FORFREE.cost, Cost.PAID.cost)
+
+        adapter.submitList(listString)
+        binding.edTextFilterCost.setOnClickListener {
+            if (binding.idListCost.isVisible)
+                binding.idListCost.visibility = View.GONE
+            else
+                binding.idListCost.visibility = View.VISIBLE
+        }
+    }
+
+    private fun initListTypeCoffee() {
+        adapter = FilterAdapter()
+        adapter.setOnButtonClickListener(object: FilterAdapter.OnButtonClickListener {
+            override fun onClick(strChoice: String) {
+                binding.edTextFilterCoffeeType.setText(strChoice)
+                binding.idListCoffeeType.visibility = View.GONE
+            }
+        })
+        binding.idListCoffeeType.layoutManager = LinearLayoutManager(context)
+        binding.idListCoffeeType.adapter = adapter
+
+        val listString: List<String> = listOf(Cafe.CAFE.cafe, Cafe.ANTICAFE.cafe, Cafe.WORKROOM.cafe)
+
+        adapter.submitList(listString)
+        binding.edTextFilterCoffeeType.setOnClickListener {
+            if (binding.idListCoffeeType.isVisible)
+                binding.idListCoffeeType.visibility = View.GONE
+            else
+                binding.idListCoffeeType.visibility = View.VISIBLE
+        }
+    }
+
+    private fun initListHours() {
+        adapter = FilterAdapter()
+        adapter.setOnButtonClickListener(object: FilterAdapter.OnButtonClickListener {
+            override fun onClick(strChoice: String) {
+                binding.edTextFilterTime.setText(strChoice)
+                binding.idListHours.visibility = View.GONE
+            }
+        })
+        binding.idListHours.layoutManager = LinearLayoutManager(context)
+        binding.idListHours.adapter = adapter
 
         val listString: List<String> = listOf(Hours.AROUNDCLOCK.hours, Hours.ONWEEKDAYS.hours, Hours.EVERYDAY.hours)
 
         adapter.submitList(listString)
-        binding.edTextFilterTime.setText(listString[0])
         binding.edTextFilterTime.setOnClickListener {
             if (binding.idListHours.isVisible)
                 binding.idListHours.visibility = View.GONE
             else
                 binding.idListHours.visibility = View.VISIBLE
         }
-
-        binding.btBackToMainPage.setOnClickListener {
-            findNavController().navigate(com.pp.coworkingapp.R.id.action_addNewPlaceCommonFrag_to_settingsProfileCommonFrag)
-        }
-
     }
 
     private fun initCurrentPerson() {
@@ -90,17 +150,5 @@ class AddNewPlaceCommonFragment : Fragment() {
                 }
             }
         }
-    }
-
-    private fun initRcView() {
-        adapter = FilterAdapter()
-        adapter.setOnButtonClickListener(object: FilterAdapter.OnButtonClickListener {
-            override fun onClick(strChoice: String) {
-                binding.edTextFilterTime.setText(strChoice)
-                binding.idListHours.visibility = View.GONE
-            }
-        })
-        binding.idListHours.layoutManager = LinearLayoutManager(context)
-        binding.idListHours.adapter = adapter
     }
 }
