@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.api.MainApi
+import com.pp.coworkingapp.app.retrofit.domain.Common
 import com.pp.coworkingapp.app.retrofit.domain.request.AuthRequest
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.databinding.FragmentAuthBinding
@@ -45,7 +46,7 @@ class AuthFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initRetrofit()
+        mainApi = Common.retrofitService
 
         //маска для ввода телефона
         val mask = MaskImpl.createTerminated(PredefinedSlots.RUS_PHONE_NUMBER)
@@ -85,19 +86,19 @@ class AuthFragment : Fragment() {
         }
     }
 
-    private fun initRetrofit() {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
-
-        val client = OkHttpClient.Builder()
-            .addInterceptor(interceptor)
-            .build()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://www.1506815-cq40245.tw1.ru").client(client)
-            .addConverterFactory(GsonConverterFactory.create()).build()
-        mainApi = retrofit.create(MainApi::class.java)
-    }
+//    private fun initRetrofit() {
+//        val interceptor = HttpLoggingInterceptor()
+//        interceptor.level = HttpLoggingInterceptor.Level.BODY
+//
+//        val client = OkHttpClient.Builder()
+//            .addInterceptor(interceptor)
+//            .build()
+//
+//        val retrofit = Retrofit.Builder()
+//            .baseUrl("https://www.1506815-cq40245.tw1.ru").client(client)
+//            .addConverterFactory(GsonConverterFactory.create()).build()
+//        mainApi = retrofit.create(MainApi::class.java)
+//    }
 
     private fun checkEditsText() {
         binding.btSignIn.setOnClickListener() {

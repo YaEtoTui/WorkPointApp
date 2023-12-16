@@ -17,6 +17,7 @@ import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.adapter.ReviewAdapter
 import com.pp.coworkingapp.app.retrofit.adapter.TagAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
+import com.pp.coworkingapp.app.retrofit.domain.Common
 import com.pp.coworkingapp.app.retrofit.domain.request.CreateReviewRequest
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
@@ -70,7 +71,7 @@ class PlaceCardFragment : Fragment() {
         mapView = binding.imCarteGeo
         imageProvider = ImageProvider.fromResource(this.context, R.drawable.icon_location_2)
 
-        initRetrofit()
+        mainApi = Common.retrofitService
         initCurrentPerson()
         initPlaceCard()
         initReview()
@@ -104,20 +105,6 @@ class PlaceCardFragment : Fragment() {
         mapView.onStart()
         MapKitFactory.getInstance().onStart()
         super.onStart()
-    }
-
-    private fun initRetrofit() {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
-
-        val client = OkHttpClient.Builder()
-            .addInterceptor(interceptor)
-            .build()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://www.1506815-cq40245.tw1.ru").client(client)
-            .addConverterFactory(GsonConverterFactory.create()).build()
-        mainApi = retrofit.create(MainApi::class.java)
     }
 
     private fun initPlaceCard() {

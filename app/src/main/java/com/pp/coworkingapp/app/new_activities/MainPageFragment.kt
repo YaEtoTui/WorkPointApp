@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
+import com.pp.coworkingapp.app.retrofit.domain.Common
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
@@ -49,7 +50,7 @@ class MainPageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRetrofit()
+        mainApi = Common.retrofitService
         initRcView()
         searchText()
 
@@ -164,20 +165,6 @@ class MainPageFragment : Fragment() {
             adapter.submitList(listCurrent)
             binding.edSearch.text = null
         }
-    }
-
-    private fun initRetrofit() {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
-
-        val client = OkHttpClient.Builder()
-            .addInterceptor(interceptor)
-            .build()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://www.1506815-cq40245.tw1.ru").client(client)
-            .addConverterFactory(GsonConverterFactory.create()).build()
-        mainApi = retrofit.create(MainApi::class.java)
     }
 
     private fun initRcView() {
