@@ -650,14 +650,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvReviews" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="242dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/btRatingBar">
-
-                </com.google.android.material.textfield.TextInputLayout>
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idTextReview"
                     android:layout_width="match_parent"

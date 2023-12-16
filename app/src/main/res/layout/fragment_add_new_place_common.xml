@@ -9,16 +9,18 @@
     android:fillViewport="true"
     android:scrollbars="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="#FBFBF5">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/idHeader"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -85,8 +87,8 @@
                 android:id="@+id/imClock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/icon_bell_large"
                 app:layout_constraintBottom_toBottomOf="@+id/workpoint"
                 app:layout_constraintStart_toEndOf="@+id/workpoint"
@@ -96,8 +98,8 @@
                 android:id="@+id/idAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="12dp"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imClock"
                 app:layout_constraintStart_toEndOf="@+id/imClock"
                 app:layout_constraintTop_toTopOf="@+id/imClock">
@@ -140,14 +142,270 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <Button
+                android:id="@+id/btBackToMainPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="#00FFFFFF"
+                android:drawableLeft="@drawable/icon_left_large_2"
+                android:drawablePadding="3dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="@string/back_main_page"
+                android:textColor="#A61B1F3B"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="@+id/idHeader"
+                app:layout_constraintTop_toBottomOf="@+id/line_2" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/idSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btBackToMainPage">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/idMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="28dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/idTvFavorites"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="18dp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:text="Избранное"
+                        android:textColor="#000000"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/idTvSettingsProfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:text="Настройки профиля"
+                        android:textColor="#000000"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/idTvFavorites" />
+
+                    <TextView
+                        android:id="@+id/idSettingsPlaces"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="13dp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:text="Настройки мест"
+                        android:textColor="#000000"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/idTvSettingsProfile"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <View
+                        android:id="@+id/idLineMenuFull"
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="4dp"
+                        android:background="@drawable/line_settings"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/idTvSettingsProfile"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/idLineFix"
+                        android:layout_width="1dp"
+                        android:layout_height="27dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/line_fix_settings"
+                        app:layout_constraintBottom_toBottomOf="@+id/idSettingsPlaces"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/idSettingsPlaces" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tvCardDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginLeft="23dp"
+                    android:fontFamily="@font/opensans_bold"
+                    android:text="Карточка заведения"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toEndOf="@+id/idMenu"
+                    app:layout_constraintTop_toTopOf="@+id/idMenu" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idLayoutEdNameInstitution"
+                    android:layout_width="162dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/rectangle_edit_settings"
+                    android:hint="Название заведения"
+                    android:textColorHint="#661B1F3B"
+                    app:hintTextAppearance="@style/settings_profile"
+                    app:hintTextColor="#661B1F3B"
+                    app:layout_constraintStart_toStartOf="@+id/tvCardDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCardDesc">
+
+                    <EditText
+                        android:id="@+id/edTextNameInstitution"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/rectangle_edit_settings_2"
+                        android:fontFamily="@font/opensans_regular"
+                        android:inputType="text"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idLayoutEdCity"
+                    android:layout_width="162dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/rectangle_edit_settings"
+                    android:textColorHint="#661B1F3B"
+                    app:hintTextAppearance="@style/settings_profile"
+                    app:hintTextColor="#661B1F3B"
+                    app:layout_constraintEnd_toEndOf="@+id/idLayoutEdNameInstitution"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdNameInstitution"
+                    app:layout_constraintTop_toBottomOf="@+id/idLayoutEdNameInstitution">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edTextCity"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/rectangle_edit_settings_2"
+                        android:fontFamily="@font/opensans_regular"
+                        android:inputType="text"
+                        android:hint="Город"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idLayoutEdArea"
+                    android:layout_width="162dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/rectangle_edit_settings"
+                    android:hint="Район"
+                    android:textColorHint="#661B1F3B"
+                    app:hintTextAppearance="@style/settings_profile"
+                    app:hintTextColor="#661B1F3B"
+                    app:layout_constraintEnd_toEndOf="@+id/idLayoutEdCity"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdCity"
+                    app:layout_constraintTop_toBottomOf="@+id/idLayoutEdCity">
+
+                    <EditText
+                        android:id="@+id/edTextArea"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/rectangle_edit_settings_2"
+                        android:fontFamily="@font/opensans_regular"
+                        android:inputType="text"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idLayoutEdAddress"
+                    android:layout_width="162dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/rectangle_edit_settings"
+                    android:hint="Адрес"
+                    android:textColorHint="#661B1F3B"
+                    app:hintTextAppearance="@style/settings_profile"
+                    app:hintTextColor="#661B1F3B"
+                    app:layout_constraintEnd_toEndOf="@+id/idLayoutEdArea"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdArea"
+                    app:layout_constraintTop_toBottomOf="@+id/idLayoutEdArea">
+
+                    <EditText
+                        android:id="@+id/edTextAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/rectangle_edit_settings_2"
+                        android:fontFamily="@font/opensans_regular"
+                        android:inputType="text"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idLayoutEdDesc"
+                    android:layout_width="354dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="29dp"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/rectangle_edit_settings"
+                    android:hint="Описание"
+                    android:textColorHint="#661B1F3B"
+                    app:hintTextAppearance="@style/settings_profile"
+                    app:hintTextColor="#661B1F3B"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/idMenu"
+                    app:layout_constraintTop_toBottomOf="@+id/idLayoutEdAddress">
+
+                    <EditText
+                        android:id="@+id/edTextDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_edit_settings_2"
+                        android:fontFamily="@font/open_sans_light"
+                        android:gravity="top|left"
+                        android:inputType="text"
+                        android:minHeight="160dp"
+                        android:paddingLeft="17dp"
+                        android:paddingTop="19dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="31dp"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/idListAccountCommon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/rectangle_account_common"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/idAccount"
                 app:layout_constraintTop_toBottomOf="@+id/idAccount">
 
@@ -228,128 +486,74 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <Button
-            android:id="@+id/btBackToMainPage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="#00FFFFFF"
-            android:drawableLeft="@drawable/icon_left_large_2"
-            android:drawablePadding="3dp"
-            android:fontFamily="@font/opensans_regular"
-            android:text="@string/back_main_page"
-            android:textColor="#A61B1F3B"
-            android:textSize="10sp"
-            app:layout_constraintStart_toStartOf="@+id/idHeader"
-            app:layout_constraintTop_toBottomOf="@+id/idHeader" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/idSettings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btBackToMainPage">
-
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/idMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="28dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:id="@+id/idFilters"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                app:layout_constraintEnd_toEndOf="@+id/idSettings"
+                app:layout_constraintStart_toStartOf="@+id/idSettings"
+                app:layout_constraintTop_toBottomOf="@+id/idSettings">
 
                 <TextView
-                    android:id="@+id/idTvFavorites"
+                    android:id="@+id/tvFilters"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="18dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:text="Избранное"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/open_sans_semi_bold"
                     android:textColor="#000000"
                     android:textSize="10sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                    android:text="Фильтры"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/idTvSettingsProfile"
-                    android:layout_width="wrap_content"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idLayoutEdFilterTime"
+                    android:layout_width="162dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:text="Настройки профиля"
-                    android:textColor="#000000"
-                    android:textSize="10sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/idTvFavorites" />
+                    android:layout_marginTop="17dp"
+                    android:background="@drawable/rectangle_edit_settings"
+                    android:hint="Часы работы"
+                    android:textColorHint="#661B1F3B"
+                    app:hintTextAppearance="@style/settings_profile"
+                    app:hintTextColor="#661B1F3B"
+                    app:layout_constraintStart_toStartOf="@+id/tvFilters"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFilters">
 
-                <TextView
-                    android:id="@+id/idSettingsPlaces"
-                    android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/edTextFilterTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/rectangle_edit_settings_2"
+                        android:contextClickable="false"
+                        android:cursorVisible="false"
+                        android:drawableRight="@drawable/icon_chevr_on_down"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/opensans_regular"
+                        android:inputType="text"
+                        android:text="По будням"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/idListHours"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="13dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:text="Настройки мест"
-                    android:textColor="#000000"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/idTvSettingsProfile"
-                    app:layout_constraintVertical_bias="1.0" />
-
-                <View
-                    android:id="@+id/idLineMenuFull"
-                    android:layout_width="1dp"
-                    android:layout_height="0dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="4dp"
-                    android:background="@drawable/line_settings"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/idTvSettingsProfile"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                    android:id="@+id/idLineFix"
-                    android:layout_width="1dp"
-                    android:layout_height="27dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/line_fix_settings"
-                    app:layout_constraintBottom_toBottomOf="@+id/idSettingsPlaces"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/idSettingsPlaces" />
+                    android:visibility="gone"
+                    android:layout_marginTop="44dp"
+                    android:background="@drawable/spinner_fon"
+                    app:layout_constraintEnd_toEndOf="@+id/idLayoutEdFilterTime"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdFilterTime"
+                    app:layout_constraintTop_toTopOf="@+id/idLayoutEdFilterTime" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/tvPlacesText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="23dp"
-                android:layout_marginTop="15dp"
-                android:text="Карточка заведения"
-                android:fontFamily="@font/opensans_bold"
-                android:textSize="10sp"
-                android:textColor="#000000"
-                app:layout_constraintStart_toEndOf="@+id/idMenu"
-                app:layout_constraintTop_toTopOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
 </ScrollView>
 

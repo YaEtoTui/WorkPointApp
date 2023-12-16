@@ -130,4 +130,11 @@
         <item name="android:textColor">#661B1F3B</item>
         <item name="fontFamily">@font/opensans_regular</item>
     </style>
+
+    <string-array name="catNames">
+        <item>Барсик</item>
+        <item>Мурзик</item>
+        <item>Васька</item>
+        <item>Рыжик</item>
+    </string-array>
 </resources>
