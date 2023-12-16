@@ -634,6 +634,75 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/idDopTags"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idFilters">
+
+
+                <TextView
+                    android:id="@+id/tvDop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="29dp"
+                    android:text="Дополнительно"
+                    android:fontFamily="@font/open_sans_semi_bold"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/idRectangle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginRight="28dp"
+                    android:background="@drawable/rectangle_present"
+                    android:minHeight="108dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvDop"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDop" />
+
+                <TextView
+                    android:id="@+id/tvTags"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Тэги"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="9sp"
+                    android:textColor="#661B1F3B"
+                    app:layout_constraintStart_toStartOf="@+id/idRectangle"
+                    app:layout_constraintTop_toTopOf="@+id/idRectangle" />
+
+                <ImageView
+                    android:id="@+id/imIconClick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="@+id/idRectangle"
+                    app:layout_constraintTop_toTopOf="@+id/idRectangle"
+                    app:srcCompat="@drawable/icon_chevr_on_down" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/idListTagsClick"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_account_common"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="@+id/imIconClick"
+                    app:layout_constraintTop_toBottomOf="@+id/imIconClick" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>

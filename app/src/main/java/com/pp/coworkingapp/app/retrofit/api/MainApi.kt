@@ -7,6 +7,7 @@ import com.pp.coworkingapp.app.retrofit.domain.response.CurrentUser
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.app.retrofit.domain.response.PlaceWithTags
 import com.pp.coworkingapp.app.retrofit.domain.response.Review
+import com.pp.coworkingapp.app.retrofit.domain.response.Tag
 import com.pp.coworkingapp.app.retrofit.domain.response.Token_Access
 import com.pp.coworkingapp.app.retrofit.domain.response.User
 import okhttp3.Call
@@ -63,4 +64,7 @@ interface MainApi {
 
     @POST("user/role")
     suspend fun changeRole(@Header("Authorization") token: String, @Query("role_id") role_id: Int)
+
+    @GET("places/get_tags")
+    suspend fun getTagsAll(): List<Tag>
 }

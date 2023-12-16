@@ -15,9 +15,10 @@ import com.pp.coworkingapp.app.enum.Cafe
 import com.pp.coworkingapp.app.enum.Cost
 import com.pp.coworkingapp.app.enum.Hours
 import com.pp.coworkingapp.app.retrofit.adapter.FilterAdapter
-import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
+import com.pp.coworkingapp.app.retrofit.adapter.TagsAddNewPlaceCardAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
+import com.pp.coworkingapp.app.retrofit.domain.response.Tag
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.databinding.FragmentAddNewPlaceCommonBinding
 import com.squareup.picasso.Picasso
@@ -33,6 +34,7 @@ class AddNewPlaceCommonFragment : Fragment() {
     private lateinit var mainApi: MainApi
     private lateinit var tokenUser: String
     private lateinit var adapter : FilterAdapter
+    private lateinit var adapterTags : TagsAddNewPlaceCardAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,11 +53,30 @@ class AddNewPlaceCommonFragment : Fragment() {
         initListHours()
         initListTypeCoffee()
         initListCost()
+        initListTags()
 
         binding.btBackToMainPage.setOnClickListener {
-            findNavController().navigate(com.pp.coworkingapp.R.id.action_addNewPlaceCommonFrag_to_settingsProfileCommonFrag)
+            findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_settingsProfileCommonFrag)
         }
+    }
 
+    private fun initListTags() {
+        adapterTags = TagsAddNewPlaceCardAdapter()
+        binding.idListTagsClick.layoutManager = LinearLayoutManager(context)
+        binding.idListTagsClick.adapter = adapterTags
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val listTags: List<Tag> = mainApi.getTagsAll()
+            requireActivity().runOnUiThread {
+                adapterTags.submitList(listTags)
+                binding.imIconClick.setOnClickListener {
+                    if (binding.idListTagsClick.isVisible)
+                        binding.idListTagsClick.visibility = View.GONE
+                    else
+                        binding.idListTagsClick.visibility = View.VISIBLE
+                }
+            }
+        }
     }
 
     private fun initListCost() {
