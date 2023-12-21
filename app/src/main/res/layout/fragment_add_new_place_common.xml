@@ -18,7 +18,7 @@
             android:id="@+id/idHeader"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="200dp"
+            android:paddingBottom="58dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -636,9 +636,9 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/idDopTags"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:clickable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/idFilters">
@@ -648,10 +648,10 @@
                     android:id="@+id/tvDop"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="29dp"
-                    android:text="Дополнительно"
+                    android:layout_marginTop="15dp"
                     android:fontFamily="@font/open_sans_semi_bold"
+                    android:text="Дополнительно"
                     android:textColor="#000000"
                     android:textSize="10sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -673,24 +673,180 @@
                     android:id="@+id/tvTags"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Тэги"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/opensans_regular"
-                    android:textSize="9sp"
+                    android:text="Тэги"
                     android:textColor="#661B1F3B"
+                    android:textSize="9sp"
                     app:layout_constraintStart_toStartOf="@+id/idRectangle"
                     app:layout_constraintTop_toTopOf="@+id/idRectangle" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/idListTagsPlaceCard"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="@+id/idRectangle"
+                    app:layout_constraintEnd_toEndOf="@+id/idRectangle"
+                    app:layout_constraintStart_toStartOf="@+id/idRectangle"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTags"
+                    tools:listitem="@layout/item_tags_click_add_new_place_card"/>
 
                 <ImageView
                     android:id="@+id/imIconClick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="11dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="11dp"
                     app:layout_constraintEnd_toEndOf="@+id/idRectangle"
                     app:layout_constraintTop_toTopOf="@+id/idRectangle"
                     app:srcCompat="@drawable/icon_chevr_on_down" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/btParking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="19dp"
+                    android:button="@drawable/radiobutton_place_card"
+                    android:checked="false"
+                    android:fontFamily="@font/opensans_regular"
+                    android:paddingLeft="7dp"
+                    android:text="Парковка"
+                    android:textAppearance="@style/text_radio"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton"
+                    app:layout_constraintStart_toStartOf="@+id/idRectangle"
+                    app:layout_constraintTop_toBottomOf="@+id/idRectangle" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/btRestZone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:button="@drawable/radiobutton_place_card"
+                    android:checked="false"
+                    android:fontFamily="@font/opensans_regular"
+                    android:paddingLeft="7dp"
+                    android:text="Зона отдыха"
+                    android:textAppearance="@style/text_radio"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton"
+                    app:layout_constraintStart_toStartOf="@+id/btParking"
+                    app:layout_constraintTop_toBottomOf="@+id/btParking" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/btConferenceHall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:button="@drawable/radiobutton_place_card"
+                    android:checked="false"
+                    android:fontFamily="@font/opensans_regular"
+                    android:paddingLeft="7dp"
+                    android:text="Наличие конференц-зала"
+                    android:textAppearance="@style/text_radio"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton"
+                    app:layout_constraintStart_toStartOf="@+id/btRestZone"
+                    app:layout_constraintTop_toBottomOf="@+id/btRestZone" />
+
+                <TextView
+                    android:id="@+id/tvContacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/open_sans_semi_bold"
+                    android:text="Контакты"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toStartOf="@+id/idListTagsPlaceCard"
+                    app:layout_constraintTop_toBottomOf="@+id/btConferenceHall" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idLayoutEdPhone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="29dp"
+                    android:background="@drawable/rectangle_edit_settings"
+                    android:hint="Телефон заведения"
+                    android:textColorHint="#661B1F3B"
+                    app:hintTextAppearance="@style/settings_profile"
+                    app:hintTextColor="#661B1F3B"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvContacts"
+                    app:layout_constraintTop_toBottomOf="@+id/tvContacts">
+
+                    <EditText
+                        android:id="@+id/edTextPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/rectangle_edit_settings_2"
+                        android:fontFamily="@font/opensans_regular"
+                        android:inputType="text"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idLayoutEdMail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginRight="29dp"
+                    android:background="@drawable/rectangle_edit_settings"
+                    android:hint="Электронная очередь"
+                    android:textColorHint="#661B1F3B"
+                    app:hintTextAppearance="@style/settings_profile"
+                    app:hintTextColor="#661B1F3B"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdPhone"
+                    app:layout_constraintTop_toBottomOf="@+id/idLayoutEdPhone">
+
+                    <EditText
+                        android:id="@+id/edTextMail"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/rectangle_edit_settings_2"
+                        android:fontFamily="@font/opensans_regular"
+                        android:inputType="text"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idLayoutEdSite"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginRight="29dp"
+                    android:background="@drawable/rectangle_edit_settings"
+                    android:hint="Сайт"
+                    android:textColorHint="#661B1F3B"
+                    app:hintTextAppearance="@style/settings_profile"
+                    app:hintTextColor="#661B1F3B"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdMail"
+                    app:layout_constraintTop_toBottomOf="@+id/idLayoutEdMail">
+
+                    <EditText
+                        android:id="@+id/edTextSite"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/rectangle_edit_settings_2"
+                        android:fontFamily="@font/opensans_regular"
+                        android:inputType="text"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/idListTagsClick"
@@ -702,6 +858,110 @@
                     app:layout_constraintTop_toBottomOf="@+id/imIconClick" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/idPhotoPart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idDopTags">
+
+
+                <TextView
+                    android:id="@+id/tvPhotoText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/open_sans_semi_bold"
+                    android:text="Фотографии"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvDescTextPhoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/open_sans_light"
+                    android:text="Добавьте минимум 3 фотографии"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toStartOf="@+id/tvPhotoText"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPhotoText" />
+
+                <View
+                    android:id="@+id/idPhoto1"
+                    android:layout_width="0dp"
+                    android:layout_height="195dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/rectangle_photo_add_card"
+                    app:layout_constraintEnd_toStartOf="@+id/idPhoto2"
+                    app:layout_constraintStart_toStartOf="@+id/tvDescTextPhoto"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDescTextPhoto" />
+
+                <View
+                    android:id="@+id/idPhoto2"
+                    android:layout_width="108dp"
+                    android:layout_height="91dp"
+                    android:layout_marginRight="29dp"
+                    android:background="@drawable/rectangle_photo_add_card"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/idPhoto1" />
+
+                <View
+                    android:id="@+id/idPhoto3"
+                    android:layout_width="108dp"
+                    android:layout_height="91dp"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/rectangle_photo_add_card"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/idPhoto2"
+                    app:layout_constraintStart_toStartOf="@+id/idPhoto2"
+                    app:layout_constraintTop_toBottomOf="@+id/idPhoto2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/btSaveNewCard"
+                android:layout_width="135dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="51dp"
+                android:layout_marginLeft="30dp"
+                android:backgroundTint="@drawable/button_bg_color"
+                android:elevation="10dp"
+                android:fontFamily="@font/open_sans_semi_bold"
+                android:stateListAnimator="@drawable/button_elevation"
+                android:text="Сохранить"
+                android:textColor="@drawable/button_text_color"
+                android:textSize="10sp"
+                app:cornerRadius="10dp"
+                app:layout_constraintStart_toStartOf="@+id/idPhotoPart"
+                app:layout_constraintTop_toBottomOf="@+id/idPhotoPart" />
+
+            <Button
+                android:id="@+id/btDeleteNewCard"
+                android:layout_width="135dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="25dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:backgroundTint="@drawable/button_bg_color_white"
+                android:elevation="10dp"
+                android:fontFamily="@font/open_sans_semi_bold"
+                android:stateListAnimator="@drawable/button_elevation"
+                android:text="Удалить"
+                android:textColor="@drawable/button_text_color"
+                android:textSize="10sp"
+                app:cornerRadius="10dp"
+                app:layout_constraintStart_toEndOf="@+id/btSaveNewCard"
+                app:layout_constraintTop_toTopOf="@+id/btSaveNewCard" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

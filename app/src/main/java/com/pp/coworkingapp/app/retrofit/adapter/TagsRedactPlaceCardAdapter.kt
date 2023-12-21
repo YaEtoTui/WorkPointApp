@@ -10,21 +10,21 @@ import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.domain.response.Tag
 import com.pp.coworkingapp.databinding.ItemTagsClickAddNewPlaceCardBinding
 
-class TagsAddNewPlaceCardAdapter: ListAdapter<Tag, TagsAddNewPlaceCardAdapter.Holder>(Comparator()){
+class TagsRedactPlaceCardAdapter: ListAdapter<Tag, TagsRedactPlaceCardAdapter.Holder>(Comparator()){
 
-    private lateinit var onButtonClickListener: OnButtonClickListener
+//    private lateinit var onButtonClickListener: OnButtonClickListener
 
     class Holder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val binding = ItemTagsClickAddNewPlaceCardBinding.bind(view)
 
-        fun bind(tag: Tag, onButtonClickListener: OnButtonClickListener) = with(binding) {
+        fun bind(tag: Tag) = with(binding) {
             tvTag.text = tag.name
-            imCrest.visibility = View.INVISIBLE
+            imCrest.visibility = View.VISIBLE
 
-            idTagClick.setOnClickListener {
-                onButtonClickListener.onClick(tag)
-            }
+//            idTagClick.setOnClickListener {
+//                onButtonClickListener.onClick(tag)
+//            }
         }
     }
 
@@ -46,14 +46,14 @@ class TagsAddNewPlaceCardAdapter: ListAdapter<Tag, TagsAddNewPlaceCardAdapter.Ho
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(getItem(position), onButtonClickListener)
+        holder.bind(getItem(position))
     }
 
-    interface OnButtonClickListener {
-        fun onClick(tag: Tag)
-    }
-
-    fun setOnButtonClickListener(listener: OnButtonClickListener) {
-        onButtonClickListener = listener
-    }
+//    interface OnButtonClickListener {
+//        fun onClick(tag: Tag)
+//    }
+//
+//    fun setOnButtonClickListener(listener: OnButtonClickListener) {
+//        onButtonClickListener = listener
+//    }
 }

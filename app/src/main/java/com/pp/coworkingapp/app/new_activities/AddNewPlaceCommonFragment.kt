@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.enum.Cafe
@@ -16,6 +17,7 @@ import com.pp.coworkingapp.app.enum.Cost
 import com.pp.coworkingapp.app.enum.Hours
 import com.pp.coworkingapp.app.retrofit.adapter.FilterAdapter
 import com.pp.coworkingapp.app.retrofit.adapter.TagsAddNewPlaceCardAdapter
+import com.pp.coworkingapp.app.retrofit.adapter.TagsRedactPlaceCardAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
 import com.pp.coworkingapp.app.retrofit.domain.response.Tag
@@ -35,6 +37,8 @@ class AddNewPlaceCommonFragment : Fragment() {
     private lateinit var tokenUser: String
     private lateinit var adapter : FilterAdapter
     private lateinit var adapterTags : TagsAddNewPlaceCardAdapter
+    private lateinit var adapterTagAdd : TagsRedactPlaceCardAdapter
+    private lateinit var listTagsPlaceCard: ArrayList<Tag>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,6 +51,8 @@ class AddNewPlaceCommonFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        listTagsPlaceCard = ArrayList()
+
         mainApi = Common.retrofitService
         initCurrentPerson()
 
@@ -55,6 +61,14 @@ class AddNewPlaceCommonFragment : Fragment() {
         initListCost()
         initListTags()
 
+//        binding.btParking.setOnClickListener {
+//            if (!binding.btParking.isChecked) {
+//                binding.btParking.isChecked = false
+//            } else {
+//                binding.btParking.isChecked = true
+//            }
+//        }
+
         binding.btBackToMainPage.setOnClickListener {
             findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_settingsProfileCommonFrag)
         }
@@ -62,6 +76,20 @@ class AddNewPlaceCommonFragment : Fragment() {
 
     private fun initListTags() {
         adapterTags = TagsAddNewPlaceCardAdapter()
+
+        adapterTagAdd = TagsRedactPlaceCardAdapter()
+        binding.idListTagsPlaceCard.layoutManager = GridLayoutManager(context, 3)
+        binding.idListTagsPlaceCard.adapter = adapterTagAdd
+
+        adapterTags.setOnButtonClickListener(object: TagsAddNewPlaceCardAdapter.OnButtonClickListener {
+            override fun onClick(tag: Tag) {
+                listTagsPlaceCard.add(tag)
+                Log.i("CountTags", listTagsPlaceCard.size.toString())
+
+                adapterTagAdd.submitList(listTagsPlaceCard.toList())
+            }
+        })
+
         binding.idListTagsClick.layoutManager = LinearLayoutManager(context)
         binding.idListTagsClick.adapter = adapterTags
 
