@@ -893,7 +893,7 @@
                     app:layout_constraintStart_toStartOf="@+id/tvPhotoText"
                     app:layout_constraintTop_toBottomOf="@+id/tvPhotoText" />
 
-                <View
+                <ImageView
                     android:id="@+id/idPhoto1"
                     android:layout_width="0dp"
                     android:layout_height="195dp"
@@ -904,7 +904,7 @@
                     app:layout_constraintStart_toStartOf="@+id/tvDescTextPhoto"
                     app:layout_constraintTop_toBottomOf="@+id/tvDescTextPhoto" />
 
-                <View
+                <ImageView
                     android:id="@+id/idPhoto2"
                     android:layout_width="108dp"
                     android:layout_height="91dp"
@@ -913,7 +913,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/idPhoto1" />
 
-                <View
+                <ImageView
                     android:id="@+id/idPhoto3"
                     android:layout_width="108dp"
                     android:layout_height="91dp"
@@ -923,6 +923,36 @@
                     app:layout_constraintEnd_toEndOf="@+id/idPhoto2"
                     app:layout_constraintStart_toStartOf="@+id/idPhoto2"
                     app:layout_constraintTop_toBottomOf="@+id/idPhoto2" />
+
+                <ImageView
+                    android:id="@+id/imPlus1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/idPhoto1"
+                    app:layout_constraintEnd_toEndOf="@+id/idPhoto1"
+                    app:layout_constraintStart_toStartOf="@+id/idPhoto1"
+                    app:layout_constraintTop_toTopOf="@+id/idPhoto1"
+                    app:srcCompat="@drawable/icon_plus" />
+
+                <ImageView
+                    android:id="@+id/imPlus2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/idPhoto2"
+                    app:layout_constraintEnd_toEndOf="@+id/idPhoto2"
+                    app:layout_constraintStart_toStartOf="@+id/idPhoto2"
+                    app:layout_constraintTop_toTopOf="@+id/idPhoto2"
+                    app:srcCompat="@drawable/icon_plus" />
+
+                <ImageView
+                    android:id="@+id/imPlus3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/idPhoto3"
+                    app:layout_constraintEnd_toEndOf="@+id/idPhoto3"
+                    app:layout_constraintStart_toStartOf="@+id/idPhoto3"
+                    app:layout_constraintTop_toTopOf="@+id/idPhoto3"
+                    app:srcCompat="@drawable/icon_plus" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

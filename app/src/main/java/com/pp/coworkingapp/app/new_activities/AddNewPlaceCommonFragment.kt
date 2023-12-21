@@ -1,16 +1,22 @@
 package com.pp.coworkingapp.app.new_activities
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.enum.Cafe
 import com.pp.coworkingapp.app.enum.Cost
@@ -39,6 +45,7 @@ class AddNewPlaceCommonFragment : Fragment() {
     private lateinit var adapterTags : TagsAddNewPlaceCardAdapter
     private lateinit var adapterTagAdd : TagsRedactPlaceCardAdapter
     private lateinit var listTagsPlaceCard: ArrayList<Tag>
+    private lateinit var listPhotoPlaceCard: Array<Uri?>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,6 +59,7 @@ class AddNewPlaceCommonFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         listTagsPlaceCard = ArrayList()
+        listPhotoPlaceCard = arrayOfNulls<Uri?>(size = 3)
 
         mainApi = Common.retrofitService
         initCurrentPerson()
@@ -60,6 +68,7 @@ class AddNewPlaceCommonFragment : Fragment() {
         initListTypeCoffee()
         initListCost()
         initListTags()
+        initListPhoto()
 
 //        binding.btParking.setOnClickListener {
 //            if (!binding.btParking.isChecked) {
@@ -72,6 +81,59 @@ class AddNewPlaceCommonFragment : Fragment() {
         binding.btBackToMainPage.setOnClickListener {
             findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_settingsProfileCommonFrag)
         }
+    }
+
+    private fun initListPhoto() {
+        binding.apply {
+            idPhoto1.setOnClickListener {
+                getPhoto(PICK_IMAGE1)
+            }
+            idPhoto2.setOnClickListener {
+                getPhoto(PICK_IMAGE2)
+            }
+            idPhoto3.setOnClickListener {
+                getPhoto(PICK_IMAGE3)
+            }
+        }
+    }
+
+    private val PICK_IMAGE1 = 1
+    private val PICK_IMAGE2 = 2
+    private val PICK_IMAGE3 = 3
+
+    private fun getPhoto(pickImage: Int) {
+        val photoPickerIntent = Intent(Intent.ACTION_PICK)
+        photoPickerIntent.type = "image/*"
+        startActivityForResult(photoPickerIntent, pickImage)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == PICK_IMAGE1 && resultCode == Activity.RESULT_OK) {
+            Log.i("Photo1", "Тут")
+            val imageUri = data?.data
+            listPhotoPlaceCard[0] = imageUri
+            loadPhoto(imageUri, binding.idPhoto1)
+        } else if (requestCode == PICK_IMAGE2 && resultCode == Activity.RESULT_OK) {
+            val imageUri = data?.data
+            listPhotoPlaceCard[1] = imageUri
+            loadPhoto(imageUri, binding.idPhoto2)
+        } else if (requestCode == PICK_IMAGE3 && resultCode == Activity.RESULT_OK) {
+            val imageUri = data?.data
+            listPhotoPlaceCard[2] = imageUri
+            loadPhoto(imageUri, binding.idPhoto3)
+        }
+    }
+
+    private fun loadPhoto(imageUri: Uri?, view: ImageView) {
+        Glide.with(this)
+            .load(imageUri)
+            .transform(RoundedCorners(20))
+            .centerCrop()
+            .error(R.drawable.ic_launcher_foreground)
+            .placeholder(R.drawable.ic_launcher_foreground)
+            .into(view)
     }
 
     private fun initListTags() {
