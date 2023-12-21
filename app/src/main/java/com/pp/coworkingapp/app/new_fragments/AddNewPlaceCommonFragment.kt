@@ -64,6 +64,9 @@ class AddNewPlaceCommonFragment : Fragment() {
         mainApi = Common.retrofitService
         initCurrentPerson()
 
+        initMenu()
+        initSettings()
+
         initListHours()
         initListTypeCoffee()
         initListCost()
@@ -80,6 +83,34 @@ class AddNewPlaceCommonFragment : Fragment() {
 
         binding.btBackToMainPage.setOnClickListener {
             findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_settingsProfileCommonFrag)
+        }
+    }
+
+    private fun initSettings() {
+        binding.apply {
+            tvFavorites.setOnClickListener {
+                findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_favouritesCommonFrag)
+            }
+            tvSettingsProfile.setOnClickListener {
+                findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_settingsProfileCommonFrag)
+            }
+            tvSettingsPlaces.setOnClickListener {
+                findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_settingsPlacesCommonFrag)
+            }
+        }
+    }
+
+    private fun initMenu() {
+        binding.apply {
+            idTvFavorites.setOnClickListener {
+                findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_favouritesCommonFrag)
+            }
+            idTvSettingsProfile.setOnClickListener {
+                findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_settingsProfileCommonFrag)
+            }
+            idSettingsPlaces.setOnClickListener {
+                findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_settingsPlacesCommonFrag)
+            }
         }
     }
 

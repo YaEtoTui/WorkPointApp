@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.api.MainApi
@@ -43,6 +44,8 @@ class AuthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         mainApi = Common.retrofitService
+
+        Log.i("Token", viewModel.token.value.toString())
 
         //маска для ввода телефона
         val mask = MaskImpl.createTerminated(PredefinedSlots.RUS_PHONE_NUMBER)

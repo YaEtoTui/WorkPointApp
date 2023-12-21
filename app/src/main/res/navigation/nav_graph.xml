@@ -141,6 +141,12 @@
         <action
             android:id="@+id/action_addNewPlaceCommonFrag_to_settingsProfileCommonFrag"
             app:destination="@id/settingsProfileCommonFrag" />
+        <action
+            android:id="@+id/action_addNewPlaceCommonFrag_to_favouritesCommonFrag"
+            app:destination="@id/favouritesCommonFrag" />
+        <action
+            android:id="@+id/action_addNewPlaceCommonFrag_to_settingsPlacesCommonFrag"
+            app:destination="@id/settingsPlacesCommonFrag" />
     </fragment>
 
 </navigation>

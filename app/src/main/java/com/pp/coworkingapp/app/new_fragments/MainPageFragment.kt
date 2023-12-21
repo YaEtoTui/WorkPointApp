@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pp.coworkingapp.R
@@ -67,7 +68,7 @@ class MainPageFragment : Fragment() {
 
     private fun logout() {
         binding.tvlogOut.setOnClickListener {
-            viewModel.token.value = null
+            findNavController().navigate(R.id.action_mainPageFragment_to_authFragment)
         }
     }
 
