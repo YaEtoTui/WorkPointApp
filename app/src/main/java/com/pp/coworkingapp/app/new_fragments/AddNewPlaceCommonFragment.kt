@@ -140,15 +140,25 @@ class AddNewPlaceCommonFragment : Fragment() {
         adapterTags = TagsAddNewPlaceCardAdapter()
 
         adapterTagAdd = TagsRedactPlaceCardAdapter()
+        adapterTagAdd.setOnButtonClickListener(object: TagsRedactPlaceCardAdapter.OnButtonClickListener {
+            override fun onClick(tag: Tag) {
+                listTagsPlaceCard.remove(tag)
+                Log.i("CountTags", listTagsPlaceCard.size.toString())
+
+                adapterTagAdd.submitList(listTagsPlaceCard.toList())
+            }
+        })
         binding.idListTagsPlaceCard.layoutManager = GridLayoutManager(context, 3)
         binding.idListTagsPlaceCard.adapter = adapterTagAdd
 
         adapterTags.setOnButtonClickListener(object: TagsAddNewPlaceCardAdapter.OnButtonClickListener {
             override fun onClick(tag: Tag) {
-                listTagsPlaceCard.add(tag)
-                Log.i("CountTags", listTagsPlaceCard.size.toString())
+                if (!listTagsPlaceCard.contains(tag)) {
+                    listTagsPlaceCard.add(tag)
+                    Log.i("CountTags", listTagsPlaceCard.size.toString())
 
-                adapterTagAdd.submitList(listTagsPlaceCard.toList())
+                    adapterTagAdd.submitList(listTagsPlaceCard.toList())
+                }
             }
         })
 

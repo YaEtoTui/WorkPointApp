@@ -12,19 +12,19 @@ import com.pp.coworkingapp.databinding.ItemTagsClickAddNewPlaceCardBinding
 
 class TagsRedactPlaceCardAdapter: ListAdapter<Tag, TagsRedactPlaceCardAdapter.Holder>(Comparator()){
 
-//    private lateinit var onButtonClickListener: OnButtonClickListener
+    private lateinit var onButtonClickListener: OnButtonClickListener
 
     class Holder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val binding = ItemTagsClickAddNewPlaceCardBinding.bind(view)
 
-        fun bind(tag: Tag) = with(binding) {
+        fun bind(tag: Tag, onButtonClickListener: OnButtonClickListener) = with(binding) {
             tvTag.text = tag.name
             imCrest.visibility = View.VISIBLE
 
-//            idTagClick.setOnClickListener {
-//                onButtonClickListener.onClick(tag)
-//            }
+            imCrest.setOnClickListener {
+                onButtonClickListener.onClick(tag)
+            }
         }
     }
 
@@ -46,14 +46,14 @@ class TagsRedactPlaceCardAdapter: ListAdapter<Tag, TagsRedactPlaceCardAdapter.Ho
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), onButtonClickListener)
     }
 
-//    interface OnButtonClickListener {
-//        fun onClick(tag: Tag)
-//    }
-//
-//    fun setOnButtonClickListener(listener: OnButtonClickListener) {
-//        onButtonClickListener = listener
-//    }
+    interface OnButtonClickListener {
+        fun onClick(tag: Tag)
+    }
+
+    fun setOnButtonClickListener(listener: OnButtonClickListener) {
+        onButtonClickListener = listener
+    }
 }
