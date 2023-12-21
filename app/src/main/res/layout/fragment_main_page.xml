@@ -155,134 +155,115 @@
             app:layout_constraintVertical_bias="0.333" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/idFiltersTable"
-            android:layout_width="175dp"
-            android:layout_height="200dp"
-            android:background="@drawable/filters_table"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@+id/btFilters"
-            app:layout_constraintStart_toStartOf="@+id/btFilters"
-            app:layout_constraintTop_toBottomOf="@+id/btFilters">
+            android:id="@+id/idSearchDir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line_2">
 
-            <TextView
-                android:id="@+id/idName1"
-                android:layout_width="63dp"
-                android:layout_height="12dp"
-                android:layout_marginLeft="26dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/open_sans_semi_bold"
-                android:text="Район"
-                android:textSize="10dp"
+            <View
+                android:id="@+id/rectangle_1"
+                android:layout_width="353dp"
+                android:layout_height="101dp"
+                android:background="@drawable/rectangle_1"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/text_cities"
+                android:layout_width="190dp"
+                android:layout_height="18dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="83dp"
+                android:layout_marginRight="80dp"
+                android:layout_marginBottom="67dp"
+                android:gravity="top"
+                android:text="@string/text_cities"
+                android:textAppearance="@style/text_cities"
+                app:layout_constraintBottom_toBottomOf="@+id/rectangle_1"
+                app:layout_constraintEnd_toEndOf="@+id/rectangle_1"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="@+id/rectangle_1" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edSearch"
+                android:layout_width="353dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/search"
+                android:drawableLeft="@drawable/icon_search_2"
+                android:drawablePadding="14.37dp"
+                android:elevation="10dp"
+                android:ems="10"
+                android:gravity="center|left"
+                android:hint="@string/ed_hint_search"
+                android:inputType="text"
+                android:paddingLeft="14.01dp"
+                android:textAppearance="@style/ed_hint_search"
+                app:layout_constraintEnd_toEndOf="@+id/rectangle_1"
+                app:layout_constraintStart_toStartOf="@+id/rectangle_1"
+                app:layout_constraintTop_toBottomOf="@+id/rectangle_1"
+                app:layout_wrapBehaviorInParent="horizontal_only" />
+
+            <Button
+                android:id="@+id/btFilters"
+                android:layout_width="135dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginRight="203dp"
+                android:backgroundTint="@drawable/button_bg_color_filters"
+                android:elevation="20dp"
+                android:stateListAnimator="@drawable/button_elevation"
+                android:text="@string/text_filters"
+                android:textAppearance="@style/text_filters"
+                android:textColor="@drawable/button_text_color"
+                app:cornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/edSearch"
+                app:layout_constraintHorizontal_bias="0.105"
+                app:layout_constraintStart_toStartOf="@+id/edSearch"
+                app:layout_constraintTop_toBottomOf="@+id/edSearch" />
+
+            <Button
+                android:id="@+id/btSearchCow"
+                android:layout_width="135dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="201.18dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginRight="16.82dp"
+                android:backgroundTint="@drawable/button_bg_color"
+                android:elevation="10dp"
+                android:stateListAnimator="@drawable/button_elevation"
+                android:text="@string/text_search_cow"
+                android:textAppearance="@style/text_search_cow"
+                android:textColor="@drawable/button_text_color"
+                app:cornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/edSearch"
+                app:layout_constraintHorizontal_bias="0.885"
+                app:layout_constraintStart_toStartOf="@+id/edSearch"
+                app:layout_constraintTop_toBottomOf="@+id/edSearch" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <View
-            android:id="@+id/rectangle_1"
-            android:layout_width="353dp"
-            android:layout_height="101dp"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="23dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/rectangle_1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/workpoint" />
-
-        <TextView
-            android:id="@+id/text_cities"
-            android:layout_width="190dp"
-            android:layout_height="18dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="83dp"
-            android:layout_marginRight="80dp"
-            android:layout_marginBottom="67dp"
-            android:gravity="top"
-            android:text="@string/text_cities"
-            android:textAppearance="@style/text_cities"
-            app:layout_constraintBottom_toBottomOf="@+id/rectangle_1"
-            app:layout_constraintEnd_toEndOf="@+id/rectangle_1"
-            app:layout_constraintHorizontal_bias="0.503"
-            app:layout_constraintStart_toStartOf="@+id/rectangle_1" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edSearch"
-            android:layout_width="353dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/search"
-            android:drawableLeft="@drawable/icon_search_2"
-            android:drawablePadding="14.37dp"
-            android:elevation="10dp"
-            android:ems="10"
-            android:gravity="center|left"
-            android:hint="@string/ed_hint_search"
-            android:inputType="text"
-            android:paddingLeft="14.01dp"
-            app:layout_wrapBehaviorInParent="horizontal_only"
-            android:textAppearance="@style/ed_hint_search"
-            app:layout_constraintEnd_toEndOf="@+id/rectangle_1"
-            app:layout_constraintStart_toStartOf="@+id/rectangle_1"
-            app:layout_constraintTop_toBottomOf="@+id/rectangle_1" />
-
-        <Button
-            android:id="@+id/btFilters"
-            android:layout_width="135dp"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginRight="203dp"
-            android:backgroundTint="@drawable/button_bg_color_filters"
-            android:elevation="20dp"
-            android:stateListAnimator="@drawable/button_elevation"
-            android:text="@string/text_filters"
-            android:textAppearance="@style/text_filters"
-            android:textColor="@drawable/button_text_color"
-            app:cornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/edSearch"
-            app:layout_constraintHorizontal_bias="0.105"
-            app:layout_constraintStart_toStartOf="@+id/edSearch"
-            app:layout_constraintTop_toBottomOf="@+id/edSearch" />
-
-        <Button
-            android:id="@+id/btSearchCow"
-            android:layout_width="135dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="201.18dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginRight="16.82dp"
-            android:backgroundTint="@drawable/button_bg_color"
-            android:elevation="10dp"
-            android:stateListAnimator="@drawable/button_elevation"
-            android:text="@string/text_search_cow"
-            android:textAppearance="@style/text_search_cow"
-            android:textColor="@drawable/button_text_color"
-            app:cornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/edSearch"
-            app:layout_constraintHorizontal_bias="0.885"
-            app:layout_constraintStart_toStartOf="@+id/edSearch"
-            app:layout_constraintTop_toBottomOf="@+id/edSearch" />
 
         <TextView
             android:id="@+id/tvCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginRight="80dp"
             android:fontFamily="@font/opensans_bold"
             android:text="Найдено: x"
             android:textColor="#CC1B1F3B"
             android:textSize="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/btFilters"
-            app:layout_constraintStart_toStartOf="@+id/btFilters"
-            app:layout_constraintTop_toBottomOf="@+id/btFilters" />
-
+            app:layout_constraintStart_toStartOf="@+id/rcView"
+            app:layout_constraintTop_toBottomOf="@+id/idSearchDir" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcView"
@@ -291,8 +272,8 @@
             android:layout_marginTop="22.68dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/rectangle_1"
-            app:layout_constraintStart_toStartOf="@+id/rectangle_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCount"
             app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/list_item_places" />
