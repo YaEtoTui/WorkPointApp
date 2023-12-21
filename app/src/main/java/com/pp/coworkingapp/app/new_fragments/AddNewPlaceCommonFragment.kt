@@ -1,4 +1,4 @@
-package com.pp.coworkingapp.app.new_activities
+package com.pp.coworkingapp.app.new_fragments
 
 import android.app.Activity
 import android.content.Intent

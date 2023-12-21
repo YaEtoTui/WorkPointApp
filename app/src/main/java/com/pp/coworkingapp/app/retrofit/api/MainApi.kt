@@ -2,6 +2,7 @@ package com.pp.coworkingapp.app.retrofit.api
 
 import com.pp.coworkingapp.app.retrofit.domain.request.CreateReviewRequest
 import com.pp.coworkingapp.app.retrofit.domain.request.CreateSettingsUserRequest
+import com.pp.coworkingapp.app.retrofit.domain.request.Payload
 import com.pp.coworkingapp.app.retrofit.domain.request.RegisterRequest
 import com.pp.coworkingapp.app.retrofit.domain.response.CurrentUser
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
@@ -67,4 +68,8 @@ interface MainApi {
 
     @GET("places/get_tags")
     suspend fun getTagsAll(): List<Tag>
+
+    @POST("places/upload_place")
+    @Multipart
+    suspend fun loadNewPlaceInDB(@Header("Authorization") token: String, @Part payload: Payload, @Part file: MultipartBody.Part): Response<String>
 }

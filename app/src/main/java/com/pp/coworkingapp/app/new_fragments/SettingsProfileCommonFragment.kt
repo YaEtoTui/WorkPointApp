@@ -1,4 +1,4 @@
-package com.pp.coworkingapp.app.new_activities
+package com.pp.coworkingapp.app.new_fragments
 
 import android.app.Activity
 import android.content.Context
@@ -19,7 +19,6 @@ import com.pp.coworkingapp.app.retrofit.domain.Common
 import com.pp.coworkingapp.app.retrofit.domain.request.CreateSettingsUserRequest
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.UserViewModel
-import com.pp.coworkingapp.databinding.FragmentSettingsProfileBusinessBinding
 import com.pp.coworkingapp.databinding.FragmentSettingsProfileCommonBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
@@ -27,17 +26,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 
 
-class SettingsProfileBusinessFragment : Fragment() {
+class SettingsProfileCommonFragment : Fragment() {
 
-    private lateinit var binding: FragmentSettingsProfileBusinessBinding
+    private lateinit var binding: FragmentSettingsProfileCommonBinding
     private val viewModel: AuthViewModel by activityViewModels()
     private lateinit var mainApi: MainApi
     private lateinit var tokenUser: String
@@ -47,7 +42,7 @@ class SettingsProfileBusinessFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSettingsProfileBusinessBinding.inflate(inflater, container, false)
+        binding = FragmentSettingsProfileCommonBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -56,17 +51,37 @@ class SettingsProfileBusinessFragment : Fragment() {
 
         mainApi = Common.retrofitService
         initCurrentPerson()
+        initSettings()
+        initMenu()
+        initButtonChangeRole()
 
         binding.btBackToMainPage.setOnClickListener {
-            findNavController().navigate(R.id.action_settingsProfileBusinessFrag_to_mainPageFragment)
+            findNavController().navigate(R.id.action_settingsProfileCommonFrag_to_mainPageFragment)
         }
 
         binding.idCircleChangeAvatar.setOnClickListener {
             getPhoto()
         }
 
+        binding.btSearchCow.setOnClickListener {
+            findNavController().navigate(R.id.action_settingsProfileCommonFrag_to_addNewPlaceCommonFrag)
+        }
+
         binding.btSave.setOnClickListener {
             changeSettings()
+        }
+    }
+
+    private fun initButtonChangeRole() {
+        binding.btChangeOnBusiness.setOnClickListener {
+            viewModel.token.observe(viewLifecycleOwner) { token ->
+                CoroutineScope(Dispatchers.IO).launch {
+                    val response = mainApi.changeRole("Bearer $token", 2)
+                    requireActivity().runOnUiThread {
+                        findNavController().navigate(R.id.action_settingsProfileCommonFrag_to_settingsProfileBusinessFrag)
+                    }
+                }
+            }
         }
     }
 
@@ -143,39 +158,64 @@ class SettingsProfileBusinessFragment : Fragment() {
         return file
     }
 
+    private fun initMenu() {
+        binding.apply {
+            idTvFavorites.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsProfileCommonFrag_to_favouritesCommonFrag)
+            }
+            idSettingsPlaces.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsProfileCommonFrag_to_settingsPlacesCommonFrag)
+            }
+        }
+    }
+
+    private fun initSettings() {
+        binding.apply {
+            tvFavorites.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsProfileCommonFrag_to_favouritesCommonFrag)
+            }
+            tvSettingsPlaces.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsProfileCommonFrag_to_settingsPlacesCommonFrag)
+            }
+        }
+    }
+
     private fun initCurrentPerson() {
         //создание текущего user
         viewModel.token.observe(viewLifecycleOwner) { token ->
             CoroutineScope(Dispatchers.IO).launch {
                 Log.i("Token", token.toString())
                 val currentUser = mainApi.checkUser("Bearer $token")
+                val numberCoffee = mainApi.getPlaceCoffee("Bearer $token", currentUser.id)
                 requireActivity().runOnUiThread {
                     //Настраиваем кнопку настройки пользователя
                     binding.idAccount.setOnClickListener {
-                        if (binding.idListAccountBusiness.isVisible)
-                            binding.idListAccountBusiness.visibility = View.GONE
-                        else
-                            binding.idListAccountBusiness.visibility = View.VISIBLE
+                        if (currentUser.roleId == 1) {
+                            if (binding.idListAccountCommon.isVisible)
+                                binding.idListAccountCommon.visibility = View.GONE
+                            else
+                                binding.idListAccountCommon.visibility = View.VISIBLE
+                        }
                     }
+                    if (numberCoffee.isNotEmpty())
+                        binding.tvCoffeeNumber.text = "$numberCoffee/5"
+                    else
+                        binding.tvCoffeeNumber.text = "0/5"
 
                     tokenUser = token
                     userViewModel.user.value = currentUser
                     binding.apply {
                         Picasso.get().load(currentUser.photoUser).into(binding.imAvatar)
+                        binding.tvNameAccount.text =
+                            String.format("%s %s", currentUser.name, currentUser.surname)
 //                        binding.idTextCity.text = currentUser.city
-                        tvFio.text = String.format("%s %s", currentUser.name, currentUser.surname)
 
                         Picasso
                             .get()
                             .load(currentUser.photoUser)
                             .into(imChangeAvatar)
 
-                        if (currentUser.name.length + currentUser.surname.length >= 16) {
-                            tvNameAccount.text = String.format("%s %s.", currentUser.name, currentUser.surname.substring(0,1))
-                        } else {
-                            tvNameAccount.text = String.format("%s %s", currentUser.name, currentUser.surname)
-                        }
-
+                        tvFio.text = "${currentUser.name} ${currentUser.surname}"
                         tvPhone.text = currentUser.phone
                         edTextFirstName.setText(currentUser.name)
                         edTextSurName.setText(currentUser.surname)

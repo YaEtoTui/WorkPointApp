@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainPageFragment"
-        android:name="com.pp.coworkingapp.app.new_activities.MainPageFragment"
+        android:name="com.pp.coworkingapp.app.new_fragments.MainPageFragment"
         android:animateLayoutChanges="true"
         tools:layout="@layout/fragment_main_page">
 
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/authFragment"
-        android:name="com.pp.coworkingapp.app.new_activities.AuthFragment"
+        android:name="com.pp.coworkingapp.app.new_fragments.AuthFragment"
         android:animateLayoutChanges="true"
         tools:layout="@layout/fragment_auth">
 
@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/regFragment"
-        android:name="com.pp.coworkingapp.app.new_activities.RegFragment"
+        android:name="com.pp.coworkingapp.app.new_fragments.RegFragment"
         android:animateLayoutChanges="true"
         tools:layout="@layout/fragment_reg">
         <action
@@ -58,7 +58,7 @@
 
     <fragment
         android:id="@+id/placeCardFragment"
-        android:name="com.pp.coworkingapp.app.new_activities.PlaceCardFragment"
+        android:name="com.pp.coworkingapp.app.new_fragments.PlaceCardFragment"
         android:animateLayoutChanges="true"
         tools:layout="@layout/fragment_place_card">
         <action
@@ -68,7 +68,7 @@
 
     <fragment
         android:id="@+id/settingsProfileCommonFrag"
-        android:name="com.pp.coworkingapp.app.new_activities.SettingsProfileCommonFragment"
+        android:name="com.pp.coworkingapp.app.new_fragments.SettingsProfileCommonFragment"
         android:animateLayoutChanges="true"
         tools:layout="@layout/fragment_settings_profile_common">
         <action
@@ -90,7 +90,7 @@
 
     <fragment
         android:id="@+id/settingsPlacesCommonFrag"
-        android:name="com.pp.coworkingapp.app.new_activities.SettingsPlacesCommonFragment"
+        android:name="com.pp.coworkingapp.app.new_fragments.SettingsPlacesCommonFragment"
         android:animateLayoutChanges="true"
         tools:layout="@layout/fragment_settings_places_common">
         <action
@@ -109,7 +109,7 @@
 
     <fragment
         android:id="@+id/favouritesCommonFrag"
-        android:name="com.pp.coworkingapp.app.new_activities.FavouritesCommonFragment"
+        android:name="com.pp.coworkingapp.app.new_fragments.FavouritesCommonFragment"
         android:animateLayoutChanges="true"
         tools:layout="@layout/fragment_favourites_common">
         <action
@@ -125,7 +125,7 @@
 
     <fragment
         android:id="@+id/settingsProfileBusinessFrag"
-        android:name="com.pp.coworkingapp.app.new_activities.SettingsProfileBusinessFragment"
+        android:name="com.pp.coworkingapp.app.new_fragments.SettingsProfileBusinessFragment"
         android:animateLayoutChanges="true"
         tools:layout="@layout/fragment_settings_profile_business">
         <action
@@ -135,7 +135,7 @@
 
     <fragment
         android:id="@+id/addNewPlaceCommonFrag"
-        android:name="com.pp.coworkingapp.app.new_activities.AddNewPlaceCommonFragment"
+        android:name="com.pp.coworkingapp.app.new_fragments.AddNewPlaceCommonFragment"
         android:animateLayoutChanges="true"
         tools:layout="@layout/fragment_add_new_place_common">
         <action
