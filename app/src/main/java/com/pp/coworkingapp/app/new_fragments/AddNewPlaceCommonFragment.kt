@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.view.isVisible
+import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -73,6 +74,8 @@ class AddNewPlaceCommonFragment : Fragment() {
         initListTags()
         initListPhoto()
 
+        saveCurrentPlaceCard()
+
         binding.btDeleteNewCard.setOnClickListener {
             findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_settingsPlacesCommonFrag)
         }
@@ -87,6 +90,130 @@ class AddNewPlaceCommonFragment : Fragment() {
 
         binding.btBackToMainPage.setOnClickListener {
             findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_mainPageFragment)
+        }
+    }
+
+    private fun saveCurrentPlaceCard() {
+        binding.btSaveNewCard.setOnClickListener {
+            binding.apply {
+                val editTextNamePlace: String = edTextNameInstitution.text.toString()
+                val editTextCity: String = edTextCity.text.toString()
+                val editTextArea: String = edTextArea.text.toString()
+                val editTextAddress: String = edTextAddress.text.toString()
+
+                val editTextDesc: String = edTextDesc.text.toString()
+
+                val editTextFilterTime: String = edTextFilterTime.text.toString()
+                val editTextCoffeeType: String = edTextFilterCoffeeType.text.toString()
+                val editTextCost: String = edTextFilterCost.text.toString()
+
+                val countListTags: Int = idListTagsPlaceCard.size
+
+                val editTextPhone: String = edTextPhone.text.toString()
+                val editTextMail: String = edTextMail.text.toString()
+                val editTextSite: String = edTextSite.text.toString()
+
+                if (editTextNamePlace.isEmpty() || editTextCity.isEmpty() || editTextArea.isEmpty() || editTextAddress.isEmpty()
+                    || editTextDesc.isEmpty()
+                    || editTextFilterTime.isEmpty() || editTextCoffeeType.isEmpty() || editTextCost.isEmpty()
+                    || countListTags == 0
+                    || editTextPhone.isEmpty() || editTextMail.isEmpty() || editTextSite.isEmpty()) {
+
+                    if (editTextPhone.isEmpty()) {
+                        idLayoutEdPhone.setBackgroundResource(R.drawable.error_red_add_new_place_card)
+                        tvErrorPhone.visibility = View.VISIBLE
+                    }
+                    if (editTextMail.isEmpty()) {
+                        idLayoutEdMail.setBackgroundResource(R.drawable.error_red_add_new_place_card)
+                        tvErrorMail.visibility = View.VISIBLE
+                    }
+                    if (editTextSite.isEmpty()) {
+                        idLayoutEdSite.setBackgroundResource(R.drawable.error_red_add_new_place_card)
+                        tvErrorSite.visibility = View.VISIBLE
+                    }
+
+                    if (editTextNamePlace.isEmpty()) {
+                        idLayoutEdNameInstitution.setBackgroundResource(R.drawable.error_red_add_new_place_card)
+                        tvErrorNameInstitution.visibility = View.VISIBLE
+                    }
+                    if (editTextCity.isEmpty()) {
+                        idLayoutEdCity.setBackgroundResource(R.drawable.error_red_add_new_place_card)
+                        tvErrorCity.visibility = View.VISIBLE
+                    }
+                    if (editTextArea.isEmpty()) {
+                        idLayoutEdArea.setBackgroundResource(R.drawable.error_red_add_new_place_card)
+                        tvErrorArea.visibility = View.VISIBLE
+                    }
+                    if (editTextAddress.isEmpty()) {
+                        idLayoutEdAddress.setBackgroundResource(R.drawable.error_red_add_new_place_card)
+                        tvErrorAddress.visibility = View.VISIBLE
+                    }
+
+                    if (editTextDesc.isEmpty()) {
+                        idLayoutEdDesc.setBackgroundResource(R.drawable.error_red_add_new_place_card)
+                        tvErrorDesc.visibility = View.VISIBLE
+                    }
+
+                    if (editTextFilterTime.isEmpty()) {
+                        idLayoutEdFilterTime.setBackgroundResource(R.drawable.error_red_add_new_place_card)
+                        tvErrorFilterTime.visibility = View.VISIBLE
+                    }
+                    if (editTextCoffeeType.isEmpty()) {
+                        idLayoutEdFilterCoffeeType.setBackgroundResource(R.drawable.error_red_add_new_place_card)
+                        tvErrorFilterCoffeeType.visibility = View.VISIBLE
+                    }
+                    if (editTextCost.isEmpty()) {
+                        idLayoutEdFilterCost.setBackgroundResource(R.drawable.error_red_add_new_place_card)
+                        tvErrorFilterCost.visibility = View.VISIBLE
+                    }
+
+                    if (countListTags == 0) {
+                        idRectangle.setBackgroundResource(R.drawable.error_red_add_new_place_card)
+                        tvErrorTags.visibility = View.VISIBLE
+                    }
+                } else {
+                    idLayoutEdNameInstitution.setBackgroundResource(R.drawable.rectangle_edit_settings)
+                    tvErrorNameInstitution.visibility = View.INVISIBLE
+
+                    idLayoutEdCity.setBackgroundResource(R.drawable.rectangle_edit_settings)
+                    tvErrorCity.visibility = View.INVISIBLE
+
+                    idLayoutEdArea.setBackgroundResource(R.drawable.rectangle_edit_settings)
+                    tvErrorArea.visibility = View.INVISIBLE
+
+                    idLayoutEdAddress.setBackgroundResource(R.drawable.rectangle_edit_settings)
+                    tvErrorAddress.visibility = View.INVISIBLE
+
+
+                    idLayoutEdDesc.setBackgroundResource(R.drawable.rectangle_edit_settings)
+                    tvErrorDesc.visibility = View.INVISIBLE
+
+
+                    idLayoutEdFilterTime.setBackgroundResource(R.drawable.rectangle_edit_settings)
+                    tvErrorFilterTime.visibility = View.INVISIBLE
+
+                    idLayoutEdFilterCoffeeType.setBackgroundResource(R.drawable.rectangle_edit_settings)
+                    tvErrorFilterCoffeeType.visibility = View.INVISIBLE
+
+                    idLayoutEdFilterCost.setBackgroundResource(R.drawable.rectangle_edit_settings)
+                    tvErrorFilterCost.visibility = View.INVISIBLE
+
+                    idRectangle.setBackgroundResource(R.drawable.rectangle_present)
+                    tvErrorTags.visibility = View.INVISIBLE
+
+
+                    idLayoutEdPhone.setBackgroundResource(R.drawable.rectangle_edit_settings)
+                    tvErrorPhone.visibility = View.INVISIBLE
+
+                    idLayoutEdMail.setBackgroundResource(R.drawable.rectangle_edit_settings)
+                    tvErrorMail.visibility = View.INVISIBLE
+
+                    idLayoutEdSite.setBackgroundResource(R.drawable.rectangle_edit_settings)
+                    tvErrorSite.visibility = View.INVISIBLE
+                }
+            }
+
+
         }
     }
 

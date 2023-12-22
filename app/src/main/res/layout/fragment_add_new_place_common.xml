@@ -285,6 +285,17 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:id="@+id/tvErrorNameInstitution"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/errors_empty"
+                    android:visibility="invisible"
+                    android:textAppearance="@style/errors_empty"
+                    app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdNameInstitution"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdNameInstitution" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/idLayoutEdCity"
                     android:layout_width="162dp"
@@ -310,6 +321,17 @@
                         android:textSize="10sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tvErrorCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/errors_empty"
+                    android:visibility="invisible"
+                    android:textAppearance="@style/errors_empty"
+                    app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdCity"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdCity" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/idLayoutEdArea"
@@ -337,6 +359,17 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:id="@+id/tvErrorArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/errors_empty"
+                    android:visibility="invisible"
+                    android:textAppearance="@style/errors_empty"
+                    app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdArea"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdArea" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/idLayoutEdAddress"
                     android:layout_width="162dp"
@@ -362,6 +395,17 @@
                         android:textSize="10sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tvErrorAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/errors_empty"
+                    android:visibility="invisible"
+                    android:textAppearance="@style/errors_empty"
+                    app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdAddress"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdAddress" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/idLayoutEdDesc"
@@ -396,6 +440,17 @@
                         android:textSize="10sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tvErrorDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/errors_empty"
+                    android:visibility="invisible"
+                    android:textAppearance="@style/errors_empty"
+                    app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdDesc"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdDesc" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -538,6 +593,17 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:id="@+id/tvErrorFilterTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/errors_empty"
+                    android:visibility="invisible"
+                    android:textAppearance="@style/errors_empty"
+                    app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdFilterTime"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdFilterTime" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/idLayoutEdFilterCoffeeType"
                     android:layout_width="162dp"
@@ -568,6 +634,17 @@
                         android:textSize="10sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tvErrorFilterCoffeeType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/errors_empty"
+                    android:visibility="invisible"
+                    android:textAppearance="@style/errors_empty"
+                    app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdFilterCoffeeType"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdFilterCoffeeType" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/idListCoffeeType"
@@ -620,6 +697,17 @@
                         android:textSize="10sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tvErrorFilterCost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/errors_empty"
+                    android:visibility="invisible"
+                    android:textAppearance="@style/errors_empty"
+                    app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdFilterCost"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdFilterCost" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/idListCost"
@@ -679,6 +767,18 @@
                     android:text="Тэги"
                     android:textColor="#661B1F3B"
                     android:textSize="9sp"
+                    app:layout_constraintStart_toStartOf="@+id/idRectangle"
+                    app:layout_constraintTop_toTopOf="@+id/idRectangle" />
+
+                <TextView
+                    android:id="@+id/tvErrorTags"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="36dp"
+                    android:text="@string/errors_empty"
+                    android:textAppearance="@style/errors_empty"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvTags"
                     app:layout_constraintStart_toStartOf="@+id/idRectangle"
                     app:layout_constraintTop_toTopOf="@+id/idRectangle" />
 
@@ -794,6 +894,17 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:id="@+id/tvErrorPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/errors_empty"
+                    android:visibility="invisible"
+                    android:textAppearance="@style/errors_empty"
+                    app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdPhone"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdPhone" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/idLayoutEdMail"
                     android:layout_width="0dp"
@@ -801,7 +912,7 @@
                     android:layout_marginTop="9dp"
                     android:layout_marginRight="29dp"
                     android:background="@drawable/rectangle_edit_settings"
-                    android:hint="Электронная очередь"
+                    android:hint="Электронная почта"
                     android:textColorHint="#661B1F3B"
                     app:hintTextAppearance="@style/settings_profile"
                     app:hintTextColor="#661B1F3B"
@@ -820,6 +931,17 @@
                         android:textSize="10sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tvErrorMail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/errors_empty"
+                    android:visibility="invisible"
+                    android:textAppearance="@style/errors_empty"
+                    app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdMail"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdMail" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/idLayoutEdSite"
@@ -847,6 +969,17 @@
                         android:textSize="10sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tvErrorSite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/errors_empty"
+                    android:visibility="invisible"
+                    android:textAppearance="@style/errors_empty"
+                    app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdSite"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdSite" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/idListTagsClick"
