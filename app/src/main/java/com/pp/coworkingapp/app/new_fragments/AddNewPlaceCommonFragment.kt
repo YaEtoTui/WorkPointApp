@@ -73,6 +73,10 @@ class AddNewPlaceCommonFragment : Fragment() {
         initListTags()
         initListPhoto()
 
+        binding.btDeleteNewCard.setOnClickListener {
+            findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_settingsPlacesCommonFrag)
+        }
+
 //        binding.btParking.setOnClickListener {
 //            if (!binding.btParking.isChecked) {
 //                binding.btParking.isChecked = false
@@ -82,7 +86,7 @@ class AddNewPlaceCommonFragment : Fragment() {
 //        }
 
         binding.btBackToMainPage.setOnClickListener {
-            findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_settingsProfileCommonFrag)
+            findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_mainPageFragment)
         }
     }
 

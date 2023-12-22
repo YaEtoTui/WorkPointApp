@@ -121,6 +121,9 @@
         <action
             android:id="@+id/action_favouritesCommonFrag_to_settingsPlacesCommonFrag"
             app:destination="@id/settingsPlacesCommonFrag" />
+        <action
+            android:id="@+id/action_favouritesCommonFrag_to_addNewPlaceCommonFrag"
+            app:destination="@id/addNewPlaceCommonFrag" />
     </fragment>
 
     <fragment
@@ -147,6 +150,9 @@
         <action
             android:id="@+id/action_addNewPlaceCommonFrag_to_settingsPlacesCommonFrag"
             app:destination="@id/settingsPlacesCommonFrag" />
+        <action
+            android:id="@+id/action_addNewPlaceCommonFrag_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
     </fragment>
 
 </navigation>

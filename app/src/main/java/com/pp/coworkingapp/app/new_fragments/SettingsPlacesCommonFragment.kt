@@ -88,6 +88,9 @@ class SettingsPlacesCommonFragment : Fragment() {
 
     private fun initSettings() {
         binding.apply {
+            binding.tvAddPlace.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsPlacesCommonFrag_to_addNewPlaceCommonFrag)
+            }
             tvAddPlace.setOnClickListener {
                 findNavController().navigate(R.id.action_settingsPlacesCommonFrag_to_addNewPlaceCommonFrag)
             }

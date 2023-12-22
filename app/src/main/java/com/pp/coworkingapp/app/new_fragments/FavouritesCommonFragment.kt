@@ -89,6 +89,9 @@ class FavouritesCommonFragment : Fragment() {
 
     private fun initSettings() {
         binding.apply {
+            tvAddPlace.setOnClickListener {
+                findNavController().navigate(R.id.action_favouritesCommonFrag_to_addNewPlaceCommonFrag)
+            }
             tvSettingsProfile.setOnClickListener {
                 findNavController().navigate(R.id.action_favouritesCommonFrag_to_settingsProfileCommonFrag)
             }

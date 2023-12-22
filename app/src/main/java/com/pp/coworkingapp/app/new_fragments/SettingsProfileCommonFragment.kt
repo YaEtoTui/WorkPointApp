@@ -171,6 +171,9 @@ class SettingsProfileCommonFragment : Fragment() {
 
     private fun initSettings() {
         binding.apply {
+            tvAddPlace.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsProfileCommonFrag_to_addNewPlaceCommonFrag)
+            }
             tvFavorites.setOnClickListener {
                 findNavController().navigate(R.id.action_settingsProfileCommonFrag_to_favouritesCommonFrag)
             }
