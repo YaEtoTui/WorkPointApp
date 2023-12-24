@@ -142,7 +142,7 @@ class MainPageFragment : Fragment() {
             listPlaces = mainApi.getListPlaces()
             requireActivity().runOnUiThread {
                 binding.apply {
-                    tvCount.text = String.format("Найдено %s", listPlaces.count())
+                    tvCount.text = String.format("Найдено: %s", listPlaces.count())
                     adapter.submitList(listPlaces)
 
                     if (listPlaces.isNotEmpty()) {

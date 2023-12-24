@@ -38,6 +38,10 @@ class PlaceAdapter: ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(idRectanglePhoto)
 
+            imCoeur.setOnClickListener {
+
+            }
+
             tvRating.text = place.rating
             tvGeo.text = place.address
             tvTime.text = place.openingHours

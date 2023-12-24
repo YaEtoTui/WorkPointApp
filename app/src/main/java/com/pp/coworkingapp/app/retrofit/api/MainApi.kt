@@ -61,7 +61,7 @@ interface MainApi {
 
     @Headers("Content-Type: application/json")
     @GET("user/place")
-    suspend fun getPlaceCoffee(@Header("Authorization") token: String, @Query("user_id") userId: Int): Array<String>
+    suspend fun getPlaceCoffee(@Header("Authorization") token: String, @Query("user_id") userId: Int): List<Place>
 
     @POST("user/role")
     suspend fun changeRole(@Header("Authorization") token: String, @Query("role_id") role_id: Int)
@@ -71,5 +71,7 @@ interface MainApi {
 
     @POST("places/upload_place")
     @Multipart
-    suspend fun loadNewPlaceInDB(@Header("Authorization") token: String, @Part payload: Payload, @Part file: MultipartBody.Part): Response<String>
+    suspend fun loadNewPlaceInDB(@Header("Authorization") token: String, @Part("payload") payload: Payload, @Part("files") files: MultipartBody.Part): Response<String>
+
+    suspend fun addFavoritePlace(@Header("Authorization") token: String)
 }

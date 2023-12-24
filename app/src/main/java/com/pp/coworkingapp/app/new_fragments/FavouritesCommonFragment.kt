@@ -70,6 +70,7 @@ class FavouritesCommonFragment : Fragment() {
                             String.format("%s %s", currentUser.name, currentUser.surname)
 //                        binding.idTextCity.text = currentUser.city
 
+
                     }
                 }
             }

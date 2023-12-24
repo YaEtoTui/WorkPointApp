@@ -1,6 +1,7 @@
 package com.pp.coworkingapp.app.new_fragments
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.net.toFile
 import androidx.core.view.isVisible
 import androidx.core.view.size
 import androidx.fragment.app.Fragment
@@ -27,13 +29,22 @@ import com.pp.coworkingapp.app.retrofit.adapter.TagsAddNewPlaceCardAdapter
 import com.pp.coworkingapp.app.retrofit.adapter.TagsRedactPlaceCardAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
+import com.pp.coworkingapp.app.retrofit.domain.request.CreateReviewRequest
+import com.pp.coworkingapp.app.retrofit.domain.request.Payload
 import com.pp.coworkingapp.app.retrofit.domain.response.Tag
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
+import com.pp.coworkingapp.app.retrofit.domain.viewModel.UserViewModel
 import com.pp.coworkingapp.databinding.FragmentAddNewPlaceCommonBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import org.json.JSONObject
+import java.io.File
+import kotlin.emptyArray as emptyArray1
 
 
 class AddNewPlaceCommonFragment : Fragment() {
@@ -47,6 +58,9 @@ class AddNewPlaceCommonFragment : Fragment() {
     private lateinit var adapterTagAdd : TagsRedactPlaceCardAdapter
     private lateinit var listTagsPlaceCard: ArrayList<Tag>
     private lateinit var listPhotoPlaceCard: Array<Uri?>
+    private var photoUri: Uri? = null
+
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -210,11 +224,104 @@ class AddNewPlaceCommonFragment : Fragment() {
 
                     idLayoutEdSite.setBackgroundResource(R.drawable.rectangle_edit_settings)
                     tvErrorSite.visibility = View.INVISIBLE
+
+                    val listTagsId: ArrayList<String> = ArrayList()
+                    for(i in 0..<listTagsPlaceCard.size) {
+                        if (listTagsPlaceCard[i].name == "Wi-Fi") {
+                            listTagsId.add("1")
+                        } else if (listTagsPlaceCard[i].name == "Розетки") {
+                            listTagsId.add("2")
+                        } else if (listTagsPlaceCard[i].name == "Еда") {
+                            listTagsId.add("3")
+                        } else if (listTagsPlaceCard[i].name == "Напитки") {
+                            listTagsId.add("4")
+                        } else if (listTagsPlaceCard[i].name == "Канцелярия") {
+                            listTagsId.add("5")
+                        }
+                    }
+
+                    var parking: String = ""
+                    if (btParking.isChecked) {
+                        parking = "Парковка"
+                    } else {
+                        parking = ""
+                    }
+
+                    var restZone: String = ""
+                    if (btParking.isChecked) {
+                        restZone = "Зона отдыха"
+                    } else {
+                        restZone = ""
+                    }
+
+                    var conferenceHall: String = ""
+                    if (btConferenceHall.isChecked) {
+                        conferenceHall = "Конференц-зал"
+                    } else {
+                        conferenceHall = ""
+                    }
+
+                    val files: ArrayList<MultipartBody.Part> = ArrayList()
+
+//                    for(i in 0..<listPhotoPlaceCard.size) {
+//                        if (listPhotoPlaceCard[i] != null) {
+//                            val newFile: File = getRealPathFromUri(requireContext(), listPhotoPlaceCard[i]!!)
+//                            val requestFile = newFile.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+//                            val fileBody: MultipartBody.Part = MultipartBody.Part.createFormData("file", userViewModel.user.value?.surname.toString(), requestFile)
+//                            files.add(fileBody)
+//                        }
+//                    }
+
+                    val newFile: File = getRealPathFromUri(requireContext(), photoUri!!)
+                    val requestFile = newFile.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+                    val fileBody: MultipartBody.Part = MultipartBody.Part.createFormData("file", userViewModel.user.value?.surname.toString(), requestFile)
+
+                    userViewModel.user.observe(viewLifecycleOwner) {user ->
+                        CoroutineScope(Dispatchers.IO).launch {
+                            val response = mainApi.loadNewPlaceInDB(
+                                "Bearer $tokenUser",
+                                Payload(
+                                    user.id,
+                                    editTextNamePlace,
+                                    editTextCity,
+                                    editTextArea,
+                                    editTextAddress,
+                                    editTextDesc,
+                                    editTextFilterTime,
+                                    editTextCoffeeType,
+                                    editTextCost,
+                                    listTagsId.toList(),
+                                    "0",
+                                    parking,
+                                    restZone,
+                                    conferenceHall,
+                                    editTextPhone,
+                                    editTextMail,
+                                    editTextSite,
+                                    "",
+                                    ""
+                                ),
+                                fileBody
+                            )
+                            requireActivity().runOnUiThread {
+                                Log.i("Response", response.errorBody()?.string()?.let { JSONObject(it).getString("detail")}!!)
+                            }
+                        }
+                    }
                 }
             }
-
-
         }
+    }
+
+    private fun getRealPathFromUri(context: Context, contentUri: Uri): File {
+        val inputStream = context.contentResolver.openInputStream(contentUri)
+        val file = File(context.cacheDir, "temp_file")
+        inputStream.use { input ->
+            file.outputStream().use { output ->
+                input?.copyTo(output)
+            }
+        }
+        return file
     }
 
     private fun initSettings() {
@@ -275,6 +382,7 @@ class AddNewPlaceCommonFragment : Fragment() {
         if (requestCode == PICK_IMAGE1 && resultCode == Activity.RESULT_OK) {
             Log.i("Photo1", "Тут")
             val imageUri = data?.data
+            photoUri = data?.data
             listPhotoPlaceCard[0] = imageUri
             loadPhoto(imageUri, binding.idPhoto1)
         } else if (requestCode == PICK_IMAGE2 && resultCode == Activity.RESULT_OK) {
@@ -429,6 +537,8 @@ class AddNewPlaceCommonFragment : Fragment() {
                         binding.tvNameAccount.text =
                             String.format("%s %s", currentUser.name, currentUser.surname)
 //                        binding.idTextCity.text = currentUser.city
+
+                        userViewModel.user.value = currentUser
                     }
                 }
             }

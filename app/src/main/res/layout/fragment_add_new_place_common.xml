@@ -673,7 +673,7 @@
                     android:layout_width="162dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rectangle_edit_settings"
-                    android:hint="Тип заведения"
+                    android:hint="Стоимость"
                     android:textColorHint="#661B1F3B"
                     app:hintTextAppearance="@style/settings_profile"
                     app:hintTextColor="#661B1F3B"

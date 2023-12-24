@@ -17,6 +17,7 @@ import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
 import com.pp.coworkingapp.app.retrofit.domain.request.CreateSettingsUserRequest
+import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.UserViewModel
 import com.pp.coworkingapp.databinding.FragmentSettingsProfileCommonBinding
@@ -147,7 +148,7 @@ class SettingsProfileCommonFragment : Fragment() {
 
     }
 
-    fun getRealPathFromUri(context: Context, contentUri: Uri): File {
+    private fun getRealPathFromUri(context: Context, contentUri: Uri): File {
         val inputStream = context.contentResolver.openInputStream(contentUri)
         val file = File(context.cacheDir, "temp_file")
         inputStream.use { input ->
@@ -189,7 +190,7 @@ class SettingsProfileCommonFragment : Fragment() {
             CoroutineScope(Dispatchers.IO).launch {
                 Log.i("Token", token.toString())
                 val currentUser = mainApi.checkUser("Bearer $token")
-                val numberCoffee = mainApi.getPlaceCoffee("Bearer $token", currentUser.id)
+                var numberCoffee: List<Place> = mainApi.getPlaceCoffee("Bearer $token", currentUser.id)
                 requireActivity().runOnUiThread {
                     //Настраиваем кнопку настройки пользователя
                     binding.idAccount.setOnClickListener {
@@ -200,8 +201,9 @@ class SettingsProfileCommonFragment : Fragment() {
                                 binding.idListAccountCommon.visibility = View.VISIBLE
                         }
                     }
+
                     if (numberCoffee.isNotEmpty())
-                        binding.tvCoffeeNumber.text = "$numberCoffee/5"
+                        binding.tvCoffeeNumber.text = "${numberCoffee.size}/5"
                     else
                         binding.tvCoffeeNumber.text = "0/5"
 
