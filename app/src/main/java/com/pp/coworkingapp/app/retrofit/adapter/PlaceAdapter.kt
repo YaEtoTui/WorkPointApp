@@ -38,9 +38,11 @@ class PlaceAdapter: ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(idRectanglePhoto)
 
-            imCoeur.setOnClickListener {
-
-            }
+//            imCoeur.setOnClickListener {
+//                if (imCoeur.drawable. == R.drawable.icon_heart) {
+//
+//                }
+//            }
 
             tvRating.text = place.rating
             tvGeo.text = place.address

@@ -105,6 +105,9 @@
         <action
             android:id="@+id/action_settingsPlacesCommonFrag_to_addNewPlaceCommonFrag"
             app:destination="@id/addNewPlaceCommonFrag" />
+        <action
+            android:id="@+id/action_settingsPlacesCommonFrag_to_redactNewPlaceFrag"
+            app:destination="@id/redactNewPlaceFrag" />
     </fragment>
 
     <fragment
@@ -155,4 +158,25 @@
             app:destination="@id/mainPageFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/redactNewPlaceFrag"
+        android:name="com.pp.coworkingapp.app.new_fragments.RedactNewPlaceFragment"
+        android:animateLayoutChanges="true"
+        tools:layout="@layout/fragment_redact_new_place">
+        <action
+            android:id="@+id/action_redactNewPlaceFrag_to_settingsPlacesCommonFrag"
+            app:destination="@id/settingsPlacesCommonFrag" />
+        <action
+            android:id="@+id/action_redactNewPlaceFrag_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
+        <action
+            android:id="@+id/action_redactNewPlaceFrag_to_settingsProfileCommonFrag"
+            app:destination="@id/settingsProfileCommonFrag" />
+        <action
+            android:id="@+id/action_redactNewPlaceFrag_to_favouritesCommonFrag"
+            app:destination="@id/favouritesCommonFrag" />
+        <action
+            android:id="@+id/action_redactNewPlaceFrag_to_addNewPlaceCommonFrag"
+            app:destination="@id/addNewPlaceCommonFrag" />
+    </fragment>
 </navigation>

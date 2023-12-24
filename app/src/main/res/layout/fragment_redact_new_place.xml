@@ -167,97 +167,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btBackToMainPage">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/idMenu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="28dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:id="@+id/idTvFavorites"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginRight="18dp"
-                        android:fontFamily="@font/opensans_regular"
-                        android:text="Избранное"
-                        android:textColor="#000000"
-                        android:textSize="10sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/idTvSettingsProfile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/opensans_regular"
-                        android:text="Настройки профиля"
-                        android:textColor="#000000"
-                        android:textSize="10sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/idTvFavorites" />
-
-                    <TextView
-                        android:id="@+id/idSettingsPlaces"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="13dp"
-                        android:fontFamily="@font/opensans_regular"
-                        android:text="Настройки мест"
-                        android:textColor="#000000"
-                        android:textSize="10sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/idTvSettingsProfile"
-                        app:layout_constraintVertical_bias="1.0" />
-
-                    <View
-                        android:id="@+id/idLineMenuFull"
-                        android:layout_width="1dp"
-                        android:layout_height="0dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginLeft="4dp"
-                        android:background="@drawable/line_settings"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/idTvSettingsProfile"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <View
-                        android:id="@+id/idLineFix"
-                        android:layout_width="1dp"
-                        android:layout_height="27dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:background="@drawable/line_fix_settings"
-                        app:layout_constraintBottom_toBottomOf="@+id/idSettingsPlaces"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/idSettingsPlaces" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <TextView
                     android:id="@+id/tvCardDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="17dp"
-                    android:layout_marginLeft="23dp"
+                    android:layout_marginLeft="30dp"
                     android:fontFamily="@font/opensans_bold"
                     android:text="Карточка заведения"
                     android:textColor="#000000"
                     android:textSize="10sp"
-                    app:layout_constraintStart_toEndOf="@+id/idMenu"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/idMenu" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -420,7 +340,7 @@
                     app:hintTextColor="#661B1F3B"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/idMenu"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdAddress"
                     app:layout_constraintTop_toBottomOf="@+id/idLayoutEdAddress">
 
                     <EditText
@@ -1090,7 +1010,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
-                android:id="@+id/btSaveNewCard"
+                android:id="@+id/btChangeCard"
                 android:layout_width="135dp"
                 android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
@@ -1101,7 +1021,7 @@
                 android:elevation="10dp"
                 android:fontFamily="@font/open_sans_semi_bold"
                 android:stateListAnimator="@drawable/button_elevation"
-                android:text="Сохранить"
+                android:text="Добавить"
                 android:textColor="@drawable/button_text_color"
                 android:textSize="10sp"
                 app:cornerRadius="10dp"
@@ -1123,8 +1043,8 @@
                 android:textColor="@drawable/button_text_color"
                 android:textSize="10sp"
                 app:cornerRadius="10dp"
-                app:layout_constraintStart_toEndOf="@+id/btSaveNewCard"
-                app:layout_constraintTop_toTopOf="@+id/btSaveNewCard" />
+                app:layout_constraintStart_toEndOf="@+id/btChangeCard"
+                app:layout_constraintTop_toTopOf="@+id/btChangeCard" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

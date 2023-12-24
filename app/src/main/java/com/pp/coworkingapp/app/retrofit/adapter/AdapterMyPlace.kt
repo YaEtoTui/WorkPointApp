@@ -13,11 +13,13 @@ import com.pp.coworkingapp.databinding.ItemPlacesSettingsBinding
 
 class AdapterMyPlace: ListAdapter<Place, AdapterMyPlace.Holder>(Comparator()) {
 
+    private lateinit var onButtonClickListener: AdapterMyPlace.OnButtonClickListener
+
     class Holder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val binding = ItemPlacesSettingsBinding.bind(view)
 
-        fun bind(place: Place) = with(binding) {
+        fun bind(place: Place, onButtonClickListener: AdapterMyPlace.OnButtonClickListener) = with(binding) {
             tvNamePlaceCard.text = place.name
             tvGeo.text = place.address
 
@@ -27,6 +29,9 @@ class AdapterMyPlace: ListAdapter<Place, AdapterMyPlace.Holder>(Comparator()) {
                 idDescDelete.visibility = View.GONE
                 view.setBackgroundResource(R.drawable.rectangle_list_item_settings_places)
                 btRedact.text = "Редактировать"
+                btRedact.setOnClickListener {
+                    onButtonClickListener.onClick(place.id)
+                }
             } else if (place.status.lowercase().equals(Status.DENIED.status.lowercase())) {
                 tvStatus.setText(R.string.denied)
                 imDraw.setImageResource(R.drawable.icon_close_place_card)
@@ -40,8 +45,6 @@ class AdapterMyPlace: ListAdapter<Place, AdapterMyPlace.Holder>(Comparator()) {
                 view.setBackgroundResource(R.drawable.rectangle_list_item_settings_places_2)
                 btRedact.text = "Редактировать"
             }
-
-
         }
     }
 
@@ -63,6 +66,14 @@ class AdapterMyPlace: ListAdapter<Place, AdapterMyPlace.Holder>(Comparator()) {
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), onButtonClickListener)
+    }
+
+    interface OnButtonClickListener {
+        fun onClick(placeId: Int)
+    }
+
+    fun setOnButtonClickListener(listener: OnButtonClickListener) {
+        onButtonClickListener = listener
     }
 }
