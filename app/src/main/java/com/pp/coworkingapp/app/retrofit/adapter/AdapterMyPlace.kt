@@ -24,19 +24,24 @@ class AdapterMyPlace: ListAdapter<Place, AdapterMyPlace.Holder>(Comparator()) {
             if (place.status.lowercase().equals(Status.UNDERREVIEW.status.lowercase())) {
                 tvStatus.setText(R.string.in_processing)
                 imDraw.setImageResource(R.drawable.icon_clock_list)
-                view.setBackgroundResource(R.color.rect_1)
+                idDescDelete.visibility = View.GONE
+                view.setBackgroundResource(R.drawable.rectangle_list_item_settings_places)
                 btRedact.text = "Редактировать"
             } else if (place.status.lowercase().equals(Status.DENIED.status.lowercase())) {
                 tvStatus.setText(R.string.denied)
                 imDraw.setImageResource(R.drawable.icon_close_place_card)
-                view.setBackgroundResource(R.color.rect_1)
+                view.setBackgroundResource(R.drawable.rectangle_list_item_settings_places)
+                idDescDelete.visibility = View.VISIBLE
                 btRedact.text = "Удалить"
             } else if (place.status.lowercase().equals(Status.APPROVED.status.lowercase())) {
                 tvStatus.visibility = View.INVISIBLE
                 imDraw.visibility = View.INVISIBLE
-                view.setBackgroundResource(R.color.rect_2)
+                idDescDelete.visibility = View.GONE
+                view.setBackgroundResource(R.drawable.rectangle_list_item_settings_places_2)
                 btRedact.text = "Редактировать"
             }
+
+
         }
     }
 
