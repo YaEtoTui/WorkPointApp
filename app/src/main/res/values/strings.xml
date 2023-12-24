@@ -20,6 +20,9 @@
     <string name="show_cart">Посмотреть на карте</string>
     <string name="back_main_page">Вернуться к поиску</string>
 
+    <string name="in_processing"><u>В обработке</u></string>
+    <string name="denied"><u>Отклонена</u></string>
+
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer felis ante, sollicitudin a mauris sed, euismod cursus tortor. Integer a diam quis nisl facilisis hendrerit in id sapien...
     </string>

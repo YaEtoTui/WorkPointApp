@@ -24,6 +24,7 @@ import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.enum.Cafe
 import com.pp.coworkingapp.app.enum.Cost
 import com.pp.coworkingapp.app.enum.Hours
+import com.pp.coworkingapp.app.enum.Status
 import com.pp.coworkingapp.app.retrofit.adapter.FilterAdapter
 import com.pp.coworkingapp.app.retrofit.adapter.TagsAddNewPlaceCardAdapter
 import com.pp.coworkingapp.app.retrofit.adapter.TagsRedactPlaceCardAdapter
@@ -299,12 +300,13 @@ class AddNewPlaceCommonFragment : Fragment() {
                                     editTextMail,
                                     editTextSite,
                                     "",
-                                    ""
+                                    Status.UNDERREVIEW.status
                                 ),
                                 fileBody
                             )
+                            val message = response.errorBody()?.string()?.let { JSONObject(it).getString("detail")}
                             requireActivity().runOnUiThread {
-                                Log.i("Response", response.errorBody()?.string()?.let { JSONObject(it).getString("detail")}!!)
+                                Log.i("Response", message!!)
                             }
                         }
                     }

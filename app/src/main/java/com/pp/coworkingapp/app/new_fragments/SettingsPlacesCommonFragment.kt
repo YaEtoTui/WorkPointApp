@@ -9,9 +9,13 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.pp.coworkingapp.R
+import com.pp.coworkingapp.app.retrofit.adapter.AdapterMyPlace
+import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
+import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.databinding.FragmentSettingsPlacesCommonBinding
 import com.squareup.picasso.Picasso
@@ -21,6 +25,7 @@ import kotlinx.coroutines.launch
 
 class SettingsPlacesCommonFragment : Fragment() {
 
+    private lateinit var adapter : AdapterMyPlace
     private lateinit var binding: FragmentSettingsPlacesCommonBinding
     private val viewModel: AuthViewModel by activityViewModels()
     private lateinit var mainApi: MainApi
@@ -40,11 +45,18 @@ class SettingsPlacesCommonFragment : Fragment() {
         initSettings()
         initMenu()
         mainApi = Common.retrofitService
+        initAdapterList()
         initCurrentPerson()
 
         binding.btBackToMainPage.setOnClickListener {
             findNavController().navigate(R.id.action_settingsPlacesCommonFrag_to_mainPageFragment)
         }
+    }
+
+    private fun initAdapterList() {
+        adapter = AdapterMyPlace()
+        binding.rcView.layoutManager = LinearLayoutManager(context)
+        binding.rcView.adapter = adapter
     }
 
     private fun initCurrentPerson() {
@@ -53,6 +65,7 @@ class SettingsPlacesCommonFragment : Fragment() {
             CoroutineScope(Dispatchers.IO).launch {
                 Log.i("Token", token.toString())
                 val currentUser = mainApi.checkUser("Bearer $token")
+                val listPlaces: List<Place> = mainApi.getPlaceCoffee("Bearer $token", currentUser.id)
                 requireActivity().runOnUiThread {
                     //Настраиваем кнопку настройки пользователя
                     binding.idAccount.setOnClickListener {
@@ -70,6 +83,8 @@ class SettingsPlacesCommonFragment : Fragment() {
                             String.format("%s %s", currentUser.name, currentUser.surname)
 //                        binding.idTextCity.text = currentUser.city
                     }
+
+                    adapter.submitList(listPlaces)
                 }
             }
         }
