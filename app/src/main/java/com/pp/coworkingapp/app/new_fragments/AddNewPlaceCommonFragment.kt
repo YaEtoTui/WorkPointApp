@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.google.gson.Gson
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.enum.Cafe
 import com.pp.coworkingapp.app.enum.Cost
@@ -38,9 +39,13 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okhttp3.FormBody
+import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import java.io.File
 
@@ -225,86 +230,122 @@ class AddNewPlaceCommonFragment : Fragment() {
 
                     val listTagsId: ArrayList<String> = ArrayList()
                     for(i in 0..<listTagsPlaceCard.size) {
-                        if (listTagsPlaceCard[i].name == "Wi-Fi") {
-                            listTagsId.add("1")
-                        } else if (listTagsPlaceCard[i].name == "Розетки") {
-                            listTagsId.add("2")
-                        } else if (listTagsPlaceCard[i].name == "Еда") {
-                            listTagsId.add("3")
-                        } else if (listTagsPlaceCard[i].name == "Напитки") {
-                            listTagsId.add("4")
-                        } else if (listTagsPlaceCard[i].name == "Канцелярия") {
-                            listTagsId.add("5")
+                        when (listTagsPlaceCard[i].name) {
+                            "Wi-Fi" -> {
+                                listTagsId.add("1")
+                            }
+                            "Розетки" -> {
+                                listTagsId.add("2")
+                            }
+                            "Еда" -> {
+                                listTagsId.add("3")
+                            }
+                            "Напитки" -> {
+                                listTagsId.add("4")
+                            }
+                            "Канцелярия" -> {
+                                listTagsId.add("5")
+                            }
                         }
                     }
 
                     var parking: String = ""
-                    if (btParking.isChecked) {
-                        parking = "Парковка"
+                    parking = if (btParking.isChecked) {
+                        "Парковка"
                     } else {
-                        parking = ""
+                        ""
                     }
 
                     var restZone: String = ""
-                    if (btParking.isChecked) {
-                        restZone = "Зона отдыха"
+                    restZone = if (btParking.isChecked) {
+                        "Зона отдыха"
                     } else {
-                        restZone = ""
+                        ""
                     }
 
                     var conferenceHall: String = ""
-                    if (btConferenceHall.isChecked) {
-                        conferenceHall = "Конференц-зал"
+                    conferenceHall = if (btConferenceHall.isChecked) {
+                        "Конференц-зал"
                     } else {
-                        conferenceHall = ""
+                        ""
                     }
 
-                    val files: ArrayList<MultipartBody.Part> = ArrayList()
+                    Log.i("Hello", "Hello1")
 
-//                    for(i in 0..<listPhotoPlaceCard.size) {
-//                        if (listPhotoPlaceCard[i] != null) {
-//                            val newFile: File = getRealPathFromUri(requireContext(), listPhotoPlaceCard[i]!!)
-//                            val requestFile = newFile.asRequestBody("multipart/form-data".toMediaTypeOrNull())
-//                            val fileBody: MultipartBody.Part = MultipartBody.Part.createFormData("file", userViewModel.user.value?.surname.toString(), requestFile)
-//                            files.add(fileBody)
+                    CoroutineScope(Dispatchers.IO).launch {
+
+                        val payload: Payload = Payload(
+                            userViewModel.user.value!!.id,
+                            editTextNamePlace,
+                            editTextCity,
+                            editTextArea,
+                            editTextAddress,
+                            editTextDesc,
+                            editTextFilterTime,
+                            editTextCoffeeType,
+                            editTextCost,
+                            listTagsId.toList(),
+                            "0",
+                            true,
+                            true,
+                            true,
+                            editTextPhone,
+                            editTextMail,
+                            editTextSite,
+                            "",
+                            Status.UNDERREVIEW.status
+                        )
+                        val payloadJson = Gson().toJson(payload)
+                        val payloadRequestBody =
+                            payloadJson.toRequestBody("application/json".toMediaTypeOrNull())
+
+                        Log.i("Hello", "Hello2")
+
+
+//                        val listFiles: List<File> = listPhotoPlaceCard.mapIndexed { _, uri ->
+//                            getRealPathFromUri(requireContext(), uri!!)
 //                        }
-//                    }
 
-                    val newFile: File = getRealPathFromUri(requireContext(), photoUri!!)
-                    val requestFile = newFile.asRequestBody("multipart/form-data".toMediaTypeOrNull())
-                    val fileBody: MultipartBody.Part = MultipartBody.Part.createFormData("file", userViewModel.user.value?.surname.toString(), requestFile)
+                        val listFiles: ArrayList<File> = ArrayList()
 
-                    userViewModel.user.observe(viewLifecycleOwner) {user ->
-                        CoroutineScope(Dispatchers.IO).launch {
-                            val response = mainApi.loadNewPlaceInDB(
-                                "Bearer $tokenUser",
-                                Payload(
-                                    user.id,
-                                    editTextNamePlace,
-                                    editTextCity,
-                                    editTextArea,
-                                    editTextAddress,
-                                    editTextDesc,
-                                    editTextFilterTime,
-                                    editTextCoffeeType,
-                                    editTextCost,
-                                    listTagsId.toList(),
-                                    "0",
-                                    parking,
-                                    restZone,
-                                    conferenceHall,
-                                    editTextPhone,
-                                    editTextMail,
-                                    editTextSite,
-                                    "",
-                                    Status.UNDERREVIEW.status
-                                ),
-                                fileBody
+                        Log.i("Size", listPhotoPlaceCard.size.toString())
+
+                        val listUri: List<Uri?> = listPhotoPlaceCard.filterNotNull()
+
+                        Log.i("Length", listUri.size.toString())
+
+                        for(i in 0..listUri.size - 1) {
+                            listFiles.add(getRealPathFromUri(requireContext(), listPhotoPlaceCard[i]!!))
+                        }
+
+                        Log.i("Hello", "Hello3")
+
+
+                        val imageParts: List<MultipartBody.Part> = listFiles.toList().mapIndexed { index, file ->
+                            MultipartBody.Part.createFormData(
+                                "image_${index + 1}",
+                                "image_${index + 1}",
+                                file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
                             )
-                            val message = response.errorBody()?.string()?.let { JSONObject(it).getString("detail")}
-                            requireActivity().runOnUiThread {
-                                Log.i("Response", message!!)
-                            }
+                        }
+
+                        Log.i("CountImages", imageParts.size.toString())
+                        Log.i("Hello", "Hello")
+
+//                            val newFile: File = getRealPathFromUri(requireContext(), listPhotoPlaceCard[0]!!)
+//                            val requestFile: RequestBody = newFile.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+//                            val files: MultipartBody.Part = MultipartBody.Part.createFormData(
+//                                editTextNamePlace,
+//                                editTextNamePlace,
+//                                requestFile)
+                        val response = mainApi.loadNewPlaceInDB(
+                            "Bearer $tokenUser",
+                            payloadRequestBody,
+                            imageParts
+                        )
+                        val message = response.errorBody()?.string()?.let { JSONObject(it).getString("detail")}
+                        requireActivity().runOnUiThread {
+                            findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_settingsPlacesCommonFrag)
                         }
                     }
                 }

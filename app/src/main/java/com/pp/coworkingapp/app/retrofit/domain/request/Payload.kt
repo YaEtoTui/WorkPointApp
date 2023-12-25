@@ -17,11 +17,11 @@ data class Payload(
     val cost: String,
     val tags: List<String>,
     val rating: String,
-    val parking: String,
+    val parking: Boolean,
     @SerializedName("recreation_area")
-    val recreationArea: String,
+    val recreationArea: Boolean,
     @SerializedName("conference_hall")
-    val conferenceHall: String,
+    val conferenceHall: Boolean,
     @SerializedName("company_phone")
     val companyPhone: String,
     val email: String,

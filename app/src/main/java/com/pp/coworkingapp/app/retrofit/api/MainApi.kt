@@ -1,5 +1,6 @@
 package com.pp.coworkingapp.app.retrofit.api
 
+import com.pp.coworkingapp.app.retrofit.domain.request.CreatePlaceAndUserRequest
 import com.pp.coworkingapp.app.retrofit.domain.request.CreateReviewRequest
 import com.pp.coworkingapp.app.retrofit.domain.request.CreateSettingsUserRequest
 import com.pp.coworkingapp.app.retrofit.domain.request.Payload
@@ -11,8 +12,8 @@ import com.pp.coworkingapp.app.retrofit.domain.response.Review
 import com.pp.coworkingapp.app.retrofit.domain.response.Tag
 import com.pp.coworkingapp.app.retrofit.domain.response.Token_Access
 import com.pp.coworkingapp.app.retrofit.domain.response.User
-import okhttp3.Call
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Field
@@ -23,8 +24,8 @@ import retrofit2.http.Headers
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
+import retrofit2.http.PartMap
 import retrofit2.http.Query
-import java.io.File
 
 interface MainApi {
 
@@ -54,7 +55,7 @@ interface MainApi {
 
     @POST("user/photo")
     @Multipart
-    suspend fun loadNewPhotoUser(@Header("Authorization") token: String, @Part file: MultipartBody.Part): String
+    suspend fun loadNewPhotoUser(@Header("Authorization") token: String, @Part file: MultipartBody.Part): Response<String>
 
     @POST("user/settings")
     suspend fun changeSettingsUser(@Header("Authorization") token: String, @Body createSettingsUserRequest: CreateSettingsUserRequest): Array<String>
@@ -71,7 +72,14 @@ interface MainApi {
 
     @POST("places/upload_place")
     @Multipart
-    suspend fun loadNewPlaceInDB(@Header("Authorization") token: String, @Part("payload") payload: Payload, @Part("files") files: MultipartBody.Part): Response<String>
+    suspend fun loadNewPlaceInDB(@Header("Authorization") token: String, @Part("payload") payload: RequestBody, @Part files: List<MultipartBody.Part>): Response<Place>
 
-    suspend fun addFavoritePlace(@Header("Authorization") token: String)
+    @POST("user/favorite_place")
+    suspend fun addFavoritePlace(@Header("Authorization") token: String, @Body createPlaceAndUserRequest: CreatePlaceAndUserRequest): String
+
+    @POST("user/my_favorite_places")
+    suspend fun getFavoritePlaces(@Header("Authorization") token: String): List<Place>
+
+    @POST("user/delete_place")
+    suspend fun deleteFavoritePlace(@Header("Authorization") token: String, @Query("user_id") userId: Int): Response<String>
 }

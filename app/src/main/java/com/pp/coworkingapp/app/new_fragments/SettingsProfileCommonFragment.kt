@@ -1,10 +1,14 @@
 package com.pp.coworkingapp.app.new_fragments
 
+import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.os.Parcelable
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pp.coworkingapp.R
+import com.pp.coworkingapp.app.extensions.createBitmapFromResult
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
 import com.pp.coworkingapp.app.retrofit.domain.request.CreateSettingsUserRequest
@@ -27,7 +32,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
+import retrofit2.Response
+import java.io.ByteArrayOutputStream
 import java.io.File
 
 
@@ -62,6 +72,7 @@ class SettingsProfileCommonFragment : Fragment() {
 
         binding.idCircleChangeAvatar.setOnClickListener {
             getPhoto()
+//            addPhotoFromIntent()
         }
 
         binding.btSearchCow.setOnClickListener {
@@ -70,6 +81,60 @@ class SettingsProfileCommonFragment : Fragment() {
 
         binding.btSave.setOnClickListener {
             changeSettings()
+        }
+    }
+
+    companion object {
+        private const val CODE_IMG_GALLERY = 111
+        private const val CAMERA_PERMISSION = Manifest.permission.CAMERA
+    }
+
+    private fun addPhotoFromIntent() {
+        val cameraIntent: Intent? = Intent(MediaStore.ACTION_IMAGE_CAPTURE).takeIf { intent ->
+            intent.resolveActivity(requireActivity().packageManager) != null
+        }
+
+        val galleryIntent = Intent(Intent.ACTION_PICK).apply { this.type = "image/*" }
+
+        val intentChooser = Intent(Intent.ACTION_CHOOSER).apply {
+            this.putExtra(Intent.EXTRA_INTENT, galleryIntent)
+            cameraIntent?.let { intent ->
+                this.putExtra(Intent.EXTRA_INITIAL_INTENTS, arrayListOf(intent).toTypedArray<Parcelable>())
+            }
+            this.putExtra(Intent.EXTRA_TITLE, resources.getString(R.string.gallery_title))
+        }
+
+        startActivityForResult(intentChooser, CODE_IMG_GALLERY)
+    }
+
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//
+//        if (requestCode == CODE_IMG_GALLERY && resultCode == Activity.RESULT_OK && data != null) {
+//            val imageBitmap = data.createBitmapFromResult(requireActivity())
+//            sendFileRequest(image = imageBitmap!!)
+//        }
+//    }
+
+    private fun sendFileRequest(image: Bitmap) {
+        val stream = ByteArrayOutputStream()
+        image.compress(Bitmap.CompressFormat.JPEG, 80, stream)
+        val byteArray = stream.toByteArray()
+        val body = MultipartBody.Part.createFormData(
+            userViewModel.user.value!!.surname,
+            userViewModel.user.value!!.surname,
+            byteArray.toRequestBody("image/*".toMediaTypeOrNull(), 0, byteArray.size)
+        )
+
+        try {
+            viewModel.token.observe(viewLifecycleOwner) { token ->
+                CoroutineScope(Dispatchers.IO).launch {
+                    val photoString = mainApi.loadNewPhotoUser("Bearer $token", body)
+                    val message = photoString.errorBody()?.string()?.let { JSONObject(it).getString("detail")}
+                }
+            }
+        } catch (exc: Exception) {
+            exc.message
         }
     }
 
@@ -127,19 +192,10 @@ class SettingsProfileCommonFragment : Fragment() {
             viewModel.token.observe(viewLifecycleOwner) { token ->
                 CoroutineScope(Dispatchers.IO).launch {
                     val file: File = getRealPathFromUri(requireContext(), imageUri!!)
-                    val requestFile = file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
-                    val body = MultipartBody.Part.createFormData("file", userViewModel.user.value?.surname.toString(), requestFile)
-                    val photoString = mainApi.loadNewPhotoUser("Bearer $token", body)
-                    requireActivity().runOnUiThread {
-//                        Picasso
-//                            .get()
-//                            .load(photoString)
-//                            .into(binding.imChangeAvatar)
-//                        Picasso
-//                            .get()
-//                            .load(photoString)
-//                            .into(binding.imAvatar)
-                    }
+                    val requestFile: RequestBody = file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+                    val body: MultipartBody.Part = MultipartBody.Part.createFormData("file", userViewModel.user.value?.surname.toString(), requestFile)
+                    val photo: Response<String> = mainApi.loadNewPhotoUser("Bearer $token", body)
+                    val message: String? = photo.errorBody()?.string()?.let { JSONObject(it).getString("detail")}
                 }
             }
         } catch (exc: Exception) {

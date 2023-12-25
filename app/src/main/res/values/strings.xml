@@ -19,6 +19,7 @@
     <string name="title_activity_base">BaseActivity</string>
     <string name="show_cart">Посмотреть на карте</string>
     <string name="back_main_page">Вернуться к поиску</string>
+    <string name="gallery_title">RetrofitDemo Gallery</string>
 
     <string name="in_processing"><u>В обработке</u></string>
     <string name="denied"><u>Отклонена</u></string>
