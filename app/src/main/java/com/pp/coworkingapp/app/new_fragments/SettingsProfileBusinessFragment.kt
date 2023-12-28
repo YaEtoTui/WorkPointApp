@@ -190,9 +190,9 @@ class SettingsProfileBusinessFragment : Fragment() {
 
     private fun initMenu() {
         binding.apply {
-//            idTvFavorites.setOnClickListener {
-//                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_favouritesBusinessFrag)
-//            }
+            idTvFavorites.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsProfileBusinessFrag_to_favouritesBusinessFrag)
+            }
             idSettingsPlaces.setOnClickListener {
                 findNavController().navigate(R.id.action_settingsProfileBusinessFrag_to_settingsPlacesBusinessFrag)
             }
@@ -204,9 +204,9 @@ class SettingsProfileBusinessFragment : Fragment() {
 //            binding.tvAddPlaceBusiness.setOnClickListener {
 //                findNavController().navigate(R.id.action_settingsPlacesCommonFrag_to_addNewPlaceCommonFrag)
 //            }
-//            tvFavoritesBusiness.setOnClickListener {
-//                findNavController().navigate(R.id.action_settingsPlacesCommonFrag_to_favouritesCommonFrag)
-//            }
+            tvFavoritesBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsProfileBusinessFrag_to_favouritesBusinessFrag)
+            }
             tvSettingsPlacesBusiness.setOnClickListener {
                 findNavController().navigate(R.id.action_settingsProfileBusinessFrag_to_settingsPlacesBusinessFrag)
             }

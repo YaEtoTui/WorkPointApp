@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_mainPageFragment_to_settingsPlacesBusinessFrag"
             app:destination="@id/settingsPlacesBusinessFrag" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_favouritesBusinessFrag"
+            app:destination="@id/favouritesBusinessFrag" />
     </fragment>
     <fragment
         android:id="@+id/authFragment"
@@ -143,6 +146,9 @@
         <action
             android:id="@+id/action_settingsProfileBusinessFrag_to_settingsPlacesBusinessFrag"
             app:destination="@id/settingsPlacesBusinessFrag" />
+        <action
+            android:id="@+id/action_settingsProfileBusinessFrag_to_favouritesBusinessFrag"
+            app:destination="@id/favouritesBusinessFrag" />
     </fragment>
 
     <fragment
@@ -196,6 +202,25 @@
             app:destination="@id/settingsProfileBusinessFrag" />
         <action
             android:id="@+id/action_settingsPlacesBusinessFrag_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
+        <action
+            android:id="@+id/action_settingsPlacesBusinessFrag_to_favouritesBusinessFrag"
+            app:destination="@id/favouritesBusinessFrag" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/favouritesBusinessFrag"
+        android:name="com.pp.coworkingapp.app.new_fragments.FavouritesBusinessFragment"
+        android:animateLayoutChanges="true"
+        tools:layout="@layout/fragment_favourites_business">
+        <action
+            android:id="@+id/action_favouritesBusinessFrag_to_settingsProfileBusinessFrag"
+            app:destination="@id/settingsProfileBusinessFrag" />
+        <action
+            android:id="@+id/action_favouritesBusinessFrag_to_settingsPlacesBusinessFrag"
+            app:destination="@id/settingsPlacesBusinessFrag" />
+        <action
+            android:id="@+id/action_favouritesBusinessFrag_to_mainPageFragment"
             app:destination="@id/mainPageFragment" />
     </fragment>
 </navigation>

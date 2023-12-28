@@ -132,6 +132,10 @@ class MainPageFragment : Fragment() {
     }
 
     private fun onClickBusinessText() {
+        binding.tvFavoritesBusiness.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPageFragment_to_favouritesBusinessFrag)
+        }
+
         binding.tvSettingsProfileBusiness.setOnClickListener {
             findNavController().navigate(R.id.action_mainPageFragment_to_settingsProfileBusinessFrag)
         }
