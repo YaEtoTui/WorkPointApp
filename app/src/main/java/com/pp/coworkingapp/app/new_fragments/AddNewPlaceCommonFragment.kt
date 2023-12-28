@@ -97,14 +97,6 @@ class AddNewPlaceCommonFragment : Fragment() {
             findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_settingsPlacesCommonFrag)
         }
 
-//        binding.btParking.setOnClickListener {
-//            if (!binding.btParking.isChecked) {
-//                binding.btParking.isChecked = false
-//            } else {
-//                binding.btParking.isChecked = true
-//            }
-//        }
-
         binding.btBackToMainPage.setOnClickListener {
             findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_mainPageFragment)
         }
@@ -249,28 +241,7 @@ class AddNewPlaceCommonFragment : Fragment() {
                         }
                     }
 
-                    var parking: String = ""
-                    parking = if (btParking.isChecked) {
-                        "Парковка"
-                    } else {
-                        ""
-                    }
-
-                    var restZone: String = ""
-                    restZone = if (btParking.isChecked) {
-                        "Зона отдыха"
-                    } else {
-                        ""
-                    }
-
-                    var conferenceHall: String = ""
-                    conferenceHall = if (btConferenceHall.isChecked) {
-                        "Конференц-зал"
-                    } else {
-                        ""
-                    }
-
-                    Log.i("Hello", "Hello1")
+                    Log.i("Hello", "Hello")
 
                     CoroutineScope(Dispatchers.IO).launch {
 
@@ -286,9 +257,9 @@ class AddNewPlaceCommonFragment : Fragment() {
                             editTextCost,
                             listTagsId.toList(),
                             "0",
-                            true,
-                            true,
-                            true,
+                            btParking.isChecked,
+                            btRestZone.isChecked,
+                            btConferenceHall.isChecked,
                             editTextPhone,
                             editTextMail,
                             editTextSite,
@@ -299,27 +270,23 @@ class AddNewPlaceCommonFragment : Fragment() {
                         val payloadRequestBody =
                             payloadJson.toRequestBody("application/json".toMediaTypeOrNull())
 
-                        Log.i("Hello", "Hello2")
-
-
-//                        val listFiles: List<File> = listPhotoPlaceCard.mapIndexed { _, uri ->
-//                            getRealPathFromUri(requireContext(), uri!!)
-//                        }
-
                         val listFiles: ArrayList<File> = ArrayList()
+
+                        Log.i("Hello", "Hello1")
 
                         Log.i("Size", listPhotoPlaceCard.size.toString())
 
-                        val listUri: List<Uri?> = listPhotoPlaceCard.filterNotNull()
+//                        val listUri: List<Uri?> = listPhotoPlaceCard.filterNotNull()
 
-                        Log.i("Length", listUri.size.toString())
+//                        Log.i("Length", listUri.size.toString())
 
-                        for(i in 0..listUri.size - 1) {
-                            listFiles.add(getRealPathFromUri(requireContext(), listPhotoPlaceCard[i]!!))
+                        for(i in 0..listPhotoPlaceCard.size - 1) {
+                            if (listPhotoPlaceCard[i] != null) {
+                                listFiles.add(getRealPathFromUri(requireContext(), listPhotoPlaceCard[i]!!))
+                            }
                         }
 
-                        Log.i("Hello", "Hello3")
-
+                        Log.i("listFiles.size", listFiles.size.toString())
 
                         val imageParts: List<MultipartBody.Part> = listFiles.toList().mapIndexed { index, file ->
                             MultipartBody.Part.createFormData(
@@ -330,14 +297,7 @@ class AddNewPlaceCommonFragment : Fragment() {
                         }
 
                         Log.i("CountImages", imageParts.size.toString())
-                        Log.i("Hello", "Hello")
 
-//                            val newFile: File = getRealPathFromUri(requireContext(), listPhotoPlaceCard[0]!!)
-//                            val requestFile: RequestBody = newFile.asRequestBody("multipart/form-data".toMediaTypeOrNull())
-//                            val files: MultipartBody.Part = MultipartBody.Part.createFormData(
-//                                editTextNamePlace,
-//                                editTextNamePlace,
-//                                requestFile)
                         val response = mainApi.loadNewPlaceInDB(
                             "Bearer $tokenUser",
                             payloadRequestBody,
@@ -420,7 +380,7 @@ class AddNewPlaceCommonFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == PICK_IMAGE1 && resultCode == Activity.RESULT_OK) {
-            Log.i("Photo1", "Тут")
+            Log.i("Photo", "Тут 1")
             val imageUri = data?.data
             photoUri = data?.data
             listPhotoPlaceCard[0] = imageUri
@@ -429,10 +389,12 @@ class AddNewPlaceCommonFragment : Fragment() {
             val imageUri = data?.data
             listPhotoPlaceCard[1] = imageUri
             loadPhoto(imageUri, binding.idPhoto2)
+            Log.i("Photo", "Тут 2")
         } else if (requestCode == PICK_IMAGE3 && resultCode == Activity.RESULT_OK) {
             val imageUri = data?.data
             listPhotoPlaceCard[2] = imageUri
             loadPhoto(imageUri, binding.idPhoto3)
+            Log.i("Photo", "Тут 3")
         }
     }
 
