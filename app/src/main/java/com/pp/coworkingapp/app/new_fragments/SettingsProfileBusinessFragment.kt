@@ -52,6 +52,9 @@ class SettingsProfileBusinessFragment : Fragment() {
         mainApi = Common.retrofitService
         initCurrentPerson()
 
+        initSettings()
+        initMenu()
+
         binding.btBackToMainPage.setOnClickListener {
             findNavController().navigate(R.id.action_settingsProfileBusinessFrag_to_mainPageFragment)
         }
@@ -181,6 +184,31 @@ class SettingsProfileBusinessFragment : Fragment() {
 //                        imProgressBar.setProgress(4)
                     }
                 }
+            }
+        }
+    }
+
+    private fun initMenu() {
+        binding.apply {
+//            idTvFavorites.setOnClickListener {
+//                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_favouritesBusinessFrag)
+//            }
+            idSettingsPlaces.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsProfileBusinessFrag_to_settingsPlacesBusinessFrag)
+            }
+        }
+    }
+
+    private fun initSettings() {
+        binding.apply {
+//            binding.tvAddPlaceBusiness.setOnClickListener {
+//                findNavController().navigate(R.id.action_settingsPlacesCommonFrag_to_addNewPlaceCommonFrag)
+//            }
+//            tvFavoritesBusiness.setOnClickListener {
+//                findNavController().navigate(R.id.action_settingsPlacesCommonFrag_to_favouritesCommonFrag)
+//            }
+            tvSettingsPlacesBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsProfileBusinessFrag_to_settingsPlacesBusinessFrag)
             }
         }
     }

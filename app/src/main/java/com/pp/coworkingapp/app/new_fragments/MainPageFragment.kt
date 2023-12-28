@@ -34,6 +34,7 @@ class MainPageFragment : Fragment() {
     private val placeIdViewModel: PlaceIdViewModel by activityViewModels()
     private val userViewModel: UserViewModel by activityViewModels()
     private lateinit var listPlaces: List<Place>
+//    private lateinit var listFavoriteUserPlaces: List<Place>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -134,12 +135,19 @@ class MainPageFragment : Fragment() {
         binding.tvSettingsProfileBusiness.setOnClickListener {
             findNavController().navigate(R.id.action_mainPageFragment_to_settingsProfileBusinessFrag)
         }
+
+        binding.tvSettingsPlacesBusiness.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPageFragment_to_settingsPlacesBusinessFrag)
+        }
     }
 
     private fun loadListPlaces() {
         //Загрузка текущего списка
         CoroutineScope(Dispatchers.IO).launch {
             listPlaces = mainApi.getListPlaces()
+//            if (viewModel.token != null) {
+//                listFavoriteUserPlaces: List<Place> = mainApi.getFavoritePlaces()
+//            }
             requireActivity().runOnUiThread {
                 binding.apply {
                     tvCount.text = String.format("Найдено: %s", listPlaces.count())
