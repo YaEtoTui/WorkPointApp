@@ -89,9 +89,7 @@ class RedactPlaceBusinessFragment : Fragment() {
 
         initMenu()
 
-        binding.btDeleteNewCard.setOnClickListener {
-            findNavController().navigate(R.id.action_redactPlaceBusinessFrag_to_settingsPlacesBusinessFrag)
-        }
+        deletePlace()
 
         binding.btBackToMainPage.setOnClickListener {
             findNavController().navigate(R.id.action_redactPlaceBusinessFrag_to_mainPageFragment)
@@ -99,6 +97,21 @@ class RedactPlaceBusinessFragment : Fragment() {
 
         binding.tvlogOutBusiness.setOnClickListener {
             findNavController().navigate(R.id.action_redactPlaceBusinessFrag_to_authFragment)
+        }
+    }
+
+    private fun deletePlace() {
+        binding.btDeleteNewCard.setOnClickListener {
+            viewModel.token.observe(viewLifecycleOwner) { token ->
+                placeIdViewModel.placeId.observe(viewLifecycleOwner) { placeId ->
+                    CoroutineScope(Dispatchers.IO).launch {
+                        mainApi.deletePlaces("Bearer $token", placeId)
+                    }
+                    requireActivity().runOnUiThread {
+                        findNavController().navigate(R.id.action_redactPlaceBusinessFrag_to_settingsPlacesBusinessFrag)
+                    }
+                }
+            }
         }
     }
 
