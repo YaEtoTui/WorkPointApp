@@ -4,6 +4,7 @@ import com.pp.coworkingapp.app.retrofit.domain.request.CreatePlaceAndUserRequest
 import com.pp.coworkingapp.app.retrofit.domain.request.CreateReviewRequest
 import com.pp.coworkingapp.app.retrofit.domain.request.CreateSettingsUserRequest
 import com.pp.coworkingapp.app.retrofit.domain.request.Payload
+import com.pp.coworkingapp.app.retrofit.domain.request.PayloadSansTags
 import com.pp.coworkingapp.app.retrofit.domain.request.RegisterRequest
 import com.pp.coworkingapp.app.retrofit.domain.response.CurrentUser
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
@@ -73,6 +74,19 @@ interface MainApi {
     @POST("places/upload_place")
     @Multipart
     suspend fun loadNewPlaceInDB(@Header("Authorization") token: String, @Part("payload") payload: RequestBody, @Part files: List<MultipartBody.Part>): Response<Place>
+
+    @POST("places/update")
+    suspend fun loadRedactPayload(@Header("Authorization") token: String, @Body payload: PayloadSansTags): Response<Place>
+
+    @POST("places/update_photo")
+    @Multipart
+    suspend fun loadRedactPhoto(@Header("Authorization") token: String, @Query("id_place") placeId: Int, @Part files: List<MultipartBody.Part>): Response<String>
+
+    @POST("places/update_tags")
+    suspend fun loadRedactTags(@Header("Authorization") token: String, @Query("id_place") placeId: Int, @Body tags: List<String>)
+
+    @POST("places/delete")
+    suspend fun deletePlaces(@Header("Authorization") token: String, @Query("id_place") placeId: Int): Response<String>
 
     @POST("user/favorite_place")
     suspend fun addFavoritePlace(@Header("Authorization") token: String, @Body createPlaceAndUserRequest: CreatePlaceAndUserRequest): String

@@ -1,11 +1,17 @@
 package com.pp.coworkingapp.app.new_fragments
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.view.isVisible
+import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -17,24 +23,30 @@ import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.enum.Cafe
 import com.pp.coworkingapp.app.enum.Cost
 import com.pp.coworkingapp.app.enum.Hours
+import com.pp.coworkingapp.app.enum.Status
 import com.pp.coworkingapp.app.retrofit.adapter.FilterAdapter
 import com.pp.coworkingapp.app.retrofit.adapter.TagsAddNewPlaceCardAdapter
 import com.pp.coworkingapp.app.retrofit.adapter.TagsRedactPlaceCardAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
+import com.pp.coworkingapp.app.retrofit.domain.request.PayloadSansTags
 import com.pp.coworkingapp.app.retrofit.domain.response.PlaceWithTags
 import com.pp.coworkingapp.app.retrofit.domain.response.Tag
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
-import com.pp.coworkingapp.databinding.FragmentRedactNewPlaceBinding
+import com.pp.coworkingapp.databinding.FragmentRedactNewPlaceCommonBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
 
-class RedactNewPlaceFragment : Fragment() {
+class RedactNewPlaceCommonFragment : Fragment() {
 
-    private lateinit var binding: FragmentRedactNewPlaceBinding
+    private lateinit var binding: FragmentRedactNewPlaceCommonBinding
     private lateinit var mainApi: MainApi
     private val viewModel: AuthViewModel by activityViewModels()
     private lateinit var tokenUser: String
@@ -43,13 +55,15 @@ class RedactNewPlaceFragment : Fragment() {
     private lateinit var adapterTags : TagsAddNewPlaceCardAdapter
     private lateinit var adapterTagAdd : TagsRedactPlaceCardAdapter
     private lateinit var listTagsPlaceCard: ArrayList<Tag>
+    private lateinit var listPhotoPlaceCard: Array<Uri?>
+    private var photoUri: Uri? = null
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentRedactNewPlaceBinding.inflate(inflater, container, false)
+        binding = FragmentRedactNewPlaceCommonBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -58,6 +72,7 @@ class RedactNewPlaceFragment : Fragment() {
         mainApi = Common.retrofitService
 
         listTagsPlaceCard = ArrayList()
+        listPhotoPlaceCard = arrayOfNulls<Uri?>(size = 3)
 
         initCurrentPerson()
         initSettings()
@@ -68,8 +83,181 @@ class RedactNewPlaceFragment : Fragment() {
         initListHours()
         initListTags()
 
+        updatePlace()
+        initListPhoto()
+
+        binding.btCloseCard.setOnClickListener {
+            findNavController().navigate(R.id.action_redactNewPlaceFrag_to_settingsPlacesCommonFrag)
+        }
+
         binding.btBackToMainPage.setOnClickListener {
             findNavController().navigate(R.id.action_redactNewPlaceFrag_to_mainPageFragment)
+        }
+    }
+
+    private fun getRealPathFromUri(context: Context, contentUri: Uri): File {
+        val inputStream = context.contentResolver.openInputStream(contentUri)
+        val file = File(context.cacheDir, "temp_file")
+        inputStream.use { input ->
+            file.outputStream().use { output ->
+                input?.copyTo(output)
+            }
+        }
+        return file
+    }
+
+    private fun initListPhoto() {
+        binding.apply {
+            idPhoto1.setOnClickListener {
+                getPhoto(PICK_IMAGE1)
+            }
+            idPhoto2.setOnClickListener {
+                getPhoto(PICK_IMAGE2)
+            }
+            idPhoto3.setOnClickListener {
+                getPhoto(PICK_IMAGE3)
+            }
+        }
+    }
+
+    private val PICK_IMAGE1 = 1
+    private val PICK_IMAGE2 = 2
+    private val PICK_IMAGE3 = 3
+
+    private fun getPhoto(pickImage: Int) {
+        val photoPickerIntent = Intent(Intent.ACTION_PICK)
+        photoPickerIntent.type = "image/*"
+        startActivityForResult(photoPickerIntent, pickImage)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == PICK_IMAGE1 && resultCode == Activity.RESULT_OK) {
+            Log.i("Photo", "Тут 1")
+            val imageUri = data?.data
+            photoUri = data?.data
+            listPhotoPlaceCard[0] = imageUri
+            loadPhoto(imageUri, binding.idPhoto1)
+        } else if (requestCode == PICK_IMAGE2 && resultCode == Activity.RESULT_OK) {
+            val imageUri = data?.data
+            listPhotoPlaceCard[1] = imageUri
+            loadPhoto(imageUri, binding.idPhoto2)
+            Log.i("Photo", "Тут 2")
+        } else if (requestCode == PICK_IMAGE3 && resultCode == Activity.RESULT_OK) {
+            val imageUri = data?.data
+            listPhotoPlaceCard[2] = imageUri
+            loadPhoto(imageUri, binding.idPhoto3)
+            Log.i("Photo", "Тут 3")
+        }
+    }
+
+    private fun loadPhoto(imageUri: Uri?, view: ImageView) {
+        Glide.with(this)
+            .load(imageUri)
+            .transform(RoundedCorners(20))
+            .centerCrop()
+            .error(R.drawable.ic_launcher_foreground)
+            .placeholder(R.drawable.ic_launcher_foreground)
+            .into(view)
+    }
+
+    private fun updatePlace() {
+
+        val editTextNamePlace: String = binding.edTextNameInstitution.text.toString()
+        val editTextCity: String = binding.edTextCity.text.toString()
+        val editTextArea: String = binding.edTextArea.text.toString()
+        val editTextAddress: String = binding.edTextAddress.text.toString()
+
+        val editTextDesc: String = binding.edTextDesc.text.toString()
+
+        val editTextFilterTime: String = binding.edTextFilterTime.text.toString()
+        val editTextCoffeeType: String = binding.edTextFilterCoffeeType.text.toString()
+        val editTextCost: String = binding.edTextFilterCost.text.toString()
+
+        val countListTags: Int = binding.idListTagsPlaceCard.size
+
+        val listTagsId: ArrayList<String> = ArrayList()
+        for(i in 0..<listTagsPlaceCard.size) {
+            when (listTagsPlaceCard[i].name) {
+                "Wi-Fi" -> {
+                    listTagsId.add("1")
+                }
+                "Розетки" -> {
+                    listTagsId.add("2")
+                }
+                "Еда" -> {
+                    listTagsId.add("3")
+                }
+                "Напитки" -> {
+                    listTagsId.add("4")
+                }
+                "Канцелярия" -> {
+                    listTagsId.add("5")
+                }
+            }
+        }
+
+        val editTextPhone: String = binding.edTextPhone.text.toString()
+        val editTextMail: String = binding.edTextMail.text.toString()
+        val editTextSite: String = binding.edTextSite.text.toString()
+
+        Log.i("Text", editTextFilterTime)
+        Log.i("Text", editTextCoffeeType)
+        Log.i("Text", editTextCost)
+
+        binding.btChangeCard.setOnClickListener {
+            viewModel.token.observe(viewLifecycleOwner) { token ->
+                placeIdViewModel.placeId.observe(viewLifecycleOwner) { placeId ->
+
+                    val listFiles: ArrayList<File> = ArrayList()
+
+                    for(i in 0..listPhotoPlaceCard.size - 1) {
+                        if (listPhotoPlaceCard[i] != null) {
+                            listFiles.add(getRealPathFromUri(requireContext(), listPhotoPlaceCard[i]!!))
+                        }
+                    }
+
+                    val imageParts: List<MultipartBody.Part> = listFiles.toList().mapIndexed { index, file ->
+                        MultipartBody.Part.createFormData(
+                            "image_${index + 1}",
+                            "image_${index + 1}",
+                            file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+                        )
+                    }
+
+                    val payload: PayloadSansTags = PayloadSansTags(
+                        0,
+                        editTextNamePlace,
+                        editTextCity,
+                        editTextArea,
+                        editTextAddress,
+                        editTextDesc,
+                        editTextFilterTime,
+                        editTextCoffeeType,
+                        editTextCost,
+                        "0",
+                        binding.btParking.isChecked,
+                        binding.btRestZone.isChecked,
+                        binding.btConferenceHall.isChecked,
+                        editTextPhone,
+                        editTextMail,
+                        editTextSite,
+                        "",
+                        Status.UNDERREVIEW.status,
+                        placeId
+                    )
+
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val responsePayload = mainApi.loadRedactPayload("Bearer $token", payload)
+                        mainApi.loadRedactTags("Bearer $token", placeId, listTagsId.toList())
+//                        val responsePhoto = mainApi.loadRedactPhoto("Bearer $token", placeId, imageParts)
+                        requireActivity().runOnUiThread {
+                            findNavController().navigate(R.id.action_redactNewPlaceFrag_to_settingsPlacesCommonFrag)
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -213,7 +401,7 @@ class RedactNewPlaceFragment : Fragment() {
                         //photo не сделано
                         val listPictures: List<String> = currentPlace.photo.split('#')
                         if (!listPictures[0].equals(null)) {
-                            Glide.with(this@RedactNewPlaceFragment)
+                            Glide.with(this@RedactNewPlaceCommonFragment)
                                 .load(listPictures[0])
                                 .transform(RoundedCorners(20))
                                 .centerCrop()
@@ -221,7 +409,7 @@ class RedactNewPlaceFragment : Fragment() {
                                 .placeholder(R.drawable.ic_launcher_foreground)
                                 .into(idPhoto1)
                         } else if (!listPictures[1].equals(null)) {
-                            Glide.with(this@RedactNewPlaceFragment)
+                            Glide.with(this@RedactNewPlaceCommonFragment)
                                 .load(listPictures[1])
                                 .transform(RoundedCorners(20))
                                 .centerCrop()
@@ -229,7 +417,7 @@ class RedactNewPlaceFragment : Fragment() {
                                 .placeholder(R.drawable.ic_launcher_foreground)
                                 .into(idPhoto2)
                         } else if (!listPictures[2].equals(null)) {
-                            Glide.with(this@RedactNewPlaceFragment)
+                            Glide.with(this@RedactNewPlaceCommonFragment)
                                 .load(listPictures[2])
                                 .transform(RoundedCorners(20))
                                 .centerCrop()

@@ -172,9 +172,9 @@
 
     <fragment
         android:id="@+id/redactNewPlaceFrag"
-        android:name="com.pp.coworkingapp.app.new_fragments.RedactNewPlaceFragment"
+        android:name="com.pp.coworkingapp.app.new_fragments.RedactNewPlaceCommonFragment"
         android:animateLayoutChanges="true"
-        tools:layout="@layout/fragment_redact_new_place">
+        tools:layout="@layout/fragment_redact_new_place_common">
         <action
             android:id="@+id/action_redactNewPlaceFrag_to_settingsPlacesCommonFrag"
             app:destination="@id/settingsPlacesCommonFrag" />
