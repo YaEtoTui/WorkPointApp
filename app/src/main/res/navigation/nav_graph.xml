@@ -30,14 +30,14 @@
             android:id="@+id/action_mainPageFragment_to_settingsProfileBusinessFrag"
             app:destination="@id/settingsProfileBusinessFrag" />
         <action
-            android:id="@+id/action_mainPageFragment_to_addNewPlaceCommonFrag"
-            app:destination="@id/addNewPlaceCommonFrag" />
-        <action
             android:id="@+id/action_mainPageFragment_to_settingsPlacesBusinessFrag"
             app:destination="@id/settingsPlacesBusinessFrag" />
         <action
             android:id="@+id/action_mainPageFragment_to_favouritesBusinessFrag"
             app:destination="@id/favouritesBusinessFrag" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_addNewPlaceCommonFrag"
+            app:destination="@id/addNewPlaceCommonFrag" />
     </fragment>
     <fragment
         android:id="@+id/authFragment"
@@ -112,8 +112,8 @@
             android:id="@+id/action_settingsPlacesCommonFrag_to_addNewPlaceCommonFrag"
             app:destination="@id/addNewPlaceCommonFrag" />
         <action
-            android:id="@+id/action_settingsPlacesCommonFrag_to_redactNewPlaceFrag"
-            app:destination="@id/redactNewPlaceFrag" />
+            android:id="@+id/action_settingsPlacesCommonFrag_to_redactPlaceCommonFrag"
+            app:destination="@id/redactPlaceCommonFrag" />
     </fragment>
 
     <fragment
@@ -132,6 +132,9 @@
             app:destination="@id/settingsPlacesCommonFrag" />
         <action
             android:id="@+id/action_favouritesCommonFrag_to_addNewPlaceCommonFrag"
+            app:destination="@id/addNewPlaceCommonFrag" />
+        <action
+            android:id="@+id/action_favouritesCommonFrag_to_addNewPlaceCommonFrag2"
             app:destination="@id/addNewPlaceCommonFrag" />
     </fragment>
 
@@ -152,44 +155,44 @@
     </fragment>
 
     <fragment
+        android:id="@+id/redactPlaceCommonFrag"
+        android:name="com.pp.coworkingapp.app.new_fragments.RedactPlaceCommonFragment"
+        android:animateLayoutChanges="true"
+        tools:layout="@layout/fragment_redact_place_common">
+        <action
+            android:id="@+id/action_redactPlaceCommonFrag_to_settingsPlacesCommonFrag"
+            app:destination="@id/settingsPlacesCommonFrag" />
+        <action
+            android:id="@+id/action_redactPlaceCommonFrag_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
+        <action
+            android:id="@+id/action_redactPlaceCommonFrag_to_settingsProfileCommonFrag"
+            app:destination="@id/settingsProfileCommonFrag" />
+        <action
+            android:id="@+id/action_redactPlaceCommonFrag_to_favouritesCommonFrag"
+            app:destination="@id/favouritesCommonFrag" />
+        <action
+            android:id="@+id/action_redactPlaceCommonFrag_to_addNewPlaceCommonFrag"
+            app:destination="@id/addNewPlaceCommonFrag" />
+    </fragment>
+
+    <fragment
         android:id="@+id/addNewPlaceCommonFrag"
         android:name="com.pp.coworkingapp.app.new_fragments.AddNewPlaceCommonFragment"
         android:animateLayoutChanges="true"
         tools:layout="@layout/fragment_add_new_place_common">
         <action
-            android:id="@+id/action_addNewPlaceCommonFrag_to_settingsProfileCommonFrag"
-            app:destination="@id/settingsProfileCommonFrag" />
+            android:id="@+id/action_addNewPlaceCommonFrag_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
         <action
             android:id="@+id/action_addNewPlaceCommonFrag_to_favouritesCommonFrag"
             app:destination="@id/favouritesCommonFrag" />
         <action
-            android:id="@+id/action_addNewPlaceCommonFrag_to_settingsPlacesCommonFrag"
-            app:destination="@id/settingsPlacesCommonFrag" />
-        <action
-            android:id="@+id/action_addNewPlaceCommonFrag_to_mainPageFragment"
-            app:destination="@id/mainPageFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/redactNewPlaceFrag"
-        android:name="com.pp.coworkingapp.app.new_fragments.RedactNewPlaceCommonFragment"
-        android:animateLayoutChanges="true"
-        tools:layout="@layout/fragment_redact_new_place_common">
-        <action
-            android:id="@+id/action_redactNewPlaceFrag_to_settingsPlacesCommonFrag"
-            app:destination="@id/settingsPlacesCommonFrag" />
-        <action
-            android:id="@+id/action_redactNewPlaceFrag_to_mainPageFragment"
-            app:destination="@id/mainPageFragment" />
-        <action
-            android:id="@+id/action_redactNewPlaceFrag_to_settingsProfileCommonFrag"
+            android:id="@+id/action_addNewPlaceCommonFrag_to_settingsProfileCommonFrag"
             app:destination="@id/settingsProfileCommonFrag" />
         <action
-            android:id="@+id/action_redactNewPlaceFrag_to_favouritesCommonFrag"
-            app:destination="@id/favouritesCommonFrag" />
-        <action
-            android:id="@+id/action_redactNewPlaceFrag_to_addNewPlaceCommonFrag"
-            app:destination="@id/addNewPlaceCommonFrag" />
+            android:id="@+id/action_addNewPlaceCommonFrag_to_settingsPlacesCommonFrag"
+            app:destination="@id/settingsPlacesCommonFrag" />
     </fragment>
 
     <fragment

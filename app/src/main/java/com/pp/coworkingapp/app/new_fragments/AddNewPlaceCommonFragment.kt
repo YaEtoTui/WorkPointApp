@@ -39,16 +39,12 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import okhttp3.FormBody
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import java.io.File
-
 
 class AddNewPlaceCommonFragment : Fragment() {
 
@@ -82,7 +78,6 @@ class AddNewPlaceCommonFragment : Fragment() {
         mainApi = Common.retrofitService
         initCurrentPerson()
 
-        initMenu()
         initSettings()
 
         initListHours()
@@ -93,7 +88,7 @@ class AddNewPlaceCommonFragment : Fragment() {
 
         saveCurrentPlaceCard()
 
-        binding.btDeleteNewCard.setOnClickListener {
+        binding.btCloseCard.setOnClickListener {
             findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_settingsPlacesCommonFrag)
         }
 
@@ -103,7 +98,7 @@ class AddNewPlaceCommonFragment : Fragment() {
     }
 
     private fun saveCurrentPlaceCard() {
-        binding.btSaveNewCard.setOnClickListener {
+        binding.btChangeCard.setOnClickListener {
             binding.apply {
                 val editTextNamePlace: String = edTextNameInstitution.text.toString()
                 val editTextCity: String = edTextCity.text.toString()
@@ -338,20 +333,6 @@ class AddNewPlaceCommonFragment : Fragment() {
         }
     }
 
-    private fun initMenu() {
-        binding.apply {
-            idTvFavorites.setOnClickListener {
-                findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_favouritesCommonFrag)
-            }
-            idTvSettingsProfile.setOnClickListener {
-                findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_settingsProfileCommonFrag)
-            }
-            idSettingsPlaces.setOnClickListener {
-                findNavController().navigate(R.id.action_addNewPlaceCommonFrag_to_settingsPlacesCommonFrag)
-            }
-        }
-    }
-
     private fun initListPhoto() {
         binding.apply {
             idPhoto1.setOnClickListener {
@@ -547,3 +528,5 @@ class AddNewPlaceCommonFragment : Fragment() {
         }
     }
 }
+
+

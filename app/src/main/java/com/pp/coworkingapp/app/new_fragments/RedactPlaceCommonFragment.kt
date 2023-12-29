@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.google.gson.Gson
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.enum.Cafe
 import com.pp.coworkingapp.app.enum.Cost
@@ -29,12 +30,15 @@ import com.pp.coworkingapp.app.retrofit.adapter.TagsAddNewPlaceCardAdapter
 import com.pp.coworkingapp.app.retrofit.adapter.TagsRedactPlaceCardAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
+import com.pp.coworkingapp.app.retrofit.domain.request.Payload
 import com.pp.coworkingapp.app.retrofit.domain.request.PayloadSansTags
 import com.pp.coworkingapp.app.retrofit.domain.response.PlaceWithTags
 import com.pp.coworkingapp.app.retrofit.domain.response.Tag
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
-import com.pp.coworkingapp.databinding.FragmentRedactNewPlaceCommonBinding
+import com.pp.coworkingapp.app.retrofit.domain.viewModel.UserViewModel
+import com.pp.coworkingapp.databinding.FragmentAddNewPlaceCommonBinding
+import com.pp.coworkingapp.databinding.FragmentRedactPlaceCommonBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -42,11 +46,14 @@ import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 import java.io.File
 
-class RedactNewPlaceCommonFragment : Fragment() {
 
-    private lateinit var binding: FragmentRedactNewPlaceCommonBinding
+class RedactPlaceCommonFragment : Fragment() {
+
+    private lateinit var binding: FragmentRedactPlaceCommonBinding
     private lateinit var mainApi: MainApi
     private val viewModel: AuthViewModel by activityViewModels()
     private lateinit var tokenUser: String
@@ -63,7 +70,7 @@ class RedactNewPlaceCommonFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentRedactNewPlaceCommonBinding.inflate(inflater, container, false)
+        binding = FragmentRedactPlaceCommonBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -86,12 +93,14 @@ class RedactNewPlaceCommonFragment : Fragment() {
         updatePlace()
         initListPhoto()
 
-        binding.btCloseCard.setOnClickListener {
-            findNavController().navigate(R.id.action_redactNewPlaceFrag_to_settingsPlacesCommonFrag)
+        initMenu()
+
+        binding.btDeleteNewCard.setOnClickListener {
+            findNavController().navigate(R.id.action_redactPlaceCommonFrag_to_settingsPlacesCommonFrag)
         }
 
         binding.btBackToMainPage.setOnClickListener {
-            findNavController().navigate(R.id.action_redactNewPlaceFrag_to_mainPageFragment)
+            findNavController().navigate(R.id.action_redactPlaceCommonFrag_to_mainPageFragment)
         }
     }
 
@@ -104,6 +113,20 @@ class RedactNewPlaceCommonFragment : Fragment() {
             }
         }
         return file
+    }
+
+    private fun initMenu() {
+        binding.apply {
+            idTvFavorites.setOnClickListener {
+                findNavController().navigate(R.id.action_redactPlaceCommonFrag_to_favouritesCommonFrag)
+            }
+            idTvSettingsProfile.setOnClickListener {
+                findNavController().navigate(R.id.action_redactPlaceCommonFrag_to_settingsProfileCommonFrag)
+            }
+            idSettingsPlaces.setOnClickListener {
+                findNavController().navigate(R.id.action_redactPlaceCommonFrag_to_settingsPlacesCommonFrag)
+            }
+        }
     }
 
     private fun initListPhoto() {
@@ -206,7 +229,7 @@ class RedactNewPlaceCommonFragment : Fragment() {
         Log.i("Text", editTextCoffeeType)
         Log.i("Text", editTextCost)
 
-        binding.btChangeCard.setOnClickListener {
+        binding.btSaveNewCard.setOnClickListener {
             viewModel.token.observe(viewLifecycleOwner) { token ->
                 placeIdViewModel.placeId.observe(viewLifecycleOwner) { placeId ->
 
@@ -253,7 +276,7 @@ class RedactNewPlaceCommonFragment : Fragment() {
                         mainApi.loadRedactTags("Bearer $token", placeId, listTagsId.toList())
 //                        val responsePhoto = mainApi.loadRedactPhoto("Bearer $token", placeId, imageParts)
                         requireActivity().runOnUiThread {
-                            findNavController().navigate(R.id.action_redactNewPlaceFrag_to_settingsPlacesCommonFrag)
+                            findNavController().navigate(R.id.action_redactPlaceCommonFrag_to_settingsPlacesCommonFrag)
                         }
                     }
                 }
@@ -401,7 +424,7 @@ class RedactNewPlaceCommonFragment : Fragment() {
                         //photo не сделано
                         val listPictures: List<String> = currentPlace.photo.split('#')
                         if (!listPictures[0].equals(null)) {
-                            Glide.with(this@RedactNewPlaceCommonFragment)
+                            Glide.with(this@RedactPlaceCommonFragment)
                                 .load(listPictures[0])
                                 .transform(RoundedCorners(20))
                                 .centerCrop()
@@ -409,7 +432,7 @@ class RedactNewPlaceCommonFragment : Fragment() {
                                 .placeholder(R.drawable.ic_launcher_foreground)
                                 .into(idPhoto1)
                         } else if (!listPictures[1].equals(null)) {
-                            Glide.with(this@RedactNewPlaceCommonFragment)
+                            Glide.with(this@RedactPlaceCommonFragment)
                                 .load(listPictures[1])
                                 .transform(RoundedCorners(20))
                                 .centerCrop()
@@ -417,7 +440,7 @@ class RedactNewPlaceCommonFragment : Fragment() {
                                 .placeholder(R.drawable.ic_launcher_foreground)
                                 .into(idPhoto2)
                         } else if (!listPictures[2].equals(null)) {
-                            Glide.with(this@RedactNewPlaceCommonFragment)
+                            Glide.with(this@RedactPlaceCommonFragment)
                                 .load(listPictures[2])
                                 .transform(RoundedCorners(20))
                                 .centerCrop()
@@ -463,16 +486,16 @@ class RedactNewPlaceCommonFragment : Fragment() {
     private fun initSettings() {
         binding.apply {
             tvAddPlace.setOnClickListener {
-                findNavController().navigate(R.id.action_redactNewPlaceFrag_to_addNewPlaceCommonFrag)
+                findNavController().navigate(R.id.action_redactPlaceCommonFrag_to_addNewPlaceCommonFrag)
             }
             tvFavorites.setOnClickListener {
-                findNavController().navigate(R.id.action_redactNewPlaceFrag_to_favouritesCommonFrag)
+                findNavController().navigate(R.id.action_redactPlaceCommonFrag_to_favouritesCommonFrag)
             }
             tvSettingsProfile.setOnClickListener {
-                findNavController().navigate(R.id.action_redactNewPlaceFrag_to_settingsProfileCommonFrag)
+                findNavController().navigate(R.id.action_redactPlaceCommonFrag_to_settingsProfileCommonFrag)
             }
             tvSettingsPlaces.setOnClickListener {
-                findNavController().navigate(R.id.action_redactNewPlaceFrag_to_settingsPlacesCommonFrag)
+                findNavController().navigate(R.id.action_redactPlaceCommonFrag_to_settingsPlacesCommonFrag)
             }
         }
     }

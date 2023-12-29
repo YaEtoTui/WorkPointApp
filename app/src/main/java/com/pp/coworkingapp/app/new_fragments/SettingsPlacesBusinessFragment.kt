@@ -62,7 +62,7 @@ class SettingsPlacesBusinessFragment : Fragment() {
         adapter.setOnButtonClickListener(object: AdapterMyPlace.OnButtonClickListener {
             override fun onClick(placeId: Int) {
                 placeIdViewModel.placeId.value = placeId
-                findNavController().navigate(R.id.action_settingsPlacesCommonFrag_to_redactNewPlaceFrag)
+                findNavController().navigate(R.id.action_settingsPlacesCommonFrag_to_redactPlaceCommonFrag)
             }
         })
         binding.rcView.layoutManager = LinearLayoutManager(context)
