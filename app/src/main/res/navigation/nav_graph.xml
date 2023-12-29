@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_mainPageFragment_to_addNewPlaceCommonFrag"
             app:destination="@id/addNewPlaceCommonFrag" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_addNewPlaceBusinessFrag"
+            app:destination="@id/addNewPlaceBusinessFrag" />
     </fragment>
     <fragment
         android:id="@+id/authFragment"
@@ -152,6 +155,12 @@
         <action
             android:id="@+id/action_settingsProfileBusinessFrag_to_favouritesBusinessFrag"
             app:destination="@id/favouritesBusinessFrag" />
+        <action
+            android:id="@+id/action_settingsProfileBusinessFrag_to_redactPlaceBusinessFrag"
+            app:destination="@id/redactPlaceBusinessFrag" />
+        <action
+            android:id="@+id/action_settingsProfileBusinessFrag_to_addNewPlaceBusinessFrag"
+            app:destination="@id/addNewPlaceBusinessFrag" />
     </fragment>
 
     <fragment
@@ -209,6 +218,12 @@
         <action
             android:id="@+id/action_settingsPlacesBusinessFrag_to_favouritesBusinessFrag"
             app:destination="@id/favouritesBusinessFrag" />
+        <action
+            android:id="@+id/action_settingsPlacesBusinessFrag_to_redactPlaceBusinessFrag"
+            app:destination="@id/redactPlaceBusinessFrag" />
+        <action
+            android:id="@+id/action_settingsPlacesBusinessFrag_to_addNewPlaceBusinessFrag"
+            app:destination="@id/addNewPlaceBusinessFrag" />
     </fragment>
 
     <fragment
@@ -225,5 +240,52 @@
         <action
             android:id="@+id/action_favouritesBusinessFrag_to_mainPageFragment"
             app:destination="@id/mainPageFragment" />
+        <action
+            android:id="@+id/action_favouritesBusinessFrag_to_redactPlaceBusinessFrag"
+            app:destination="@id/redactPlaceBusinessFrag" />
+        <action
+            android:id="@+id/action_favouritesBusinessFrag_to_addNewPlaceBusinessFrag"
+            app:destination="@id/addNewPlaceBusinessFrag" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/redactPlaceBusinessFrag"
+        android:name="com.pp.coworkingapp.app.new_fragments.RedactPlaceBusinessFragment"
+        android:animateLayoutChanges="true"
+        tools:layout="@layout/fragment_redact_place_business">
+        <action
+            android:id="@+id/action_redactPlaceBusinessFrag_to_settingsPlacesBusinessFrag"
+            app:destination="@id/settingsPlacesBusinessFrag" />
+        <action
+            android:id="@+id/action_redactPlaceBusinessFrag_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
+        <action
+            android:id="@+id/action_redactPlaceBusinessFrag_to_settingsProfileBusinessFrag"
+            app:destination="@id/settingsProfileBusinessFrag" />
+        <action
+            android:id="@+id/action_redactPlaceBusinessFrag_to_favouritesBusinessFrag"
+            app:destination="@id/favouritesBusinessFrag" />
+        <action
+            android:id="@+id/action_redactPlaceBusinessFrag_to_addNewPlaceBusinessFrag"
+            app:destination="@id/addNewPlaceBusinessFrag" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addNewPlaceBusinessFrag"
+        android:name="com.pp.coworkingapp.app.new_fragments.AddNewPlaceBusinessFragment"
+        android:animateLayoutChanges="true"
+        tools:layout="@layout/fragment_add_new_place_business">
+        <action
+            android:id="@+id/action_addNewPlaceBusinessFrag_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
+        <action
+            android:id="@+id/action_addNewPlaceBusinessFrag_to_favouritesBusinessFrag"
+            app:destination="@id/favouritesBusinessFrag" />
+        <action
+            android:id="@+id/action_addNewPlaceBusinessFrag_to_settingsProfileBusinessFrag"
+            app:destination="@id/settingsProfileBusinessFrag" />
+        <action
+            android:id="@+id/action_addNewPlaceBusinessFrag_to_settingsPlacesBusinessFrag"
+            app:destination="@id/settingsPlacesBusinessFrag" />
     </fragment>
 </navigation>

@@ -62,7 +62,7 @@ class SettingsPlacesBusinessFragment : Fragment() {
         adapter.setOnButtonClickListener(object: AdapterMyPlace.OnButtonClickListener {
             override fun onClick(placeId: Int) {
                 placeIdViewModel.placeId.value = placeId
-                findNavController().navigate(R.id.action_settingsPlacesCommonFrag_to_redactPlaceCommonFrag)
+                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_redactPlaceBusinessFrag)
             }
         })
         binding.rcView.layoutManager = LinearLayoutManager(context)
@@ -79,12 +79,10 @@ class SettingsPlacesBusinessFragment : Fragment() {
                 requireActivity().runOnUiThread {
                     //Настраиваем кнопку настройки пользователя
                     binding.idAccount.setOnClickListener {
-                        if (currentUser.roleId == 1) {
-                            if (binding.idListAccountBusiness.isVisible)
-                                binding.idListAccountBusiness.visibility = View.GONE
-                            else
-                                binding.idListAccountBusiness.visibility = View.VISIBLE
-                        }
+                        if (binding.idListAccountBusiness.isVisible)
+                            binding.idListAccountBusiness.visibility = View.GONE
+                        else
+                            binding.idListAccountBusiness.visibility = View.VISIBLE
                     }
                     tokenUser = token
                     binding.apply {
@@ -113,9 +111,9 @@ class SettingsPlacesBusinessFragment : Fragment() {
 
     private fun initSettings() {
         binding.apply {
-//            binding.tvAddPlaceBusiness.setOnClickListener {
-//                findNavController().navigate(R.id.action_settingsPlacesCommonFrag_to_addNewPlaceCommonFrag)
-//            }
+            binding.tvAddPlaceBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_addNewPlaceBusinessFrag)
+            }
             tvFavoritesBusiness.setOnClickListener {
                 findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_favouritesBusinessFrag)
             }

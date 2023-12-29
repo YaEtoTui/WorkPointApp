@@ -132,6 +132,9 @@ class MainPageFragment : Fragment() {
     }
 
     private fun onClickBusinessText() {
+        binding.tvAddPlaceBusiness.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPageFragment_to_addNewPlaceBusinessFrag)
+        }
         binding.tvFavoritesBusiness.setOnClickListener {
             findNavController().navigate(R.id.action_mainPageFragment_to_favouritesBusinessFrag)
         }

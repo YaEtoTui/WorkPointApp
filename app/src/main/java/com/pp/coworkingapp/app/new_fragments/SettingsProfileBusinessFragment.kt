@@ -201,9 +201,9 @@ class SettingsProfileBusinessFragment : Fragment() {
 
     private fun initSettings() {
         binding.apply {
-//            binding.tvAddPlaceBusiness.setOnClickListener {
-//                findNavController().navigate(R.id.action_settingsPlacesCommonFrag_to_addNewPlaceCommonFrag)
-//            }
+            binding.tvAddPlaceBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsProfileBusinessFrag_to_addNewPlaceBusinessFrag)
+            }
             tvFavoritesBusiness.setOnClickListener {
                 findNavController().navigate(R.id.action_settingsProfileBusinessFrag_to_favouritesBusinessFrag)
             }

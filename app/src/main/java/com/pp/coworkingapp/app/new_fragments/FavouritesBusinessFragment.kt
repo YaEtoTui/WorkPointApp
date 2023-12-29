@@ -56,12 +56,10 @@ class FavouritesBusinessFragment : Fragment() {
                 requireActivity().runOnUiThread {
                     //Настраиваем кнопку настройки пользователя
                     binding.idAccount.setOnClickListener {
-                        if (currentUser.roleId == 1) {
-                            if (binding.idListAccountBusiness.isVisible)
-                                binding.idListAccountBusiness.visibility = View.GONE
-                            else
-                                binding.idListAccountBusiness.visibility = View.VISIBLE
-                        }
+                        if (binding.idListAccountBusiness.isVisible)
+                            binding.idListAccountBusiness.visibility = View.GONE
+                        else
+                            binding.idListAccountBusiness.visibility = View.VISIBLE
                     }
                     tokenUser = token
                     binding.apply {
@@ -90,9 +88,9 @@ class FavouritesBusinessFragment : Fragment() {
 
     private fun initSettings() {
         binding.apply {
-//            tvAddPlaceBusiness.setOnClickListener {
-//                findNavController().navigate(R.id.action_favouritesCommonFrag_to_addNewPlaceCommonFrag)
-//            }
+            binding.tvAddPlaceBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_favouritesBusinessFrag_to_addNewPlaceBusinessFrag)
+            }
             tvSettingsProfileBusiness.setOnClickListener {
                 findNavController().navigate(R.id.action_favouritesBusinessFrag_to_settingsProfileBusinessFrag)
             }
