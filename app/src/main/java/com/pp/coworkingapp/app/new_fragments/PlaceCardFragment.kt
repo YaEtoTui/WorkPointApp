@@ -89,6 +89,10 @@ class PlaceCardFragment : Fragment() {
                 }
             }
         }
+
+        binding.tvlogOut.setOnClickListener {
+            findNavController().navigate(R.id.action_placeCardFragment_to_authFragment)
+        }
     }
 
     override fun onStop() {

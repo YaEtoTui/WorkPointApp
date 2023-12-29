@@ -102,6 +102,27 @@ class RedactPlaceCommonFragment : Fragment() {
         binding.btBackToMainPage.setOnClickListener {
             findNavController().navigate(R.id.action_redactPlaceCommonFrag_to_mainPageFragment)
         }
+
+        binding.tvlogOut.setOnClickListener {
+            findNavController().navigate(R.id.action_redactPlaceCommonFrag_to_authFragment)
+        }
+
+        deletePlace()
+    }
+
+    private fun deletePlace() {
+        binding.btDeleteNewCard.setOnClickListener {
+            viewModel.token.observe(viewLifecycleOwner) { token ->
+                placeIdViewModel.placeId.observe(viewLifecycleOwner) { placeId ->
+                    CoroutineScope(Dispatchers.IO).launch {
+                        mainApi.deletePlaces("Bearer $token", placeId)
+                    }
+                    requireActivity().runOnUiThread {
+                        findNavController().navigate(R.id.action_redactPlaceCommonFrag_to_settingsPlacesCommonFrag)
+                    }
+                }
+            }
+        }
     }
 
     private fun getRealPathFromUri(context: Context, contentUri: Uri): File {

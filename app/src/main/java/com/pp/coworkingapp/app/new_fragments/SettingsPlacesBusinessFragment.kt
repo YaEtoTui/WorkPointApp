@@ -55,6 +55,10 @@ class SettingsPlacesBusinessFragment : Fragment() {
         binding.btBackToMainPage.setOnClickListener {
             findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_mainPageFragment)
         }
+
+        binding.tvlogOutBusiness.setOnClickListener {
+            findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_authFragment)
+        }
     }
 
     private fun initAdapterList() {

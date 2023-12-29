@@ -17,6 +17,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -85,8 +86,8 @@ interface MainApi {
     @POST("places/update_tags")
     suspend fun loadRedactTags(@Header("Authorization") token: String, @Query("id_place") placeId: Int, @Body tags: List<String>)
 
-    @POST("places/delete")
-    suspend fun deletePlaces(@Header("Authorization") token: String, @Query("id_place") placeId: Int): Response<String>
+    @DELETE("places/delete")
+    suspend fun deletePlaces(@Header("Authorization") token: String, @Query("id_place") placeId: Int)
 
     @POST("user/favorite_place")
     suspend fun addFavoritePlace(@Header("Authorization") token: String, @Body createPlaceAndUserRequest: CreatePlaceAndUserRequest): String

@@ -73,6 +73,9 @@
         <action
             android:id="@+id/action_placeCardFragment_to_mainPageFragment"
             app:destination="@id/mainPageFragment" />
+        <action
+            android:id="@+id/action_placeCardFragment_to_authFragment"
+            app:destination="@id/authFragment" />
     </fragment>
 
     <fragment
@@ -95,6 +98,9 @@
         <action
             android:id="@+id/action_settingsProfileCommonFrag_to_addNewPlaceCommonFrag"
             app:destination="@id/addNewPlaceCommonFrag" />
+        <action
+            android:id="@+id/action_settingsProfileCommonFrag_to_authFragment"
+            app:destination="@id/authFragment" />
     </fragment>
 
     <fragment
@@ -117,6 +123,9 @@
         <action
             android:id="@+id/action_settingsPlacesCommonFrag_to_redactPlaceCommonFrag"
             app:destination="@id/redactPlaceCommonFrag" />
+        <action
+            android:id="@+id/action_settingsPlacesCommonFrag_to_authFragment"
+            app:destination="@id/authFragment" />
     </fragment>
 
     <fragment
@@ -139,6 +148,9 @@
         <action
             android:id="@+id/action_favouritesCommonFrag_to_addNewPlaceCommonFrag2"
             app:destination="@id/addNewPlaceCommonFrag" />
+        <action
+            android:id="@+id/action_favouritesCommonFrag_to_authFragment"
+            app:destination="@id/authFragment" />
     </fragment>
 
     <fragment
@@ -161,6 +173,9 @@
         <action
             android:id="@+id/action_settingsProfileBusinessFrag_to_addNewPlaceBusinessFrag"
             app:destination="@id/addNewPlaceBusinessFrag" />
+        <action
+            android:id="@+id/action_settingsProfileBusinessFrag_to_authFragment"
+            app:destination="@id/authFragment" />
     </fragment>
 
     <fragment
@@ -183,6 +198,9 @@
         <action
             android:id="@+id/action_redactPlaceCommonFrag_to_addNewPlaceCommonFrag"
             app:destination="@id/addNewPlaceCommonFrag" />
+        <action
+            android:id="@+id/action_redactPlaceCommonFrag_to_authFragment"
+            app:destination="@id/authFragment" />
     </fragment>
 
     <fragment
@@ -202,6 +220,9 @@
         <action
             android:id="@+id/action_addNewPlaceCommonFrag_to_settingsPlacesCommonFrag"
             app:destination="@id/settingsPlacesCommonFrag" />
+        <action
+            android:id="@+id/action_addNewPlaceCommonFrag_to_authFragment"
+            app:destination="@id/authFragment" />
     </fragment>
 
     <fragment
@@ -224,6 +245,9 @@
         <action
             android:id="@+id/action_settingsPlacesBusinessFrag_to_addNewPlaceBusinessFrag"
             app:destination="@id/addNewPlaceBusinessFrag" />
+        <action
+            android:id="@+id/action_settingsPlacesBusinessFrag_to_authFragment"
+            app:destination="@id/authFragment" />
     </fragment>
 
     <fragment
@@ -246,6 +270,9 @@
         <action
             android:id="@+id/action_favouritesBusinessFrag_to_addNewPlaceBusinessFrag"
             app:destination="@id/addNewPlaceBusinessFrag" />
+        <action
+            android:id="@+id/action_favouritesBusinessFrag_to_authFragment"
+            app:destination="@id/authFragment" />
     </fragment>
 
     <fragment
@@ -268,6 +295,9 @@
         <action
             android:id="@+id/action_redactPlaceBusinessFrag_to_addNewPlaceBusinessFrag"
             app:destination="@id/addNewPlaceBusinessFrag" />
+        <action
+            android:id="@+id/action_redactPlaceBusinessFrag_to_authFragment"
+            app:destination="@id/authFragment" />
     </fragment>
 
     <fragment
@@ -287,5 +317,8 @@
         <action
             android:id="@+id/action_addNewPlaceBusinessFrag_to_settingsPlacesBusinessFrag"
             app:destination="@id/settingsPlacesBusinessFrag" />
+        <action
+            android:id="@+id/action_addNewPlaceBusinessFrag_to_authFragment"
+            app:destination="@id/authFragment" />
     </fragment>
 </navigation>

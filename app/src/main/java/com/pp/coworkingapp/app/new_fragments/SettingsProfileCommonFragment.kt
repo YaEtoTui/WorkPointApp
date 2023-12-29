@@ -82,6 +82,10 @@ class SettingsProfileCommonFragment : Fragment() {
         binding.btSave.setOnClickListener {
             changeSettings()
         }
+
+        binding.tvlogOut.setOnClickListener {
+            findNavController().navigate(R.id.action_settingsProfileCommonFrag_to_authFragment)
+        }
     }
 
     companion object {

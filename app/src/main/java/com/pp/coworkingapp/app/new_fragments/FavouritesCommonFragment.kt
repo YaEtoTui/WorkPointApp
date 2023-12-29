@@ -45,6 +45,10 @@ class FavouritesCommonFragment : Fragment() {
         binding.btBackToMainPage.setOnClickListener {
             findNavController().navigate(R.id.action_favouritesCommonFrag_to_mainPageFragment)
         }
+
+        binding.tvlogOut.setOnClickListener {
+            findNavController().navigate(R.id.action_favouritesCommonFrag_to_authFragment)
+        }
     }
 
     private fun initCurrentPerson() {

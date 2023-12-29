@@ -45,6 +45,10 @@ class FavouritesBusinessFragment : Fragment() {
         binding.btBackToMainPage.setOnClickListener {
             findNavController().navigate(R.id.action_favouritesBusinessFrag_to_mainPageFragment)
         }
+
+        binding.tvlogOutBusiness.setOnClickListener {
+            findNavController().navigate(R.id.action_favouritesBusinessFrag_to_authFragment)
+        }
     }
 
     private fun initCurrentPerson() {

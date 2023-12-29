@@ -95,6 +95,10 @@ class AddNewPlaceBusinessFragment : Fragment() {
         binding.btBackToMainPage.setOnClickListener {
             findNavController().navigate(R.id.action_addNewPlaceBusinessFrag_to_mainPageFragment)
         }
+
+        binding.tvlogOutBusiness.setOnClickListener {
+            findNavController().navigate(R.id.action_addNewPlaceBusinessFrag_to_authFragment)
+        }
     }
 
     private fun saveCurrentPlaceCard() {

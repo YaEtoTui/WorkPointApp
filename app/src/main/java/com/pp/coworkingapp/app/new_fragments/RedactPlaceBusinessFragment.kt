@@ -96,6 +96,10 @@ class RedactPlaceBusinessFragment : Fragment() {
         binding.btBackToMainPage.setOnClickListener {
             findNavController().navigate(R.id.action_redactPlaceBusinessFrag_to_mainPageFragment)
         }
+
+        binding.tvlogOutBusiness.setOnClickListener {
+            findNavController().navigate(R.id.action_redactPlaceBusinessFrag_to_authFragment)
+        }
     }
 
     private fun getRealPathFromUri(context: Context, contentUri: Uri): File {

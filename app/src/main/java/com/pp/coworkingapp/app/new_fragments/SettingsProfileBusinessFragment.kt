@@ -66,6 +66,10 @@ class SettingsProfileBusinessFragment : Fragment() {
         binding.btSave.setOnClickListener {
             changeSettings()
         }
+
+        binding.tvlogOutBusiness.setOnClickListener {
+            findNavController().navigate(R.id.action_settingsProfileBusinessFrag_to_authFragment)
+        }
     }
 
     private fun changeSettings() {
