@@ -284,7 +284,7 @@
                         android:layout_marginBottom="35dp"
                         android:fontFamily="@font/opensans_regular"
                         android:gravity="left"
-                        android:text="В данном разделе вы можете приобрести рекламу, которая повысит посещаемость и увеличит просмотры вашего заведения"
+                        android:text="В данном разделе вы можете посмотреть статусы всех ваших заявок на рекламу заведений"
                         android:textSize="10sp"
                         android:textColor="#000000"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -404,7 +404,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_marginLeft="28dp"
-                    android:text="Оставьте заявку"
+                    android:text="Все заявки"
                     android:fontFamily="@font/open_sans_semi_bold"
                     android:textSize="10sp"
                     android:textColor="#000000"
@@ -412,14 +412,12 @@
                     app:layout_constraintTop_toBottomOf="@+id/idSettings" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/idLayoutEdNameInstitution"
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="29dp"
-                    android:layout_marginLeft="28dp"
+                    android:id="@+id/idLayoutEdData"
+                    android:layout_width="128dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
                     android:background="@drawable/rectangle_edit_settings"
-                    android:hint="Название заведения"
+                    android:hint="Дата"
                     android:textColorHint="#661B1F3B"
                     app:hintTextAppearance="@style/settings_profile"
                     app:hintTextColor="#661B1F3B"
@@ -427,67 +425,15 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvBid">
 
                     <EditText
-                        android:id="@+id/edTextNameInstitution"
+                        android:id="@+id/edTextData"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:background="@drawable/rectangle_edit_settings_2"
-                        android:fontFamily="@font/opensans_regular"
-                        android:inputType="text"
-                        android:textColor="#000000"
-                        android:textSize="10sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/idLayoutEdCity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-
-                    android:layout_marginRight="29dp"
-                    android:layout_marginLeft="28dp"
-                    android:background="@drawable/rectangle_edit_settings"
-                    android:textColorHint="#661B1F3B"
-                    app:hintTextAppearance="@style/settings_profile"
-                    app:hintTextColor="#661B1F3B"
-                    app:layout_constraintEnd_toEndOf="@+id/idLayoutEdNameInstitution"
-                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdNameInstitution"
-                    app:layout_constraintTop_toBottomOf="@+id/idLayoutEdNameInstitution">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edTextCity"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:background="@drawable/rectangle_edit_settings_2"
-                        android:fontFamily="@font/opensans_regular"
-                        android:hint="Город"
-                        android:inputType="text"
-                        android:textColor="#000000"
-                        android:textSize="10sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/idLayoutEdArea"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginRight="29dp"
-                    android:layout_marginLeft="28dp"
-                    android:background="@drawable/rectangle_edit_settings"
-                    android:hint="Район"
-                    android:textColorHint="#661B1F3B"
-                    app:hintTextAppearance="@style/settings_profile"
-                    app:hintTextColor="#661B1F3B"
-                    app:layout_constraintEnd_toEndOf="@+id/idLayoutEdCity"
-                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdCity"
-                    app:layout_constraintTop_toBottomOf="@+id/idLayoutEdCity">
-
-                    <EditText
-                        android:id="@+id/edTextArea"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:background="@drawable/rectangle_edit_settings_2"
+                        android:contextClickable="false"
+                        android:cursorVisible="false"
+                        android:drawableRight="@drawable/icon_chevr_on_down"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         android:fontFamily="@font/opensans_regular"
                         android:inputType="text"
                         android:textColor="#000000"
@@ -496,275 +442,101 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
-                    android:id="@+id/tvCountDays"
+                    android:id="@+id/tvErrorData"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="19dp"
-                    android:fontFamily="@font/open_sans_semi_bold"
-                    android:text="Количество дней"
-                    android:textColor="#000000"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="@+id/tvBid"
-                    app:layout_constraintTop_toBottomOf="@+id/idLayoutEdArea" />
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/errors_empty"
+                    android:visibility="invisible"
+                    android:textAppearance="@style/errors_empty"
+                    app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdData"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdData" />
 
-                <View
-                    android:id="@+id/idRectangle1"
-                    android:layout_width="170dp"
-                    android:layout_height="121dp"
-                    android:layout_marginTop="9dp"
-                    android:background="@drawable/rectangle_present"
-                    app:layout_constraintStart_toStartOf="@+id/tvCountDays"
-                    app:layout_constraintTop_toTopOf="@+id/radioGroup2" />
-
-                <TextView
-                    android:id="@+id/tvOne"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/idListData"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="6dp"
-                    android:fontFamily="@font/open_sans_light"
-                    android:textSize="10sp"
-                    android:textColor="#000000"
-                    android:text="Позволит увеличить просмотры вашего заведения и повысит посещаемость "
-                    app:layout_constraintBottom_toBottomOf="@+id/idRectangle1"
-                    app:layout_constraintEnd_toEndOf="@+id/idRectangle1"
-                    app:layout_constraintStart_toStartOf="@+id/idRectangle1"
-                    app:layout_constraintTop_toTopOf="@+id/idRectangle1" />
-
-                <TextView
-                    android:id="@+id/tvOneSum"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="6dp"
-                    android:fontFamily="@font/open_sans_semi_bold"
-                    android:text="199 р"
-                    android:textColor="#000000"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    app:layout_constraintBottom_toBottomOf="@+id/idRectangle1"
-                    app:layout_constraintEnd_toEndOf="@+id/idRectangle1"
-                    app:layout_constraintStart_toStartOf="@+id/idRectangle1"
-                    app:layout_constraintTop_toBottomOf="@+id/tvOne" />
-
-                <View
-                    android:id="@+id/idRectangle7"
-                    android:layout_width="170dp"
-                    android:layout_height="121dp"
-                    android:layout_marginLeft="14dp"
-                    android:layout_marginTop="9dp"
-                    android:background="@drawable/rectangle_present"
-                    app:layout_constraintStart_toEndOf="@+id/idRectangle1"
-                    app:layout_constraintTop_toTopOf="@+id/radioGroup2" />
-
-                <TextView
-                    android:id="@+id/tvSeven"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="6dp"
-                    android:fontFamily="@font/open_sans_light"
-                    android:text="Позволит увеличить просмотры вашего заведения и повысит посещаемость "
-                    android:textColor="#000000"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/idRectangle7"
-                    app:layout_constraintEnd_toEndOf="@+id/idRectangle7"
-                    app:layout_constraintStart_toStartOf="@+id/idRectangle7"
-                    app:layout_constraintTop_toTopOf="@+id/idRectangle7" />
-
-                <TextView
-                    android:id="@+id/tvSevenSum"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_semi_bold"
-                    android:gravity="center"
-                    android:text="399 р"
-                    android:textColor="#000000"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/idRectangle1"
-                    app:layout_constraintEnd_toEndOf="@+id/idRectangle7"
-                    app:layout_constraintStart_toStartOf="@+id/tvSeven"
-                    app:layout_constraintTop_toBottomOf="@+id/tvSeven" />
-
-                <RadioGroup
-                    android:id="@+id/radioGroup2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="@+id/idRectangle7"
-                    app:layout_constraintStart_toStartOf="@+id/idRectangle1"
-                    app:layout_constraintTop_toBottomOf="@+id/tvCountDays">
-
-
-                    <RadioButton
-                        android:id="@+id/btOneDay"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="12dp"
-                        android:layout_marginTop="16dp"
-                        android:checked="true"
-                        android:button="@drawable/radiobutton_selector"
-                        android:fontFamily="@font/open_sans_semi_bold"
-                        android:gravity="top|center_vertical"
-                        android:paddingLeft="8dp"
-                        android:text="На 1 день"
-                        android:textAppearance="@style/text_radio"
-                        android:theme="@style/MyRadioButton" />
-
-                    <RadioButton
-                        android:id="@+id/btSevenDay"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="110dp"
-                        android:layout_marginTop="16dp"
-                        android:button="@drawable/radiobutton_selector"
-                        android:fontFamily="@font/open_sans_semi_bold"
-                        android:gravity="top|center_vertical"
-                        android:paddingLeft="8dp"
-                        android:text="На 7 дней"
-                        android:textAppearance="@style/text_radio"
-                        android:theme="@style/MyRadioButton" />
-
-                </RadioGroup>
-
-                <TextView
-                    android:id="@+id/tvDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
-                    android:fontFamily="@font/open_sans_semi_bold"
-                    android:text="Даты действия рекламы"
-                    android:textColor="#000000"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="@+id/idRectangle1"
-                    app:layout_constraintTop_toBottomOf="@+id/idRectangle1" />
+                    android:visibility="gone"
+                    android:layout_marginTop="44dp"
+                    android:background="@drawable/spinner_fon"
+                    app:layout_constraintEnd_toEndOf="@+id/idLayoutEdData"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdData"
+                    app:layout_constraintTop_toTopOf="@+id/idLayoutEdData" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/idLayoutEdStartDate"
-                    android:layout_width="128dp"
+                    android:id="@+id/idLayoutEdStatus"
+                    android:layout_width="175dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="29dp"
                     android:background="@drawable/rectangle_edit_settings"
-                    android:hint="Дата начала"
-                    android:textColorHint="#661B1F3B"
-                    app:hintTextAppearance="@style/settings_profile"
-                    app:hintTextColor="#661B1F3B"
-                    app:layout_constraintEnd_toEndOf="@+id/tvDate"
-                    app:layout_constraintStart_toStartOf="@+id/tvDate"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDate">
-
-                    <EditText
-                        android:id="@+id/edTextStartDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:background="@drawable/rectangle_edit_settings_2"
-                        android:fontFamily="@font/opensans_regular"
-                        android:inputType="text"
-                        android:drawableRight="@drawable/icon_calendar_32"
-                        android:textColor="#000000"
-                        android:textSize="9sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/idLayoutEdEndDate"
-                    android:layout_width="128dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="34dp"
-                    android:background="@drawable/rectangle_edit_settings"
-                    android:hint="Дата окончания"
-                    android:textColorHint="#661B1F3B"
-                    app:hintTextAppearance="@style/settings_profile"
-                    app:hintTextColor="#661B1F3B"
-                    app:layout_constraintBottom_toBottomOf="@+id/idLayoutEdStartDate"
-                    app:layout_constraintStart_toEndOf="@+id/idLayoutEdStartDate"
-                    app:layout_constraintTop_toTopOf="@+id/idLayoutEdStartDate">
-
-                    <EditText
-                        android:id="@+id/edTextEndDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:background="@drawable/rectangle_edit_settings_2"
-                        android:drawableRight="@drawable/icon_calendar_32"
-                        android:fontFamily="@font/opensans_regular"
-                        android:inputType="text"
-                        android:textColor="#000000"
-                        android:textSize="9sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/idLayoutEdEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="41dp"
-                    android:layout_marginLeft="29dp"
-                    android:layout_marginRight="28dp"
-                    android:background="@drawable/rectangle_edit_settings"
-                    android:hint="Электронная почта"
+                    android:hint="Статус заявки"
                     android:textColorHint="#661B1F3B"
                     app:hintTextAppearance="@style/settings_profile"
                     app:hintTextColor="#661B1F3B"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdStartDate"
-                    app:layout_constraintTop_toBottomOf="@+id/idLayoutEdStartDate">
+                    app:layout_constraintStart_toEndOf="@+id/idLayoutEdData"
+                    app:layout_constraintTop_toTopOf="@+id/idLayoutEdData">
 
                     <EditText
-                        android:id="@+id/edTextEmail"
+                        android:id="@+id/edTextStatus"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:background="@drawable/rectangle_edit_settings_2"
+                        android:contextClickable="false"
+                        android:cursorVisible="false"
+                        android:drawableRight="@drawable/icon_chevr_on_down"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         android:fontFamily="@font/opensans_regular"
                         android:inputType="text"
                         android:textColor="#000000"
-                        android:textSize="8sp" />
+                        android:textSize="10sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/idListStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="44dp"
+                    android:background="@drawable/spinner_fon"
+                    app:layout_constraintEnd_toEndOf="@+id/idLayoutEdStatus"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdStatus"
+                    app:layout_constraintTop_toTopOf="@+id/idLayoutEdStatus" />
+
+                <View
+                    android:id="@+id/idListPromotion"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/rectangle_list_business"
+                    app:layout_constraintEnd_toEndOf="@+id/idLayoutEdStatus"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdData"
+                    app:layout_constraintTop_toBottomOf="@+id/tvErrorData" />
+
                 <TextView
-                    android:id="@+id/tvBanner"
+                    android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="30dp"
+                    android:text="Название заведения"
                     android:fontFamily="@font/open_sans_semi_bold"
-                    android:text="Прикрепите Ваш рекламный банер размера 970х300px в формате svg. "
-                    android:textColor="#000000"
                     android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="@+id/tvCountDays"
-                    app:layout_constraintTop_toBottomOf="@+id/idLayoutEdEmail" />
-
-                <Button
-                    android:id="@+id/btLoadFile"
-                    android:layout_width="163dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="11dp"
-                    android:backgroundTint="@drawable/button_bg_color_filters"
-                    android:drawableRight="@drawable/icon_clipboard"
-                    android:elevation="20dp"
-                    android:text="Прикрепить файл"
-                    android:textAppearance="@style/text_filters"
                     android:textColor="#000000"
-                    app:cornerRadius="10dp"
-                    app:layout_constraintStart_toStartOf="@+id/tvBanner"
-                    app:layout_constraintTop_toBottomOf="@+id/tvBanner" />
+                    app:layout_constraintStart_toStartOf="@+id/idListPromotion"
+                    app:layout_constraintTop_toTopOf="@+id/idListPromotion" />
 
-                <Button
-                    android:id="@+id/btSendApplication"
-                    android:layout_width="145dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="16dp"
-                    android:backgroundTint="@drawable/button_bg_color_white"
-                    android:elevation="5dp"
-                    android:fontFamily="@font/open_sans_semi_bold"
-                    android:stateListAnimator="@drawable/button_elevation"
-                    android:text="Отправить заявку"
-                    android:textColor="@drawable/button_text_color"
-                    android:textSize="10sp"
-                    app:cornerRadius="10dp"
-                    app:layout_constraintStart_toStartOf="@+id/btLoadFile"
-                    app:layout_constraintTop_toBottomOf="@+id/btLoadFile" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="28dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/idListPromotion"
+                    app:layout_constraintEnd_toEndOf="@+id/idListPromotion"
+                    app:layout_constraintStart_toStartOf="@+id/idListPromotion"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
