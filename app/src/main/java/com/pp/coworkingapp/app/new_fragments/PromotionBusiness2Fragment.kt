@@ -19,6 +19,7 @@ import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.app.retrofit.domain.response.Tag
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
+import com.pp.coworkingapp.databinding.FragmentPromotionBusiness2Binding
 import com.pp.coworkingapp.databinding.FragmentPromotionBusinessBinding
 import com.pp.coworkingapp.databinding.FragmentSettingsPlacesBusinessBinding
 import com.pp.coworkingapp.databinding.FragmentSettingsPlacesCommonBinding
@@ -27,10 +28,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class PromotionBusinessFragment : Fragment() {
+class PromotionBusiness2Fragment : Fragment() {
 
     private lateinit var adapter : AdapterMyPlace
-    private lateinit var binding: FragmentPromotionBusinessBinding
+    private lateinit var binding: FragmentPromotionBusiness2Binding
     private val viewModel: AuthViewModel by activityViewModels()
     private lateinit var mainApi: MainApi
     private lateinit var tokenUser: String
@@ -40,7 +41,7 @@ class PromotionBusinessFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentPromotionBusinessBinding.inflate(inflater, container, false)
+        binding = FragmentPromotionBusiness2Binding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -64,14 +65,14 @@ class PromotionBusinessFragment : Fragment() {
 
     private fun initAdapterList() {
 //        adapter = AdapterMyPlace()
-        adapter.setOnButtonClickListener(object: AdapterMyPlace.OnButtonClickListener {
-            override fun onClick(placeId: Int) {
-                placeIdViewModel.placeId.value = placeId
-                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_redactPlaceBusinessFrag)
-            }
-        })
-        binding.rcView.layoutManager = LinearLayoutManager(context)
-        binding.rcView.adapter = adapter
+//        adapter.setOnButtonClickListener(object: AdapterMyPlace.OnButtonClickListener {
+//            override fun onClick(placeId: Int) {
+//                placeIdViewModel.placeId.value = placeId
+//                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_redactPlaceBusinessFrag)
+//            }
+//        })
+//        binding.rcView.layoutManager = LinearLayoutManager(context)
+//        binding.rcView.adapter = adapter
     }
 
     private fun initCurrentPerson() {
