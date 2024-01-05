@@ -112,8 +112,7 @@
             android:layout_marginBottom="4dp"
             app:layout_constraintBottom_toBottomOf="@+id/btShowInCarte"
             app:layout_constraintStart_toEndOf="@+id/btShowInCarte"
-            app:layout_constraintTop_toTopOf="@+id/btShowInCarte"
-            app:srcCompat="@drawable/icon_heart" />
+            app:layout_constraintTop_toTopOf="@+id/btShowInCarte" />
 
         <ImageView
             android:id="@+id/imageView4"

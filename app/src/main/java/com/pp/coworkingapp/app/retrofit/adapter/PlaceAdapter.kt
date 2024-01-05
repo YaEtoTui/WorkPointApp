@@ -13,15 +13,16 @@ import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.databinding.ListItemPlacesBinding
 
-class PlaceAdapter: ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
+class PlaceAdapter : ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
 
     private lateinit var onButtonClickListener: OnButtonClickListener
+    private lateinit var listPlaces: List<Int>
 
     class Holder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val binding = ListItemPlacesBinding.bind(view)
 
-        fun bind(place: Place, onButtonClickListener: OnButtonClickListener) = with(binding) {
+        fun bind(place: Place, onButtonClickListener: OnButtonClickListener, listPlaces: List<Int>) = with(binding) {
             //
             tvHello.text = place.name
             if (place.description.length > 200) {
@@ -29,6 +30,14 @@ class PlaceAdapter: ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
             } else {
                 tvTextDesc.text = place.description
             }
+
+            if (listPlaces.contains(place.id)) {
+                imCoeur.setBackgroundResource(R.drawable.icon_heard_full)
+            } else {
+                imCoeur.setBackgroundResource(R.drawable.icon_heart)
+            }
+
+            Log.i("CreateList", listPlaces.size.toString())
 
             Glide.with(itemView.context)
                 .load(place.photo)
@@ -65,7 +74,7 @@ class PlaceAdapter: ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(getItem(position), onButtonClickListener)
+        holder.bind(getItem(position), onButtonClickListener, listPlaces)
     }
 
     interface OnButtonClickListener {
@@ -74,5 +83,8 @@ class PlaceAdapter: ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
 
     fun setOnButtonClickListener(listener: OnButtonClickListener) {
         onButtonClickListener = listener
+    }
+    fun setList(list: List<Int>) {
+        listPlaces = list
     }
 }

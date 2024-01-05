@@ -5,17 +5,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
+import com.pp.coworkingapp.app.retrofit.domain.response.IdResponse
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
@@ -25,6 +24,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.streams.toList
 
 class MainPageFragment : Fragment() {
 
@@ -36,7 +36,7 @@ class MainPageFragment : Fragment() {
     private val userViewModel: UserViewModel by activityViewModels()
     private lateinit var listPlaces: List<Place>
     private lateinit var listCurrent: ArrayList<Place>
-//    private lateinit var listFavoriteUserPlaces: List<Place>
+    private lateinit var listFavoriteUserPlaces: List<IdResponse>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +50,7 @@ class MainPageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        listFavoriteUserPlaces = emptyList()
         mainApi = Common.retrofitService
         listCurrent = ArrayList()
         initRcView()
@@ -93,7 +94,9 @@ class MainPageFragment : Fragment() {
             CoroutineScope(Dispatchers.IO).launch {
                 Log.i("Token", token.toString())
                 val currentUser = mainApi.checkUser("Bearer $token")
+                listFavoriteUserPlaces = mainApi.getFavoritePlaces("Bearer $token")
                 requireActivity().runOnUiThread {
+                    adapter.setList(listFavoriteUserPlaces.stream().map(this::createInt).toList())
                     //Настраиваем кнопку настройки пользователя
                     binding.idAccount.setOnClickListener {
                         if (currentUser.roleId == 1) {
@@ -167,9 +170,6 @@ class MainPageFragment : Fragment() {
         //Загрузка текущего списка
         CoroutineScope(Dispatchers.IO).launch {
             listPlaces = mainApi.getListPlaces()
-//            if (viewModel.token != null) {
-//                listFavoriteUserPlaces: List<Place> = mainApi.getFavoritePlaces()
-//            }
             requireActivity().runOnUiThread {
                 binding.apply {
                     tvCount.text = String.format("Найдено: %s", listPlaces.count())
@@ -216,6 +216,7 @@ class MainPageFragment : Fragment() {
 
     private fun initRcView() {
         adapter = PlaceAdapter()
+        adapter.setList(listFavoriteUserPlaces.stream().map(this::createInt).toList())
         adapter.setOnButtonClickListener(object: PlaceAdapter.OnButtonClickListener {
             override fun onClick(placeId: Int) {
                 if (viewModel.token.value != null) {
@@ -229,4 +230,12 @@ class MainPageFragment : Fragment() {
         binding.rcView.layoutManager = LinearLayoutManager(context)
         binding.rcView.adapter = adapter
     }
+
+    private fun createInt(user: IdResponse): Int {
+        return user.placeId
+    }
+}
+
+private fun CoroutineScope.createInt(idResponse: IdResponse): Int {
+    return idResponse.placeId
 }

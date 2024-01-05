@@ -7,6 +7,7 @@ import com.pp.coworkingapp.app.retrofit.domain.request.Payload
 import com.pp.coworkingapp.app.retrofit.domain.request.PayloadSansTags
 import com.pp.coworkingapp.app.retrofit.domain.request.RegisterRequest
 import com.pp.coworkingapp.app.retrofit.domain.response.CurrentUser
+import com.pp.coworkingapp.app.retrofit.domain.response.IdResponse
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.app.retrofit.domain.response.PlaceWithTags
 import com.pp.coworkingapp.app.retrofit.domain.response.Review
@@ -92,8 +93,8 @@ interface MainApi {
     @POST("user/favorite_place")
     suspend fun addFavoritePlace(@Header("Authorization") token: String, @Body createPlaceAndUserRequest: CreatePlaceAndUserRequest): String
 
-    @POST("user/my_favorite_places")
-    suspend fun getFavoritePlaces(@Header("Authorization") token: String): List<Place>
+    @GET("user/my_favorite_places")
+    suspend fun getFavoritePlaces(@Header("Authorization") token: String): List<IdResponse>
 
     @POST("user/delete_place")
     suspend fun deleteFavoritePlace(@Header("Authorization") token: String, @Query("user_id") userId: Int): Response<String>
