@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -34,6 +35,7 @@ class MainPageFragment : Fragment() {
     private val placeIdViewModel: PlaceIdViewModel by activityViewModels()
     private val userViewModel: UserViewModel by activityViewModels()
     private lateinit var listPlaces: List<Place>
+    private lateinit var listCurrent: ArrayList<Place>
 //    private lateinit var listFavoriteUserPlaces: List<Place>
 
     override fun onCreateView(
@@ -49,9 +51,11 @@ class MainPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mainApi = Common.retrofitService
+        listCurrent = ArrayList()
         initRcView()
-        searchText()
         initFilters()
+        onClickCheckBox()
+        searchText()
 
         binding.btSignInMain.setOnClickListener {
             findNavController().navigate(R.id.action_mainPageFragment_to_authFragment)
@@ -183,10 +187,30 @@ class MainPageFragment : Fragment() {
     private fun searchText() {
         binding.btSearchCow.setOnClickListener {
             val queryText: String = binding.edSearch.text.toString()
-            val listCurrent: List<Place> = listPlaces.filter { place -> place.name.lowercase().contains(queryText.lowercase())}
+            listCurrent.addAll(listPlaces.filter { place -> place.name.lowercase().contains(queryText.lowercase())})
             binding.tvCount.text = String.format("Найдено: %s", listCurrent.count())
-            adapter.submitList(listCurrent)
+            adapter.submitList(listCurrent.toList())
             binding.edSearch.text = null
+        }
+    }
+
+    private fun onClickCheckBox() {
+        binding.apply {
+            btArea1.setOnClickListener {
+                if (btArea1.isChecked) {
+                    listCurrent.addAll(listPlaces.filter { place ->
+                        place.district.lowercase().contains(btArea1.text.toString().lowercase())
+                    })
+                } else {
+                    Log.i("Hello", "Hello")
+                    listCurrent.filter { place ->
+                        !place.district.lowercase().contains(btArea1.text.toString().lowercase())
+                    }
+                }
+
+                binding.tvCount.text = String.format("Найдено: %s", listCurrent.count())
+                adapter.submitList(listCurrent.toList())
+            }
         }
     }
 
