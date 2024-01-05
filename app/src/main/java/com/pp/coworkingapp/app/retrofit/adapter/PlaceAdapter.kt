@@ -16,13 +16,14 @@ import com.pp.coworkingapp.databinding.ListItemPlacesBinding
 class PlaceAdapter : ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
 
     private lateinit var onButtonClickListener: OnButtonClickListener
+    private lateinit var onButtonHeartClickListener: OnButtonClickListener
     private lateinit var listPlaces: List<Int>
 
     class Holder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val binding = ListItemPlacesBinding.bind(view)
 
-        fun bind(place: Place, onButtonClickListener: OnButtonClickListener, listPlaces: List<Int>) = with(binding) {
+        fun bind(place: Place, onButtonClickListener: OnButtonClickListener, listPlaces: List<Int>, onButtonHeartClickListener: OnButtonClickListener) = with(binding) {
             //
             tvHello.text = place.name
             if (place.description.length > 200) {
@@ -53,6 +54,15 @@ class PlaceAdapter : ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
             btShowInCarte.setOnClickListener {
                 onButtonClickListener.onClick(place.id)
             }
+            imCoeur.setOnClickListener {
+
+                if (!listPlaces.contains(place.id)) {
+                    imCoeur.setBackgroundResource(R.drawable.icon_heard_full)
+                } else {
+                    imCoeur.setBackgroundResource(R.drawable.icon_heart)
+                }
+                onButtonHeartClickListener.onClick(place.id)
+            }
         }
     }
 
@@ -74,7 +84,7 @@ class PlaceAdapter : ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(getItem(position), onButtonClickListener, listPlaces)
+        holder.bind(getItem(position), onButtonClickListener, listPlaces, onButtonHeartClickListener)
     }
 
     interface OnButtonClickListener {
@@ -86,5 +96,8 @@ class PlaceAdapter : ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
     }
     fun setList(list: List<Int>) {
         listPlaces = list
+    }
+    fun setOnButtonHeartClickListener(listener: OnButtonClickListener) {
+        onButtonHeartClickListener = listener
     }
 }

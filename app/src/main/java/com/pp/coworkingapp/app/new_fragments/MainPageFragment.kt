@@ -14,6 +14,7 @@ import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
+import com.pp.coworkingapp.app.retrofit.domain.request.CreatePlaceAndUserRequest
 import com.pp.coworkingapp.app.retrofit.domain.response.IdResponse
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
@@ -36,7 +37,9 @@ class MainPageFragment : Fragment() {
     private val userViewModel: UserViewModel by activityViewModels()
     private lateinit var listPlaces: List<Place>
     private lateinit var listCurrent: ArrayList<Place>
+    private lateinit var listInt: ArrayList<Int>
     private lateinit var listFavoriteUserPlaces: List<IdResponse>
+    private lateinit var tokenUser: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -96,11 +99,13 @@ class MainPageFragment : Fragment() {
         viewModel.token.observe(viewLifecycleOwner) {token ->
             CoroutineScope(Dispatchers.IO).launch {
                 Log.i("Token", token.toString())
-                listPlaces = mainApi.getListPlaces()
                 val currentUser = mainApi.checkUser("Bearer $token")
                 listFavoriteUserPlaces = mainApi.getFavoritePlaces("Bearer $token")
+                listInt = listFavoriteUserPlaces.stream().map(this::createInt).toList() as ArrayList<Int>
+                listPlaces = mainApi.getListPlaces()
+                adapter.setList(listInt.toList())
                 requireActivity().runOnUiThread {
-                    adapter.setList(listFavoriteUserPlaces.stream().map(this::createInt).toList())
+                    tokenUser = token
                     //Настраиваем кнопку настройки пользователя
                     binding.idAccount.setOnClickListener {
                         if (currentUser.roleId == 1) {
@@ -236,6 +241,31 @@ class MainPageFragment : Fragment() {
                     findNavController().navigate(R.id.action_mainPageFragment_to_placeCardFragment)
                 } else {
                     findNavController().navigate(R.id.action_mainPageFragment_to_authFragment)
+                }
+            }
+        })
+        adapter.setOnButtonHeartClickListener(object: PlaceAdapter.OnButtonClickListener {
+            override fun onClick(placeId: Int) {
+                if (viewModel.token.value != null) {
+                    if (!listInt.contains(placeId)) {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            val responseIds: IdResponse = mainApi.addFavoritePlace("Bearer $tokenUser", CreatePlaceAndUserRequest(
+                                0,
+                                placeId
+                            ))
+                        }
+                        listInt.add(placeId)
+                        adapter.setList(listInt.toList())
+                    } else {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            val responseIds: IdResponse = mainApi.addFavoritePlace("Bearer $tokenUser", CreatePlaceAndUserRequest(
+                                0,
+                                placeId
+                            ))
+                        }
+                        listInt.remove(placeId)
+                        adapter.setList(listInt.toList())
+                    }
                 }
             }
         })

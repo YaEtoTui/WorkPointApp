@@ -7,10 +7,10 @@
     android:layout_marginBottom="54dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="#FBFBF5"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -58,8 +58,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:clickable="false"
-            android:numStars="5"
             android:isIndicator="true"
+            android:numStars="5"
             app:layout_constraintEnd_toEndOf="@+id/tvDateReview"
             app:layout_constraintStart_toStartOf="@+id/idTvName"
             app:layout_constraintTop_toBottomOf="@+id/idTvName" />
@@ -79,6 +79,67 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imAvatar"
             app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/idAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imAvatarAnswer"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/avatar_40_40" />
+
+        <TextView
+            android:id="@+id/idTvNameAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="9dp"
+            android:fontFamily="@font/open_sans_semi_bold"
+            android:text="Мария"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/imAvatarAnswer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvDateAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:fontFamily="@font/opensans_regular"
+            android:text="03.01.2023"
+            android:textColor="#535353"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/idTvNameAnswer"
+            app:layout_constraintStart_toEndOf="@+id/idTvNameAnswer"
+            app:layout_constraintTop_toTopOf="@+id/idTvNameAnswer" />
+
+        <TextView
+            android:id="@+id/tvDescAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="27dp"
+            android:fontFamily="@font/open_sans_light"
+            android:text="@string/lorem_ipsum"
+            android:textAlignment="textStart"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imAvatarAnswer"
+            app:layout_constraintVertical_bias="1.0" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

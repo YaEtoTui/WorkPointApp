@@ -14,6 +14,7 @@ import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
+import com.pp.coworkingapp.app.retrofit.domain.request.CreatePlaceAndUserRequest
 import com.pp.coworkingapp.app.retrofit.domain.response.IdResponse
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
@@ -34,6 +35,7 @@ class FavouritesCommonFragment : Fragment() {
     private lateinit var adapter : PlaceAdapter
     private lateinit var listFavoriteUserPlaces: List<IdResponse>
     private lateinit var listPlaces: List<Place>
+    private lateinit var listInt: ArrayList<Int>
     private val placeIdViewModel: PlaceIdViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -80,6 +82,25 @@ class FavouritesCommonFragment : Fragment() {
                 }
             }
         })
+        adapter.setOnButtonHeartClickListener(object: PlaceAdapter.OnButtonClickListener {
+            override fun onClick(placeId: Int) {
+                if (viewModel.token.value != null) {
+                    if (!listInt.contains(placeId)) {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            val responseIds: IdResponse = mainApi.addFavoritePlace("Bearer $tokenUser", CreatePlaceAndUserRequest(
+                                0,
+                                placeId
+                            ))
+                            requireActivity().runOnUiThread {
+                                Log.i("Http", "OK 200")
+                                listInt.add(placeId)
+                                adapter.setList(listInt.toList())
+                            }
+                        }
+                    }
+                }
+            }
+        })
         binding.rcView.layoutManager = LinearLayoutManager(context)
         binding.rcView.adapter = adapter
     }
@@ -91,9 +112,9 @@ class FavouritesCommonFragment : Fragment() {
                 Log.i("Token", token.toString())
                 val currentUser = mainApi.checkUser("Bearer $token")
                 listFavoriteUserPlaces = mainApi.getFavoritePlaces("Bearer $token")
-                val listInt: List<Int> = listFavoriteUserPlaces.stream().map(this::createInt).toList()
+                listInt = listFavoriteUserPlaces.stream().map(this::createInt).toList() as ArrayList<Int>
                 listPlaces = mainApi.getListPlaces()
-                adapter.setList(listFavoriteUserPlaces.stream().map(this::createInt).toList())
+                adapter.setList(listInt.toList())
                 requireActivity().runOnUiThread {
                     //Настраиваем кнопку настройки пользователя
                     binding.idAccount.setOnClickListener {

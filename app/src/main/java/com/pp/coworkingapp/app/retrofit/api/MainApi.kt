@@ -91,11 +91,14 @@ interface MainApi {
     suspend fun deletePlaces(@Header("Authorization") token: String, @Query("id_place") placeId: Int)
 
     @POST("user/favorite_place")
-    suspend fun addFavoritePlace(@Header("Authorization") token: String, @Body createPlaceAndUserRequest: CreatePlaceAndUserRequest): String
+    suspend fun addFavoritePlace(@Header("Authorization") token: String, @Body createPlaceAndUserRequest: CreatePlaceAndUserRequest): IdResponse
 
     @GET("user/my_favorite_places")
     suspend fun getFavoritePlaces(@Header("Authorization") token: String): List<IdResponse>
 
-    @POST("user/delete_place")
-    suspend fun deleteFavoritePlace(@Header("Authorization") token: String, @Query("user_id") userId: Int): Response<String>
+    @DELETE("user/delete_favorite_place")
+    suspend fun deleteFavoritePlace(@Header("Authorization") token: String, @Query("id_fav_place") idPlace: Int): Response<String>
+
+    @POST("places/get_reviews_answer")
+    suspend fun getReviewsAnswer(@Query("id_reviews") idReviews: Int): Response<String>
 }
