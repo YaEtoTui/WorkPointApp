@@ -195,6 +195,7 @@ class MainPageFragment : Fragment() {
     }
 
     private fun onClickCheckBox() {
+        //вопрос не решен
         binding.apply {
             btArea1.setOnClickListener {
                 if (btArea1.isChecked) {
@@ -202,10 +203,9 @@ class MainPageFragment : Fragment() {
                         place.district.lowercase().contains(btArea1.text.toString().lowercase())
                     })
                 } else {
-                    Log.i("Hello", "Hello")
-                    listCurrent.filter { place ->
+                    listCurrent.addAll(listPlaces.filter { place ->
                         !place.district.lowercase().contains(btArea1.text.toString().lowercase())
-                    }
+                    })
                 }
 
                 binding.tvCount.text = String.format("Найдено: %s", listCurrent.count())
