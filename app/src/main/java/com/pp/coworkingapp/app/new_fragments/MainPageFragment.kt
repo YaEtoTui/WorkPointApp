@@ -65,10 +65,13 @@ class MainPageFragment : Fragment() {
         onClickCommonText()
         onClickBusinessText()
 
-        loadListPlaces()
+        if (viewModel.token.value != null) {
+            //создание текущего user
+            createUser()
+        } else {
+            loadListPlaces()
 
-        //создание текущего user
-        createUser()
+        }
 
         logout()
     }
@@ -93,6 +96,7 @@ class MainPageFragment : Fragment() {
         viewModel.token.observe(viewLifecycleOwner) {token ->
             CoroutineScope(Dispatchers.IO).launch {
                 Log.i("Token", token.toString())
+                listPlaces = mainApi.getListPlaces()
                 val currentUser = mainApi.checkUser("Bearer $token")
                 listFavoriteUserPlaces = mainApi.getFavoritePlaces("Bearer $token")
                 requireActivity().runOnUiThread {
@@ -126,6 +130,14 @@ class MainPageFragment : Fragment() {
 //                        binding.textGeo.text = currentUser.city
 
                         userViewModel.user.value = currentUser
+
+                        tvCount.text = String.format("Найдено: %s", listPlaces.count())
+                        adapter.submitList(listPlaces)
+
+                        if (listPlaces.isNotEmpty()) {
+                            idProgressBar.visibility = View.GONE
+                            idMainPage.visibility = View.VISIBLE
+                        }
                     }
                 }
             }
