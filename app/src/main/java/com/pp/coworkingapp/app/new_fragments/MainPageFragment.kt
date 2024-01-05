@@ -187,7 +187,7 @@ class MainPageFragment : Fragment() {
     private fun searchText() {
         binding.btSearchCow.setOnClickListener {
             val queryText: String = binding.edSearch.text.toString()
-            listCurrent.addAll(listPlaces.filter { place -> place.name.lowercase().contains(queryText.lowercase())})
+            listCurrent = listPlaces.filter { place -> place.name.lowercase().contains(queryText.lowercase())} as ArrayList<Place>
             binding.tvCount.text = String.format("Найдено: %s", listCurrent.count())
             adapter.submitList(listCurrent.toList())
             binding.edSearch.text = null
