@@ -264,20 +264,15 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvPlacesDesc"
-                android:layout_width="0dp"
+                android:id="@+id/tvDesc"
+                android:layout_width="226dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="29dp"
-                android:layout_marginBottom="35dp"
+                android:layout_marginTop="12dp"
+                android:visibility="gone"
                 android:fontFamily="@font/opensans_regular"
-                android:gravity="left"
                 android:text="В данном разделе вы можете посмотреть избранные места"
-                android:textSize="10sp"
                 android:textColor="#000000"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="10sp"
                 app:layout_constraintStart_toStartOf="@+id/tvPlacesText"
                 app:layout_constraintTop_toBottomOf="@+id/tvPlacesText" />
 
@@ -285,6 +280,7 @@
                 android:id="@+id/idEmpty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/tvPlacesText"
                 app:layout_constraintTop_toBottomOf="@+id/tvPlacesText">
 

@@ -9,15 +9,21 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.pp.coworkingapp.R
+import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
+import com.pp.coworkingapp.app.retrofit.domain.response.IdResponse
+import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
+import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
 import com.pp.coworkingapp.databinding.FragmentFavouritesBusinessBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.streams.toList
 
 class FavouritesBusinessFragment : Fragment() {
 
@@ -25,6 +31,10 @@ class FavouritesBusinessFragment : Fragment() {
     private val viewModel: AuthViewModel by activityViewModels()
     private lateinit var mainApi: MainApi
     private lateinit var tokenUser: String
+    private lateinit var adapter : PlaceAdapter
+    private lateinit var listFavoriteUserPlaces: List<IdResponse>
+    private lateinit var listPlaces: List<Place>
+    private val placeIdViewModel: PlaceIdViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +47,8 @@ class FavouritesBusinessFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        listFavoriteUserPlaces = emptyList()
+        initRcView()
         initMenu()
         initSettings()
         mainApi = Common.retrofitService
@@ -51,12 +63,37 @@ class FavouritesBusinessFragment : Fragment() {
         }
     }
 
+    private fun createInt(user: IdResponse): Int {
+        return user.placeId
+    }
+
+    private fun initRcView() {
+        adapter = PlaceAdapter()
+        adapter.setList(listFavoriteUserPlaces.stream().map(this::createInt).toList())
+        adapter.setOnButtonClickListener(object: PlaceAdapter.OnButtonClickListener {
+            override fun onClick(placeId: Int) {
+                if (viewModel.token.value != null) {
+                    placeIdViewModel.placeId.value = placeId
+                    findNavController().navigate(R.id.action_mainPageFragment_to_placeCardFragment)
+                } else {
+                    findNavController().navigate(R.id.action_mainPageFragment_to_authFragment)
+                }
+            }
+        })
+        binding.rcView.layoutManager = LinearLayoutManager(context)
+        binding.rcView.adapter = adapter
+    }
+
     private fun initCurrentPerson() {
         //создание текущего user
         viewModel.token.observe(viewLifecycleOwner) { token ->
             CoroutineScope(Dispatchers.IO).launch {
                 Log.i("Token", token.toString())
                 val currentUser = mainApi.checkUser("Bearer $token")
+                listFavoriteUserPlaces = mainApi.getFavoritePlaces("Bearer $token")
+                val listInt: List<Int> = listFavoriteUserPlaces.stream().map(this::createInt).toList()
+                listPlaces = mainApi.getListPlaces()
+                adapter.setList(listFavoriteUserPlaces.stream().map(this::createInt).toList())
                 requireActivity().runOnUiThread {
                     //Настраиваем кнопку настройки пользователя
                     binding.idAccount.setOnClickListener {
@@ -72,7 +109,16 @@ class FavouritesBusinessFragment : Fragment() {
                             String.format("%s %s", currentUser.name, currentUser.surname)
 //                        binding.idTextCity.text = currentUser.city
 
+                        val list: List<Place> = listPlaces.filter { place -> listInt.contains(place.id) }
+                        if (listFavoriteUserPlaces.isNotEmpty()) {
+                            idEmpty.visibility = View.GONE
+                            tvDesc.visibility = View.VISIBLE
+                            adapter.submitList(list)
 
+                        } else {
+                            idEmpty.visibility = View.VISIBLE
+                            tvDesc.visibility = View.GONE
+                        }
                     }
                 }
             }
@@ -103,4 +149,8 @@ class FavouritesBusinessFragment : Fragment() {
             }
         }
     }
+}
+
+private fun CoroutineScope.createInt(idResponse: IdResponse): Int {
+    return idResponse.placeId
 }
