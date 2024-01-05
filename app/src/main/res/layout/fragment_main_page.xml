@@ -10,7 +10,7 @@
         android:id="@+id/idMainPage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/imClock"
@@ -278,6 +278,360 @@
             app:layout_constraintTop_toBottomOf="@+id/tvCount"
             app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/list_item_places" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/idFilters"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:background="@drawable/rectangle_account_common"
+            android:paddingBottom="11dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/idSearchDir">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/idArea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tvArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/open_sans_semi_bold"
+                    android:text="Район"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/btArea1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="1dp"
+                    android:button="@drawable/check_box_filters"
+                    android:fontFamily="@font/open_sans_light"
+                    android:paddingLeft="7dp"
+                    android:text="Академический"
+                    android:textAppearance="@style/text_radio"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvArea" />
+
+                <CheckBox
+                    android:id="@+id/btArea2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/check_box_filters"
+                    android:fontFamily="@font/open_sans_light"
+                    android:paddingLeft="7dp"
+                    android:text="Верх-Исетский"
+                    android:textAppearance="@style/text_radio"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btArea1" />
+
+                <CheckBox
+                    android:id="@+id/btArea3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/check_box_filters"
+                    android:fontFamily="@font/open_sans_light"
+                    android:paddingLeft="7dp"
+                    android:text="Железнодорожный"
+                    android:textAppearance="@style/text_radio"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btArea2" />
+
+                <CheckBox
+                    android:id="@+id/btArea4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/check_box_filters"
+                    android:fontFamily="@font/open_sans_light"
+                    android:paddingLeft="7dp"
+                    android:text="Кировский"
+                    android:textAppearance="@style/text_radio"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btArea3" />
+
+                <CheckBox
+                    android:id="@+id/btArea5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/check_box_filters"
+                    android:fontFamily="@font/open_sans_light"
+                    android:paddingLeft="7dp"
+                    android:text="Ленинский"
+                    android:textAppearance="@style/text_radio"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btArea4" />
+
+                <CheckBox
+                    android:id="@+id/btArea6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/check_box_filters"
+                    android:fontFamily="@font/open_sans_light"
+                    android:paddingLeft="7dp"
+                    android:text="Октябрьский"
+                    android:textAppearance="@style/text_radio"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btArea5" />
+
+                <CheckBox
+                    android:id="@+id/btArea7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/check_box_filters"
+                    android:fontFamily="@font/open_sans_light"
+                    android:paddingLeft="7dp"
+                    android:text="Орджоникидзевский"
+                    android:textAppearance="@style/text_radio"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btArea6" />
+
+                <CheckBox
+                    android:id="@+id/btArea8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/check_box_filters"
+                    android:fontFamily="@font/open_sans_light"
+                    android:paddingLeft="7dp"
+                    android:text="Чкаловский"
+                    android:textAppearance="@style/text_radio"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btArea7" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/idCoworking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idArea">
+
+                <TextView
+                    android:id="@+id/tvCoworking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/open_sans_semi_bold"
+                    android:text="Вид коворкинга"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/btCoworking1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/check_box_filters"
+                    android:fontFamily="@font/open_sans_light"
+                    android:paddingLeft="7dp"
+                    android:text="Рабочий офис"
+                    android:textAppearance="@style/text_radio"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCoworking" />
+
+                <CheckBox
+                    android:id="@+id/btCoworking2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="6dp"
+                    android:button="@drawable/check_box_filters"
+                    android:fontFamily="@font/open_sans_light"
+                    android:paddingLeft="7dp"
+                    android:text="Антикафе"
+                    android:textAppearance="@style/text_radio"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btCoworking1" />
+
+                <CheckBox
+                    android:id="@+id/btCoworking3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="6dp"
+                    android:button="@drawable/check_box_filters"
+                    android:fontFamily="@font/open_sans_light"
+                    android:paddingLeft="7dp"
+                    android:text="Кафе"
+                    android:textAppearance="@style/text_radio"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btCoworking2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/idTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idCoworking">
+
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/open_sans_semi_bold"
+                    android:text="Часы работы"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/btTime1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/radiobutton_place_card"
+                    android:fontFamily="@font/open_sans_light"
+                    android:paddingLeft="7dp"
+                    android:text="Круглосуточно"
+                    android:textAppearance="@style/text_radio"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTime" />
+
+                <CheckBox
+                    android:id="@+id/btTime2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/radiobutton_place_card"
+                    android:fontFamily="@font/open_sans_light"
+                    android:paddingLeft="7dp"
+                    android:text="По будням"
+                    android:textAppearance="@style/text_radio"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    android:theme="@style/MyRadioButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btTime1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <CheckBox
+                android:id="@+id/btParking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="9dp"
+                android:button="@drawable/radiobutton_place_card"
+                android:fontFamily="@font/open_sans_semi_bold"
+                android:paddingLeft="7dp"
+                android:text="Парковка"
+                android:textAppearance="@style/text_radio"
+                android:textColor="#000000"
+                android:textSize="10sp"
+                android:theme="@style/MyRadioButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idTime" />
+
+            <CheckBox
+                android:id="@+id/btRestZone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="5dp"
+                android:button="@drawable/radiobutton_place_card"
+                android:fontFamily="@font/open_sans_semi_bold"
+                android:paddingLeft="7dp"
+                android:text="Зона отдыха"
+                android:textAppearance="@style/text_radio"
+                android:textColor="#000000"
+                android:textSize="10sp"
+                android:theme="@style/MyRadioButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btParking" />
+
+            <CheckBox
+                android:id="@+id/btConferenceHall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="5dp"
+                android:button="@drawable/radiobutton_place_card"
+                android:fontFamily="@font/open_sans_semi_bold"
+                android:paddingLeft="7dp"
+                android:text="Наличие конференц-зала"
+                android:textAppearance="@style/text_radio"
+                android:textColor="#000000"
+                android:textSize="10sp"
+                android:theme="@style/MyRadioButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btRestZone" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/idListAccountCommon"

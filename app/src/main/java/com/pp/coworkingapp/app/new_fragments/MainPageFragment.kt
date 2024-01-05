@@ -51,6 +51,7 @@ class MainPageFragment : Fragment() {
         mainApi = Common.retrofitService
         initRcView()
         searchText()
+        initFilters()
 
         binding.btSignInMain.setOnClickListener {
             findNavController().navigate(R.id.action_mainPageFragment_to_authFragment)
@@ -65,6 +66,16 @@ class MainPageFragment : Fragment() {
         createUser()
 
         logout()
+    }
+
+    private fun initFilters() {
+        binding.btFilters.setOnClickListener {
+            if (binding.idFilters.visibility == View.GONE) {
+                binding.idFilters.visibility = View.VISIBLE
+            } else if (binding.idFilters.visibility == View.VISIBLE) {
+                binding.idFilters.visibility = View.GONE
+            }
+        }
     }
 
     private fun logout() {
