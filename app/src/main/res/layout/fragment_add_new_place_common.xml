@@ -723,7 +723,7 @@
                     app:layout_constraintTop_toTopOf="@+id/idRectangle"
                     app:srcCompat="@drawable/icon_chevr_on_down" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <CheckBox
                     android:id="@+id/btParking"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -741,7 +741,7 @@
                     app:layout_constraintStart_toStartOf="@+id/idRectangle"
                     app:layout_constraintTop_toBottomOf="@+id/idRectangle" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <CheckBox
                     android:id="@+id/btRestZone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -758,7 +758,7 @@
                     app:layout_constraintStart_toStartOf="@+id/btParking"
                     app:layout_constraintTop_toBottomOf="@+id/btParking" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <CheckBox
                     android:id="@+id/btConferenceHall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
