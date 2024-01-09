@@ -545,18 +545,13 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/idRcViewReviews"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_marginTop="12dp"
-                    android:layout_marginBottom="45dp"
-                    android:scrollbarFadeDuration="0"
-                    android:nestedScrollingEnabled="false"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvSortText"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:listitem="@layout/item_review_other"/>
+                    tools:listitem="@layout/item_review_other" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

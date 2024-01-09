@@ -68,6 +68,7 @@ class PlaceCardFragment : Fragment() {
         imageProvider = ImageProvider.fromResource(this.context, R.drawable.icon_location_2)
 
         mainApi = Common.retrofitService
+        initReviewAdapter()
         initCurrentPerson()
         initPlaceCard()
         initReview()
@@ -166,10 +167,8 @@ class PlaceCardFragment : Fragment() {
             CoroutineScope(Dispatchers.IO).launch {
                 val reviewsList = mainApi.findReviews(placeId)
                 requireActivity().runOnUiThread {
-                    initReviewAdapter()
-                    binding.apply {
-                        adapterReview.submitList(reviewsList)
-                    }
+                    Log.i("SizeReviewsList", reviewsList.size.toString())
+                    adapterReview.submitList(reviewsList.toList())
                 }
             }
         }

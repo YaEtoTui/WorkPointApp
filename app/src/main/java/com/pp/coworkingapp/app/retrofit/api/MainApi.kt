@@ -3,9 +3,9 @@ package com.pp.coworkingapp.app.retrofit.api
 import com.pp.coworkingapp.app.retrofit.domain.request.CreatePlaceAndUserRequest
 import com.pp.coworkingapp.app.retrofit.domain.request.CreateReviewRequest
 import com.pp.coworkingapp.app.retrofit.domain.request.CreateSettingsUserRequest
-import com.pp.coworkingapp.app.retrofit.domain.request.Payload
 import com.pp.coworkingapp.app.retrofit.domain.request.PayloadSansTags
 import com.pp.coworkingapp.app.retrofit.domain.request.RegisterRequest
+import com.pp.coworkingapp.app.retrofit.domain.response.Answer
 import com.pp.coworkingapp.app.retrofit.domain.response.CurrentUser
 import com.pp.coworkingapp.app.retrofit.domain.response.IdResponse
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
@@ -27,7 +27,6 @@ import retrofit2.http.Headers
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
-import retrofit2.http.PartMap
 import retrofit2.http.Query
 
 interface MainApi {
@@ -100,5 +99,5 @@ interface MainApi {
     suspend fun deleteFavoritePlace(@Header("Authorization") token: String, @Query("id_fav_place") idPlace: Int): Response<String>
 
     @POST("places/get_reviews_answer")
-    suspend fun getReviewsAnswer(@Query("id_reviews") idReviews: Int): Response<String>
+    suspend fun getReviewsAnswer(@Query("id_reviews") idReviews: Int): List<Answer>
 }

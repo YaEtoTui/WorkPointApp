@@ -58,7 +58,6 @@ class AddNewPlaceCommonFragment : Fragment() {
     private lateinit var listTagsPlaceCard: ArrayList<Tag>
     private lateinit var listPhotoPlaceCard: Array<Uri?>
     private var photoUri: Uri? = null
-    private var isChecked = false
 
     private val userViewModel: UserViewModel by activityViewModels()
 
