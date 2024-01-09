@@ -10,7 +10,7 @@
         android:id="@+id/idMainPage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/imClock"
@@ -167,7 +167,7 @@
                 android:id="@+id/rectangle_1"
                 android:layout_width="353dp"
                 android:layout_height="101dp"
-                android:background="@drawable/rectangle_1"
+                android:background="@drawable/banner_coffee"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -176,6 +176,7 @@
                 android:id="@+id/text_cities"
                 android:layout_width="190dp"
                 android:layout_height="18dp"
+                android:visibility="invisible"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="83dp"
