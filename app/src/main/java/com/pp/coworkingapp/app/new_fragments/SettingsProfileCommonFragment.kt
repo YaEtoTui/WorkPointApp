@@ -18,7 +18,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pp.coworkingapp.R
-import com.pp.coworkingapp.app.extensions.createBitmapFromResult
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
 import com.pp.coworkingapp.app.retrofit.domain.request.CreateSettingsUserRequest
@@ -262,10 +261,19 @@ class SettingsProfileCommonFragment : Fragment() {
                         }
                     }
 
-                    if (numberCoffee.isNotEmpty())
-                        binding.tvCoffeeNumber.text = "${numberCoffee.size}/5"
-                    else
-                        binding.tvCoffeeNumber.text = "0/5"
+                    if (numberCoffee.isEmpty()) {
+                        binding.imProgressBar.setBackgroundResource(R.drawable.progress_0)
+                    } else if (numberCoffee.size == 1) {
+                        binding.imProgressBar.setBackgroundResource(R.drawable.progress_1)
+                    } else if (numberCoffee.size == 2) {
+                        binding.imProgressBar.setBackgroundResource(R.drawable.progress_2)
+                    } else if (numberCoffee.size == 3) {
+                        binding.imProgressBar.setBackgroundResource(R.drawable.progress_3)
+                    } else if (numberCoffee.size == 4) {
+                        binding.imProgressBar.setBackgroundResource(R.drawable.progress_4)
+                    } else if (numberCoffee.size >= 5) {
+                        binding.imProgressBar.setBackgroundResource(R.drawable.progress_5)
+                    }
 
                     tokenUser = token
                     userViewModel.user.value = currentUser

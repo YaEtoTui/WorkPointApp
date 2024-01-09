@@ -334,11 +334,9 @@
                 android:layout_width="80.23dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="40dp"
-                android:src="@drawable/progress_static"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_launcher_foreground" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvTextPresent"
@@ -375,19 +373,6 @@
                 app:layout_constraintEnd_toEndOf="@+id/tvTextPresent"
                 app:layout_constraintStart_toStartOf="@+id/tvTextPresent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTextPresent" />
-
-            <TextView
-                android:id="@+id/tvCoffeeNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4/5"
-                android:textColor="#9C5D56"
-                android:fontFamily="@font/open_sans_semi_bold"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imProgressBar"
-                app:layout_constraintEnd_toEndOf="@+id/imProgressBar"
-                app:layout_constraintStart_toStartOf="@+id/imProgressBar"
-                app:layout_constraintTop_toTopOf="@+id/imProgressBar" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
