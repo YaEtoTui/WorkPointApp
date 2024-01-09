@@ -76,6 +76,30 @@
         <action
             android:id="@+id/action_placeCardFragment_to_authFragment"
             app:destination="@id/authFragment" />
+        <action
+            android:id="@+id/action_placeCardFragment_to_favouritesCommonFrag"
+            app:destination="@id/favouritesCommonFrag" />
+        <action
+            android:id="@+id/action_placeCardFragment_to_settingsProfileCommonFrag"
+            app:destination="@id/settingsProfileCommonFrag" />
+        <action
+            android:id="@+id/action_placeCardFragment_to_addNewPlaceCommonFrag"
+            app:destination="@id/addNewPlaceCommonFrag" />
+        <action
+            android:id="@+id/action_placeCardFragment_to_favouritesBusinessFrag"
+            app:destination="@id/favouritesBusinessFrag" />
+        <action
+            android:id="@+id/action_placeCardFragment_to_settingsProfileBusinessFrag"
+            app:destination="@id/settingsProfileBusinessFrag" />
+        <action
+            android:id="@+id/action_placeCardFragment_to_settingsPlacesBusinessFrag"
+            app:destination="@id/settingsPlacesBusinessFrag" />
+        <action
+            android:id="@+id/action_placeCardFragment_to_settingsPlacesCommonFrag"
+            app:destination="@id/settingsPlacesCommonFrag" />
+        <action
+            android:id="@+id/action_placeCardFragment_to_addNewPlaceBusinessFrag"
+            app:destination="@id/addNewPlaceBusinessFrag" />
     </fragment>
 
     <fragment

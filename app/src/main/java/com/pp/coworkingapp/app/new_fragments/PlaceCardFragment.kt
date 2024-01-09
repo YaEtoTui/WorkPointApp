@@ -67,6 +67,9 @@ class PlaceCardFragment : Fragment() {
         mapView = binding.imCarteGeo
         imageProvider = ImageProvider.fromResource(this.context, R.drawable.icon_location_2)
 
+        onClickCommonText()
+        onClickBusinessText()
+
         mainApi = Common.retrofitService
         initReviewAdapter()
         initCurrentPerson()
@@ -286,6 +289,40 @@ class PlaceCardFragment : Fragment() {
                 }
 
             }
+        }
+    }
+
+    private fun onClickCommonText() {
+        binding.tvAddPlace.setOnClickListener {
+            findNavController().navigate(R.id.action_placeCardFragment_to_addNewPlaceCommonFrag)
+        }
+        binding.tvFavorites.setOnClickListener {
+            findNavController().navigate(R.id.action_placeCardFragment_to_favouritesCommonFrag)
+        }
+
+        binding.tvSettingsProfile.setOnClickListener {
+            findNavController().navigate(R.id.action_placeCardFragment_to_settingsProfileCommonFrag)
+        }
+
+        binding.tvSettingsPlaces.setOnClickListener {
+            findNavController().navigate(R.id.action_placeCardFragment_to_settingsPlacesCommonFrag)
+        }
+    }
+
+    private fun onClickBusinessText() {
+        binding.tvAddPlaceBusiness.setOnClickListener {
+            findNavController().navigate(R.id.action_placeCardFragment_to_addNewPlaceBusinessFrag)
+        }
+        binding.tvFavoritesBusiness.setOnClickListener {
+            findNavController().navigate(R.id.action_placeCardFragment_to_favouritesBusinessFrag)
+        }
+
+        binding.tvSettingsProfileBusiness.setOnClickListener {
+            findNavController().navigate(R.id.action_placeCardFragment_to_settingsProfileBusinessFrag)
+        }
+
+        binding.tvSettingsPlacesBusiness.setOnClickListener {
+            findNavController().navigate(R.id.action_placeCardFragment_to_settingsPlacesBusinessFrag)
         }
     }
 }
