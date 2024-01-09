@@ -334,6 +334,9 @@ class AddNewPlaceBusinessFragment : Fragment() {
             tvSettingsPlacesBusiness.setOnClickListener {
                 findNavController().navigate(R.id.action_addNewPlaceBusinessFrag_to_settingsPlacesBusinessFrag)
             }
+            tvPromotionBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_addNewPlaceBusinessFrag_to_promotionFrag)
+            }
         }
     }
 

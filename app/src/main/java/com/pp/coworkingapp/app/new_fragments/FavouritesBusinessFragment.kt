@@ -147,6 +147,9 @@ class FavouritesBusinessFragment : Fragment() {
             tvSettingsPlacesBusiness.setOnClickListener {
                 findNavController().navigate(R.id.action_favouritesBusinessFrag_to_settingsPlacesBusinessFrag)
             }
+            tvPromotionBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_favouritesBusinessFrag_to_promotionFrag)
+            }
         }
     }
 }

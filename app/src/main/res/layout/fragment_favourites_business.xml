@@ -276,57 +276,6 @@
                 app:layout_constraintStart_toStartOf="@+id/tvPlacesText"
                 app:layout_constraintTop_toBottomOf="@+id/tvPlacesText" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/idEmpty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="@+id/tvPlacesText"
-                app:layout_constraintTop_toBottomOf="@+id/tvPlacesText">
-
-                <ImageView
-                    android:id="@+id/imIconEmpty"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="21dp"
-                    android:layout_marginLeft="54dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/favourite_empty_img" />
-
-                <TextView
-                    android:id="@+id/tvEmpty"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/open_sans_semi_bold"
-                    android:text="В избранном пока пусто"
-                    android:textColor="#000000"
-                    android:textSize="10sp"
-                    app:layout_constraintEnd_toEndOf="@+id/imIconEmpty"
-                    app:layout_constraintHorizontal_bias="0.69"
-                    app:layout_constraintStart_toStartOf="@+id/imIconEmpty"
-                    app:layout_constraintTop_toBottomOf="@+id/imIconEmpty" />
-
-                <TextView
-                    android:id="@+id/tvLike"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:drawableRight="@drawable/icon_heard_full"
-                    android:drawablePadding="3dp"
-                    android:fontFamily="@font/open_sans_light"
-                    android:text="Добавляйте места, нажимая на"
-                    android:textColor="#000000"
-                    android:textSize="10sp"
-                    app:layout_constraintEnd_toEndOf="@+id/tvEmpty"
-                    app:layout_constraintHorizontal_bias="0.2"
-                    app:layout_constraintStart_toStartOf="@+id/tvEmpty"
-                    app:layout_constraintTop_toBottomOf="@+id/tvEmpty" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -441,6 +390,59 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idSettings"
             tools:listitem="@layout/list_item_favourites" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/idEmpty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idSettings">
+
+            <ImageView
+                android:id="@+id/imIconEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="54dp"
+                android:layout_marginTop="21dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/favourite_empty_img" />
+
+            <TextView
+                android:id="@+id/tvEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/open_sans_semi_bold"
+                android:text="В избранном пока пусто"
+                android:textColor="#000000"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/imIconEmpty"
+                app:layout_constraintHorizontal_bias="0.69"
+                app:layout_constraintStart_toStartOf="@+id/imIconEmpty"
+                app:layout_constraintTop_toBottomOf="@+id/imIconEmpty" />
+
+            <TextView
+                android:id="@+id/tvLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:drawableRight="@drawable/icon_heard_full"
+                android:drawablePadding="3dp"
+                android:fontFamily="@font/open_sans_light"
+                android:text="Добавляйте места, нажимая на"
+                android:textColor="#000000"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvEmpty"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toStartOf="@+id/tvEmpty"
+                app:layout_constraintTop_toBottomOf="@+id/tvEmpty" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

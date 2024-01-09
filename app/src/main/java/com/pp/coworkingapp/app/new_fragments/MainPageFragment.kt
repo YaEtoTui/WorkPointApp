@@ -181,6 +181,10 @@ class MainPageFragment : Fragment() {
         binding.tvSettingsPlacesBusiness.setOnClickListener {
             findNavController().navigate(R.id.action_mainPageFragment_to_settingsPlacesBusinessFrag)
         }
+
+        binding.tvPromotionBusiness.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPageFragment_to_promotionFrag)
+        }
     }
 
     private fun loadListPlaces() {

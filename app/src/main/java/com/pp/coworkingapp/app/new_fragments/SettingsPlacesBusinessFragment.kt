@@ -124,6 +124,9 @@ class SettingsPlacesBusinessFragment : Fragment() {
             tvSettingsProfileBusiness.setOnClickListener {
                 findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_settingsProfileBusinessFrag)
             }
+            tvPromotionBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_promotionFrag)
+            }
         }
     }
 }

@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 
 class PromotionBusinessFragment : Fragment() {
 
-    private lateinit var adapter : AdapterMyPlace
+//    private lateinit var adapter : AdapterMyPlace
     private lateinit var binding: FragmentPromotionBusinessBinding
     private val viewModel: AuthViewModel by activityViewModels()
     private lateinit var mainApi: MainApi
@@ -54,24 +54,24 @@ class PromotionBusinessFragment : Fragment() {
         initCurrentPerson()
 
         binding.btBackToMainPage.setOnClickListener {
-//            findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_mainPageFragment)
+            findNavController().navigate(R.id.action_promotionFrag_to_mainPageFragment)
         }
 
         binding.tvlogOutBusiness.setOnClickListener {
-//            findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_authFragment)
+            findNavController().navigate(R.id.action_promotionFrag_to_authFragment)
         }
     }
 
     private fun initAdapterList() {
-//        adapter = AdapterMyPlace()
-        adapter.setOnButtonClickListener(object: AdapterMyPlace.OnButtonClickListener {
-            override fun onClick(placeId: Int) {
-                placeIdViewModel.placeId.value = placeId
-                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_redactPlaceBusinessFrag)
-            }
-        })
-        binding.rcView.layoutManager = LinearLayoutManager(context)
-        binding.rcView.adapter = adapter
+////        adapter = AdapterMyPlace()
+//        adapter.setOnButtonClickListener(object: AdapterMyPlace.OnButtonClickListener {
+//            override fun onClick(placeId: Int) {
+//                placeIdViewModel.placeId.value = placeId
+//                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_redactPlaceBusinessFrag)
+//            }
+//        })
+//        binding.rcView.layoutManager = LinearLayoutManager(context)
+//        binding.rcView.adapter = adapter
     }
 
     private fun initCurrentPerson() {
@@ -97,7 +97,7 @@ class PromotionBusinessFragment : Fragment() {
 //                        binding.idTextCity.text = currentUser.city
                     }
 
-                    adapter.submitList(listPlaces)
+//                    adapter.submitList(listPlaces)
                 }
             }
         }
@@ -105,26 +105,32 @@ class PromotionBusinessFragment : Fragment() {
 
     private fun initMenu() {
         binding.apply {
-//            idTvFavorites.setOnClickListener {
-//                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_favouritesBusinessFrag)
-//            }
-//            idTvSettingsProfile.setOnClickListener {
-//                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_settingsProfileBusinessFrag)
-//            }
+            idTvFavorites.setOnClickListener {
+                findNavController().navigate(R.id.action_promotionFrag_to_favouritesBusinessFrag)
+            }
+            idTvSettingsProfile.setOnClickListener {
+                findNavController().navigate(R.id.action_promotionFrag_to_settingsProfileBusinessFrag)
+            }
+            idSettingsPlaces.setOnClickListener {
+                findNavController().navigate(R.id.action_promotionFrag_to_settingsPlacesBusinessFrag)
+            }
         }
     }
 
     private fun initSettings() {
         binding.apply {
-//            binding.tvAddPlaceBusiness.setOnClickListener {
-//                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_addNewPlaceBusinessFrag)
-//            }
-//            tvFavoritesBusiness.setOnClickListener {
-//                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_favouritesBusinessFrag)
-//            }
-//            tvSettingsProfileBusiness.setOnClickListener {
-//                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_settingsProfileBusinessFrag)
-//            }
+            binding.tvAddPlaceBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_promotionFrag_to_addNewPlaceBusinessFrag)
+            }
+            tvFavoritesBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_promotionFrag_to_favouritesBusinessFrag)
+            }
+            tvSettingsProfileBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_promotionFrag_to_settingsProfileBusinessFrag)
+            }
+            tvSettingsPlacesBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_promotionFrag_to_settingsPlacesBusinessFrag)
+            }
         }
     }
 }

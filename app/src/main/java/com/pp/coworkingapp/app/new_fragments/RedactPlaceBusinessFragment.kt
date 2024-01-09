@@ -494,9 +494,6 @@ class RedactPlaceBusinessFragment : Fragment() {
 
     private fun initSettings() {
         binding.apply {
-            binding.tvAddPlaceBusiness.setOnClickListener {
-                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_addNewPlaceBusinessFrag)
-            }
             tvAddPlaceBusiness.setOnClickListener {
                 findNavController().navigate(R.id.action_redactPlaceBusinessFrag_to_addNewPlaceBusinessFrag)
             }
@@ -508,6 +505,9 @@ class RedactPlaceBusinessFragment : Fragment() {
             }
             tvSettingsPlacesBusiness.setOnClickListener {
                 findNavController().navigate(R.id.action_redactPlaceBusinessFrag_to_settingsPlacesBusinessFrag)
+            }
+            tvPromotionBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_redactPlaceBusinessFrag_to_promotionFrag)
             }
         }
     }
