@@ -133,6 +133,9 @@ class FavouritesBusinessFragment : Fragment() {
             idSettingsPlaces.setOnClickListener {
                 findNavController().navigate(R.id.action_favouritesBusinessFrag_to_settingsPlacesBusinessFrag)
             }
+            idPromotion.setOnClickListener {
+                findNavController().navigate(R.id.action_favouritesBusinessFrag_to_promotionFrag)
+            }
         }
     }
 

@@ -137,6 +137,9 @@ class RedactPlaceBusinessFragment : Fragment() {
             idSettingsPlaces.setOnClickListener {
                 findNavController().navigate(R.id.action_redactPlaceBusinessFrag_to_settingsPlacesBusinessFrag)
             }
+            idPromotion.setOnClickListener {
+                findNavController().navigate(R.id.action_redactPlaceBusinessFrag_to_promotionFrag)
+            }
         }
     }
 

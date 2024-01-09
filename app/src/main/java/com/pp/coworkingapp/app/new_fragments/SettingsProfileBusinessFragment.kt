@@ -200,6 +200,9 @@ class SettingsProfileBusinessFragment : Fragment() {
             idSettingsPlaces.setOnClickListener {
                 findNavController().navigate(R.id.action_settingsProfileBusinessFrag_to_settingsPlacesBusinessFrag)
             }
+            idPromotion.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsProfileBusinessFrag_to_promotionFrag)
+            }
         }
     }
 
