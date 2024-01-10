@@ -11,17 +11,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pp.coworkingapp.R
-import com.pp.coworkingapp.app.retrofit.adapter.AdapterMyPlace
-import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
+import com.pp.coworkingapp.app.retrofit.adapter.AdapterPlacePromotion
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
-import com.pp.coworkingapp.app.retrofit.domain.response.Tag
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
 import com.pp.coworkingapp.databinding.FragmentPromotionBusinessBinding
-import com.pp.coworkingapp.databinding.FragmentSettingsPlacesBusinessBinding
-import com.pp.coworkingapp.databinding.FragmentSettingsPlacesCommonBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -29,7 +25,7 @@ import kotlinx.coroutines.launch
 
 class PromotionBusinessFragment : Fragment() {
 
-//    private lateinit var adapter : AdapterMyPlace
+    private lateinit var adapter : AdapterPlacePromotion
     private lateinit var binding: FragmentPromotionBusinessBinding
     private val viewModel: AuthViewModel by activityViewModels()
     private lateinit var mainApi: MainApi
@@ -63,15 +59,15 @@ class PromotionBusinessFragment : Fragment() {
     }
 
     private fun initAdapterList() {
-////        adapter = AdapterMyPlace()
-//        adapter.setOnButtonClickListener(object: AdapterMyPlace.OnButtonClickListener {
-//            override fun onClick(placeId: Int) {
-//                placeIdViewModel.placeId.value = placeId
-//                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_redactPlaceBusinessFrag)
-//            }
-//        })
-//        binding.rcView.layoutManager = LinearLayoutManager(context)
-//        binding.rcView.adapter = adapter
+        adapter = AdapterPlacePromotion()
+        adapter.setOnButtonClickListener(object: AdapterPlacePromotion.OnButtonClickListener {
+            override fun onClick(placeId: Int) {
+                placeIdViewModel.placeId.value = placeId
+//                findNavController().navigate(R.id.action_promotionFrag_to_promotion2Frag)
+            }
+        })
+        binding.rcView.layoutManager = LinearLayoutManager(context)
+        binding.rcView.adapter = adapter
     }
 
     private fun initCurrentPerson() {
