@@ -93,7 +93,7 @@ class PromotionBusinessFragment : Fragment() {
 //                        binding.idTextCity.text = currentUser.city
                     }
 
-//                    adapter.submitList(listPlaces)
+                    adapter.submitList(listPlaces)
                 }
             }
         }
