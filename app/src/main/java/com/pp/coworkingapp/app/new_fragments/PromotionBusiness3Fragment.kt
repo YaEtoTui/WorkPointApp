@@ -45,6 +45,8 @@ class PromotionBusiness3Fragment : Fragment() {
         mainApi = Common.retrofitService
         initAdapterList()
         initCurrentPerson()
+        initListData()
+        initListStatus()
 
         binding.btBackToMainPage.setOnClickListener {
             findNavController().navigate(R.id.action_promotion3Frag_to_mainPageFragment)
@@ -52,6 +54,58 @@ class PromotionBusiness3Fragment : Fragment() {
 
         binding.tvlogOutBusiness.setOnClickListener {
             findNavController().navigate(R.id.action_promotion3Frag_to_authFragment)
+        }
+    }
+
+    private fun initListStatus() {
+        binding.edTextStatus.setOnClickListener {
+            if (binding.idListStatusConst.isVisible)
+                binding.idListStatusConst.visibility = View.GONE
+            else
+                binding.idListStatusConst.visibility = View.VISIBLE
+        }
+
+        binding.btStatusAll.setOnClickListener {
+            binding.edTextStatus.setText(binding.btStatusAll.text.toString())
+            binding.idListStatusConst.visibility = View.GONE
+        }
+        binding.btStatusProcess.setOnClickListener {
+            binding.edTextStatus.setText(binding.btStatusProcess.text.toString())
+            binding.idListStatusConst.visibility = View.GONE
+        }
+        binding.btStatusNow.setOnClickListener {
+            binding.edTextStatus.setText(binding.btStatusNow.text.toString())
+            binding.idListStatusConst.visibility = View.GONE
+        }
+        binding.btStatusWill.setOnClickListener {
+            binding.edTextStatus.setText(binding.btStatusWill.text.toString())
+            binding.idListStatusConst.visibility = View.GONE
+        }
+        binding.btStatusEnd.setOnClickListener {
+            binding.edTextStatus.setText(binding.btStatusEnd.text.toString())
+            binding.idListStatusConst.visibility = View.GONE
+        }
+    }
+
+    private fun initListData() {
+        binding.edTextData.setOnClickListener {
+            if (binding.idListDataConst.isVisible)
+                binding.idListDataConst.visibility = View.GONE
+            else
+                binding.idListDataConst.visibility = View.VISIBLE
+        }
+
+        binding.btDateDefault.setOnClickListener {
+            binding.edTextData.setText(binding.btDateDefault.text.toString())
+            binding.idListDataConst.visibility = View.GONE
+        }
+        binding.btDateNew.setOnClickListener {
+            binding.edTextData.setText(binding.btDateNew.text.toString())
+            binding.idListDataConst.visibility = View.GONE
+        }
+        binding.btDateOld.setOnClickListener {
+            binding.edTextData.setText(binding.btDateOld.text.toString())
+            binding.idListDataConst.visibility = View.GONE
         }
     }
 

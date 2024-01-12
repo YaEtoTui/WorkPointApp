@@ -431,6 +431,7 @@
                         android:background="@drawable/rectangle_edit_settings_2"
                         android:contextClickable="false"
                         android:cursorVisible="false"
+                        android:text="По умолчанию"
                         android:drawableRight="@drawable/icon_chevr_on_down"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
@@ -486,6 +487,7 @@
                         android:cursorVisible="false"
                         android:drawableRight="@drawable/icon_chevr_on_down"
                         android:focusable="false"
+                        android:text="Все"
                         android:focusableInTouchMode="false"
                         android:fontFamily="@font/opensans_regular"
                         android:inputType="text"
@@ -563,6 +565,193 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvName"
                     tools:listitem="@layout/item_promotion_3_applications"/>
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/idListDataConst"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/spinner_fon_promotion"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="@+id/idLayoutEdData"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdData"
+                    app:layout_constraintTop_toTopOf="@+id/idLayoutEdData">
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <RadioButton
+                            android:id="@+id/btDateDefault"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginTop="13dp"
+                            android:button="@drawable/check_box_promotion"
+                            android:checked="true"
+                            android:fontFamily="@font/opensans_regular"
+                            android:paddingLeft="7dp"
+                            android:text="По умолчанию"
+                            android:textAppearance="@style/text_radio"
+                            android:textColor="#000000"
+                            android:textSize="10sp"
+                            android:theme="@style/MyRadioButton"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <RadioButton
+                            android:id="@+id/btDateNew"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginLeft="7dp"
+                            android:button="@drawable/check_box_promotion"
+                            android:fontFamily="@font/opensans_regular"
+                            android:paddingLeft="7dp"
+                            android:text="Сначала новые"
+                            android:textAppearance="@style/text_radio"
+                            android:textColor="#000000"
+                            android:textSize="10sp"
+                            android:theme="@style/MyRadioButton"
+                            app:layout_constraintStart_toStartOf="@+id/btDateDefault"
+                            app:layout_constraintTop_toBottomOf="@+id/btDateDefault" />
+
+                        <RadioButton
+                            android:id="@+id/btDateOld"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginBottom="25dp"
+                            android:button="@drawable/check_box_promotion"
+                            android:fontFamily="@font/opensans_regular"
+                            android:paddingLeft="7dp"
+                            android:text="Сначала старые"
+                            android:textAppearance="@style/text_radio"
+                            android:textColor="#000000"
+                            android:textSize="10sp"
+                            android:theme="@style/MyRadioButton"
+                            app:layout_constraintStart_toStartOf="@+id/btDateNew"
+                            app:layout_constraintTop_toBottomOf="@+id/btDateNew" />
+
+                    </RadioGroup>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/idListStatusConst"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/spinner_fon_promotion"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="@+id/idLayoutEdStatus"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/idLayoutEdStatus"
+                    app:layout_constraintTop_toTopOf="@+id/idLayoutEdStatus">
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <RadioButton
+                            android:id="@+id/btStatusAll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginTop="13dp"
+                            android:button="@drawable/check_box_filters"
+                            android:checked="true"
+                            android:fontFamily="@font/opensans_regular"
+                            android:paddingLeft="7dp"
+                            android:text="Все"
+                            android:textAppearance="@style/text_radio"
+                            android:textColor="#000000"
+                            android:textSize="10sp"
+                            android:theme="@style/MyRadioButton"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <RadioButton
+                            android:id="@+id/btStatusProcess"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginTop="12dp"
+                            android:button="@drawable/check_box_filters"
+                            android:fontFamily="@font/opensans_regular"
+                            android:paddingLeft="7dp"
+                            android:text="В обработке"
+                            android:textAppearance="@style/text_radio"
+                            android:textColor="#000000"
+                            android:textSize="10sp"
+                            android:theme="@style/MyRadioButton"
+                            app:layout_constraintStart_toStartOf="@+id/btDateDefault"
+                            app:layout_constraintTop_toBottomOf="@+id/btDateDefault" />
+
+                        <RadioButton
+                            android:id="@+id/btStatusNow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginTop="12dp"
+                            android:button="@drawable/check_box_filters"
+                            android:fontFamily="@font/opensans_regular"
+                            android:paddingLeft="7dp"
+                            android:text="Сейчас идет"
+                            android:textAppearance="@style/text_radio"
+                            android:textColor="#000000"
+                            android:textSize="10sp"
+                            android:theme="@style/MyRadioButton"
+                            app:layout_constraintStart_toStartOf="@+id/btDateNew"
+                            app:layout_constraintTop_toBottomOf="@+id/btDateNew" />
+
+                        <RadioButton
+                            android:id="@+id/btStatusWill"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginTop="12dp"
+                            android:button="@drawable/check_box_filters"
+                            android:fontFamily="@font/opensans_regular"
+                            android:paddingLeft="7dp"
+                            android:text="Будет идти c ..."
+                            android:textAppearance="@style/text_radio"
+                            android:textColor="#000000"
+                            android:textSize="10sp"
+                            android:theme="@style/MyRadioButton"
+                            app:layout_constraintStart_toStartOf="@+id/btDateNew"
+                            app:layout_constraintTop_toBottomOf="@+id/btDateNew" />
+
+                        <RadioButton
+                            android:id="@+id/btStatusEnd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="25dp"
+                            android:button="@drawable/check_box_filters"
+                            android:fontFamily="@font/opensans_regular"
+                            android:paddingLeft="7dp"
+                            android:text="Промо-акция закончилась"
+                            android:textAppearance="@style/text_radio"
+                            android:textColor="#000000"
+                            android:textSize="10sp"
+                            android:theme="@style/MyRadioButton"
+                            app:layout_constraintStart_toStartOf="@+id/btDateNew"
+                            app:layout_constraintTop_toBottomOf="@+id/btDateNew" />
+
+                    </RadioGroup>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
