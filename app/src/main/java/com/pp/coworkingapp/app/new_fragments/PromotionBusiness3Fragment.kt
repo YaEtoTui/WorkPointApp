@@ -9,20 +9,12 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.pp.coworkingapp.R
-import com.pp.coworkingapp.app.retrofit.adapter.AdapterMyPlace
-import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
-import com.pp.coworkingapp.app.retrofit.domain.response.Tag
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
-import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
 import com.pp.coworkingapp.databinding.FragmentPromotionBusiness3Binding
-import com.pp.coworkingapp.databinding.FragmentPromotionBusinessBinding
-import com.pp.coworkingapp.databinding.FragmentSettingsPlacesBusinessBinding
-import com.pp.coworkingapp.databinding.FragmentSettingsPlacesCommonBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,12 +22,12 @@ import kotlinx.coroutines.launch
 
 class PromotionBusiness3Fragment : Fragment() {
 
-    private lateinit var adapter : AdapterMyPlace
+//    private lateinit var adapter : AdapterMyPlace
     private lateinit var binding: FragmentPromotionBusiness3Binding
     private val viewModel: AuthViewModel by activityViewModels()
     private lateinit var mainApi: MainApi
     private lateinit var tokenUser: String
-    private val placeIdViewModel: PlaceIdViewModel by activityViewModels()
+//    private val placeIdViewModel: PlaceIdViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,11 +47,11 @@ class PromotionBusiness3Fragment : Fragment() {
         initCurrentPerson()
 
         binding.btBackToMainPage.setOnClickListener {
-//            findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_mainPageFragment)
+            findNavController().navigate(R.id.action_promotion3Frag_to_mainPageFragment)
         }
 
         binding.tvlogOutBusiness.setOnClickListener {
-//            findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_authFragment)
+            findNavController().navigate(R.id.action_promotion3Frag_to_authFragment)
         }
     }
 
@@ -81,7 +73,7 @@ class PromotionBusiness3Fragment : Fragment() {
             CoroutineScope(Dispatchers.IO).launch {
                 Log.i("Token", token.toString())
                 val currentUser = mainApi.checkUser("Bearer $token")
-                val listPlaces: List<Place> = mainApi.getPlaceCoffee("Bearer $token", currentUser.id)
+//                val listPlaces: List<Place> = mainApi.getPlaceCoffee("Bearer $token", currentUser.id)
                 requireActivity().runOnUiThread {
                     //Настраиваем кнопку настройки пользователя
                     binding.idAccount.setOnClickListener {
@@ -98,7 +90,7 @@ class PromotionBusiness3Fragment : Fragment() {
 //                        binding.idTextCity.text = currentUser.city
                     }
 
-                    adapter.submitList(listPlaces)
+//                    adapter.submitList(listPlaces)
                 }
             }
         }
@@ -106,26 +98,35 @@ class PromotionBusiness3Fragment : Fragment() {
 
     private fun initMenu() {
         binding.apply {
-//            idTvFavorites.setOnClickListener {
-//                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_favouritesBusinessFrag)
-//            }
-//            idTvSettingsProfile.setOnClickListener {
-//                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_settingsProfileBusinessFrag)
-//            }
+            idTvFavorites.setOnClickListener {
+                findNavController().navigate(R.id.action_promotion3Frag_to_favouritesBusinessFrag)
+            }
+            idTvSettingsProfile.setOnClickListener {
+                findNavController().navigate(R.id.action_promotion3Frag_to_settingsProfileBusinessFrag)
+            }
+            idSettingsPlaces.setOnClickListener {
+                findNavController().navigate(R.id.action_promotion3Frag_to_settingsPlacesBusinessFrag)
+            }
         }
     }
 
     private fun initSettings() {
         binding.apply {
-//            binding.tvAddPlaceBusiness.setOnClickListener {
-//                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_addNewPlaceBusinessFrag)
-//            }
-//            tvFavoritesBusiness.setOnClickListener {
-//                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_favouritesBusinessFrag)
-//            }
-//            tvSettingsProfileBusiness.setOnClickListener {
-//                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_settingsProfileBusinessFrag)
-//            }
+            binding.tvAddPlaceBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_promotion3Frag_to_addNewPlaceBusinessFrag)
+            }
+            tvFavoritesBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_promotion3Frag_to_favouritesBusinessFrag)
+            }
+            tvSettingsProfileBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_promotion3Frag_to_settingsProfileBusinessFrag)
+            }
+            tvSettingsPlacesBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_promotion3Frag_to_settingsPlacesBusinessFrag)
+            }
+            tvPromotionBusiness.setOnClickListener {
+                findNavController().navigate(R.id.action_promotion3Frag_to_promotionFrag)
+            }
         }
     }
 }

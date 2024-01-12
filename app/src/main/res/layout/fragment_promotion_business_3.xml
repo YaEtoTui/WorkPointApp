@@ -508,7 +508,7 @@
                 <View
                     android:id="@+id/idListPromotion"
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
+                    android:layout_height="258dp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/rectangle_list_business"
                     app:layout_constraintEnd_toEndOf="@+id/idLayoutEdStatus"
@@ -516,7 +516,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvErrorData" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/tvName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
@@ -528,14 +528,40 @@
                     app:layout_constraintStart_toStartOf="@+id/idListPromotion"
                     app:layout_constraintTop_toTopOf="@+id/idListPromotion" />
 
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:fontFamily="@font/open_sans_semi_bold"
+                    android:text="Дата подачи"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toEndOf="@+id/tvName"
+                    app:layout_constraintTop_toTopOf="@+id/tvName" />
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:fontFamily="@font/open_sans_semi_bold"
+                    android:text="Статус заявки"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toEndOf="@+id/tvDate"
+                    app:layout_constraintTop_toTopOf="@+id/tvName" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginTop="28dp"
+                    android:layout_marginBottom="26dp"
                     app:layout_constraintBottom_toBottomOf="@+id/idListPromotion"
                     app:layout_constraintEnd_toEndOf="@+id/idListPromotion"
                     app:layout_constraintStart_toStartOf="@+id/idListPromotion"
-                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvName"
+                    tools:listitem="@layout/item_promotion_3_applications"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

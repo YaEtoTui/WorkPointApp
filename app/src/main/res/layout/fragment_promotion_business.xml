@@ -269,19 +269,32 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="29dp"
-                android:layout_marginBottom="35dp"
                 android:fontFamily="@font/opensans_regular"
                 android:gravity="left"
                 android:text="В данном разделе вы можете приобрести рекламу, которая повысит посещаемость и увеличит просмотры вашего заведения"
-                android:textSize="10sp"
                 android:textColor="#000000"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvPlacesText"
                 app:layout_constraintTop_toBottomOf="@+id/tvPlacesText" />
 
-
-
+            <Button
+                android:id="@+id/btCheck"
+                android:layout_width="160dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="16dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:backgroundTint="@drawable/button_bg_color"
+                android:elevation="10dp"
+                android:fontFamily="@font/open_sans_semi_bold"
+                android:stateListAnimator="@drawable/button_elevation"
+                android:text="Посмотреть все заявки"
+                android:textColor="@drawable/button_text_color"
+                android:textSize="9sp"
+                app:cornerRadius="10dp"
+                app:layout_constraintStart_toStartOf="@+id/tvPlacesDesc"
+                app:layout_constraintTop_toBottomOf="@+id/tvPlacesDesc" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -390,7 +403,7 @@
             android:id="@+id/tvNamePlace"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
             android:layout_marginLeft="28dp"
             android:text="Ваши места"
             android:fontFamily="@font/opensans_bold"

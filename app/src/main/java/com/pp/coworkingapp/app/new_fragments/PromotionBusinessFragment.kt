@@ -53,6 +53,10 @@ class PromotionBusinessFragment : Fragment() {
             findNavController().navigate(R.id.action_promotionFrag_to_mainPageFragment)
         }
 
+        binding.btCheck.setOnClickListener {
+            findNavController().navigate(R.id.action_promotionFrag_to_promotion3Frag)
+        }
+
         binding.tvlogOutBusiness.setOnClickListener {
             findNavController().navigate(R.id.action_promotionFrag_to_authFragment)
         }
