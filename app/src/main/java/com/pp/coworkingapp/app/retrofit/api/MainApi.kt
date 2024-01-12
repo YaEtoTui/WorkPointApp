@@ -96,7 +96,7 @@ interface MainApi {
     suspend fun getFavoritePlaces(@Header("Authorization") token: String): List<IdResponse>
 
     @DELETE("user/delete_favorite_place")
-    suspend fun deleteFavoritePlace(@Header("Authorization") token: String, @Query("id_fav_place") idPlace: Int): Response<String>
+    suspend fun deleteFavoritePlace(@Header("Authorization") token: String, @Query("id_fav_place") idPlace: Int): List<String>
 
     @POST("places/get_reviews_answer")
     suspend fun getReviewsAnswer(@Query("id_reviews") idReviews: Int): List<Answer>

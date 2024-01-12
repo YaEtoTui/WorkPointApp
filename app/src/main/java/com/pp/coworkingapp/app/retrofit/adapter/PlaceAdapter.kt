@@ -32,11 +32,7 @@ class PlaceAdapter : ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
                 tvTextDesc.text = place.description
             }
 
-            if (listPlaces.contains(place.id)) {
-                imCoeur.setBackgroundResource(R.drawable.icon_heard_full)
-            } else {
-                imCoeur.setBackgroundResource(R.drawable.icon_heart)
-            }
+            imCoeur.isChecked = listPlaces.contains(place.id)
 
             Log.i("CreateList", listPlaces.size.toString())
 
@@ -54,13 +50,9 @@ class PlaceAdapter : ListAdapter<Place, PlaceAdapter.Holder>(Comparator()) {
             btShowInCarte.setOnClickListener {
                 onButtonClickListener.onClick(place.id)
             }
-            imCoeur.setOnClickListener {
 
-                if (!listPlaces.contains(place.id)) {
-                    imCoeur.setBackgroundResource(R.drawable.icon_heard_full)
-                } else {
-                    imCoeur.setBackgroundResource(R.drawable.icon_heart)
-                }
+
+            imCoeur.setOnClickListener {
                 onButtonHeartClickListener.onClick(place.id)
             }
         }

@@ -103,13 +103,15 @@
             app:layout_constraintStart_toStartOf="@+id/idRectanglePhoto"
             app:layout_constraintTop_toBottomOf="@+id/idRectanglePhoto" />
 
-        <ImageView
+        <CheckBox
             android:id="@+id/imCoeur"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="9dp"
+            android:layout_width="28dp"
+            android:layout_height="24dp"
             android:layout_marginTop="3dp"
+            android:layout_marginLeft="4dp"
             android:layout_marginBottom="4dp"
+            android:button="@drawable/checkbox_heart"
+            android:theme="@style/MyRadioButton"
             app:layout_constraintBottom_toBottomOf="@+id/btShowInCarte"
             app:layout_constraintStart_toEndOf="@+id/btShowInCarte"
             app:layout_constraintTop_toTopOf="@+id/btShowInCarte" />

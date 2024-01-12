@@ -92,12 +92,24 @@ class FavouritesCommonFragment : Fragment() {
                                 placeId
                             ))
                             requireActivity().runOnUiThread {
-                                Log.i("Http", "OK 200")
                                 listInt.add(placeId)
-                                adapter.setList(listInt.toList())
                             }
                         }
+                    } else if (listInt.contains(placeId)) {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            val listIdResponse: List<IdResponse> = mainApi.getFavoritePlaces("Bearer $tokenUser")
+                            val listIdResponseFilter: List<IdResponse> = listIdResponse.filter { idResponse ->
+                                idResponse.placeId == placeId
+                            }
+                            val responseNumber: List<String> = mainApi.deleteFavoritePlace("Bearer $tokenUser", listIdResponseFilter.last().id)
+                            requireActivity().runOnUiThread {
+                                listInt.remove(placeId)
+                            }
+                        }
+
                     }
+
+                    adapter.setList(listInt.toList())
                 }
             }
         })

@@ -26,6 +26,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.Response
 import kotlin.streams.toList
 
 class MainPageFragment : Fragment() {
@@ -215,7 +216,7 @@ class MainPageFragment : Fragment() {
     private fun searchText() {
         binding.btSearchCow.setOnClickListener {
             searchText = binding.edSearch.text.toString()
-//            listCurrent = listPlaces.filter { place -> place.name.lowercase().contains(queryText.lowercase())} as ArrayList<Place>
+//            listCurrent = listPlaces.filter { place -> place.name.lowercase().contains(searchText.lowercase())} as ArrayList<Place>
 //            binding.tvCount.text = String.format("Найдено: %s", listCurrent.count())
 //            adapter.submitList(listCurrent.toList())
 //            binding.edSearch.text = null
@@ -433,7 +434,7 @@ class MainPageFragment : Fragment() {
         }
 
         binding.tvCount.text = String.format("Найдено: %s", filteredCoworkings.count())
-        adapter.submitList(filteredCoworkings)
+        adapter.submitList(filteredCoworkings.toList())
     }
 
     private fun isActiveDistrict(district: String): Boolean {
@@ -482,19 +483,25 @@ class MainPageFragment : Fragment() {
                                 0,
                                 placeId
                             ))
+                            requireActivity().runOnUiThread {
+                                listInt.add(placeId)
+                            }
                         }
-                        listInt.add(placeId)
-                        adapter.setList(listInt.toList())
-                    } else {
+                    } else if (listInt.contains(placeId)) {
                         CoroutineScope(Dispatchers.IO).launch {
-                            val responseIds: IdResponse = mainApi.addFavoritePlace("Bearer $tokenUser", CreatePlaceAndUserRequest(
-                                0,
-                                placeId
-                            ))
+                            val listIdResponse: List<IdResponse> = mainApi.getFavoritePlaces("Bearer $tokenUser")
+                            val listIdResponseFilter: List<IdResponse> = listIdResponse.filter { idResponse ->
+                                idResponse.placeId == placeId
+                            }
+                            val responseNumber: List<String> = mainApi.deleteFavoritePlace("Bearer $tokenUser", listIdResponseFilter.last().id)
+                            requireActivity().runOnUiThread {
+                                listInt.remove(placeId)
+                            }
                         }
-                        listInt.remove(placeId)
-                        adapter.setList(listInt.toList())
+
                     }
+
+                    adapter.setList(listInt.toList())
                 }
             }
         })
