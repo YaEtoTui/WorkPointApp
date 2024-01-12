@@ -178,6 +178,9 @@
         <action
             android:id="@+id/action_favouritesCommonFrag_to_authFragment"
             app:destination="@id/authFragment" />
+        <action
+            android:id="@+id/action_favouritesCommonFrag_to_placeCardFragment"
+            app:destination="@id/placeCardFragment" />
     </fragment>
 
     <fragment
@@ -309,6 +312,9 @@
         <action
             android:id="@+id/action_favouritesBusinessFrag_to_promotionFrag"
             app:destination="@id/promotionFrag" />
+        <action
+            android:id="@+id/action_favouritesBusinessFrag_to_placeCardFragment"
+            app:destination="@id/placeCardFragment" />
     </fragment>
 
     <fragment

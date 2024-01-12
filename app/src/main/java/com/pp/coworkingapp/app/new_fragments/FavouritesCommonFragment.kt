@@ -76,9 +76,9 @@ class FavouritesCommonFragment : Fragment() {
             override fun onClick(placeId: Int) {
                 if (viewModel.token.value != null) {
                     placeIdViewModel.placeId.value = placeId
-                    findNavController().navigate(R.id.action_mainPageFragment_to_placeCardFragment)
+                    findNavController().navigate(R.id.action_favouritesCommonFrag_to_placeCardFragment)
                 } else {
-                    findNavController().navigate(R.id.action_mainPageFragment_to_authFragment)
+                    findNavController().navigate(R.id.action_favouritesCommonFrag_to_authFragment)
                 }
             }
         })

@@ -14,6 +14,7 @@ import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
+import com.pp.coworkingapp.app.retrofit.domain.request.CreatePlaceAndUserRequest
 import com.pp.coworkingapp.app.retrofit.domain.response.IdResponse
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
@@ -34,6 +35,7 @@ class FavouritesBusinessFragment : Fragment() {
     private lateinit var adapter : PlaceAdapter
     private lateinit var listFavoriteUserPlaces: List<IdResponse>
     private lateinit var listPlaces: List<Place>
+    private lateinit var listInt: ArrayList<Int>
     private val placeIdViewModel: PlaceIdViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -74,12 +76,46 @@ class FavouritesBusinessFragment : Fragment() {
             override fun onClick(placeId: Int) {
                 if (viewModel.token.value != null) {
                     placeIdViewModel.placeId.value = placeId
-                    findNavController().navigate(R.id.action_mainPageFragment_to_placeCardFragment)
+                    findNavController().navigate(R.id.action_favouritesBusinessFrag_to_placeCardFragment)
                 } else {
-                    findNavController().navigate(R.id.action_mainPageFragment_to_authFragment)
+                    findNavController().navigate(R.id.action_favouritesBusinessFrag_to_authFragment)
                 }
             }
         })
+
+        adapter.setOnButtonHeartClickListener(object: PlaceAdapter.OnButtonClickListener {
+            override fun onClick(placeId: Int) {
+                if (viewModel.token.value != null) {
+                    if (!listInt.contains(placeId)) {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            val responseIds: IdResponse = mainApi.addFavoritePlace("Bearer $tokenUser", CreatePlaceAndUserRequest(
+                                0,
+                                placeId
+                            )
+                            )
+                            requireActivity().runOnUiThread {
+                                listInt.add(placeId)
+                            }
+                        }
+                    } else if (listInt.contains(placeId)) {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            val listIdResponse: List<IdResponse> = mainApi.getFavoritePlaces("Bearer $tokenUser")
+                            val listIdResponseFilter: List<IdResponse> = listIdResponse.filter { idResponse ->
+                                idResponse.placeId == placeId
+                            }
+                            val responseNumber: List<String> = mainApi.deleteFavoritePlace("Bearer $tokenUser", listIdResponseFilter.last().id)
+                            requireActivity().runOnUiThread {
+                                listInt.remove(placeId)
+                            }
+                        }
+
+                    }
+
+                    adapter.setList(listInt.toList())
+                }
+            }
+        })
+
         binding.rcView.layoutManager = LinearLayoutManager(context)
         binding.rcView.adapter = adapter
     }
@@ -91,9 +127,9 @@ class FavouritesBusinessFragment : Fragment() {
                 Log.i("Token", token.toString())
                 val currentUser = mainApi.checkUser("Bearer $token")
                 listFavoriteUserPlaces = mainApi.getFavoritePlaces("Bearer $token")
-                val listInt: List<Int> = listFavoriteUserPlaces.stream().map(this::createInt).toList()
+                listInt = listFavoriteUserPlaces.stream().map(this::createInt).toList() as ArrayList<Int>
                 listPlaces = mainApi.getListPlaces()
-                adapter.setList(listFavoriteUserPlaces.stream().map(this::createInt).toList())
+                adapter.setList(listInt.toList())
                 requireActivity().runOnUiThread {
                     //Настраиваем кнопку настройки пользователя
                     binding.idAccount.setOnClickListener {
