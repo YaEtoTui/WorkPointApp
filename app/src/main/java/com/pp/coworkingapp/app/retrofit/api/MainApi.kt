@@ -5,6 +5,7 @@ import com.pp.coworkingapp.app.retrofit.domain.request.CreateReviewRequest
 import com.pp.coworkingapp.app.retrofit.domain.request.CreateSettingsUserRequest
 import com.pp.coworkingapp.app.retrofit.domain.request.PayloadSansTags
 import com.pp.coworkingapp.app.retrofit.domain.request.RegisterRequest
+import com.pp.coworkingapp.app.retrofit.domain.response.Advertisement
 import com.pp.coworkingapp.app.retrofit.domain.response.Answer
 import com.pp.coworkingapp.app.retrofit.domain.response.CurrentUser
 import com.pp.coworkingapp.app.retrofit.domain.response.IdResponse
@@ -100,4 +101,13 @@ interface MainApi {
 
     @POST("places/get_reviews_answer")
     suspend fun getReviewsAnswer(@Query("id_reviews") idReviews: Int): List<Answer>
+
+    @GET("user/add")
+    suspend fun getAdvertisementsByUserId(@Header("Authorization") token: String): List<Advertisement>
+
+    @POST("ad/count_ad")
+    suspend fun getCountAd(@Query("date_to") dateTo: String, @Query("date_from") dateFrom: String): Boolean
+
+    @POST("ad/upload_ad")
+    suspend fun uploadAd(@Header("Authorization") token: String, @Part("payload") payload: RequestBody, @Part file: MultipartBody.Part): Response<Advertisement>
 }

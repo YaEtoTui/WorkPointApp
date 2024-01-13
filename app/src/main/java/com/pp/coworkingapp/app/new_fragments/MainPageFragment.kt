@@ -215,12 +215,12 @@ class MainPageFragment : Fragment() {
 
     private fun searchText() {
         binding.btSearchCow.setOnClickListener {
-            searchText = binding.edSearch.text.toString()
-//            listCurrent = listPlaces.filter { place -> place.name.lowercase().contains(searchText.lowercase())} as ArrayList<Place>
-//            binding.tvCount.text = String.format("Найдено: %s", listCurrent.count())
-//            adapter.submitList(listCurrent.toList())
-//            binding.edSearch.text = null
-            this.updateFilteredCoworkings()
+            val query = binding.edSearch.text.toString()
+            listCurrent = listPlaces.filter { place -> place.name.lowercase().contains(query.lowercase())} as ArrayList<Place>
+            binding.tvCount.text = String.format("Найдено: %s", listCurrent.count())
+            adapter.submitList(listCurrent.toList())
+            binding.edSearch.text = null
+//            this.updateFilteredCoworkings()
         }
     }
 

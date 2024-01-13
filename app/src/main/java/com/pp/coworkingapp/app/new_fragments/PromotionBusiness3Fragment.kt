@@ -9,9 +9,12 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.pp.coworkingapp.R
+import com.pp.coworkingapp.app.retrofit.adapter.AdvertisementAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
+import com.pp.coworkingapp.app.retrofit.domain.response.Advertisement
 import com.pp.coworkingapp.app.retrofit.domain.response.Place
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.databinding.FragmentPromotionBusiness3Binding
@@ -22,7 +25,7 @@ import kotlinx.coroutines.launch
 
 class PromotionBusiness3Fragment : Fragment() {
 
-//    private lateinit var adapter : AdapterMyPlace
+    private lateinit var adapter : AdvertisementAdapter
     private lateinit var binding: FragmentPromotionBusiness3Binding
     private val viewModel: AuthViewModel by activityViewModels()
     private lateinit var mainApi: MainApi
@@ -110,15 +113,9 @@ class PromotionBusiness3Fragment : Fragment() {
     }
 
     private fun initAdapterList() {
-//        adapter = AdapterMyPlace()
-//        adapter.setOnButtonClickListener(object: AdapterMyPlace.OnButtonClickListener {
-//            override fun onClick(placeId: Int) {
-//                placeIdViewModel.placeId.value = placeId
-//                findNavController().navigate(R.id.action_settingsPlacesBusinessFrag_to_redactPlaceBusinessFrag)
-//            }
-//        })
-//        binding.rcView.layoutManager = LinearLayoutManager(context)
-//        binding.rcView.adapter = adapter
+        adapter = AdvertisementAdapter()
+        binding.rcView.layoutManager = LinearLayoutManager(context)
+        binding.rcView.adapter = adapter
     }
 
     private fun initCurrentPerson() {
@@ -127,7 +124,7 @@ class PromotionBusiness3Fragment : Fragment() {
             CoroutineScope(Dispatchers.IO).launch {
                 Log.i("Token", token.toString())
                 val currentUser = mainApi.checkUser("Bearer $token")
-//                val listPlaces: List<Place> = mainApi.getPlaceCoffee("Bearer $token", currentUser.id)
+                val listAds: List<Advertisement> = mainApi.getAdvertisementsByUserId("Bearer $token")
                 requireActivity().runOnUiThread {
                     //Настраиваем кнопку настройки пользователя
                     binding.idAccount.setOnClickListener {
@@ -144,7 +141,7 @@ class PromotionBusiness3Fragment : Fragment() {
 //                        binding.idTextCity.text = currentUser.city
                     }
 
-//                    adapter.submitList(listPlaces)
+                    adapter.submitList(listAds)
                 }
             }
         }

@@ -67,7 +67,7 @@ class PromotionBusinessFragment : Fragment() {
         adapter.setOnButtonClickListener(object: AdapterPlacePromotion.OnButtonClickListener {
             override fun onClick(placeId: Int) {
                 placeIdViewModel.placeId.value = placeId
-//                findNavController().navigate(R.id.action_promotionFrag_to_promotion2Frag)
+                findNavController().navigate(R.id.action_promotionFrag_to_promotion2Frag)
             }
         })
         binding.rcView.layoutManager = LinearLayoutManager(context)

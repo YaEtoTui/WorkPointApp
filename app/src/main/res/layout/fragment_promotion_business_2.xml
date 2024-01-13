@@ -658,9 +658,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:background="@drawable/rectangle_edit_settings_2"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:cursorVisible="false"
+                        android:drawableRight="@drawable/icon_calendar_32"
                         android:fontFamily="@font/opensans_regular"
                         android:inputType="text"
-                        android:drawableRight="@drawable/icon_calendar_32"
                         android:textColor="#000000"
                         android:textSize="9sp" />
 
@@ -733,6 +736,15 @@
                     app:layout_constraintStart_toStartOf="@+id/tvCountDays"
                     app:layout_constraintTop_toBottomOf="@+id/idLayoutEdEmail" />
 
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imFile"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="4dp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="@+id/tvBanner"
+                    app:layout_constraintTop_toBottomOf="@+id/btLoadFile" />
+
                 <Button
                     android:id="@+id/btLoadFile"
                     android:layout_width="163dp"
@@ -754,9 +766,9 @@
                     android:id="@+id/btSendApplication"
                     android:layout_width="145dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="16dp"
                     android:backgroundTint="@drawable/button_bg_color_white"
                     android:elevation="5dp"
+                    android:layout_marginTop="16dp"
                     android:fontFamily="@font/open_sans_semi_bold"
                     android:stateListAnimator="@drawable/button_elevation"
                     android:text="Отправить заявку"
@@ -764,7 +776,7 @@
                     android:textSize="10sp"
                     app:cornerRadius="10dp"
                     app:layout_constraintStart_toStartOf="@+id/btLoadFile"
-                    app:layout_constraintTop_toBottomOf="@+id/btLoadFile" />
+                    app:layout_constraintTop_toBottomOf="@+id/imFile" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

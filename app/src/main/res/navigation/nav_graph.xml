@@ -397,6 +397,9 @@
         <action
             android:id="@+id/action_promotionFrag_to_promotion3Frag"
             app:destination="@id/promotion3Frag" />
+        <action
+            android:id="@+id/action_promotionFrag_to_promotion2Frag"
+            app:destination="@id/promotion2Frag" />
     </fragment>
 
     <fragment
@@ -425,6 +428,38 @@
         <action
             android:id="@+id/action_promotion3Frag_to_authFragment"
             app:destination="@id/authFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/promotion2Frag"
+        android:name="com.pp.coworkingapp.app.new_fragments.PromotionBusiness2Fragment"
+        android:animateLayoutChanges="true"
+        tools:layout="@layout/fragment_promotion_business_2">
+
+        <action
+            android:id="@+id/action_promotion2Frag_to_favouritesBusinessFrag"
+            app:destination="@id/favouritesBusinessFrag" />
+        <action
+            android:id="@+id/action_promotion2Frag_to_settingsProfileBusinessFrag"
+            app:destination="@id/settingsProfileBusinessFrag" />
+        <action
+            android:id="@+id/action_promotion2Frag_to_settingsPlacesBusinessFrag"
+            app:destination="@id/settingsPlacesBusinessFrag" />
+        <action
+            android:id="@+id/action_promotion2Frag_to_addNewPlaceBusinessFrag"
+            app:destination="@id/addNewPlaceBusinessFrag" />
+        <action
+            android:id="@+id/action_promotion2Frag_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
+        <action
+            android:id="@+id/action_promotion2Frag_to_authFragment"
+            app:destination="@id/authFragment" />
+        <action
+            android:id="@+id/action_promotion2Frag_to_promotionFrag"
+            app:destination="@id/promotionFrag" />
+        <action
+            android:id="@+id/action_promotion2Frag_to_promotion3Frag"
+            app:destination="@id/promotion3Frag" />
     </fragment>
 
 </navigation>

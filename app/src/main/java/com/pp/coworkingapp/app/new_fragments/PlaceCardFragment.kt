@@ -234,11 +234,13 @@ class PlaceCardFragment : Fragment() {
                         binding.btRatingBar.rating.toInt()
                     )
                 )
+                val reviewsList = mainApi.findReviews(idPlace)
                 requireActivity().runOnUiThread {
                     binding.apply {
                         idTextReview.text = null
                         btRatingBar.rating = review.rank.toFloat()
                     }
+                    adapterReview.submitList(reviewsList.toList())
                 }
             }
         }
