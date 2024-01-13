@@ -110,6 +110,7 @@ class MainPageFragment : Fragment() {
                 listFavoriteUserPlaces = mainApi.getFavoritePlaces("Bearer $token")
                 listInt = listFavoriteUserPlaces.stream().map(this::createInt).toList() as ArrayList<Int>
                 listPlaces = mainApi.getListPlaces()
+                coworkings = listPlaces as ArrayList<Place>
                 adapter.setList(listInt.toList())
                 requireActivity().runOnUiThread {
                     tokenUser = token
@@ -215,12 +216,12 @@ class MainPageFragment : Fragment() {
 
     private fun searchText() {
         binding.btSearchCow.setOnClickListener {
-            val query = binding.edSearch.text.toString()
-            listCurrent = listPlaces.filter { place -> place.name.lowercase().contains(query.lowercase())} as ArrayList<Place>
-            binding.tvCount.text = String.format("Найдено: %s", listCurrent.count())
-            adapter.submitList(listCurrent.toList())
-            binding.edSearch.text = null
-//            this.updateFilteredCoworkings()
+            searchText = binding.edSearch.text.toString()
+//            listCurrent = listPlaces.filter { place -> place.name.lowercase().contains(searchText.lowercase())} as ArrayList<Place>
+//            binding.tvCount.text = String.format("Найдено: %s", listCurrent.count())
+//            adapter.submitList(listCurrent.toList())
+//            binding.edSearch.text = null
+            this.updateFilteredCoworkings()
         }
     }
 

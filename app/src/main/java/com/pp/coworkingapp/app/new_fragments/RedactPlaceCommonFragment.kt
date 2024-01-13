@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.google.gson.Gson
 import com.pp.coworkingapp.R
 import com.pp.coworkingapp.app.enum.Cafe
 import com.pp.coworkingapp.app.enum.Cost
@@ -30,14 +29,11 @@ import com.pp.coworkingapp.app.retrofit.adapter.TagsAddNewPlaceCardAdapter
 import com.pp.coworkingapp.app.retrofit.adapter.TagsRedactPlaceCardAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
-import com.pp.coworkingapp.app.retrofit.domain.request.Payload
 import com.pp.coworkingapp.app.retrofit.domain.request.PayloadSansTags
 import com.pp.coworkingapp.app.retrofit.domain.response.PlaceWithTags
 import com.pp.coworkingapp.app.retrofit.domain.response.Tag
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.AuthViewModel
 import com.pp.coworkingapp.app.retrofit.domain.viewModel.PlaceIdViewModel
-import com.pp.coworkingapp.app.retrofit.domain.viewModel.UserViewModel
-import com.pp.coworkingapp.databinding.FragmentAddNewPlaceCommonBinding
 import com.pp.coworkingapp.databinding.FragmentRedactPlaceCommonBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
@@ -46,8 +42,6 @@ import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONObject
 import java.io.File
 
 
@@ -272,7 +266,7 @@ class RedactPlaceCommonFragment : Fragment() {
 
                     val payload: PayloadSansTags = PayloadSansTags(
                         0,
-                        editTextNamePlace,
+                        binding.edTextNameInstitution.text.toString(),
                         editTextCity,
                         editTextArea,
                         editTextAddress,
@@ -294,7 +288,7 @@ class RedactPlaceCommonFragment : Fragment() {
 
                     CoroutineScope(Dispatchers.IO).launch {
                         val responsePayload = mainApi.loadRedactPayload("Bearer $token", payload)
-                        mainApi.loadRedactTags("Bearer $token", placeId, listTagsId.toList())
+                        val responsePlace: List<PlaceWithTags> = mainApi.loadRedactTags("Bearer $token", placeId, listTagsId.toList())
 //                        val responsePhoto = mainApi.loadRedactPhoto("Bearer $token", placeId, imageParts)
                         requireActivity().runOnUiThread {
                             findNavController().navigate(R.id.action_redactPlaceCommonFrag_to_settingsPlacesCommonFrag)

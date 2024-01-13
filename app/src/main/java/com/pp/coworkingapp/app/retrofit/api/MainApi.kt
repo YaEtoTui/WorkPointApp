@@ -85,7 +85,7 @@ interface MainApi {
     suspend fun loadRedactPhoto(@Header("Authorization") token: String, @Query("id_place") placeId: Int, @Part files: List<MultipartBody.Part>): Response<String>
 
     @POST("places/update_tags")
-    suspend fun loadRedactTags(@Header("Authorization") token: String, @Query("id_place") placeId: Int, @Body tags: List<String>)
+    suspend fun loadRedactTags(@Header("Authorization") token: String, @Query("id_place") placeId: Int, @Body tags: List<String>): List<PlaceWithTags>
 
     @DELETE("places/delete")
     suspend fun deletePlaces(@Header("Authorization") token: String, @Query("id_place") placeId: Int)
