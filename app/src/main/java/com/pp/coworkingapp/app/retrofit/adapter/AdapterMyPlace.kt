@@ -44,6 +44,9 @@ class AdapterMyPlace: ListAdapter<Place, AdapterMyPlace.Holder>(Comparator()) {
                 idDescDelete.visibility = View.GONE
                 view.setBackgroundResource(R.drawable.rectangle_list_item_settings_places_2)
                 btRedact.text = "Редактировать"
+                btRedact.setOnClickListener {
+                    onButtonClickListener.onClick(place.id)
+                }
             }
         }
     }
