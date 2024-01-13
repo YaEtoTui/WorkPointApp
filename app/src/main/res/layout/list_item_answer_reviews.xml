@@ -5,6 +5,7 @@
     android:id="@+id/cView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
     android:background="#FBFBF5">
 
     <androidx.constraintlayout.widget.ConstraintLayout

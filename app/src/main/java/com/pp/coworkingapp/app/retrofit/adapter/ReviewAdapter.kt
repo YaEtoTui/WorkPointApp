@@ -41,19 +41,25 @@ class ReviewAdapter: ListAdapter<Review, ReviewAdapter.Holder>(ReviewAdapter.Com
             btRatingBar.rating = review.rank.toFloat()
             tvDescReview.text = review.textReview
 
-//            mainApi = Common.retrofitService
-//
-//            CoroutineScope(Dispatchers.IO).launch {
-//                listAnswer = mainApi.getReviewsAnswer(review.id)
-//
-//                if (listAnswer.isNotEmpty()) {
-//                    Log.i("Тут", "Тут1")
-//                    val adapterAnswer = AnswerAdapter()
-//                    binding.rcViewAnswer.layoutManager = LinearLayoutManager(context)
-//                    binding.rcViewAnswer.adapter = adapterAnswer
-//                    adapterAnswer.submitList(listAnswer)
-//                }
-//            }
+            mainApi = Common.retrofitService
+
+            CoroutineScope(Dispatchers.IO).launch {
+                listAnswer = mainApi.getReviewsAnswer(review.id)
+
+
+            }
+            if (listAnswer.isNotEmpty()) {
+                Log.i("Тут", "Тут1")
+                val adapterAnswer = AnswerAdapter()
+                binding.rcViewAnswer.layoutManager = LinearLayoutManager(this.rcViewAnswer.context)
+                binding.rcViewAnswer.adapter = adapterAnswer
+                adapterAnswer.submitList(listAnswer)
+            } else {
+                val adapterAnswer = AnswerAdapter()
+                binding.rcViewAnswer.layoutManager = LinearLayoutManager(this.rcViewAnswer.context)
+                binding.rcViewAnswer.adapter = adapterAnswer
+                adapterAnswer.submitList(emptyList())
+            }
         }
     }
 
