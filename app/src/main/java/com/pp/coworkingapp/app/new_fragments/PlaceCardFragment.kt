@@ -135,12 +135,12 @@ class PlaceCardFragment : Fragment() {
                             createButtonsCheckPhotos(listPicturesSub)
                         }
 
-                        mapView.map.move(CameraPosition(Point(56.840823, 60.650763), 16.0f, 0.0f, 0.0f),
+                        mapView.map.move(CameraPosition(Point(56.8315336317274, 60.60252916883852), 16.0f, 0.0f, 0.0f),
                             Animation(Animation.Type.SMOOTH, 1f), null
                         )
 
 
-                        val placemark = mapView.map.mapObjects.addPlacemark(Point(56.840823, 60.650763), imageProvider)
+                        val placemark = mapView.map.mapObjects.addPlacemark(Point(56.8315336317274, 60.60252916883852), imageProvider)
 
 
                         tvDescPoint.text = currentPlace.description

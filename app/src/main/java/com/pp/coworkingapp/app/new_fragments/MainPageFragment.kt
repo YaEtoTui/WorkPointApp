@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pp.coworkingapp.R
+import com.pp.coworkingapp.app.enum.Status
 import com.pp.coworkingapp.app.retrofit.adapter.PlaceAdapter
 import com.pp.coworkingapp.app.retrofit.api.MainApi
 import com.pp.coworkingapp.app.retrofit.domain.Common
@@ -110,7 +111,12 @@ class MainPageFragment : Fragment() {
                 listFavoriteUserPlaces = mainApi.getFavoritePlaces("Bearer $token")
                 listInt = listFavoriteUserPlaces.stream().map(this::createInt).toList() as ArrayList<Int>
                 listPlaces = mainApi.getListPlaces()
-                coworkings = listPlaces as ArrayList<Place>
+
+                val listApproved: List<Place> = listPlaces.filter { place ->
+                    place.status == Status.APPROVED.status
+                }
+
+                coworkings = listApproved as ArrayList<Place>
                 adapter.setList(listInt.toList())
                 requireActivity().runOnUiThread {
                     tokenUser = token
@@ -144,10 +150,10 @@ class MainPageFragment : Fragment() {
 
                         userViewModel.user.value = currentUser
 
-                        tvCount.text = String.format("Найдено: %s", listPlaces.count())
-                        adapter.submitList(listPlaces)
+                        tvCount.text = String.format("Найдено: %s", listApproved.count())
+                        adapter.submitList(listApproved)
 
-                        if (listPlaces.isNotEmpty()) {
+                        if (listApproved.isNotEmpty()) {
                             idProgressBar.visibility = View.GONE
                             idMainPage.visibility = View.VISIBLE
                         }
@@ -199,13 +205,18 @@ class MainPageFragment : Fragment() {
         //Загрузка текущего списка
         CoroutineScope(Dispatchers.IO).launch {
             listPlaces = mainApi.getListPlaces()
-            coworkings = listPlaces as ArrayList<Place>
+
+            val listApproved : List<Place> = listPlaces.filter { place ->
+            place.status.equals(Status.APPROVED.status)
+            }
+
+            coworkings = listApproved as ArrayList<Place>
             requireActivity().runOnUiThread {
                 binding.apply {
-                    tvCount.text = String.format("Найдено: %s", listPlaces.count())
-                    adapter.submitList(listPlaces)
+                    tvCount.text = String.format("Найдено: %s", listApproved.count())
+                    adapter.submitList(listApproved)
 
-                    if (listPlaces.isNotEmpty()) {
+                    if (listApproved.isNotEmpty()) {
                         idProgressBar.visibility = View.GONE
                         idMainPage.visibility = View.VISIBLE
                     }
